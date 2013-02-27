@@ -1,0 +1,45 @@
+{% extends '_template/pages/full.html' %}
+{% import '_macros/form.html' as _form %}
+
+{% block sidebar %}
+	
+{% endblock sidebar %}
+
+{% block content %}
+	{{ _form.open({
+		'action': '',
+		'method': 'post',
+		'enctype': 'multipart/form-data',
+	}) }}
+		<h1>Edit Page</h1>
+		
+		{{ _form.label('Title', 'title') }}
+		{{ _form.text({
+			'name': 'title',
+			'value': page.title,
+		}) }}
+		
+		{{ _form.label('Body', 'body') }}
+		{{ _form.textarea({
+			'name': 'body',
+			'id': 'page-body',
+			'value': page.body,
+		}) }}
+	</div>
+	
+	<div class="span4">
+		<div class="well">
+			{{ _form.label('URL', 'slug') }}
+		{{ _form.text({
+			'name': 'slug',
+			'value': page.slug,
+			'class': 'fluid regular',
+		}) }}
+			
+			{{ _form.submit({
+				'value': 'Publish',
+				'class': 'btn btn-success pull-right',
+			}) }}
+		</div>
+	{{ _form.close() }}
+{% endblock content %}

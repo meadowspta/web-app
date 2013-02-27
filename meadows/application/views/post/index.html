@@ -1,0 +1,39 @@
+{% extends '_template/pages/full.html' %}
+{% import '_macros/ui.html' as _ui %}
+
+{% block sidebar %}
+	{{ events_block|raw }}
+{% endblock sidebar %}
+
+{% block content %}
+	<h1>Meadows News</h1>
+	<hr />
+	<ul id="post-list" class="list">
+		{% for post in posts %}
+			{% set unpublished_class = '' %}
+			{% set unpublished_text = '' %}
+			{% if not post.is_published %}
+				{% set unpublished_class = 'unpublished' %}
+				{% set unpublished_text = '***UNPUBLISHED***' %}
+			{% endif %}
+			<li class="post-item-{{ post.id }} list-item {{ unpublished_class }}">
+				<div class="span3 first">
+					{% if post.images %}
+						<a href="{{ _base }}{{ post.get_absolute_url() }}"><img src="{{ _base }}{{ post.images.medium }}" class="image-medium"></a>
+					{% endif %}
+					&nbsp;
+				</div>
+				<div class="span5">
+					<h4>{{ unpublished_text }}</h4>
+					<a href="{{ _base }}{{ post.get_absolute_url() }}"><h3 class="title">{{ post.title }}</h3></a>
+					<div class="quiet">{{ post.publish_date|date('l F j, Y') }}</div>
+					<div>{{ post.teaser }}</div>
+					{%- set trailer -%}
+						... <a href="{{ _base }}{{ post.get_absolute_url() }}">read more &raquo;</a>
+					{%- endset -%}
+					<div class="quiet">{{ post.body|shorten(35, trailer)|raw }}</div>
+				</div>
+			</li>
+		{% endfor %}
+	</ui>
+{% endblock content %}

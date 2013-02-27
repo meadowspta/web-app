@@ -1,0 +1,70 @@
+{% extends '_template/pages/full.html' %}
+{% import '_macros/ui.html' as _ui %}
+{% import '_macros/form.html' as _form %}
+
+{% block sidebar %}
+	{% if announcements %}
+		<div id="announcement" class="sidebar-section well">
+			{{ announcements|raw }}
+			
+			{% if _user|access('edit announcement') %}
+				<div class="pull-right"><a href="{{ _base }}announcement/edit">edit</a></div>
+			{% endif %}
+		</div>
+	{% endif %}
+	
+	{{ events_block|raw }}
+	{{ menu_block|raw }}
+	
+	<div id="top-staff" class="sidebar-section">
+		<h2 class="chrome">Staff</h2>
+		<ul class="list">
+			<li class="list-item staff">
+				<img src="{{ _base }}static/images/home/susan_condio_hernandez.jpg" class="image-thumb">
+				<span>Susan Condio-Hernandez</span><br />
+				<strong>Principal</strong>
+			</li>
+			<li class="list-item last staff">
+				<img src="http://placehold.it/65x65&text=Picture" class="image-thumb">
+				<span>Kellie Zahursky</span><br />
+				<strong>Administrative Secretary</strong>
+			</li>
+		</ul>
+		<div class="clearfix"></div>
+	</div>
+	{# {{ _ui.more_link({ 'href': _base ~ 'staff' }) }} #}
+{% endblock sidebar %}
+
+{% block content %}
+	{% if main_post.id %}
+		<div id="main-story">
+			<div class="title-bar">
+				<div class="title"><a href="{{ main_post.get_absolute_url() }}">{{ main_post.title }}</a></div>
+				<div class="teaser"><a href="{{ main_post.get_absolute_url() }}">{{ main_post.teaser }}</a></div>
+			</div>
+			<a href="{{ main_post.get_absolute_url() }}"><img src="{{ _base }}{{ main_post.images.original }}" class="image-main"></a>
+		</div>
+	{% endif %}
+	
+	<h1 class="chrome">Latest News</h1>
+	<ul id="post-list" class="list">
+		{% for post in posts %}
+			<li class="post-item-{{ post.id }} list-item">
+				<div class="span2 first">
+					{% if post.images %}
+						<a href="{{ _base }}{{ post.get_absolute_url() }}"><img src="{{ _base }}{{ post.images.small }}" class="image-thumb"></a>
+					{% endif %}
+					&nbsp;
+				</div>
+				<div class="span6">
+					<a href="{{ _base }}{{ post.get_absolute_url() }}"><h3 class="title">{{ post.title }}</h3></a>
+					<div class="quiet">{{ post.created|date('l F jS, Y') }} at {{ post.created|date('g:ia') }}<br /></div>
+					<div>{{ post.teaser }}</div>
+					<div class="quiet">{{ post.body|shorten(18)|raw }}</div>
+				</div>
+			</li>
+		{% endfor %}
+	</ui>
+	<div class="clearfix"></div>
+	{{ _ui.more_link({ 'href': _base ~ 'news' }) }}
+{% endblock content %}

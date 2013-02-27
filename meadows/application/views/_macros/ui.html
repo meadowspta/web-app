@@ -1,0 +1,15 @@
+{%- macro asset(path) -%}
+	{# See if the asset is hosted remotely #}
+	{%- if path is not empty -%}
+		{{ path|asset_route }}
+	{%- endif -%}
+{%- endmacro -%}
+
+{%- macro more_link(params) -%}
+	{% set value = params.value %}
+	{% set href = params.href %}
+	{% set params = params|html_attributes() %}
+	<div class="pull-right">
+		<a href="{{ href|raw }}" class="btn btn-mini" type="button" {{ params|raw }}>More &raquo;</a>
+	</div>
+{%- endmacro -%}

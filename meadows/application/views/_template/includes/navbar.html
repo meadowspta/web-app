@@ -1,0 +1,21 @@
+{% if _user.is_authenticated and _user|access('view admin navbar') %}
+	<div id="admin-bar-wrapper">
+		<div class="container">
+			<div id="admin-bar" class="row">
+				<div class="span4 first">Meadows Admin Navbar</div>
+				<div class="span8 text-right">
+					{% if user|access('view dashboard') %}
+						<a href="{{ _base }}dashboard"><i class="icon-list-alt icon-white"></i> Dashboard</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+					{% endif %}
+					{% if user|access('create a post') %}
+						<a href="{{ _base }}post/add"><i class="icon-edit icon-white"></i> Create A Post</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+					{% endif %}
+					{% if user|access('create a page') %}
+						<a href="{{ _base }}page/add"><i class="icon-file icon-white"></i> Create A Page</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+					{% endif %}
+					<a href="{{ _base }}logout"><i class="icon-off icon-white"></i> Logout</a>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endif %}

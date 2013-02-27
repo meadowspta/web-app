@@ -1,0 +1,22 @@
+{% if _status_messages|length > 0 %}
+	<div id="status-message">
+		{% if _status_messages.error|length > 0 %}
+			<div class="status error">
+				<ul>
+					{% for message in _status_messages.error %}
+						<li>{{ message|raw }}</li>
+					{% endfor %}
+				</ul>
+			</div>
+		{% endif %}
+		{% if _status_messages.confirmation|length > 0 %}
+			<div class="status confirmation">
+				<ul>
+					{% for message in _status_messages.confirmation %}
+						<li>{{ message|raw }}</li>
+					{% endfor %}
+				</ul>
+			</div>
+		{% endif %}
+	</div>
+{% endif %}

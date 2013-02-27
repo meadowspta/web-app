@@ -1,0 +1,18 @@
+{% extends '_templates/page.html' %}
+
+{% block sidebar %}
+    <div id="top-staff" class="sidebar-section">
+        <h2 class="chrome">Executive Board</h2>
+        <ul class="list">
+            {% for member in board %}
+                <li class="list-item last">
+                    <strong>{{ member.title }}:</strong> <span>{{ member.name }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock sidebar %}
+
+{% block content %}
+    welcome
+{% endblock content %}

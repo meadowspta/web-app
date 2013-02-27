@@ -1,0 +1,20 @@
+{% extends '_template/pages/full.html' %}
+{% import '_macros/form.html' as _form %}
+
+{% block content %}
+	<div id="main" class="span8">
+		<h1>{{ page.title }}</h1>
+		{{ page.body|nl2br|raw }}
+	</div>
+	
+	<div id="sidebar" class="span4">
+		{% if _user|access('edit own page') or _user|access('edit all pages') %}
+			{{ _form.button({
+				'value': 'Edit This Page',
+				'href': _base ~ page.get_edit_url(),
+				'class': 'btn btn-block btn-warning',
+			}) }}
+			<br />
+		{% endif %}
+	</div>
+{% endblock content %}

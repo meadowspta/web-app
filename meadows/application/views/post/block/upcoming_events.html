@@ -1,0 +1,32 @@
+{% import '_macros/ui.html' as _ui %}
+
+<div id="upcoming-events" class="sidebar-section">
+	<h2 class="chrome">Upcoming Events</h2>
+	<ul id="event-list" class="list">
+		{% set current_month = '' %}
+		{% for post in events %}
+			{% if loop.last %}
+				{% set last = 'last' %}
+			{% endif %}
+			<li id="event-item-{{ post.id }}" class="event-item event-item-{{ post.id }} list-item {{ last }}">
+				{% if current_month != post.event.start_date|date('n') %}
+					<div class="month">{{ post.event.start_date|date('F Y') }}</div>
+				{% endif %}
+				<div class="date-square span1 first">
+					<div class="day">{{ post.event.start_date|date('D') }}</div>
+					<div class="date">{{ post.event.start_date|date('j') }}</div>
+				</div>
+				<div class="details span3">
+					<a href="{{ _base }}{{ post.get_absolute_url() }}" class="title">{{ post.title }}</a>
+					<div class="quiet">
+						{{ post.get_formatted_times() }}<br />
+						{{ post.event.location }}
+					</div>
+				</div>
+			</li>
+			{% set current_month = post.event.start_date|date('n') %}
+		{% endfor %}
+	</ul>
+	{{ _ui.more_link({ 'href': _base ~ 'events' }) }}
+	<div class="clearfix"></div>
+</div>

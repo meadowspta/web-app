@@ -1,0 +1,79 @@
+{%- macro open(params) -%}
+	{% set params = params|html_attributes({ 'method': 'post', 'action': '' }) %}
+	<form {{ params|raw }}>
+{%- endmacro -%}
+
+{%- macro close() -%}
+	</form>
+{%- endmacro -%}
+
+{%- macro label(label, for) -%}
+	<div><label for="{{ for }}">{{ label }}:</label></div>
+{%- endmacro -%}
+
+{%- macro help_text(text) -%}
+	<span class="help-block">{{ text }}</span>
+{%- endmacro -%}
+
+{%- macro text(params) -%}
+	{% set params = params|html_attributes() %}
+	<input type="text" {{ params|raw }}>
+{%- endmacro -%}
+
+{%- macro textarea(params) -%}
+	{% set value = params.value %}
+	{% set params = params|set_property('value', '') %}
+	{% set params = params|html_attributes() %}
+	<textarea {{ params|raw }}>{{ value }}</textarea>
+{%- endmacro -%}
+
+{%- macro password(params) -%}
+	{% set params = params|html_attributes() %}
+	<input type="password" {{ params|raw }}>
+{%- endmacro -%}
+
+{%- macro checkbox(params) -%}
+	{# Account for single checkboxes #}
+	{% set values = params.values %}
+	{% if not params.values|is_array %}
+		{% set values = [ params.values ] %}
+	{% endif %}
+	
+	{% set options = params.options %}
+	{% if not params.options|is_array %}
+		{% set options = [ params.options ] %}
+	{% endif %}
+	
+	<ul class="no-style">
+		{% for option_id, option in options %}
+			{# Check if checkbox should be checked #}
+			{% set checked = 0 %}
+			{% if option_id in values %}
+				{% set checked = 1 %}
+			{% endif %}
+			<li>
+				<label>
+					<input id="{{ params.id|default(params.name) }}" class="{{ params.class|default(params.name) }}" type="checkbox" name="{{ params.name }}" value="{{ option_id|e }}" {% if checked == 1 %}checked{% endif %} {{ disabled }} /> <div class="form-list-label">{{ option }}</div>
+					<div class="clearfix"></a>
+				</label>
+			</li>
+		{% endfor %}
+	</ul>
+{%- endmacro -%}
+
+{%- macro file(params) -%}
+	{% set params = params|html_attributes() %}
+	<input {{ params|raw }} type="file">
+{%- endmacro -%}
+
+{%- macro submit(params) -%}
+	{% set params = params|html_attributes() %}
+	<input type="submit" {{ params|raw }}>
+{%- endmacro -%}
+
+{%- macro button(params) -%}
+	{% set value = params.value %}
+	{% set href = params.href %}
+	{% set params = params|html_attributes() %}
+	<a href="{{ href|raw }}" type="button" {{ params|raw }}>{{ value }}</a>
+{%- endmacro -%}
