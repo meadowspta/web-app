@@ -1,4 +1,5 @@
 .DS_Store
-/meadows/application/cache/
-meadows/application/logs/
+/meadows/application/cache/*
+meadows/application/logs/*
 /meadows/static/images/posts/
+*.pyc
