@@ -102,7 +102,7 @@ Kohana::$config->attach(new Config_File);
 Kohana::modules(array(
 	'auth-meadows'       => MODPATH.'auth-meadows',       // MongoDB driver for K3 auth module
 	'auth'               => MODPATH.'auth',               // Basic authentication
-	'cache'              => MODPATH.'cache',              // Caching with multiple backends
+	// 'cache'              => MODPATH.'cache',              // Caching with multiple backends
 	// 'codebench'          => MODPATH.'codebench',          // Benchmarking tool
 	'kohana-twig'        => MODPATH.'kohana-twig',        // Kohana Twig templating integration
 	'database'           => MODPATH.'database',           // Database access
@@ -122,7 +122,7 @@ Cookie::$salt = 'skdkKFO2i$(**F000_@lslsf.xmvdkwl22l2kd))*_4K@ksnsndfkslj:SLSLdk
 /**
  * Set default cache driver.
  */
-Cache::$default = 'memcache';
+// Cache::$default = 'memcache';
 
 /**
  * Set site release version.
