@@ -108,7 +108,7 @@ Kohana::modules(array(
 	'database'           => MODPATH.'database',           // Database access
 	'mongodb-php-odm'    => MODPATH.'mongodb-php-odm',    // MongoDB driver
 	'image'              => MODPATH.'image',              // Image manipulation
-	'minion'             => MODPATH.'kohana-minion',             // Kohana CLI
+	'minion'             => MODPATH.'minion',             // Kohana CLI
 	// 'orm'                => MODPATH.'orm',             // Object Relationship Mapping
 	// 'unittest'           => MODPATH.'unittest',        // Unit testing
 	// 'userguide'          => MODPATH.'userguide',       // User guide and API documentation
