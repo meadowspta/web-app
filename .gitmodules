@@ -4,9 +4,6 @@
 [submodule "mongodb-php-odm"]
 	path = mongodb-php-odm
 	url = git://github.com/colinmollenhour/mongodb-php-odm.git
-[submodule "meadows/modules/kohana-minion"]
-	path = meadows/modules/kohana-minion
-	url = git://github.com/kohana-minion/core.git
 [submodule "meadows/modules/mongodb-php-odm"]
 	path = meadows/modules/mongodb-php-odm
 	url = git://github.com/colinmollenhour/mongodb-php-odm.git
