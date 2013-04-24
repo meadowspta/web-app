@@ -36,14 +36,14 @@
         <div class="container">
             <div class="row">
                 <div class="span4">
-                    <div id="logo"><a href="http://local.meadowsmillbrae.com/"><img src="/static/images/template/logo_type.png"></a></div>
+                    <div id="logo"><a href="http://www.meadowsmillbrae.com/"><img src="/static/images/template/logo_type.png"></a></div>
                 </div>
                 <div class="span8">
                     <ul class="navigation">
-                        <li><a href="http://local.meadowsmillbrae.com/news">News</a></li>
-                        <li><a href="http://local.meadowsmillbrae.com/calendar">Calendar</a></li>
-                        <li><a href="http://meadowspta.org/" target="_blank">PTA</a></li>
-                        <li class="last"><a href="http://local.meadowsmillbrae.com/meals/menu">Food Services</a></li>
+                        <li><a href="http://www.meadowsmillbrae.com/news">News</a></li>
+                        <li><a href="http://www.meadowsmillbrae.com/calendar">Calendar</a></li>
+                        <li><a href="http://meadowspta.org/">PTA</a></li>
+                        <li class="last"><a href="http://www.meadowsmillbrae.com/meals/menu">Food Services</a></li>
                     </ul>
                 </div>
             </div>
