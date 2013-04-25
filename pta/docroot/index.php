@@ -60,9 +60,16 @@
             <div id="main" class="span8">
                 <h2>Meadows PTA Auction Dinner</h2>
                 <div>
-                    <img src="http://www.meadowsmillbrae.com/static/images/posts/516f7b314792d81f60000001_medium.jpg" class="main image-medium" align="right">
                     <div>
-                        <img src="http://www.meadowsmillbrae.com/static/images/icons/pdf_small.png" title="" alt="">&nbsp;<a href="http://www.meadowsmillbrae.com/static/files/posts/auction_flyer.pdf" title="" target="_blank">Download the PTA Auction Form<br><br></a><b style="text-align: -webkit-center;">Friday, April 26th, 2013<br><br>Dinner:</b><span style="text-align: -webkit-center;">&nbsp;5:30pm or 6:15pm seating time (space limited)</span><br style="text-align: -webkit-center;"><br style="text-align: -webkit-center;"><b style="text-align: -webkit-center;">Silent Auction:</b><span style="text-align: -webkit-center;">&nbsp;5:30pm - 7:00pm</span><br style="text-align: -webkit-center;"><br style="text-align: -webkit-center;"><b style="text-align: -webkit-center;">Live Auction:</b><span style="text-align: -webkit-center;">&nbsp;7:30pm Classroom items &amp; 8:15pm Public</span><br style="text-align: -webkit-center;"><br style="text-align: -webkit-center;"><b style="text-align: -webkit-center;">Raffle Tickets:</b><span style="text-align: -webkit-center;">&nbsp;$2 each or 12 for $20 for many prizes including an Apple iPad Mini!</span><br style="text-align: -webkit-center;"><br style="text-align: -webkit-center;"><span style="text-align: -webkit-center;">Meadows Pre-sale - February 25th to April 1st</span><br style="text-align: -webkit-center;"><span style="text-align: -webkit-center;">(Tickets will then be opened to non-Meadows families)</span><br style="text-align: -webkit-center;"><span style="text-align: -webkit-center;">$15 adult / $5 child / Family of 2 adults &amp; 2 children&nbsp; - $30</span><br style="text-align: -webkit-center;"><br style="text-align: -webkit-center;"><span style="text-align: -webkit-center;">Purchasing information will be posted soon</span>
+                        <img src="/static/images/home/auction_dinner_header.png"><br /><br />
+                        <img src="http://www.meadowsmillbrae.com/static/images/icons/pdf_small.png" title="" alt="">&nbsp;<a href="http://www.meadowsmillbrae.com/static/files/posts/auction_flyer.pdf" title="" target="_blank">Download the PTA Auction Form</a><br /><br />
+                        <div class="well">
+                            Presale family tickets are no longer for sale, but if you haven't already RSVP'd it's not too late -- Don't miss all of the Pirate fun!<br />
+                            <br />
+                            We have AMAZING classroom art for live auction that are priceless and one of a kind. Due to circumstances out of our control, there will be NO RAFFLE and the iPad Mini will be a part of the live auction so don't miss it!<br />
+                            <br />
+                            THANK YOU!  Can't wait to see you this Friday night!! Any questions please email Auction Chairperson Vanessa at <a href="mailto:MyPicsPro@aol.com" target="_blank">MyPicsPro@aol.com</a><br />
+                        </div>
                     </div>
                     <div class="clearfix"></div>
                 </div>
