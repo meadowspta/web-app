@@ -2,4 +2,3 @@
 *.pyc
 meadows/application/cache/*
 meadows/application/logs/*
-meadows/static/images/posts/*
