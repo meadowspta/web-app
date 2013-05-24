@@ -5,6 +5,7 @@ class Controller_Page extends Controller_Site_Secure {
 	public function before()
 	{
 		$this->_jquery_ui_init = TRUE;
+		$this->_wysiwyg_init = TRUE;
 
 		parent::before();
 	}

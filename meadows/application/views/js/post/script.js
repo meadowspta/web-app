@@ -18,7 +18,7 @@ Meadows.Post.EventFieldManager = function() {
 	if ($('#field-is-event:checked').length > 0) {
 		$('#post-form-event-info').show();
 	}
-	
+
 	// Hide/show the event fields depending on the is-event checkbox.
 	$('#field-is-event').click(function() {
 		if ($('#field-is-event:checked').length > 0) {
@@ -27,7 +27,7 @@ Meadows.Post.EventFieldManager = function() {
 			$('#post-form-event-info').slideUp();
 		}
 	});
-	
+
 	// Date picker.
 	$("#event-start-date").datepicker();
 	$("#event-end-date").datepicker();
