@@ -2,7 +2,7 @@
 
 {% block body %}
 	{% include '_template/includes/navbar.html' %}
-	
+
 	<div id="header-background"></div>
 	<div id="header">
 		<div class="container">
@@ -12,8 +12,8 @@
 				</div>
 				<div class="span8">
 					<ul class="navigation">
-						{#
 						<li><a href="{{ _base }}principles-corner">Principal's Corner</a></li>
+						{#
 						<li><a href="">Newsletter</a></li>
 						<li><a href="">Academics</a></li>
 						#}
@@ -26,25 +26,25 @@
 			</div>
 			<div class="row">
 				<div class="contact-info pull-right">
-					<a href="{{ _map_url }}" target="_blank">1101 Helen Drive Millbrae, CA 94030</a> &middot (650) 583-7590 
+					<a href="{{ _map_url }}" target="_blank">1101 Helen Drive Millbrae, CA 94030</a> &middot (650) 583-7590
 				</div>
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="container">
 		<div id="page" class="row">
 			<div id="main" class="span8">
 				{% block content %}
 				{% endblock content %}
 			</div>
-			
+
 			<div id="sidebar" class="span4">
 				{% block sidebar %}
 				{% endblock sidebar %}
 			</div>
 		</div>
 	</div>
-	
+
 	{% include '_template/includes/footer.html' %}
 {% endblock body %}

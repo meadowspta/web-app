@@ -51,17 +51,17 @@ Route::set('meal/menu', 'meals/menu')
 ));
 
 // Pages
-Route::set('principles-corner', 'principles-corner(/<slug>)')
-	->defaults(array(
-		'controller' => 'router',
-		'action' => 'index',
-	));
-
-Route::set('calendar', 'calendar')
-	->defaults(array(
-		'controller' => 'router',
-		'action' => 'index',
-	));
+foreach (Page::get_pages() as $page)
+{
+	if ( ! empty($page->slug))
+	{
+		Route::set('page/'.$page->id, $page->slug)
+			->defaults(array(
+				'controller' => 'router',
+				'action' => 'index',
+			));
+	}
+}
 
 /**
  * Set the routes. Each route must have a minimum of a name, a URI and a set of

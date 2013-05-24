@@ -16,12 +16,12 @@ class Page extends Model_Page {
 		$page->set('title', $title)
 			->set('body', $body)
 			->set('slug', $slug);
-		
+
 		$page->save();
-		
+
 		return $page;
 	}
-	
+
 	/**
 	 * Get a page by the url slug.
 	 *
@@ -32,10 +32,10 @@ class Page extends Model_Page {
 	{
 		$page = self::init();
 		$page->load(array('slug' => $slug));
-		
+
 		return $page;
 	}
-	
+
 	/**
 	 * Get recent posts.
 	 *
@@ -46,8 +46,19 @@ class Page extends Model_Page {
 	{
 		$post = self::init();
 		$posts = $post->find_all(1, $count)->sort_desc('created');
-		
+
 		return $posts;
+	}
+
+	/**
+	 * Get all pages.
+	 */
+	public static function get_pages()
+	{
+		$page = self::init();
+		$pages = $page->find_all(NULL, NULL);
+
+		return $pages;
 	}
 
 }

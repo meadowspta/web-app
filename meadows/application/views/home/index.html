@@ -6,23 +6,24 @@
 	{% if announcements %}
 		<div id="announcement" class="sidebar-section well">
 			{{ announcements|raw }}
-			
+
 			{% if _user|access('edit announcement') %}
 				<div class="pull-right"><a href="{{ _base }}announcement/edit">edit</a></div>
 			{% endif %}
 		</div>
 	{% endif %}
-	
+
 	{{ events_block|raw }}
 	{{ menu_block|raw }}
-	
+
 	<div id="top-staff" class="sidebar-section">
 		<h2 class="chrome">Staff</h2>
 		<ul class="list">
 			<li class="list-item staff">
 				<!-- <img src="{{ _base }}static/images/home/susan_condio_hernandez.jpg" class="image-thumb"> -->
 				<span>Susan Condio-Hernandez</span><br />
-				<strong>Principal</strong>
+				<strong>Principal</strong><br />
+				<a href="mailto:scondio-hernandez@mesd.k12.ca.us" target="_blank">scondio-hernandez@mesd.k12.ca.us</a>
 			</li>
 			<li class="list-item last staff">
 				<!-- <img src="http://placehold.it/65x65&text=Picture" class="image-thumb"> -->
@@ -45,7 +46,7 @@
 			<a href="{{ main_post.get_absolute_url() }}"><img src="{{ _base }}{{ main_post.images.original }}" class="image-main"></a>
 		</div>
 	{% endif %}
-	
+
 	<h1 class="chrome">Latest News</h1>
 	<ul id="post-list" class="list">
 		{% for post in posts %}
