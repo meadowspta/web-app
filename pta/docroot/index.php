@@ -72,6 +72,48 @@
     <div class="container">
         <div id="page" class="row">
             <div id="main" class="span8">
+                <h2>Second Chance Auction</h2>
+
+                Hi Meadows Families,<br />
+                <p>
+                    In an effort to gather information to improve the Meadows Auction event for 2014,  please follow the link below to participate in a short survey.<br />
+                    <br />
+                    <a href="https://docs.google.com/forms/d/1lT_hvipgRDStLEqvAmP35GTTxx-Zwx1Q3a7nxiDHlbA/viewform" target="_blank">2013 Meadows Auction Survey</a>
+                </p>
+                <p>
+                    Remember this survey is for all Meadows families, not just those that made it to this year's event.
+                </p>
+                <p>
+                    Thanks to all that attended,  the 2013 Meadows Auction Dinner was a great success.  But alas there were so many treasures to behold that evening  the pirates left some treasure unclaimed.  Please find the attached list of items that are available for you to bid on in the second chance auction.
+                </p>
+                The auction will be based on your single offer. Thus it will be both silent and blind.<br />
+                The rules are simple:
+                <ul>
+                    <li>Pick the items that strike your fancy - <a href="/static/files/Second_Chance_Auction_Items_2013.pdf" target="_blank">View auction Item List &raquo;</a></li>
+                    <li>email me at <a href="mailto:kenhong@mac.com" target="_blank">kenhong@mac.com</a> with the item number and your best offer.</li>
+                    <li>Please remember, this is a fund raiser, so please honor the minimum bid and make a reasonable offer. All bids will be considered.</li>
+                    <li>Bids will be accepted until midnight May 28th.</li>
+                    <li>The highest bid will claim the item.</li>
+                </ul>
+                <p>
+                    In the case of a tie bid,  the email with the earlier send time will win the bid.
+                </p>
+                <p>
+                    Winning bidders will be notified of the items won via email, with an attached invoice. A member of the auction committee will make the arrangement to exchange the payment for the items won as soon as possible.
+                </p>
+                <p>
+                    Unclaimed items will be offered to the next highest bidder.
+                </p>
+                <br />
+                Enjoy,<br />
+                <br />
+                And thanks for making this event a success.<br />
+                <br />
+                Your Devoted Auction Committee<br />
+                <br />
+
+<!--
+                <hr />
                 <h2>Meadows PTA Auction Dinner</h2>
                 <div>
                     <div>
@@ -87,6 +129,7 @@
                     </div>
                     <div class="clearfix"></div>
                 </div>
+-->
             </div>
 
             <div id="sidebar" class="span4">
