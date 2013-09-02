@@ -1,10 +1,12 @@
 {% import '_macros/ui.html' as _ui %}
 
-<h2 class="chrome">Upcoming Lunch Menu</h2>
-{% for menu in menus %}
-	<b>{{ menu.date|date('l n/j') }}</b><br />
-	<blockquote>{{ menu.menu|nl2br|replace({ '*': '<span class="bright">*</span>' })|raw }}</blockquote>
-{% endfor %}
-<span class="quiet pull-left small"><span class="bright">*</span> Vegetarian Items</span>
-{{ _ui.more_link({ 'href': _base ~ 'meals/menu' }) }}
-<div class="clearfix"></div>
+{% if menus|length > 0 %}
+  <h2 class="chrome">Upcoming Lunch Menu</h2>
+  {% for menu in menus %}
+  	<b>{{ menu.date|date('l n/j') }}</b><br />
+  	<blockquote>{{ menu.menu|nl2br|replace({ '*': '<span class="bright">*</span>' })|raw }}</blockquote>
+  {% endfor %}
+  <span class="quiet pull-left small"><span class="bright">*</span> Vegetarian Items</span>
+  {{ _ui.more_link({ 'href': _base ~ 'meals/menu' }) }}
+  <div class="clearfix"></div>
+{% endif %}
