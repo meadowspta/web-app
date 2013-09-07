@@ -22,6 +22,11 @@ hr {
 	margin: 10px 0px 10px 0px;
 }
 
+.rounded-corners {
+	border-radius: 4px 4px 4px 4px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+}
+
 /* Forms */
 label {
 	font-weight: normal;
@@ -253,7 +258,7 @@ ul.no-style {
 	text-transform: uppercase;
 }
 #admin-bar-wrapper #admin-bar .server-environment.development {
-	
+
 }
 #admin-bar-wrapper #admin-bar .server-environment.production {
 	float: left;
@@ -336,13 +341,13 @@ ul.no-style {
 
 /* Posts */
 #post {
-	
+
 }
 #post img.main {
 	margin: 0px 0px 10px 10px;
 }
 #post-list {
-	
+
 }
 
 .unpublished {
