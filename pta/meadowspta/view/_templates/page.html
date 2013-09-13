@@ -1,41 +1,41 @@
 {% extends '_templates/meta.html' %}
 
 {% block body %}
-    <div id="header-background"></div>
-    <div id="header">
-        <div class="container">
-            <div class="row">
-                <div class="span4">
-                    <div id="logo"><a href="{{ meadows_site_url }}"><img src="/static/images/template/logo_type.png"></a></div>
-                </div>
-                <div class="span8">
-                    <ul class="navigation">
-                        <li><a href="{{ meadows_site_url }}news">News</a></li>
-                        <li><a href="{{ meadows_site_url }}calendar">Calendar</a></li>
-                        <li><a href="http://meadowspta.org/" target="_blank">PTA</a></li>
-                        <li class="last"><a href="{{ meadows_site_url }}meals/menu">Food Services</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="row">
-                <div class="contact-info pull-right">
-                    <a href="{{ meadows_map_url }}" target="_blank">1101 Helen Drive Millbrae, CA 94030</a> &middot (650) 583-7590 
-                </div>
-            </div>
-        </div>
-    </div>
-    
+  <div id="header-background"></div>
+  <header>
     <div class="container">
-        <div id="page" class="row">
-            <div id="main" class="span8">
-                {% block content %}
-                {% endblock content %}
-            </div>
-            
-            <div id="sidebar" class="span4">
-                {% block sidebar %}
-                {% endblock sidebar %}
-            </div>
+      <div class="row">
+        <div class="span4">
+          <div id="logo"><a href="{{ meadows_site_url }}"><img src="/static/images/template/logo_type.png"></a></div>
         </div>
+        <div class="span8">
+          <ul class="navigation">
+            <li><a href="{{ meadows_site_url }}news">News</a></li>
+            <li><a href="{{ meadows_site_url }}calendar">Calendar</a></li>
+            <li><a href="http://meadowspta.org/" target="_blank">PTA</a></li>
+            <li class="last"><a href="{{ meadows_site_url }}meals/menu">Food Services</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="contact-info pull-right">
+          <a href="{{ meadows_map_url }}" target="_blank">1101 Helen Drive Millbrae, CA 94030</a> &middot (650) 583-7590
+        </div>
+      </div>
     </div>
+  </header>
+
+  <div class="container">
+    <div id="page" class="row">
+      <div id="main" class="span8">
+        {% block content %}
+        {% endblock content %}
+      </div>
+
+      <div id="sidebar" class="span4">
+        {% block sidebar %}
+        {% endblock sidebar %}
+      </div>
+    </div>
+  </div>
 {% endblock body %}

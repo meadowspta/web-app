@@ -1,0 +1,135 @@
+$meadows-blue: #003965;
+
+body {
+  background: $meadows-blue;
+}
+body.admin-bar {
+  margin-top: 39px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0px;
+}
+h1.title, h2.title, h3.title, h4.title, h5.title, h6.title {
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  line-height: 1em;
+}
+
+a {
+  color: #aa0000;
+}
+
+hr {
+  margin: 10px 0px 10px 0px;
+}
+
+/* Forms */
+label {
+  font-weight: normal;
+  font-size: 1.3em;
+}
+input {
+  width: 600px;
+  margin: 5px 0px 15px 0px;
+  padding: 5px;
+}
+textarea {
+  width: 600px;
+  height: 350px;
+}
+input[type='text'], input[type='password'], input[type='file'] {
+  font-size: 2.0em;
+  height: 35px;
+  padding: 5px 10px 5px 10px;
+}
+input[type='text'].regular {
+  font-size: 1.0em;
+  padding: 0px 5px 0px 5px;
+  height: 25px;
+}
+input[type='text'].micro {
+  font-size: 1.0em;
+  padding: 0px 5px 0px 5px;
+  height: 25px;
+}
+input[type='checkbox'] {
+  float: left;
+}
+.form-list-label {
+  font-size: .9em;
+  margin: 0px 0px 0px 10px;
+  float: left;
+}
+input.fluid {
+  width: 100% !important;
+}
+
+input.large {
+  width: 600px !important;
+}
+input.medium {
+  width: 400px !important;
+}
+input.small {
+  width: 200px !important;
+}
+input.micro {
+  width: 90px !important;
+}
+
+/* Helpers */
+.bright {
+  color: #ee0000;
+}
+
+.small {
+  font-size: 0.9em;
+}
+
+.fb-like-box {
+  background: #ffffff;
+}
+
+.quiet {
+  color: #999999;
+}
+
+.text-right {
+  text-align: right;
+}
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
+
+.inline {
+  display: inline !important;
+}
+
+.pad {
+  padding: 10px;
+}
+.pad-top {
+  padding-top: 10px;
+}
+.pad-right {
+  padding-right: 10px;
+}
+.pad-bottom {
+  padding-bottom: 10px;
+}
+.pad-left {
+  padding-left: 10px;
+}
+
+/* Bootstrap overrides */
+div.first {
+  margin-left: 0;
+}
+
+.form-inline input[type='text'] {
+  margin-bottom: 10px;
+}

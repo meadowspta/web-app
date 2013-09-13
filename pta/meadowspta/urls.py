@@ -14,5 +14,5 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
-    (r'^$', 'meadowspta.apps.homepage.views.view'),
+    (r'^$', 'meadowspta.contrib.homepage.views.view'),
 )

@@ -132,9 +132,9 @@ INSTALLED_APPS = (
     # 'django.contrib.admin',
     # 'django.contrib.admindocs',
     'meadowspta.middleware',
-    'meadowspta.apps.homepage',
-    'meadowspta.apps.post',
-    'meadowspta.apps.member',
+    'meadowspta.contrib.homepage',
+    'meadowspta.contrib.post',
+    'meadowspta.contrib.member',
 )
 
 # A sample logging configuration. The only tangible logging
