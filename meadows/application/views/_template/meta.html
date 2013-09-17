@@ -4,30 +4,33 @@
 		<meta charset="utf-8">
 		<title>{{ _page_title }}</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="">
-		<meta name="author" content="">
-		
+		<meta name="description" content="{{ _meta_description }}">
+		<meta property="og:description" content="{{ _meta_description }}">
+		{% if _meta_image %}
+			<meta property="og:image" content="{{ _meta_image }}">
+		{% endif %}
+
 		{% for path in _styles -%}
 			<link type="text/css" rel="stylesheet" media="all" href="{{ _ui.asset('static/css/' ~ path) }}" />
 		{% endfor %}
-		
+
 		<script type="text/javascript">var Meadows = {};</script>
 		{% for path in _scripts -%}
 			<script type="text/javascript" src="{{ _ui.asset('static/js/' ~ path) }}"></script>
 		{% endfor -%}
-		
+
 		{% for js in _twig_js %}
 			<script type="text/javascript">{% include js %}</script>
 		{% endfor %}
-		
+
 		{% for css in _twig_css %}
 			<style type="text/css">{% include css %}</style>
 		{% endfor %}
-		
+
 		<script>
 			var _displayStatusMessage = {{ _display_status_messages }};
 		</script>
-		
+
 		<script>
 			(function(d, s, id) {
 				var js, fjs = d.getElementsByTagName(s)[0];
@@ -37,7 +40,7 @@
 				fjs.parentNode.insertBefore(js, fjs);
 			}(document, 'script', 'facebook-jssdk'));
 		</script>
-		
+
 		<script type="text/javascript">
 			var _gaq = _gaq || [];
 			_gaq.push(['_setAccount', '{{ _google_analytics_id }}']);
@@ -49,10 +52,10 @@
 				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 			})();
 		</script>
-		
+
 		{% block style %}
 		{% endblock style %}
-		
+
 		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 		<!--[if lt IE 9]>
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>

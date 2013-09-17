@@ -6,10 +6,10 @@ class Controller_Post extends Controller_Site_Secure {
 	{
 		$this->_jquery_ui_init = TRUE;
 		$this->_wysiwyg_init = TRUE;
-		
+
 		parent::before();
 	}
-	
+
 	public function action_index()
 	{
 		if ($this->user->has_access('edit all posts'))
@@ -20,27 +20,30 @@ class Controller_Post extends Controller_Site_Secure {
 		{
 			$posts = Post::get_recent(15);
 		}
-		
+
 		// Set variables for the view.
 		$this->posts = $posts;
 		$this->events_block = Meadows::request_instance('post/block/upcoming_events')->execute();
 	}
-	
+
 	public function action_view()
 	{
 		$slug = $this->request->param('slug');
 		$post = Post::get_with_slug($slug);
 		$exluded_post = Post::get_with_slug($slug);
-		
+
 		// Set variables for the view.
 		$this->post = $post;
+		$this->_page_title = $post->title . ' | Meadows School - Millbrae';
+		$this->_meta_description = $post->teaser;
+		$this->_meta_image = $this->_http_host . $post->images['main'];
 		$this->recent_posts_block = Meadows::request_instance('post/block/recent_posts')->query(array('excluded_post' => $exluded_post))->execute();
 	}
-	
+
 	public function action_add()
 	{
 		$main_story = Post::get_main_story();
-		
+
 		if ($this->request->post())
 		{
 			$title = $this->request->post('title');
@@ -51,7 +54,7 @@ class Controller_Post extends Controller_Site_Secure {
 			$event = $this->request->post('event');
 			$publish_date = $this->request->post('publish_date').' '.$this->request->post('publish_time');
 			$is_main_story = $this->request->post('is-main-story');
-			
+
 			$event_data = array();
 			if ($is_event)
 			{
@@ -61,15 +64,15 @@ class Controller_Post extends Controller_Site_Secure {
 					'location' => $event['location'],
 				);
 			}
-			
+
 			$post = Post::add($title, $teaser, $body, $publish_date, $slug, $event_data);
-			
+
 			// Upload image.
 			if ( ! empty($_FILES['image']['name']))
 			{
 				$image = new Meadows_Image('posts', $post->id);
 				$response = $image->upload($_FILES['image']);
-				
+
 				// Save image paths.
 				if ($response['success'])
 				{
@@ -77,26 +80,26 @@ class Controller_Post extends Controller_Site_Secure {
 					$post->set('images', $response['files'])->save();
 				}
 			}
-			
+
 			if ($is_main_story)
 			{
 				Post::set_main_story($post);
 			}
-			
+
 			$this->status('The post has been added');
 			$this->request->redirect($post->get_absolute_url());
 		}
-		
+
 		// Set variables for the view.
 		$this->main_story = $main_story;
 	}
-	
+
 	public function action_edit()
 	{
 		$post_id = $this->request->param('id');
 		$post = Post::init($post_id);
 		$main_story = Post::get_main_story();
-		
+
 		if ($this->request->post())
 		{
 			$title = $this->request->post('title');
@@ -107,7 +110,7 @@ class Controller_Post extends Controller_Site_Secure {
 			$event = $this->request->post('event');
 			$publish_date = $this->request->post('publish_date').' '.$this->request->post('publish_time');
 			$is_main_story = $this->request->post('is-main-story');
-			
+
 			$post->load();
 			$post->set('title', $title)
 				->set('teaser', $teaser)
@@ -115,7 +118,7 @@ class Controller_Post extends Controller_Site_Secure {
 				->set('slug', $slug)
 				->set('is_event', $is_event)
 				->set('publish_date', strtotime($publish_date));
-			
+
 			if ($is_event)
 			{
 				$data = array(
@@ -125,13 +128,13 @@ class Controller_Post extends Controller_Site_Secure {
 				);
 				$post->set('event', $data);
 			}
-			
+
 			// Upload image.
 			if ( ! empty($_FILES['image']['name']))
 			{
 				$image = new Meadows_Image('posts', $post->id);
 				$response = $image->upload($_FILES['image']);
-				
+
 				// Save image paths.
 				if ($response['success'])
 				{
@@ -139,7 +142,7 @@ class Controller_Post extends Controller_Site_Secure {
 				}
 			}
 			$post->save();
-			
+
 			// Save if main-story.
 			if ($is_main_story)
 			{
@@ -149,23 +152,23 @@ class Controller_Post extends Controller_Site_Secure {
 			{
 				Post::remove_main_story($post);
 			}
-			
+
 			$this->status('The post has been updated');
 			$this->request->redirect($post->get_absolute_url());
 		}
-		
+
 		// Set variables for the view.
 		$post->load();
 		$this->post = $post;
 		$this->main_story = $main_story;
 	}
-	
+
 	public function action_delete()
 	{
 		$post_id = $this->request->param('id');
 		$post = Post::init($post_id);
 		$post->delete();
-		
+
 		$this->status('The post has been deleted');
 		$this->request->redirect('dashboard');
 	}
