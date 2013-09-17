@@ -87,7 +87,7 @@
 					<a href="{{ _base }}{{ post.get_absolute_url() }}"><h3 class="title">{{ post.title }}</h3></a>
 					<div class="quiet">{{ post.created|date('l F jS, Y') }} at {{ post.created|date('g:ia') }}<br /></div>
 					<div>{{ post.teaser }}</div>
-					<div class="quiet">{{ post.body|shorten(18)|raw }}</div>
+					<div class="quiet teaser">{{ post.body|shorten(18)|raw }}</div>
 				</div>
 			</li>
 		{% endfor %}

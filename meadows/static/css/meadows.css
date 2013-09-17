@@ -194,6 +194,7 @@ ul.list {
 	margin: 0px;
 	list-style: none;
 	display: inline-block;
+	width: 100%;
 }
 ul.list li {
 	clear: both;
@@ -504,4 +505,94 @@ div.first {
 
 .form-inline input[type='text'] {
 	margin-bottom: 10px;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+	#main-story .span8 {
+		width: 420px;
+	}
+	#main-story img {
+		width: 420px;
+	}
+}
+
+@media (max-width: 320px) {
+	h3 {
+		font-size: 18px;
+	}
+
+	#logo {
+		margin-left: 15px;
+	}
+
+	.container {
+		width: 320px;
+	}
+
+	[class*="span"] {
+		margin-left: 10px;
+	}
+
+	.span2 {
+		width: 95px;
+	}
+	.span6 {
+		width: 190px;
+	}
+	.span8 {
+		width: 300px;
+	}
+	.span12 {
+		width: 320px;
+	}
+
+	#post-list .teaser {
+		display: none;
+	}
+
+	#main-story .title-bar {
+		bottom: 10px;
+		padding: 5px 10px 5px;
+	}
+
+	#main-story .title-bar .title {
+		font-size: 1.2em;
+		line-height: 18px;
+		margin-bottom: 0px;
+	}
+
+	#main-story .title-bar .teaser {
+		font-size: .9em;
+	}
+
+	#main-story img {
+		width: 300px;
+	}
+
+	#main-story h1.chrome {
+		width: 270px;
+	}
+
+	#footer {
+		position: relative;
+		background: none;
+	}
+	#footer .section1 {
+		border-bottom: 1px solid #999999;
+		min-height: 10px;
+		padding-bottom: 10px;
+		margin-bottom: 5px;
+	}
+	#footer .section1, #footer .section2 {
+		width: 290px;
+		padding-right: 10px;
+	}
+	#footer .section1 .content, #footer .section2 .content {
+		margin: 0px;
+		text-align: center;
+	}
+	#footer .school-info {
+		margin-top: 15px;
+	}
 }
