@@ -493,6 +493,10 @@ ul.no-style {
 	line-height: 1.0em;
 }
 
+.fb-like-box {
+	margin-bottom: 15px;
+}
+
 /* Bootstrap overrides */
 div.first {
 	margin-left: 0;
