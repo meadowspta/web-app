@@ -1,9 +1,0 @@
-[submodule "meadows/modules/kohana-twig"]
-	path = meadows/modules/kohana-twig
-	url = git://github.com/jonathangeiger/kohana-twig.git
-[submodule "mongodb-php-odm"]
-	path = mongodb-php-odm
-	url = git://github.com/colinmollenhour/mongodb-php-odm.git
-[submodule "meadows/modules/mongodb-php-odm"]
-	path = meadows/modules/mongodb-php-odm
-	url = git://github.com/colinmollenhour/mongodb-php-odm.git
