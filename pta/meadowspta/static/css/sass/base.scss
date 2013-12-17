@@ -1,135 +1,209 @@
 $meadows-blue: #003965;
+$primary-color: #003965;
+$primary-highlight: #18517d;
+$dark-grey: #666666;
+$light-grey: #dcdcdc;
 
 body {
-  background: $meadows-blue;
+    font-family: 'AvenirNextLTW01-Regular',Helvetica,Arial,sans-serif;
+    /*font-family: 'Varela Round', sans-serif;*/
 }
 body.admin-bar {
-  margin-top: 39px;
+    margin-top: 39px;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  margin-top: 0px;
+    margin-top: 0px;
 }
 h1.title, h2.title, h3.title, h4.title, h5.title, h6.title {
-  padding: 0px 0px 0px 0px;
-  margin: 0px 0px 0px 0px;
-  line-height: 1em;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+}
+
+.title-large {
+    text-transform: uppercase;
+}
+h2.title-large {
+    font-size: 60px;
+}
+h3.title-large {
+    font-size: 40px;
+}
+h4.title-large {
+    font-size: 30px;
 }
 
 a {
-  color: #aa0000;
+    color: #aa0000;
+}
+a, a:visited, a:hover {
+    text-decoration: none;
 }
 
 hr {
-  margin: 10px 0px 10px 0px;
+    margin: 10px 0px 10px 0px;
+}
+
+/* Lists */
+ul.list {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    display: inline-block;
+    width: 100%;
+
+    li {
+        clear: both;
+        float: left;
+        width: 100%;
+    }
+}
+ul.list li.list-item, div.list-item {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #dcdcdc;
+}
+.list-item.last {
+    border-bottom: 0px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
 }
 
 /* Forms */
 label {
-  font-weight: normal;
-  font-size: 1.3em;
+    font-weight: normal;
+    font-size: 1.3em;
 }
 input {
-  width: 600px;
-  margin: 5px 0px 15px 0px;
-  padding: 5px;
+    width: 600px;
+    margin: 5px 0px 15px 0px;
+    padding: 5px;
 }
 textarea {
-  width: 600px;
-  height: 350px;
+    width: 600px;
+    height: 350px;
 }
 input[type='text'], input[type='password'], input[type='file'] {
-  font-size: 2.0em;
-  height: 35px;
-  padding: 5px 10px 5px 10px;
+    font-size: 2.0em;
+    height: 35px;
+    padding: 5px 10px 5px 10px;
 }
 input[type='text'].regular {
-  font-size: 1.0em;
-  padding: 0px 5px 0px 5px;
-  height: 25px;
+    font-size: 1.0em;
+    padding: 0px 5px 0px 5px;
+    height: 25px;
 }
 input[type='text'].micro {
-  font-size: 1.0em;
-  padding: 0px 5px 0px 5px;
-  height: 25px;
+    font-size: 1.0em;
+    padding: 0px 5px 0px 5px;
+    height: 25px;
 }
 input[type='checkbox'] {
-  float: left;
+    float: left;
 }
 .form-list-label {
-  font-size: .9em;
-  margin: 0px 0px 0px 10px;
-  float: left;
+    font-size: .9em;
+    margin: 0px 0px 0px 10px;
+    float: left;
 }
 input.fluid {
-  width: 100% !important;
+    width: 100% !important;
 }
 
 input.large {
-  width: 600px !important;
+    width: 600px !important;
 }
 input.medium {
-  width: 400px !important;
+    width: 400px !important;
 }
 input.small {
-  width: 200px !important;
+    width: 200px !important;
 }
 input.micro {
-  width: 90px !important;
+    width: 90px !important;
+}
+
+/* Header Chrome */
+.chrome {
+  font-weight: bold;
+  background-color: #efefef;
+  border-top: 1px solid #dedede;
+  border-bottom: 2px solid #bcbcbc;
+  padding: 5px 5px 5px 10px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  line-height: 1.0em
+}
+h1.chrome {
+  font-size: 1.5em;
+}
+h2.chrome {
+  font-size: 1.2em;
+}
+h3.chrome {
+  font-size: 0.9em;
+}
+h4.chrome {
+  font-size: 0.8em;
 }
 
 /* Helpers */
+.primary-splash {
+    background-color: $meadows-blue;
+    color: #ffffff;
+}
+
 .bright {
-  color: #ee0000;
+    color: #ee0000;
 }
 
 .small {
-  font-size: 0.9em;
+    font-size: 0.9em;
 }
 
 .fb-like-box {
-  background: #ffffff;
+    background: #ffffff;
 }
 
 .quiet {
-  color: #999999;
+    color: #999999;
 }
 
 .text-right {
-  text-align: right;
+    text-align: right;
 }
 .text-left {
-  text-align: left;
+    text-align: left;
 }
 .text-center {
-  text-align: center;
+    text-align: center;
 }
 
 .inline {
-  display: inline !important;
+    display: inline !important;
 }
 
 .pad {
-  padding: 10px;
+    padding: 10px;
 }
 .pad-top {
-  padding-top: 10px;
+    padding-top: 10px;
 }
 .pad-right {
-  padding-right: 10px;
+    padding-right: 10px;
 }
 .pad-bottom {
-  padding-bottom: 10px;
+    padding-bottom: 10px;
 }
 .pad-left {
-  padding-left: 10px;
+    padding-left: 10px;
 }
 
 /* Bootstrap overrides */
 div.first {
-  margin-left: 0;
+    margin-left: 0;
 }
 
 .form-inline input[type='text'] {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }

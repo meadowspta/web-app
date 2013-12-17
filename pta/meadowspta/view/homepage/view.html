@@ -1,18 +1,179 @@
-{% extends '_templates/page.html' %}
-
-{% block sidebar %}
-    <div id="top-staff" class="sidebar-section">
-        <h2 class="chrome">Executive Board</h2>
-        <ul class="list">
-            {% for member in board %}
-                <li class="list-item last">
-                    <strong>{{ member.title }}:</strong> <span>{{ member.name }}</span>
-                </li>
-            {% endfor %}
-        </ul>
-    </div>
-{% endblock sidebar %}
+{% extends 'layouts/full.html' %}
 
 {% block content %}
-    welcome
+    <div id="homepage" ng-controller="HompageController">
+        <div id="news" class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div id="featured-news" class="pad-bottom">
+                        <img src="http://placehold.it/610x400">
+                    </div>
+
+                    <div id="news-list">
+                        <ul class="list">
+                            {% for news_item in news %}
+                                <li class="list-item">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img src="{{ news_item.image_medium.url }}">
+                                        </div>
+                                        <div class="col-md-9">
+                                            <a href="{{ news_item.get_absolute_url }}" data-toggle="modal" data-target="#viewNewsArticle" ng-click="newsArticleClick({{ news_item.id }})"><h3>{{ news_item.title }}</h3></a>
+                                            <div class="quiet">{{ news_item.publish_date|date:"F jS, Y" }}</div>
+                                            <p>{{ news_item.teaser }}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="fb-like-box" data-href="https://www.facebook.com/pages/Meadows-School-PTA/512963792131271" data-width="300" data-height="300" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="true" data-show-border="true"></div>
+                </div>
+            </div>
+
+            <div id="viewNewsArticle" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">[[ title ]]</h4>
+                        </div>
+                        <div class="modal-body">
+                            [[ body ]]
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <a name="membership"></a>
+        <section id="membership" class="primary-splash">
+            <div class="container">
+                <h2 class="title-large">Membership</h2>
+                <p class="text-center">
+                    Welcome to Meadows Elementary School! Whether you are new to Meadows or a continuing family, the 2013-2014 PTA board is proud and excited to be serving our school and your children.
+                </p>
+                <p class="text-center">
+                    Our main goal for our active community is to obtain 100% participation from our Meadows Families. We invite all parents to join us in supporting your children and their teachers in one of the various ways possible:
+                </p>
+
+                <div class="support-statements">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h3><span class="glyphicon glyphicon-user"></span> Membership</h3>
+                            <p>
+                                New this year your basic PTA Membership is FREE (a $10 value) - In addition, for each parent that joins, $4.50 of that membership is paid the National PTA and State PTA dues for educational advocacy for our children, so please consider making a donation to cover the expenses needed to fully support and supplement your child’s education with the tools, events and programs that Meadows PTA wants to provide.
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <h3><span class="glyphicon glyphicon-gift"></span> Donations</h3>
+                            <p>
+                                By asking $90 per child or $180 per family we hope to reach our goal of raising $20,000 for our Meadows PTA fund. This is less than $.75 a day for each day your child is in the classroom. Your donation is what makes your child’s year possible. This includes field trips, technology (SmartBoards, cameras, ink, software, etc), book fairs, assemblies, classroom supplies, and many more programs that benefit your child(ren)’s education.
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <h3><span class="glyphicon glyphicon-check"></span> No-Hassle Fundraising</h3>
+                            <p>
+                                With your every-day expenses, you can help fund additional expenses for our school via eScrip, Lucky S.H.A.R.E.S., General Mills Box Tops, and Office Depot. More information will be provided on each opportunity for this 'free' funding.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h3><span class="glyphicon glyphicon-heart"></span> Volunteering</h3>
+                            <p>
+                                Please consider being actively involved in your child’s education by helping at school events, including, but not limited to activities that occur during regular school hours. Your help is what keeps our school going! By seeing you invest your time in their school, your children benefit with increased motivation in their work, which raises their self-esteem and pride, therefore improving their educational experience and growth.
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <h3><span class="glyphicon glyphicon-time"></span> PTA Meetings:</h3>
+                            <p>
+                                These meetings are your chance for your voice to be heard. Decisions on how your membership and donations are spent are presented and voted on at these meetings, so your attendance is highly suggested and encouraged! We want to get to know you!
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <h3><span class="glyphicon glyphicon-envelope"></span> Electronic Mail</h3>
+                            <p>
+                                By going paperless and using electronic mail, we hope to save $4,000-$6,000 of your donations which would be better spent in their classrooms and for activities for your children. On the membership form, if no e-mail is provided then your child will bring home paper newsletters and notices from the PTA.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="" class="btn btn-success btn-lg">Register To Be A Member - It's Free</a>
+            </div>
+        </section>
+
+        <a name="donate"></a>
+        <section id="donate">
+            <div class="container">
+                <h2 class="title-large">Donate</h2>
+                <p class="text-center">
+                    Help keep Meadows strong! Make your donation today!
+                </p>
+                <p>
+                    All donations directly benefit the children of Meadows Elementary and $4.50 of every Meadows PTA membership is paid to National and State PTA dues. Your funds help in the purchase of technology equipment, school supplies, provide field trips and assemblies to the classrooms. Without your support, our children wouldn't be able to go on multiple field trips throughout the year.
+                </p>
+                <p>
+                    Did you know:
+                    <ul>
+                        <li>scheduling a bus for 2 classes costs about $1,000 for five hours</li>
+                        <li>school supplies are not just having paper for copiers but also maintenance on the machines and the purchase of toner and ink</li>
+                        <li>assemblies usually begin at $300 per presentation and go up from there</li>
+                    </ul>
+                </p>
+                <p>
+                    All these things supplement the education and experience your children receive at Meadows. We understand that $90 per child is a significant sacrifice in this tough economy. But by becoming a member of the Meadows PTA for less than $.75/day per child, you help the continued excellence at Meadows School for not only our children but for future generations.
+                </p>
+                <p>
+                    We need your help to reach our goal of $20,000 to achieve all this! Whatever you can give is greatly appreciated and your donation is 100% tax-deductible, our Tax ID is 94-6183993. Please make checks payable to Meadows PTA.
+                </p>
+                <p class="text-center">
+                    Thank you for your support
+                </p>
+
+                <div class="text-center">
+                    <a href="" class="btn btn-success btn-lg">Make A Donation Today</a>
+                </div>
+            </div>
+        </section>
+
+        <a name="executive-board"></a>
+        <section id="executive-board" class="primary-splash">
+            <div class="container">
+                <h2 class="title-large">Executive Board</h2>
+                <ul class="list">
+                    {% for member in board %}
+                        <li class="">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="title">{{ member.title }}</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="name">{{ member.name }}</div>
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+                <!-- <ul class="list">
+                    {% for member in board %}
+                        <li class="">
+                            <strong>{{ member.title }}:</strong><br />
+                            <h3 class="title-large">{{ member.name }}</h3>
+                        </li>
+                    {% endfor %}
+                </ul> -->
+            </div>
+        </section>
+    </div>
 {% endblock content %}

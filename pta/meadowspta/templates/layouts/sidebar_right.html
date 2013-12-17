@@ -1,0 +1,14 @@
+{% extends 'template.html' %}
+
+{% block template %}
+    <div class="row">
+        <div id="main" class="col-md-8">
+            {% block content %}
+            {% endblock content %}
+        </div>
+        <div id="sidebar" class="col-md-4">
+            {% block sidebar %}
+            {% endblock sidebar %}
+        </div>
+    </div>
+{% endblock template %}

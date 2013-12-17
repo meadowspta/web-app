@@ -1,7 +1,9 @@
 # Django settings for meadowspta project.
 
-import os
+import os, sys
 from django.conf import global_settings
+
+ROOT_PATH = os.path.dirname(__file__)
 
 ENVIRONMENT = 'DEVELOPMENT'
 if ENVIRONMENT is 'PRODUCTION':
@@ -10,8 +12,6 @@ else:
     DEBUG = True
 
 TEMPLATE_DEBUG = DEBUG
-
-ROOT_PATH = os.path.dirname(__file__)
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -24,11 +24,15 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'meadowspta',                      # Or path to database file if using sqlite3.
         'USER': 'meadowspta',                      # Not used with sqlite3.
-        'PASSWORD': 'mpta2000',                  # Not used with sqlite3.
+        'PASSWORD': 'meadowspta',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
+
+# Hosts/domain names that are valid for this site; required if DEBUG is False
+# See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
+ALLOWED_HOSTS = []
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -55,12 +59,12 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = ''
+MEDIA_ROOT = os.path.join(ROOT_PATH, 'media')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = ''
+MEDIA_URL = '/media/'
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
@@ -120,6 +124,7 @@ WSGI_APPLICATION = 'meadowspta.wsgi.application'
 
 TEMPLATE_DIRS = (
     os.path.join(ROOT_PATH, 'view'),
+    os.path.join(ROOT_PATH, 'templates'),
 )
 
 INSTALLED_APPS = (
@@ -129,8 +134,10 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'django.contrib.admin',
-    # 'django.contrib.admindocs',
+    'django.contrib.admin',
+    'django.contrib.admindocs',
+    'imagekit',
+    'modeldict',
     'meadowspta.middleware',
     'meadowspta.contrib.homepage',
     'meadowspta.contrib.post',
@@ -171,3 +178,10 @@ MEADOWS_SITE_URLS = {
     'PRODUCTION': 'http://www.meadowsmillbrae.com/',
     'DEVELOPMENT': 'http://local.meadowsmillbrae.com/',
 }
+
+if ENVIRONMENT is 'PRODUCTION':
+    GOOGLE_ANALYTICS_ID = 'UA-36598051-1'
+else:
+    GOOGLE_ANALYTICS_ID = 'UA-36598051-2'
+
+MAP_URL = 'https://www.google.com/maps/preview?authuser=0#!q=Meadows+Elementary+School%2C+Millbrae%2C+CA&data=!4m10!1m9!4m8!1m3!1d3136!2d-122.419435!3d37.6019973!3m2!1i1436!2i762!4f13.1'

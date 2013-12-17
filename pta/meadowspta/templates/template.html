@@ -1,0 +1,43 @@
+{% extends 'meta.html' %}
+
+{% block body %}
+    <header>
+        <nav class="navbar navbar-fixed-top primary-splash" role="navigation">
+            <div class="container">
+                <div class="row">
+                    <div class="navbar-header col-md-6">
+                        <a class="navbar-brand" href="#">Meadows PTA</a>
+                        <span class="logo-text">Parent-Teacher Association (PTA)</span>
+                    </div>
+                    <div class="col-md-6 pull-right">
+                        <div class="main-navigation">
+                            <ul class="nav navbar-nav pull-right">
+                                <li class="active"><a href="#news">News</a></li>
+                                <li><a href="#membership">Membership</a></li>
+                                <li><a href="#donate">Donate</a></li>
+                                <li><a href="#executive-board">Executive Board</a></li>
+                                <!--
+                                <li class="social"><a class="icon-social icon-facebook-dark" target="_blank" href="https://www.facebook.com/pages/Meadows-School-PTA/512963792131271">Facebook</a></li>
+                                <li class="social"><a class="icon-social icon-twitter-dark" target="_blank" href="https://www.twtter.com/meadowsmillbrae">Twitter</a></li>
+                                -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <article>
+        {% block template %}
+        {% endblock template %}
+    </article>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+
+            </div>
+        </div>
+    </footer>
+{% endblock body %}
