@@ -61,7 +61,7 @@ def view(request):
     ]
 
     news = News.objects.all().order_by('-publish_date')[:4]
-    featured_news_post = News.objects.get(id=sysvar['news_featured_post'])
+    featured_news_post = News.objects.get(id=int(sysvar['news_featured_post']))
 
     payload = dict(
         board=board,
