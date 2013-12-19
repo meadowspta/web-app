@@ -5,8 +5,6 @@ from meadowspta.contrib.news.models import News
 from meadowspta.contrib.system.models import sysvar
 
 def view(request):
-    sysvar['news_featured_post'] = 1
-
     board = [
         {
             'title': 'President',
