@@ -60,7 +60,7 @@ def view(request):
         },
     ]
 
-    news = News.objects.all().order_by('-publish_date')[:4]
+    news = News.objects.all().exclude(id=int(sysvar['news_featured_post'])).order_by('-publish_date')[:4]
     featured_news_post = News.objects.get(id=int(sysvar['news_featured_post']))
 
     payload = dict(
