@@ -10,7 +10,7 @@ class News(ContentModel):
     image = models.ImageField(upload_to='images/news/posts')
     image_large = ImageSpecField(source='image', processors=[Thumbnail(620)], format='JPEG', options={'quality': 80})
     image_medium = ImageSpecField(source='image', processors=[Thumbnail(155)], format='JPEG', options={'quality': 80})
-    image_thumbnail = ImageSpecField(source='image', processors=[Thumbnail(60)], format='JPEG', options={'quality': 80})
+    image_thumbnail = ImageSpecField(source='image', processors=[Thumbnail(100)], format='JPEG', options={'quality': 80})
 
     def __unicode__(self):
         return str(self.title)

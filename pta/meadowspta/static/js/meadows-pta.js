@@ -28,6 +28,18 @@ function HompageController($scope, $http) {
     $scope.title = 'asdfasdf';
 
     $scope.newsArticleClick = function(id) {
-        console.log(id);
+        $http.get(url, $scope.form).
+            success(function(response, status) {
+                console.log(response);
+                if (response.success) {
+                    $('#addToList').modal('hide');
+                } else {
+                    $scope.listAddForm = response.form;
+                }
+                $scope.loaderShow = false;
+            }).
+            error(function(data, status) {
+                console.log('error');
+            });
     }
 }

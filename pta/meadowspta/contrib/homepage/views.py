@@ -59,7 +59,7 @@ def view(request):
         },
     ]
 
-    news = News.objects.all()
+    news = News.objects.all().order_by('-publish_date')[:4]
 
     payload = dict(
         board=board,
