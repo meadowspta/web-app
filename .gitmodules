@@ -7,3 +7,6 @@
 [submodule "meadows/modules/mongodb-php-odm"]
 	path = meadows/modules/mongodb-php-odm
 	url = git://github.com/colinmollenhour/mongodb-php-odm.git
+[submodule "pta/libraries/django-modeldict"]
+	path = pta/libraries/django-modeldict
+	url = git@github.com:disqus/django-modeldict.git
