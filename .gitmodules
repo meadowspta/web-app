@@ -1,3 +1,6 @@
 [submodule "libraries/django-modeldict"]
 	path = libraries/django-modeldict
 	url = git@github.com:disqus/django-modeldict.git
+[submodule "libraries/django-imagekit"]
+	path = libraries/django-imagekit
+	url = git@github.com:matthewwithanm/django-imagekit.git
