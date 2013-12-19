@@ -1,0 +1,3 @@
+[submodule "libraries/django-modeldict"]
+	path = libraries/django-modeldict
+	url = git@github.com:disqus/django-modeldict.git
