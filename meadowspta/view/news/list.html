@@ -1,0 +1,22 @@
+{% extends 'layouts/sidebar_right.html' %}
+
+{% block sidebar %}
+
+{% endblock sidebar %}
+
+{% block content %}
+    <div id="news-list">
+        <ul class="list">
+            {% for news_item in news_items %}
+                <li class="list-item row">
+                    <div class="col-md-3">
+                        <a href="{{ news_item.get_absolute_url }}"><img src="{{ news_item.image_medium.url }}"></a>
+                    </div>
+                    <div class="col-md-9">
+                        <a href="{{ news_item.get_absolute_url }}"><h3>{{ news_item.title }}</h3></a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock content %}

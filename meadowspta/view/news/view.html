@@ -1,0 +1,21 @@
+{% extends 'layouts/sidebar_right.html' %}
+
+{% block sidebar %}
+    {% if user.is_authenticated %}
+        {% if news_item.is_featured %}
+            <a href="#" class="btn btn-block btn-success" disabled="disabled">This post is featured</a>
+        {% else %}
+            <a href="/news/feature/{{ news_item.id }}/" class="btn btn-block btn-success">Feature This Post</a>
+        {% endif %}
+    {% endif %}
+{% endblock sidebar %}
+
+{% block content %}
+    <div id="news-page">
+        <h1>{{ news_item.title }}</h1>
+        <div><img src="{{ news_item.image_medium.url }}"></div>
+        <div>
+            {{ news_item.body|safe }}
+        </div>
+    </div>
+{% endblock content %}

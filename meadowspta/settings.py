@@ -138,9 +138,10 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'imagekit',
     'modeldict',
-    'meadowspta.middleware',
+    # 'meadowspta.middleware',
+    'meadowspta.contrib.system',
     'meadowspta.contrib.homepage',
-    'meadowspta.contrib.post',
+    'meadowspta.contrib.news',
     'meadowspta.contrib.member',
 )
 

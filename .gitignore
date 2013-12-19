@@ -2,5 +2,5 @@
 *.pyc
 meadows/application/cache/*
 meadows/application/logs/*
-pta/meadowspta/static/css/.sass-cache
-pta/meadowspta/media/CACHE/*
+meadowspta/static/css/.sass-cache
+meadowspta/media/CACHE/*

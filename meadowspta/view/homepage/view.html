@@ -5,8 +5,18 @@
         <div id="news" class="container">
             <div class="row">
                 <div class="col-md-8">
-                    <div id="featured-news" class="pad-bottom">
-                        <img src="http://placehold.it/615x400">
+                    <div id="featured-news-post" class="pad-bottom">
+                        <div class="title-bar">
+                            <div class="title">
+                                <a href="{{ featured_news_post.get_absolute_url }}" data-toggle="modal" data-target="#view-news-article" ng-click="newsArticleClick({{ featured_news_post.id }})">{{ featured_news_post.title }}</a>
+                            </div>
+                            <div class="teaser">
+                                <a href="{{ featured_news_post.get_absolute_url }}" data-toggle="modal" data-target="#view-news-article" ng-click="newsArticleClick({{ featured_news_post.id }})">{{ featured_news_post.teaser }}</a>
+                            </div>
+                        </div>
+                        <a href="#" data-toggle="modal" data-target="#view-news-article" ng-click="newsArticleClick({{ featured_news_post.id }})">
+                            <img src="{{ featured_news_post.image_large.url }}">
+                        </a>
                     </div>
 
                     <div id="news-list" class="row">
@@ -14,10 +24,10 @@
                             <div class="col-md-6">
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <a href="{{ news_item.get_absolute_url }}" data-toggle="modal" data-target="#viewNewsArticle" ng-click="newsArticleClick({{ news_item.id }})"><img src="{{ news_item.image_thumbnail.url }}"></a>
+                                        <a href="#" data-toggle="modal" data-target="#view-news-article" ng-click="newsArticleClick({{ news_item.id }})"><img src="{{ news_item.image_thumbnail.url }}"></a>
                                     </div>
                                     <div class="col-md-8">
-                                        <a href="{{ news_item.get_absolute_url }}" data-toggle="modal" data-target="#viewNewsArticle" ng-click="newsArticleClick({{ news_item.id }})"><h3>{{ news_item.title }}</h3></a>
+                                        <a href="#" data-toggle="modal" data-target="#view-news-article" ng-click="newsArticleClick({{ news_item.id }})"><h3>{{ news_item.title }}</h3></a>
                                         <p class="small">{{ news_item.teaser }}</p>
                                     </div>
                                 </div>
@@ -31,15 +41,18 @@
                 </div>
             </div>
 
-            <div id="viewNewsArticle" class="modal fade">
+            <div id="view-news-article" class="modal fade">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title">[[ title ]]</h4>
+                            <h1 class="modal-title">[[ post.title ]]</h1>
                         </div>
                         <div class="modal-body">
-                            [[ body ]]
+                            <div class="post-image">
+                                <img src="[[ post.image.modal ]]">
+                            </div>
+                            <div compile="post.body"></div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -105,7 +118,7 @@
             </div>
 
             <div class="text-center">
-                <a href="" class="btn btn-success btn-lg">Register To Be A Member - It's Free</a>
+                <!-- <a href="" class="btn btn-success btn-lg">Register To Be A Member - It's Free</a> -->
             </div>
         </section>
 
@@ -172,7 +185,7 @@
                 </p>
 
                 <div class="text-center">
-                    <a href="" class="btn btn-success btn-lg">Make A Donation Today</a>
+                    <a href="http://shop.meadowscrabfeed.com/Donate-to-Meadows-PTA_c4.htm" target="_blank" class="btn btn-success btn-lg">Make A Donation Today</a>
                 </div>
             </div>
         </section>

@@ -17,24 +17,43 @@ Meadows.statusMessageManager = function() {
 */
 
 /* AngularJS */
-var meadowsPtaApp = angular.module('meadowspta', []);
+var meadowsPtaApp = angular.module('meadowspta', [], function($compileProvider) {
+  $compileProvider.directive('compile', function($compile) {
+    return function(scope, element, attrs) {
+      scope.$watch(
+        function(scope) {
+            return scope.$eval(attrs.compile);
+        },
+        function(value) {
+            element.html(value);
+            $compile(element.contents())(scope);
+        }
+      );
+    };
+  });
+});
 
 meadowsPtaApp.config(function($interpolateProvider) {
     $interpolateProvider.startSymbol('[[');
     $interpolateProvider.endSymbol(']]');
+})
+.directive('eatClick', function() {
+    return function(scope, element, attrs) {
+        jQuery(element).click(function(event) {
+            event.preventDefault();
+        });
+    }
 });
 
 function HompageController($scope, $http) {
-    $scope.title = 'asdfasdf';
-
     $scope.newsArticleClick = function(id) {
-        $http.get(url, $scope.form).
+        console.log(id);
+        $http.get('/news/get/' + id, $scope.form).
             success(function(response, status) {
-                console.log(response);
-                if (response.success) {
-                    $('#addToList').modal('hide');
+                if (response) {
+                    $scope.post = response;
                 } else {
-                    $scope.listAddForm = response.form;
+
                 }
                 $scope.loaderShow = false;
             }).
