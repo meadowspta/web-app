@@ -4,7 +4,7 @@
     <div id="homepage" ng-controller="HompageController">
         <div id="news" class="container">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-8 col-sm-8">
                     <div id="featured-news-post" class="pad-bottom">
                         <div class="title-bar">
                             <div class="title">
@@ -15,18 +15,18 @@
                             </div>
                         </div>
                         <a href="#" data-toggle="modal" data-target="#view-news-article" ng-click="newsArticleClick({{ featured_news_post.id }})">
-                            <img src="{{ featured_news_post.image_large.url }}">
+                            <img src="{{ featured_news_post.image_large.url }}" class="img-responsive">
                         </a>
                     </div>
 
                     <div id="news-list" class="row">
                         {% for news_item in news %}
-                            <div class="col-md-6">
+                            <div class="col-md-6 col-sm-6">
                                 <div class="row">
-                                    <div class="col-md-4">
-                                        <a href="#" data-toggle="modal" data-target="#view-news-article" ng-click="newsArticleClick({{ news_item.id }})"><img src="{{ news_item.image_thumbnail.url }}"></a>
+                                    <div class="col-md-4 col-sm-4">
+                                        <a href="#" data-toggle="modal" data-target="#view-news-article" ng-click="newsArticleClick({{ news_item.id }})"><img src="{{ news_item.image_thumbnail.url }}" class="img-responsive"></a>
                                     </div>
-                                    <div class="col-md-8">
+                                    <div class="col-md-8 col-sm-8">
                                         <a href="#" data-toggle="modal" data-target="#view-news-article" ng-click="newsArticleClick({{ news_item.id }})"><h3>{{ news_item.title }}</h3></a>
                                         <p class="small">{{ news_item.teaser }}</p>
                                     </div>
@@ -35,7 +35,7 @@
                         {% endfor %}
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 col-sm-4">
                     <div class="fb-like-box pad-bottom" data-href="https://www.facebook.com/pages/Meadows-School-PTA/512963792131271" data-width="300" data-height="200" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="true"></div>
                     <iframe src="https://www.google.com/calendar/embed?title=Upcoming%20Events&amp;showNav=0&amp;showDate=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;mode=AGENDA&amp;height=300&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=principal.meadows%40gmail.com&amp;color=%23B1365F&amp;src=vi9aloe9q9lr5msjlku19sg35c%40group.calendar.google.com&amp;color=%23182C57&amp;ctz=America%2FLos_Angeles" style=" border-width:0 " width="300" height="350" frameborder="0" scrolling="no"></iframe>
                 </div>
@@ -75,19 +75,19 @@
 
                 <div class="support-statements">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-sm-4">
                             <h3><span class="glyphicon glyphicon-user"></span> Membership</h3>
                             <p>
                                 New this year your basic PTA Membership is FREE (a $10 value) - In addition, for each parent that joins, $4.50 of that membership is paid the National PTA and State PTA dues for educational advocacy for our children, so please consider making a donation to cover the expenses needed to fully support and supplement your child’s education with the tools, events and programs that Meadows PTA wants to provide.
                             </p>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-sm-4">
                             <h3><span class="glyphicon glyphicon-gift"></span> Donations</h3>
                             <p>
                                 By asking $90 per child or $180 per family we hope to reach our goal of raising $20,000 for our Meadows PTA fund. This is less than $.75 a day for each day your child is in the classroom. Your donation is what makes your child’s year possible. This includes field trips, technology (SmartBoards, cameras, ink, software, etc), book fairs, assemblies, classroom supplies, and many more programs that benefit your child(ren)’s education.
                             </p>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-sm-4">
                             <h3><span class="glyphicon glyphicon-check"></span> No-Hassle Fundraising</h3>
                             <p>
                                 With your every-day expenses, you can help fund additional expenses for our school via eScrip, Lucky S.H.A.R.E.S., General Mills Box Tops, and Office Depot. More information will be provided on each opportunity for this 'free' funding.
@@ -95,19 +95,19 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-sm-4">
                             <h3><span class="glyphicon glyphicon-heart"></span> Volunteering</h3>
                             <p>
                                 Please consider being actively involved in your child’s education by helping at school events, including, but not limited to activities that occur during regular school hours. Your help is what keeps our school going! By seeing you invest your time in their school, your children benefit with increased motivation in their work, which raises their self-esteem and pride, therefore improving their educational experience and growth.
                             </p>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-sm-4">
                             <h3><span class="glyphicon glyphicon-time"></span> PTA Meetings:</h3>
                             <p>
                                 These meetings are your chance for your voice to be heard. Decisions on how your membership and donations are spent are presented and voted on at these meetings, so your attendance is highly suggested and encouraged! We want to get to know you!
                             </p>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-sm-4">
                             <h3><span class="glyphicon glyphicon-envelope"></span> Electronic Mail</h3>
                             <p>
                                 By going paperless and using electronic mail, we hope to save $4,000-$6,000 of your donations which would be better spent in their classrooms and for activities for your children. On the membership form, if no e-mail is provided then your child will bring home paper newsletters and notices from the PTA.

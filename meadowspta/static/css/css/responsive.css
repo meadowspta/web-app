@@ -1,0 +1,6 @@
+@media (max-width: 979px) {
+  /* line 18, ../sass/responsive.scss */
+  header {
+    font-size: 10px;
+  }
+}
