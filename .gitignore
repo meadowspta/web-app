@@ -1,6 +1,4 @@
 .DS_Store
 *.pyc
-meadows/application/cache/*
-meadows/application/logs/*
 meadowspta/static/css/.sass-cache
-meadowspta/media/CACHE/*
+meadowspta/media/*

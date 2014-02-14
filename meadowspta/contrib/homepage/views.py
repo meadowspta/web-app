@@ -31,14 +31,6 @@ def view(request):
             'name': '(Vacant)',
         },
         {
-            'title': 'Co-Historian',
-            'name': 'Julian Ponce',
-        },
-        {
-            'title': 'Co-Historian',
-            'name': 'Annabelle Ponce',
-        },
-        {
             'title': 'Parliamentarian',
             'name': 'Leola Meiners',
         },
