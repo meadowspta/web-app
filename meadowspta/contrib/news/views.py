@@ -2,6 +2,8 @@ import json
 from django.template import RequestContext, Context, loader
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
+from django.utils.html import strip_tags
+from meta.views import Meta
 from meadowspta.contrib.news.models import News
 from meadowspta.contrib.system.models import sysvar
 
@@ -11,7 +13,14 @@ def list(request):
 
 def view(request, slug):
     news_item = News.objects.get(slug=slug)
-    return render_to_response('news/view.html', dict(news_item=news_item), context_instance=RequestContext(request))
+
+    meta = Meta(
+        title=news_item.title,
+        image=news_item.image_large.url,
+        description=news_item.teaser,
+    )
+
+    return render_to_response('news/view.html', {'news_item': news_item, 'meta': meta}, context_instance=RequestContext(request))
 
 def get(request, id):
     news = News.objects.get(id=id)

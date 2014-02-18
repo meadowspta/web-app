@@ -133,6 +133,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'imagekit',
     'modeldict',
+    'meta',
     # 'meadowspta.middleware',
     'meadowspta.contrib.system',
     'meadowspta.contrib.homepage',
@@ -169,6 +170,11 @@ LOGGING = {
     }
 }
 
-# Site settings
+# Site settings.
 GOOGLE_ANALYTICS_ID = 'UA-36598051-1'
 MAP_URL = 'https://www.google.com/maps/preview?authuser=0#!q=Meadows+Elementary+School%2C+Millbrae%2C+CA&data=!4m10!1m9!4m8!1m3!1d3136!2d-122.419435!3d37.6019973!3m2!1i1436!2i762!4f13.1'
+
+# Meta settings.
+META_SITE_PROTOCOL = 'http'
+META_SITE_DOMAIN = 'www.meadowspta.org'
+META_USE_OG_PROPERTIES = True

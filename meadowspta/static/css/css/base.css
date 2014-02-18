@@ -11,7 +11,7 @@ body.admin-bar {
 
 /* line 16, ../sass/base.scss */
 h1, h2, h3, h4, h5, h6 {
-  margin-top: 0px;
+  margin: 0px;
 }
 
 /* line 19, ../sass/base.scss */
@@ -290,13 +290,18 @@ h4.chrome {
   padding-left: 10px;
 }
 
+/* line 218, ../sass/base.scss */
+img.shadow {
+  box-shadow: 0px 1px 5px #666666;
+}
+
 /* Bootstrap overrides */
-/* line 219, ../sass/base.scss */
+/* line 223, ../sass/base.scss */
 div.first {
   margin-left: 0;
 }
 
-/* line 223, ../sass/base.scss */
+/* line 227, ../sass/base.scss */
 .form-inline input[type='text'] {
   margin-bottom: 10px;
 }

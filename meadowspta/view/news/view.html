@@ -7,13 +7,19 @@
         {% else %}
             <a href="/news/feature/{{ news_item.id }}/" class="btn btn-block btn-success">Feature This Post</a>
         {% endif %}
+        <br />
     {% endif %}
+
+    {% include 'blocks/facebook_likes.html' %}
+    {% include 'blocks/google_calendar.html' %}
 {% endblock sidebar %}
 
 {% block content %}
     <div id="news-page">
         <h1>{{ news_item.title }}</h1>
-        <div><img src="{{ news_item.image_medium.url }}"></div>
+        <h3 class="quiet">{{ news_item.teaser }}</h3>
+        <div><img src="{{ news_item.image_large.url }}"></div>
+        <br />
         <div>
             {{ news_item.body|safe }}
         </div>
