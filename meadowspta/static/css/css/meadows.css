@@ -480,23 +480,27 @@ footer .section2 .content {
   line-height: 15px;
   margin-bottom: 3px;
 }
-/* line 170, ../sass/meadows.scss */
+/* line 166, ../sass/meadows.scss */
+#homepage #news #news-list .row {
+  min-height: 80px;
+}
+/* line 174, ../sass/meadows.scss */
 #homepage #membership .support-statements p {
   font-size: 16px;
   line-height: 22px;
 }
-/* line 178, ../sass/meadows.scss */
+/* line 182, ../sass/meadows.scss */
 #homepage #volunteer h2.title-large {
   color: #cc0000;
 }
-/* line 189, ../sass/meadows.scss */
+/* line 193, ../sass/meadows.scss */
 #homepage #executive-board .list .title {
   font-size: 30px;
   line-height: 40px;
   text-align: right;
   font-weight: normal;
 }
-/* line 196, ../sass/meadows.scss */
+/* line 200, ../sass/meadows.scss */
 #homepage #executive-board .list .name {
   font-size: 30px;
   line-height: 40px;

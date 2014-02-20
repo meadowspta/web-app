@@ -6,8 +6,8 @@ from meadowspta.core.models import *
 from meadowspta.contrib.system.models import sysvar
 
 class News(ContentModel):
-    teaser = models.CharField(max_length=255, null=False, blank=False)
-    body = models.TextField(null=False, blank=False)
+    teaser = models.CharField(max_length=255)
+    body = models.TextField()
     image = models.ImageField(upload_to='images/news/posts')
     image_large = ImageSpecField(source='image', processors=[Thumbnail(620)], format='JPEG', options={'quality': 80})
     image_modal = ImageSpecField(source='image', processors=[Thumbnail(550)], format='JPEG', options={'quality': 80})

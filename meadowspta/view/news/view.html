@@ -20,8 +20,19 @@
         <h3 class="quiet">{{ news_item.teaser }}</h3>
         <div><img src="{{ news_item.image_large.url }}"></div>
         <br />
-        <div>
-            {{ news_item.body|safe }}
+
+        <div class="row">
+            <div class="col-md-1 col-sm-1">
+                <div class="addthis_toolbox addthis_floating_style addthis_32x32_style" style="position: relative">
+                    <a class="addthis_button_facebook"></a>
+                    <a class="addthis_button_twitter"></a>
+                    <a class="addthis_button_pinterest_share"></a>
+                    <a class="addthis_button_google_plusone_share"></a>
+                </div>
+            </div>
+            <div class="col-md-11 col-sm-11">
+                {{ news_item.body|safe }}
+            </div>
         </div>
     </div>
 {% endblock content %}

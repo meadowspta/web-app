@@ -48,9 +48,9 @@ class BaseModel(models.Model):
             return False
 
 class ContentModel(BaseModel):
-    title = models.CharField(max_length=255, null=False, blank=False)
+    title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=512, blank=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=False, blank=False)
+    user = models.ForeignKey(User)
     publish_date = models.DateTimeField(auto_now_add=True)
     update_date = models.DateTimeField(auto_now=True)
     is_published = models.BooleanField(default=True)
