@@ -1,0 +1,38 @@
+{% extends 'layouts/sidebar_right.html' %}
+
+{% block sidebar %}
+    {% include 'blocks/facebook_likes.html' %}
+    {% include 'blocks/google_calendar.html' %}
+{% endblock sidebar %}
+
+{% block content %}
+    <div id="auction-item-list">
+        <ul class="list">
+            {% for item in items %}
+                <li class="list-item row">
+                    <div class="col-md-3">
+                        <a href="{{ item.get_absolute_url }}"><img src="{{ item.picture_medium.url }}" class="img-responsive"></a>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <a href="{{ item.get_absolute_url }}"><h4>{{ item.title }}</h4></a>
+                            </div>
+                            <div class="col-md-3">
+                                <div>
+                                    <span class="small quiet pull-right">Opening Bid</span>
+                                    <strong class="pull-right">${{ item.opening_bid }}</strong>
+                                </div>
+
+                                <div>
+                                    <div class="small quiet pull-right">Quantity</div>
+                                    <div class="pull-right">{{ item.quantity|striptags }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock content %}

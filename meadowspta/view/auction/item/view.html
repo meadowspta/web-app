@@ -1,0 +1,97 @@
+{% extends 'layouts/sidebar_right.html' %}
+
+{% block sidebar %}
+    {% include 'blocks/facebook_likes.html' %}
+    {% include 'blocks/google_calendar.html' %}
+{% endblock sidebar %}
+
+{% block content %}
+    <div id="auction-item">
+        <h1>{{ item.title }}</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{{ item.picture_large.url }}" class="img-responsive">
+            </div>
+            <div class="well col-md-6">
+                <div class="row pad-bottom">
+                    <div class="col-md-5">
+                        <strong>Item Number:</strong>
+                    </div>
+                    <div class="col-md-7">
+                        {{ item.item_number }}
+                    </div>
+                </div>
+                <div class="row pad-bottom">
+                    <div class="col-md-5">
+                        <strong>Opening Bid:</strong>
+                    </div>
+                    <div class="col-md-7">
+                        ${{ item.opening_bid }}
+                    </div>
+                </div>
+                <div class="row pad-bottom">
+                    <div class="col-md-5">
+                        <strong>Bid Start Date:</strong>
+                    </div>
+                    <div class="col-md-7">
+                        {{ item.bid_start|date:'N jS g:ia' }}
+                    </div>
+                </div>
+                <div class="row pad-bottom">
+                    <div class="col-md-5">
+                        <strong>Bid End Date:</strong>
+                    </div>
+                    <div class="col-md-7">
+                        {{ item.bid_end|date:'N jS g:ia' }}
+                    </div>
+                </div>
+                <div class="row pad-bottom">
+                    <div class="col-md-5">
+                        <strong>Bid Increment:</strong>
+                    </div>
+                    <div class="col-md-7">
+                        ${{ item.bid_increment }}
+                    </div>
+                </div>
+                <div class="row pad-bottom">
+                    <div class="col-md-5">
+                        <strong>Retail Value:</strong>
+                    </div>
+                    <div class="col-md-7">
+                        ${{ item.retail_value }}
+                    </div>
+                </div>
+                <div class="row pad-bottom">
+                    <div class="col-md-5">
+                        <strong>Donor:</strong>
+                    </div>
+                    <div class="col-md-7">
+                        {{ item.donor }}
+                    </div>
+                </div>
+                <div class="row pad-bottom">
+                    <div class="col-md-5">
+                        <strong>Quantity:</strong>
+                    </div>
+                    <div class="col-md-7">
+                        {{ item.quantity|safe }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-1 col-sm-1 col-xs-2">
+                <div class="addthis_toolbox addthis_floating_style addthis_32x32_style" style="position: relative">
+                    <a class="addthis_button_facebook"></a>
+                    <a class="addthis_button_twitter"></a>
+                    <a class="addthis_button_pinterest_share"></a>
+                    <a class="addthis_button_google_plusone_share"></a>
+                </div>
+            </div>
+            <div class="col-md-11 col-sm-11 col-xs-10">
+                {{ item.description|safe }}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

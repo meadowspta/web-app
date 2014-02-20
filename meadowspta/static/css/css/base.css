@@ -12,51 +12,52 @@ body.admin-bar {
 /* line 16, ../sass/base.scss */
 h1, h2, h3, h4, h5, h6 {
   margin: 0px;
+  margin-bottom: .5em;
 }
 
-/* line 19, ../sass/base.scss */
+/* line 20, ../sass/base.scss */
 h1.title, h2.title, h3.title, h4.title, h5.title, h6.title {
   padding: 0px 0px 0px 0px;
   margin: 0px 0px 0px 0px;
 }
 
-/* line 24, ../sass/base.scss */
+/* line 25, ../sass/base.scss */
 .title-large {
   text-transform: uppercase;
 }
 
-/* line 27, ../sass/base.scss */
+/* line 28, ../sass/base.scss */
 h2.title-large {
   font-size: 60px;
 }
 
-/* line 30, ../sass/base.scss */
+/* line 31, ../sass/base.scss */
 h3.title-large {
   font-size: 40px;
 }
 
-/* line 33, ../sass/base.scss */
+/* line 34, ../sass/base.scss */
 h4.title-large {
   font-size: 30px;
 }
 
-/* line 37, ../sass/base.scss */
+/* line 38, ../sass/base.scss */
 a {
   color: #aa0000;
 }
 
-/* line 40, ../sass/base.scss */
+/* line 41, ../sass/base.scss */
 a, a:visited, a:hover {
   text-decoration: none;
 }
 
-/* line 44, ../sass/base.scss */
+/* line 45, ../sass/base.scss */
 hr {
   margin: 10px 0px 10px 0px;
 }
 
 /* Lists */
-/* line 49, ../sass/base.scss */
+/* line 50, ../sass/base.scss */
 ul.list-no-style, ul.list {
   margin: 0px;
   padding: 0px;
@@ -64,21 +65,21 @@ ul.list-no-style, ul.list {
   display: inline-block;
   width: 100%;
 }
-/* line 56, ../sass/base.scss */
+/* line 57, ../sass/base.scss */
 ul.list-no-style li, ul.list li {
   clear: both;
   float: left;
   width: 100%;
 }
 
-/* line 62, ../sass/base.scss */
+/* line 63, ../sass/base.scss */
 ul.list li.list-item, div.list-item {
   margin-bottom: 10px;
   padding-bottom: 10px;
   border-bottom: 1px solid #dcdcdc;
 }
 
-/* line 67, ../sass/base.scss */
+/* line 68, ../sass/base.scss */
 .list-item.last {
   border-bottom: 0px;
   margin-bottom: 0px;
@@ -86,85 +87,85 @@ ul.list li.list-item, div.list-item {
 }
 
 /* Forms */
-/* line 74, ../sass/base.scss */
+/* line 75, ../sass/base.scss */
 label {
   font-weight: normal;
   font-size: 1.3em;
 }
 
-/* line 78, ../sass/base.scss */
+/* line 79, ../sass/base.scss */
 input {
   width: 600px;
   margin: 5px 0px 15px 0px;
   padding: 5px;
 }
 
-/* line 83, ../sass/base.scss */
+/* line 84, ../sass/base.scss */
 textarea {
   width: 600px;
   height: 350px;
 }
 
-/* line 87, ../sass/base.scss */
+/* line 88, ../sass/base.scss */
 input[type='text'], input[type='password'], input[type='file'] {
   font-size: 2.0em;
   height: 35px;
   padding: 5px 10px 5px 10px;
 }
 
-/* line 92, ../sass/base.scss */
+/* line 93, ../sass/base.scss */
 input[type='text'].regular {
   font-size: 1.0em;
   padding: 0px 5px 0px 5px;
   height: 25px;
 }
 
-/* line 97, ../sass/base.scss */
+/* line 98, ../sass/base.scss */
 input[type='text'].micro {
   font-size: 1.0em;
   padding: 0px 5px 0px 5px;
   height: 25px;
 }
 
-/* line 102, ../sass/base.scss */
+/* line 103, ../sass/base.scss */
 input[type='checkbox'] {
   float: left;
 }
 
-/* line 105, ../sass/base.scss */
+/* line 106, ../sass/base.scss */
 .form-list-label {
   font-size: .9em;
   margin: 0px 0px 0px 10px;
   float: left;
 }
 
-/* line 110, ../sass/base.scss */
+/* line 111, ../sass/base.scss */
 input.fluid {
   width: 100% !important;
 }
 
-/* line 114, ../sass/base.scss */
+/* line 115, ../sass/base.scss */
 input.large {
   width: 600px !important;
 }
 
-/* line 117, ../sass/base.scss */
+/* line 118, ../sass/base.scss */
 input.medium {
   width: 400px !important;
 }
 
-/* line 120, ../sass/base.scss */
+/* line 121, ../sass/base.scss */
 input.small {
   width: 200px !important;
 }
 
-/* line 123, ../sass/base.scss */
+/* line 124, ../sass/base.scss */
 input.micro {
   width: 90px !important;
 }
 
 /* Header Chrome */
-/* line 128, ../sass/base.scss */
+/* line 129, ../sass/base.scss */
 .chrome {
   font-weight: bold;
   background-color: #efefef;
@@ -176,132 +177,132 @@ input.micro {
   line-height: 1em;
 }
 
-/* line 138, ../sass/base.scss */
+/* line 139, ../sass/base.scss */
 h1.chrome {
   font-size: 1.5em;
 }
 
-/* line 141, ../sass/base.scss */
+/* line 142, ../sass/base.scss */
 h2.chrome {
   font-size: 1.2em;
 }
 
-/* line 144, ../sass/base.scss */
+/* line 145, ../sass/base.scss */
 h3.chrome {
   font-size: 0.9em;
 }
 
-/* line 147, ../sass/base.scss */
+/* line 148, ../sass/base.scss */
 h4.chrome {
   font-size: 0.8em;
 }
 
 /* Helpers */
-/* line 152, ../sass/base.scss */
+/* line 153, ../sass/base.scss */
 .bg-splash {
   background-color: #003965;
   color: #ffffff;
 }
 
-/* line 156, ../sass/base.scss */
+/* line 157, ../sass/base.scss */
 .bg-splash.bg-splash-secondary {
   background-color: #ff6600;
   color: #ffffff;
 }
 
-/* line 160, ../sass/base.scss */
+/* line 161, ../sass/base.scss */
 .bg-splash.bg-splash-grey {
   background-color: #666666;
   color: #ffffff;
 }
 
-/* line 165, ../sass/base.scss */
+/* line 166, ../sass/base.scss */
 .text-primary {
   color: #003965;
 }
 
-/* line 168, ../sass/base.scss */
+/* line 169, ../sass/base.scss */
 .text-secondary {
   color: #ff6600;
 }
 
-/* line 172, ../sass/base.scss */
+/* line 173, ../sass/base.scss */
 .bright {
   color: #ee0000;
 }
 
-/* line 176, ../sass/base.scss */
+/* line 177, ../sass/base.scss */
 .small {
   font-size: 0.9em;
 }
 
-/* line 180, ../sass/base.scss */
+/* line 181, ../sass/base.scss */
 .fb-like-box {
   background: #ffffff;
 }
 
-/* line 184, ../sass/base.scss */
+/* line 185, ../sass/base.scss */
 .quiet {
   color: #999999;
 }
 
-/* line 188, ../sass/base.scss */
+/* line 189, ../sass/base.scss */
 .text-right {
   text-align: right;
 }
 
-/* line 191, ../sass/base.scss */
+/* line 192, ../sass/base.scss */
 .text-left {
   text-align: left;
 }
 
-/* line 194, ../sass/base.scss */
+/* line 195, ../sass/base.scss */
 .text-center {
   text-align: center;
 }
 
-/* line 198, ../sass/base.scss */
+/* line 199, ../sass/base.scss */
 .inline {
   display: inline !important;
 }
 
-/* line 202, ../sass/base.scss */
+/* line 203, ../sass/base.scss */
 .pad {
   padding: 10px;
 }
 
-/* line 205, ../sass/base.scss */
+/* line 206, ../sass/base.scss */
 .pad-top {
   padding-top: 10px;
 }
 
-/* line 208, ../sass/base.scss */
+/* line 209, ../sass/base.scss */
 .pad-right {
   padding-right: 10px;
 }
 
-/* line 211, ../sass/base.scss */
+/* line 212, ../sass/base.scss */
 .pad-bottom {
   padding-bottom: 10px;
 }
 
-/* line 214, ../sass/base.scss */
+/* line 215, ../sass/base.scss */
 .pad-left {
   padding-left: 10px;
 }
 
-/* line 218, ../sass/base.scss */
+/* line 219, ../sass/base.scss */
 img.shadow {
   box-shadow: 0px 1px 5px #666666;
 }
 
 /* Bootstrap overrides */
-/* line 223, ../sass/base.scss */
+/* line 224, ../sass/base.scss */
 div.first {
   margin-left: 0;
 }
 
-/* line 227, ../sass/base.scss */
+/* line 228, ../sass/base.scss */
 .form-inline input[type='text'] {
   margin-bottom: 10px;
 }

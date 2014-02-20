@@ -14,4 +14,5 @@ urlpatterns = patterns('',
     (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
     (r'^$', 'meadowspta.contrib.homepage.views.view'),
     url(r'^news/', include('meadowspta.contrib.news.urls')),
+    url(r'^auction/', include('meadowspta.contrib.auction.urls')),
 )
