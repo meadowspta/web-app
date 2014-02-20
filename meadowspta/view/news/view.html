@@ -18,11 +18,11 @@
     <div id="news-page">
         <h1>{{ news_item.title }}</h1>
         <h3 class="quiet">{{ news_item.teaser }}</h3>
-        <div><img src="{{ news_item.image_large.url }}"></div>
+        <div><img src="{{ news_item.image_large.url }}" class="img-responsive"></div>
         <br />
 
         <div class="row">
-            <div class="col-md-1 col-sm-1">
+            <div class="col-md-1 col-sm-1 col-xs-2">
                 <div class="addthis_toolbox addthis_floating_style addthis_32x32_style" style="position: relative">
                     <a class="addthis_button_facebook"></a>
                     <a class="addthis_button_twitter"></a>
@@ -30,7 +30,7 @@
                     <a class="addthis_button_google_plusone_share"></a>
                 </div>
             </div>
-            <div class="col-md-11 col-sm-11">
+            <div class="col-md-11 col-sm-11 col-xs-10">
                 {{ news_item.body|safe }}
             </div>
         </div>
