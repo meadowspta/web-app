@@ -19,14 +19,14 @@
                                 <a href="{{ item.get_absolute_url }}"><h4>{{ item.title }}</h4></a>
                             </div>
                             <div class="col-md-3">
-                                <div>
-                                    <span class="small quiet pull-right">Opening Bid</span>
-                                    <strong class="pull-right">${{ item.opening_bid }}</strong>
+                                <div class="pad-bottom text-right">
+                                    <span class="small quiet">Opening Bid</span>
+                                    <strong>${{ item.opening_bid }}</strong>
                                 </div>
 
-                                <div>
-                                    <div class="small quiet pull-right">Quantity</div>
-                                    <div class="pull-right">{{ item.quantity|striptags }}</div>
+                                <div class="text-right">
+                                    <div class="small quiet">Quantity</div>
+                                    <div>{{ item.quantity|striptags }}</div>
                                 </div>
                             </div>
                         </div>
