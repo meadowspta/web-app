@@ -10,4 +10,9 @@ def list(request):
 
 def item_view(request, slug):
     item = Item.objects.get(slug=slug)
-    return render_to_response('auction/item/view.html', {'item': item}, context_instance=RequestContext(request))
+
+    payload = {
+        'item': item,
+    }
+
+    return render_to_response('auction/item/view.html', payload, context_instance=RequestContext(request))
