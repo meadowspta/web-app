@@ -2,207 +2,208 @@
 
 /* Template */
 body {
-    padding-top: 60px;
+  padding-top: 60px;
 }
 
 header {
-    .navbar {
-        border-bottom: 1px solid #ffffff;
+  .navbar {
+    border-bottom: 1px solid #ffffff;
 
-        .logo-text {
-            font-size: 14px;
-            margin-top: 15px;
-            display: block;
-        }
-
-        .navbar-brand {
-            background: url("/static/images/template/logo.png") no-repeat scroll 10px 0px;
-            text-indent: -10000px;
-            width: 85px;
-            background-size: 65px;
-        }
-
-        .main-navigation {
-            .navbar-nav {
-                li {
-                    a {
-                        text-transform: uppercase;
-                        font-weight: bold;
-                        vertical-align: center;
-                    }
-                    a, a:visited {
-                        color: #ffffff;
-                    }
-                }
-
-                li.active, li > a:hover {
-                    background: $primary-highlight;
-                }
-                li.social {
-                    /*display: none;*/
-                }
-
-                .icon-social{-webkit-background-size:30px;-moz-background-size:30px;background-size:30px;height:30px;opacity:.27;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=27)";filter:alpha(opacity=27);-webkit-transition:opacity 0.2s ease-out;-moz-transition:opacity 0.2s ease-out;-o-transition:opacity 0.2s ease-out;width:30px;}
-                .icon-social.icon-facebook-dark {
-                    background: url("/static/images/template/facebook-dark.svg") no-repeat scroll 50% 50% rgba(0, 0, 0, 0);
-                }
-                .icon-social.icon-twitter-dark {
-                    background: url("/static/images/template/twitter-dark.svg") no-repeat scroll 50% 50% rgba(0, 0, 0, 0);
-                }
-            }
-        }
+    .logo-text {
+      font-size: 14px;
+      margin-top: 15px;
+      display: block;
     }
+
+    .navbar-brand {
+      background: url("/static/images/template/logo.png") no-repeat scroll 10px 0px;
+      text-indent: -10000px;
+      width: 85px;
+      background-size: 65px;
+    }
+
+    .main-navigation {
+      .navbar-nav {
+        li {
+          a {
+            text-transform: uppercase;
+            font-weight: bold;
+            vertical-align: center;
+          }
+          a, a:visited {
+            color: #ffffff;
+          }
+        }
+
+        li.active, li > a:hover {
+          background: $primary-highlight;
+        }
+        li.social {
+          /*display: none;*/
+        }
+
+        .icon-social{-webkit-background-size:30px;-moz-background-size:30px;background-size:30px;height:30px;opacity:.27;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=27)";filter:alpha(opacity=27);-webkit-transition:opacity 0.2s ease-out;-moz-transition:opacity 0.2s ease-out;-o-transition:opacity 0.2s ease-out;width:30px;}
+        .icon-social.icon-facebook-dark {
+          background: url("/static/images/template/facebook-dark.svg") no-repeat scroll 50% 50% rgba(0, 0, 0, 0);
+        }
+        .icon-social.icon-twitter-dark {
+          background: url("/static/images/template/twitter-dark.svg") no-repeat scroll 50% 50% rgba(0, 0, 0, 0);
+        }
+      }
+    }
+  }
 }
 
 footer {
-    color: #333333;
-    padding: 25px 0px 100px 0px;
-    background: url('/static/images/template/msd_logo.png') no-repeat;
-    background-position: center 25px;
+  color: #333333;
+  padding: 25px 0px 100px 0px;
+  background: url('/static/images/template/msd_logo.png') no-repeat;
+  background-position: center 25px;
+  margin-top: 25px;
 
-    a {
-        color: #ababab;
-    }
-    a:hover {
-        color: #ffffff;
-    }
+  a {
+    color: #ababab;
+  }
+  a:hover {
+    color: #ffffff;
+  }
 
-    .msd-logo {
-        margin-right: 20px;
-    }
+  .msd-logo {
+    margin-right: 20px;
+  }
 
-    .section1 {
-        min-height: 115px;
-        padding-right: 0px;
+  .section1 {
+    min-height: 115px;
+    padding-right: 0px;
 
-        .content {
-            margin-right: 65px;
-            margin-top: 5px;
-        }
+    .content {
+      margin-right: 65px;
+      margin-top: 5px;
     }
+  }
 
-    .section2 .content {
-        margin-left: 50px;
-        margin-top: 5px;
-    }
+  .section2 .content {
+    margin-left: 50px;
+    margin-top: 5px;
+  }
 }
 
 /* Homepage */
 #homepage {
-    section {
-        padding: 60px 25px;
-        font-size: 24px;
-        line-height: 28px;
+  section {
+    padding: 60px 25px;
+    font-size: 24px;
+    line-height: 28px;
 
-        h2.title-large {
-            text-align: center;
-            margin-bottom: 35px;
+    h2.title-large {
+      text-align: center;
+      margin-bottom: 35px;
 
-            .glyphicon {
-                top: 10px;
-            }
+      .glyphicon {
+        top: 10px;
+      }
+    }
+
+    h3 {
+      margin-bottom: 25px;
+    }
+
+    p {
+      margin-bottom: 35px;
+    }
+  }
+
+  #news {
+    padding-bottom: 25px;
+
+    #view-news-article .modal-content {
+      width: 700px;
+      margin-left: -50px;
+
+      .post-image {
+        text-align: center;
+        margin-bottom: 25px;
+      }
+    }
+
+    #featured-news-post {
+      position: relative;
+
+      .title-bar {
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 15px 15px 10px 15px;
+        position: absolute;
+        bottom: 30px;
+        right: 0px;
+        -moz-box-shadow: 0px 1px 3px 0px #ffffff;
+        -webkit-box-shadow: 0px 1px 3px 0px #ffffff;
+        box-shadow: 0px 1px 3px 0px #ffffff;
+
+        a {
+          text-decoration: none;
+          color: #ffffff;
         }
 
-        h3 {
-            margin-bottom: 25px;
+        .title {
+          color: #ffffff;
+          font-size: 1.9em;
+          margin-bottom: 3px;
         }
 
-        p {
-            margin-bottom: 35px;
+        .teaser {
+          color: #ffffff;
+          font-size: 1em;
+        }
         }
     }
 
-    #news {
-        padding-bottom: 25px;
+    #news-list {
+      h3 {
+        font-size: 15px;
+        line-height: 15px;
+        margin-bottom: 3px;
+      }
 
-        #view-news-article .modal-content {
-            width: 700px;
-            margin-left: -50px;
-
-            .post-image {
-                text-align: center;
-                margin-bottom: 25px;
-            }
-        }
-
-        #featured-news-post {
-            position: relative;
-
-            .title-bar {
-                background-color: rgba(0, 0, 0, 0.7);
-                padding: 15px 15px 10px 15px;
-                position: absolute;
-                bottom: 30px;
-                right: 0px;
-                -moz-box-shadow: 0px 1px 3px 0px #ffffff;
-                -webkit-box-shadow: 0px 1px 3px 0px #ffffff;
-                box-shadow: 0px 1px 3px 0px #ffffff;
-
-                a {
-                    text-decoration: none;
-                    color: #ffffff;
-                }
-
-                .title {
-                    color: #ffffff;
-                    font-size: 1.9em;
-                    margin-bottom: 3px;
-                }
-
-                .teaser {
-                    color: #ffffff;
-                    font-size: 1em;
-                }
-              }
-        }
-
-        #news-list {
-            h3 {
-                font-size: 15px;
-                line-height: 15px;
-                margin-bottom: 3px;
-            }
-
-            .row {
-                min-height: 80px;
-            }
-        }
+      .row {
+        min-height: 80px;
+      }
     }
+  }
 
-    #membership {
-        .support-statements {
-            p {
-                font-size: 16px;
-                line-height: 22px;
-            }
-        }
+  #membership {
+    .support-statements {
+      p {
+        font-size: 16px;
+        line-height: 22px;
+      }
     }
+  }
 
-    #volunteer {
-        h2.title-large {
-            color: #cc0000;
-        }
+  #volunteer {
+    h2.title-large {
+      color: #cc0000;
     }
+  }
 
-    #donate {
+  #donate {
 
+  }
+
+  #executive-board {
+    .list {
+      .title {
+        font-size: 30px;
+        line-height: 40px;
+        text-align: right;
+        font-weight: normal;
+      }
+
+      .name {
+        font-size: 30px;
+        line-height: 40px;
+        text-transform: uppercase;
+        font-weight: bold;
+      }
     }
-
-    #executive-board {
-        .list {
-            .title {
-                font-size: 30px;
-                line-height: 40px;
-                text-align: right;
-                font-weight: normal;
-            }
-
-            .name {
-                font-size: 30px;
-                line-height: 40px;
-                text-transform: uppercase;
-                font-weight: bold;
-            }
-        }
-    }
+  }
 }

@@ -1,0 +1,31 @@
+{% extends 'layouts/sidebar_right.html' %}
+
+{% block sidebar %}
+
+{% endblock sidebar %}
+
+{% block content %}
+  <div id="member-login">
+    <h1>Login To Meadows PTA</h1>
+    <hr />
+
+    <form class="form-horizontal" action="/login/" method="post">
+      {% csrf_token %}
+
+      {% for field in form %}
+        <div class="form-group">
+          <label for="{{ form.first_name.auto_id }}" class="col-sm-3">{{ field.label }}</label>
+          <div class="col-sm-9">
+            {{ field }}
+            {{ field.errors }}
+          </div>
+        </div>
+      {% endfor %}
+
+      <hr />
+      <div class="pull-right">
+        <input type="submit" class="btn btn-success" value="Login">
+      </div>
+    </form>
+  </div>
+{% endblock content %}

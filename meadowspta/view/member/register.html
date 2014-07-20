@@ -1,0 +1,33 @@
+{% extends 'layouts/sidebar_right.html' %}
+
+{% block sidebar %}
+  <p class="well">
+    New this year your basic PTA Membership is FREE (a $10 value) - In addition, for each parent that joins, $4.50 of that membership is paid the National PTA and State PTA dues for educational advocacy for our children, so please consider making a donation to cover the expenses needed to fully support and supplement your child’s education with the tools, events and programs that Meadows PTA wants to provide.
+  </p>
+{% endblock sidebar %}
+
+{% block content %}
+  <div id="member-register">
+    <h1>Register To Become A PTA Member</h1>
+    <hr />
+
+    <form class="form-horizontal" action="/register/" method="post">
+      {% csrf_token %}
+
+      {% for field in form %}
+        <div class="form-group">
+          <label for="{{ form.first_name.auto_id }}" class="col-sm-3">{{ field.label }}</label>
+          <div class="col-sm-9">
+            {{ field }}
+            {{ field.errors }}
+          </div>
+        </div>
+      {% endfor %}
+
+      <hr />
+      <div class="pull-right">
+        <input type="submit" class="btn btn-success" value="Register">
+      </div>
+    </form>
+  </div>
+{% endblock content %}

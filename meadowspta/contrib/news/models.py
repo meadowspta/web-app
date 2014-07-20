@@ -6,6 +6,9 @@ from meadowspta.core.models import *
 from meadowspta.contrib.system.models import sysvar
 
 class News(ContentModel):
+    class Meta:
+        verbose_name_plural = 'news'
+
     teaser = models.CharField(max_length=255)
     body = models.TextField()
     image = models.ImageField(upload_to='images/news/posts')

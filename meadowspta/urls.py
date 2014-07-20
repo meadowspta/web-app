@@ -15,4 +15,7 @@ urlpatterns = patterns('',
     (r'^$', 'meadowspta.contrib.homepage.views.view'),
     url(r'^news/', include('meadowspta.contrib.news.urls')),
     url(r'^auction/', include('meadowspta.contrib.auction.urls')),
+    url(r'^register/$', 'meadowspta.contrib.member.views.register'),
+    url(r'^register/success/$', 'meadowspta.contrib.member.views.success'),
+    url(r'^login/$', 'meadowspta.contrib.member.views.login'),
 )
