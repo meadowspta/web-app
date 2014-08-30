@@ -8,47 +8,39 @@ def view(request):
     board = [
         {
             'title': 'President',
-            'name': 'Woody Baltgalvis',
+            'name': 'Leola Meiners',
         },
         {
-            'title': 'Vice President',
-            'name': 'Fadia Alaraj',
+            'title': 'VP of Fundraising',
+            'name': 'Vivian Chu',
         },
         {
-            'title': 'Treasurer',
+            'title': 'VP of Communications',
+            'name': 'Lia Hanson',
+        },
+        {
+            'title': 'VP of Membership',
+            'name': 'Chris Mezzetta',
+        },
+        {
+            'title': 'Treasurer/Financial Officer',
             'name': 'Steven Cashiola',
+        },
+        {
+            'title': 'Financial Auditor',
+            'name': 'Doris Lim',
         },
         {
             'title': 'Secretary',
             'name': 'Heather Mezzetta',
         },
         {
-            'title': 'Financial Secretary',
-            'name': 'Pam Suboc',
-        },
-        {
-            'title': 'Auditor',
-            'name': '(Vacant)',
-        },
-        {
-            'title': 'Parliamentarian',
-            'name': 'Leola Meiners',
-        },
-        {
-            'title': 'Volunteer Coordinator',
-            'name': 'Inah Marcelo',
-        },
-        {
-            'title': 'Volunteer Coordinator',
-            'name': 'Larry Wong',
-        },
-        {
-            'title': 'At-Large',
+            'title': 'Parlimentarian',
             'name': 'Craig Yonemura',
         },
         {
-            'title': 'After School Arts Program',
-            'name': 'Heather Butts'
+            'title': 'Historian',
+            'name': 'Jill Hinck',
         },
     ]
 
