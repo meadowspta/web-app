@@ -11,36 +11,40 @@ def view(request):
             'name': 'Leola Meiners',
         },
         {
-            'title': 'VP of Fundraising',
-            'name': 'Vivian Chu',
+            'title': 'VP of Membership',
+            'name': 'Chris Mezzetta',
+        },
+        {
+            'title': 'VP of After School Activities',
+            'name': 'Heather Butts',
         },
         {
             'title': 'VP of Communications',
             'name': 'Lia Hanson',
         },
         {
-            'title': 'VP of Membership',
-            'name': 'Chris Mezzetta',
-        },
-        {
-            'title': 'Treasurer/Financial Officer',
-            'name': 'Steven Cashiola',
-        },
-        {
-            'title': 'Financial Auditor',
-            'name': 'Doris Lim',
+            'title': 'VP of Fundraising',
+            'name': 'Vivian Chu',
         },
         {
             'title': 'Secretary',
             'name': 'Heather Mezzetta',
         },
         {
-            'title': 'Parlimentarian',
-            'name': 'Craig Yonemura',
+            'title': 'Treasurer',
+            'name': 'Steven Cashiola',
         },
         {
-            'title': 'Historian',
-            'name': 'Jill Hinck',
+            'title': 'Volunteer Coordinator',
+            'name': 'Larry Wong',
+        },
+        {
+            'title': 'Auditor',
+            'name': 'Doris Lim',
+        },
+        {
+            'title': 'Parliamentarian',
+            'name': 'Craig Yonemura',
         },
     ]
 
