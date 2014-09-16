@@ -8,14 +8,14 @@ from meadowspta.contrib.news.models import News
 from meadowspta.contrib.system.models import sysvar
 
 def list(request):
-    news_items = News.objects.all().order_by('-publish_date')
+    news_items = News.objects.all().filter(is_published=1).order_by('-publish_date')
     return render_to_response('news/list.html', dict(news_items=news_items), context_instance=RequestContext(request))
 
 def view(request, slug):
     news_item = News.objects.get(slug=slug)
 
     # Get other recent news.
-    other_news = News.objects.all().exclude(slug=slug).order_by('-publish_date')[:7]
+    other_news = News.objects.all().filter(is_published=1).exclude(slug=slug).order_by('-publish_date')[:7]
 
     meta = Meta(
         title=news_item.title,
