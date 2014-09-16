@@ -1,38 +1,60 @@
 {% extends 'layouts/sidebar_right.html' %}
 
 {% block sidebar %}
-    {% if user.is_authenticated %}
-        {% if news_item.is_featured %}
-            <a href="#" class="btn btn-block btn-success" disabled="disabled">This post is featured</a>
-        {% else %}
-            <a href="/news/feature/{{ news_item.id }}/" class="btn btn-block btn-success">Feature This Post</a>
-        {% endif %}
-        <br />
+  {% if user.is_authenticated %}
+    {% if news_item.is_featured %}
+      <a href="#" class="btn btn-block btn-success" disabled="disabled">This post is featured</a>
+    {% else %}
+      <a href="/news/feature/{{ news_item.id }}/" class="btn btn-block btn-success">Feature This Post</a>
     {% endif %}
+    <br />
+  {% endif %}
 
-    {% include 'blocks/facebook_likes.html' %}
-    {% include 'blocks/google_calendar.html' %}
+  <div id="other-news-list">
+    <h2 class="chrome">Other News</h2>
+    <ul class="list">
+      {% for news_item in other_news %}
+        <li class="list-item row">
+          <div class="col-lg-4 col-md-4 col-xs-4">
+            <a href="{{ news_item.get_absolute_url }}">
+              <img src="{{ news_item.image_thumbnail.url }}" class="img-responsive">
+            </a>
+          </div>
+          <div class="col-lg-8 col-md-8 col-xs-8">
+            <a href="{{ news_item.get_absolute_url }}">{{ news_item.title }}</a>
+            <div class="small">
+              <div>{{ news_item.teaser }}</div>
+              <div class="quiet"><em>{{ news_item.publish_date|date:"F jS, Y" }}</em></div>
+            </div>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="row">
+    <div class="text-center"><a href="/news/" class="btn btn-success btn-xs">Read More News &raquo;</a></div>
+  </div>
 {% endblock sidebar %}
 
 {% block content %}
-    <div id="news-page">
-        <h1 class="title">{{ news_item.title }}</h1>
-        <h3 class="quiet">{{ news_item.teaser }}</h3>
-        <div><img src="{{ news_item.image_large.url }}" class="img-responsive"></div>
-        <br />
+  <div id="news-page">
+    <h1 class="title">{{ news_item.title }}</h1>
+    <h3 class="quiet">{{ news_item.teaser }}</h3>
+    <div><img src="{{ news_item.image_large.url }}" class="img-responsive"></div>
+    <br />
 
-        <div class="row">
-            <div class="col-md-1 col-sm-1 col-xs-2">
-                <div class="addthis_toolbox addthis_floating_style addthis_32x32_style" style="position: relative">
-                    <a class="addthis_button_facebook"></a>
-                    <a class="addthis_button_twitter"></a>
-                    <a class="addthis_button_pinterest_share"></a>
-                    <a class="addthis_button_google_plusone_share"></a>
-                </div>
-            </div>
-            <div class="col-md-11 col-sm-11 col-xs-10">
-                {{ news_item.body|safe }}
-            </div>
+    <div class="row">
+      <div class="col-md-1 col-sm-1 col-xs-2">
+        <div class="addthis_toolbox addthis_floating_style addthis_32x32_style" style="position: relative">
+          <a class="addthis_button_facebook"></a>
+          <a class="addthis_button_twitter"></a>
+          <a class="addthis_button_pinterest_share"></a>
+          <a class="addthis_button_google_plusone_share"></a>
         </div>
+      </div>
+      <div class="col-md-11 col-sm-11 col-xs-10">
+        {{ news_item.body|safe }}
+      </div>
     </div>
+  </div>
 {% endblock content %}

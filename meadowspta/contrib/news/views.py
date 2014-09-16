@@ -14,13 +14,22 @@ def list(request):
 def view(request, slug):
     news_item = News.objects.get(slug=slug)
 
+    # Get other recent news.
+    other_news = News.objects.all().exclude(slug=slug).order_by('-publish_date')[:7]
+
     meta = Meta(
         title=news_item.title,
         image=news_item.image_large.url,
         description=news_item.teaser,
     )
 
-    return render_to_response('news/view.html', {'news_item': news_item, 'meta': meta}, context_instance=RequestContext(request))
+    payload = {
+        'news_item': news_item,
+        'other_news': other_news,
+        'meta': meta,
+    }
+
+    return render_to_response('news/view.html', payload, context_instance=RequestContext(request))
 
 def get(request, id):
     news = News.objects.get(id=id)

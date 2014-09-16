@@ -28,11 +28,18 @@
                   </div>
                   <div class="col-md-8 col-sm-8 col-xs-8">
                     <a href="{{ news_item.get_absolute_url }}"><h3>{{ news_item.title }}</h3></a>
-                    <p class="small">{{ news_item.teaser }}</p>
+                    <p class="small">
+                      {{ news_item.teaser }}<br />
+                      <span class="small quiet"><em>{{ news_item.publish_date|date:"F jS, Y" }}</em></span>
+                    </p>
                   </div>
                 </div>
               </div>
             {% endfor %}
+          </div>
+          <div class="row">
+            <hr />
+            <div class="text-center"><a href="/news/" class="btn btn-success btn-xs">Read More News &raquo;</a></div>
           </div>
         </div>
         <div class="col-md-4 col-sm-4">
