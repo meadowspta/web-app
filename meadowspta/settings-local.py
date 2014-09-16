@@ -17,7 +17,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'meadowspta',                      # Or path to database file if using sqlite3.
+        'NAME': 'meadowspta_140905',                      # Or path to database file if using sqlite3.
         'USER': 'meadowspta',                      # Not used with sqlite3.
         'PASSWORD': 'meadowspta',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -139,7 +139,9 @@ INSTALLED_APPS = (
     'meadowspta.contrib.homepage',
     'meadowspta.contrib.news',
     'meadowspta.contrib.member',
-    'meadowspta.contrib.auction',
+    # 'meadowspta.contrib.auction',
+    'meadowspta.contrib.wishlist',
+    'meadowspta.contrib.api',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -171,9 +173,15 @@ LOGGING = {
     }
 }
 
+# User Auth
+# AUTH_USER_MODEL = 'meadowspta.contrib.member.User'
+
 # Site settings.
 GOOGLE_ANALYTICS_ID = 'UA-36598051-2'
 MAP_URL = 'https://www.google.com/maps/preview?authuser=0#!q=Meadows+Elementary+School%2C+Millbrae%2C+CA&data=!4m10!1m9!4m8!1m3!1d3136!2d-122.419435!3d37.6019973!3m2!1i1436!2i762!4f13.1'
+AMAZON_ACCESS_KEY_ID = '11EMXM1MGZR6D3CKRK02'
+AMAZON_SECRET_KEY = 'yL3RZBWZQKYs28GcSFyT/Aalic2HOTWLzNqBgsVK'
+AMAZON_ASSOCIATE_ID = 'guplis-20'
 
 # Meta settings.
 META_SITE_PROTOCOL = 'http'

@@ -7,6 +7,7 @@ $light-grey: #dcdcdc;
 
 body {
   font-family: 'AvenirNextLTW01-Regular',Helvetica,Arial,sans-serif;
+  color: #444444;
   /*font-family: 'Varela Round', sans-serif;*/
 }
 body.admin-bar {
@@ -47,28 +48,75 @@ hr {
 }
 
 /* Lists */
-ul.list-no-style, ul.list {
+ul.list-no-style, ul.list, ul.list-grid, ul.form-select-list {
   margin: 0px;
   padding: 0px;
   list-style: none;
   display: inline-block;
   width: 100%;
 
-  li {
-    clear: both;
+  li.list-item, div.list-item {
     float: left;
     width: 100%;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #dcdcdc;
+
+    .last {
+      border-bottom: 0px;
+      margin-bottom: 0px;
+      padding-bottom: 0px;
+    }
   }
 }
-ul.list li.list-item, div.list-item {
-  margin-bottom: 10px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #dcdcdc;
+
+ul.list-grid {
+  li.list-item {
+    border: 1px solid #dcdcdc;
+    width: 144px;
+    height: 144px;
+    margin-right: 10px;
+    display: inline-block;
+    overflow: hidden;
+
+    a {
+      display: inline-block;
+      width: 100%;
+      height: auto;
+
+      .img-thumbnail {
+        border: none;
+      }
+    }
+  }
+
+  li.list-item.list-item-small {
+    width: 85px;
+    height: 85px;
+  }
 }
-.list-item.last {
-  border-bottom: 0px;
-  margin-bottom: 0px;
-  padding-bottom: 0px;
+
+ul.form-select-list {
+  padding: 5px;
+  border: 1px solid $light-grey;
+  border-radius: 5px;
+  box-shadow: $light-grey 2px 3px 5px;
+  background: #ffffff;
+  position: absolute;
+  z-index: 99999;
+  max-height: 200px;
+  overflow: scroll;
+
+  li {
+    padding: 5px;
+    border-bottom: 1px solid $light-grey;
+  }
+  li:hover {
+    background: $light-grey;
+  }
+  li:last-child {
+    border-bottom: 0px;
+  }
 }
 
 /* Forms */
@@ -101,9 +149,11 @@ textarea {
   height: 350px;
 }
 input[type='text'], input[type='password'], input[type='file'] {
+  /*
   font-size: 2.0em;
   height: 35px;
   padding: 5px 10px 5px 10px;
+  */
 }
 input[type='text'].regular {
   font-size: 1.0em;
@@ -240,6 +290,22 @@ div.first {
   margin-left: 0;
 }
 
+.modal-header {
+  background: $meadows-blue;
+  color: #ffffff;
+  border-radius: 5px 5px 0px 0px;
+}
+
 .form-inline input[type='text'] {
   margin-bottom: 10px;
+}
+
+/* Loader */
+.loader {
+
+}
+
+/* Angular JS */
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
 }

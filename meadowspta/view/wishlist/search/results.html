@@ -1,0 +1,28 @@
+{% extends 'layouts/partials/sidebar_right.html' %}
+
+{% block content %}
+  <div id="wishlist-search">
+    {% include 'wishlist/search/form.html' %}
+    <hr />
+
+    <div>
+      <div class="loader" ng-show="showSearchLoader"><span>Searching on Amazon.com ...</span></div>
+
+      <ul class="list">
+        <li class="row list-item" ng-repeat="product in products">
+          <div class="col-md-4 col-lg-4 text-center">
+            <a href="/wishlist/product/{[ product.asin ]}"><img ng-src="{[ product.medium_image_url ]}" class="img-responsive"></a>
+          </div>
+          <div class="col-md-8 col-lg-8">
+            <a href="/wishlist/product/{[ product.asin ]}"><h4>{[ product.title ]}</h4></a>
+            <strong>List Price:</strong> <strike class="quiet">${[ product.list_price.0 ]}</strike><br />
+            <strong>Amazon Price:</strong> ${[ product.price_and_currency.0 ]}<br />
+            <br />
+
+            <p>{[ product.editorial_review | stripTags | prune:150 ]}</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+{% endblock content %}

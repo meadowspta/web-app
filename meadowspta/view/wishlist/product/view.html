@@ -1,0 +1,55 @@
+{% extends 'layouts/partials/sidebar_right.html' %}
+
+{% block sidebar %}
+  <div class="well" ng-cloak>
+    Add the following code to the notes when you checkout:<br />
+
+    <div class="text-center wishlist-item-code"></div>
+  </div>
+
+  <div ng-controller="SimilarProductsController">
+    <h2 class="chrome">Related Products</h2>
+    <ul class="list-grid">
+      <li class="list-item list-item-small text-center" ng-repeat="product in products" ng-if="$index < 9">
+        <a href="/wishlist/product/{[ product.asin ]}" target="_self" data-toggle="popover" data-placement="left" data-html="true" title="{[ product.title ]}" data-content="<strong>List Price:</strong> <strike class='quiet'>${[ product.list_price.0 ]}</strike><br /><strong>Amazon Price:</strong> ${[ product.price_and_currency.0 ]}<br />">
+          <img src="{[ product.small_image_url ]}" class="img-responsive img-thumbnail">
+        </a>
+      </li>
+    </ul>
+  </div>
+{% endblock sidebar %}
+
+{% block content %}
+  <div id="wishlist-product-view" ng-cloak>
+    {% include 'wishlist/search/form.html' %}
+    <hr />
+
+    <h1>{[ product.title ]}</h1>
+
+    <div class="row">
+      <div class="col-md-6 col-lg-6 text-center">
+        <img src="{[ product.large_image_url ]}" class="img-responsive">
+      </div>
+      <div class="col-md-6 col-lg-6">
+        <div class="well">
+          <strong>List Price:</strong> <strike class="quiet">${[ product.list_price.0 ]}</strike><br />
+          <strong>Amazon Price:</strong> ${[ product.price_and_currency.0 ]}<br />
+          <br />
+
+          <div>
+            <button class="btn btn-success btn-block" data-toggle="modal" data-target="#addToWishlistForm">Add Item To Wishlist</button>
+            <a href="{[ product.offer_url ]}" target="_blank" class="btn btn-default btn-block">View on Amazon.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
+
+    <div>
+      <h2 class="chrome">Description</h2>
+      <p ng-bind-html="product.editorial_review"></p>
+    </div>
+
+    {% include 'wishlist/add.html' %}
+  </div>
+{% endblock content %}

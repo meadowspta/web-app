@@ -1,16 +1,16 @@
 {% extends 'template.html' %}
 
 {% block template %}
-    <div class="container">
-        <div class="row">
-            <div id="main" class="col-md-8 col-sm-8">
-                {% block content %}
-                {% endblock content %}
-            </div>
-            <div id="sidebar" class="col-md-4 col-sm-4">
-                {% block sidebar %}
-                {% endblock sidebar %}
-            </div>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div id="main" class="col-lg-8 col-md-8 col-sm-8">
+        {% block content %}
+        {% endblock content %}
+      </div>
+      <div id="sidebar" class="col-lg-4 col-md-4 col-sm-4">
+        {% block sidebar %}
+        {% endblock sidebar %}
+      </div>
     </div>
+  </div>
 {% endblock template %}

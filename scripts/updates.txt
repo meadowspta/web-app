@@ -1,0 +1,20 @@
+DROP TABLE wishlist_list;
+
+ALTER TABLE auth_group ENGINE InnoDB, COLLATE utf8_general_ci;
+ALTER TABLE auth_group_permissions ENGINE InnoDB, COLLATE utf8_general_ci;
+ALTER TABLE auth_permission ENGINE InnoDB, COLLATE utf8_general_ci;
+ALTER TABLE auth_user ENGINE InnoDB, COLLATE utf8_general_ci;
+ALTER TABLE auth_user_groups ENGINE InnoDB, COLLATE utf8_general_ci;
+ALTER TABLE auth_user_user_permissions ENGINE InnoDB, COLLATE utf8_general_ci;
+ALTER TABLE django_admin_log ENGINE InnoDB, COLLATE utf8_general_ci;
+ALTER TABLE django_content_type ENGINE InnoDB, COLLATE utf8_general_ci;
+ALTER TABLE django_session ENGINE InnoDB, COLLATE utf8_general_ci;
+ALTER TABLE django_site ENGINE InnoDB, COLLATE utf8_general_ci;
+ALTER TABLE system_var ENGINE InnoDB, COLLATE utf8_general_ci;
+ALTER TABLE news_news ENGINE InnoDB, COLLATE utf8_general_ci;
+ALTER TABLE auction_bid ENGINE InnoDB, COLLATE utf8_general_ci;
+ALTER TABLE auction_donor ENGINE InnoDB, COLLATE utf8_general_ci;
+ALTER TABLE auction_item ENGINE InnoDB, COLLATE utf8_general_ci;
+
+ALTER TABLE news_news ADD create_date DATETIME NOT NULL AFTER publish_date;
+UPDATE news_news SET create_date = publish_date;
