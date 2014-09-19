@@ -50,7 +50,7 @@ def view(request):
         },
     ]
 
-    news = News.objects.all().exclude(id=int(sysvar['news_featured_post'])).order_by('-publish_date')[:4]
+    news = News.objects.all().filter(is_published=1).exclude(id=int(sysvar['news_featured_post'])).order_by('-publish_date')[:4]
     featured_news_post = News.objects.get(id=int(sysvar['news_featured_post']))
     upcoming_events = Event.get_upcoming_events({ 'limit': 5 })
 
