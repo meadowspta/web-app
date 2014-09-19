@@ -230,6 +230,7 @@ footer {
 /* Events */
 .event-calendar-date {
   border: 2px solid $primary-color;
+  border-radius: 4px;
 
   .day, .month, .date {
     text-align: center;

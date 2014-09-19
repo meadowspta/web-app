@@ -532,42 +532,43 @@ footer .section2 .content {
 /* line 231, ../sass/meadows.scss */
 .event-calendar-date {
   border: 2px solid #003965;
+  border-radius: 4px;
 }
-/* line 234, ../sass/meadows.scss */
+/* line 235, ../sass/meadows.scss */
 .event-calendar-date .day, .event-calendar-date .month, .event-calendar-date .date {
   text-align: center;
   font-weight: bold;
 }
-/* line 239, ../sass/meadows.scss */
+/* line 240, ../sass/meadows.scss */
 .event-calendar-date .month {
   font-size: 20px;
   background: #003965;
   color: #ffffff;
   padding: 5px;
 }
-/* line 246, ../sass/meadows.scss */
+/* line 247, ../sass/meadows.scss */
 .event-calendar-date .date {
   font-size: 55px;
   line-height: 40px;
   padding: 10px 5px 0px 5px;
 }
-/* line 252, ../sass/meadows.scss */
+/* line 253, ../sass/meadows.scss */
 .event-calendar-date .day {
   color: #666666;
 }
 
-/* line 258, ../sass/meadows.scss */
+/* line 259, ../sass/meadows.scss */
 .event-calendar-date-small .month {
   font-size: 11px;
   padding: 3px;
 }
-/* line 263, ../sass/meadows.scss */
+/* line 264, ../sass/meadows.scss */
 .event-calendar-date-small .date {
   font-size: 25px;
   line-height: 25px;
   padding: 0px;
 }
-/* line 269, ../sass/meadows.scss */
+/* line 270, ../sass/meadows.scss */
 .event-calendar-date-small .day {
   font-size: 10px;
   padding: 0px;
