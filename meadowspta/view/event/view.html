@@ -1,0 +1,35 @@
+{% extends 'layouts/sidebar_right.html' %}
+
+{% block sidebar %}
+  {% include 'blocks/facebook_likes.html' %}
+  {% include 'blocks/events.html' %}
+{% endblock sidebar %}
+
+{% block content %}
+  <div id="event-view" class="row">
+    <div class="col-md-3">
+      <div class="event-calendar-date">
+        <div class="month">{{ event.start_date|date:'F' }}</div>
+        <div class="date">{{ event.start_date|date:'j' }}</div>
+        <div class="day">{{ event.start_date|date:'l' }}</div>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="well">
+        <h1>{{ event.title }}</h1>
+        <div>
+          <strong>When:</strong> {{ event.get_date_range }}
+        </div>
+        {% if event.location %}
+          <div>
+            <strong>Where:</strong> {{ event.location }}
+          </div>
+        {% endif %}
+      </div>
+
+      <p>
+        {{ event.description|safe }}
+      </p>
+    </div>
+  </div>
+{% endblock content %}

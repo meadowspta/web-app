@@ -1,0 +1,24 @@
+{% if upcoming_events|length > 0 %}
+  <div id="events-list-block">
+    <h2 class="chrome">Upcoming Events</h2>
+    <ul class="list">
+      {% for event in upcoming_events %}
+        <li class="list-item">
+          <div class="col-lg-4 col-md-4 col-sm-4">
+            <div class="event-calendar-date event-calendar-date-small">
+              <div class="month">{{ event.start_date|date:'F' }}</div>
+              <div class="date">{{ event.start_date|date:'j' }}</div>
+              <div class="day">{{ event.start_date|date:'l' }}</div>
+            </div>
+          </div>
+          <div class="col-lg-8 col-md-8 col-sm-8">
+            <h4><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></h4>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+    <div>
+      <div class="text-center"><a href="/events/" class="btn btn-success btn-xs">See All Events &raquo;</a></div>
+    </div>
+  </div>
+{% endif %}

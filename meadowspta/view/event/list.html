@@ -1,0 +1,30 @@
+{% extends 'layouts/sidebar_right.html' %}
+
+{% block sidebar %}
+  {% include 'blocks/facebook_likes.html' %}
+{% endblock sidebar %}
+
+{% block content %}
+  <div id="event-list">
+    <ul class="list">
+      {% for event in events %}
+        <li class="list-item row">
+          <div class="col-md-3">
+            <div class="event-calendar-date">
+              <div class="month">{{ event.start_date|date:'F' }}</div>
+              <div class="date">{{ event.start_date|date:'j' }}</div>
+              <div class="day">{{ event.start_date|date:'l' }}</div>
+            </div>
+          </div>
+          <div class="col-md-9">
+            <a href="{{ event.get_absolute_url }}"><h3>{{ event.title }}</h3></a>
+            <p>
+              {{ event.description|striptags|truncatewords:35 }}
+              <a href="{{ event.get_absolute_url }}">read more &raquo;</a>
+            </p>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock content %}

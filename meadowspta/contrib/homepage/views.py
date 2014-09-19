@@ -3,6 +3,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from meadowspta.contrib.news.models import News
 from meadowspta.contrib.system.models import sysvar
+from meadowspta.contrib.event.models import Event
+
 
 def view(request):
     board = [
@@ -50,10 +52,12 @@ def view(request):
 
     news = News.objects.all().exclude(id=int(sysvar['news_featured_post'])).order_by('-publish_date')[:4]
     featured_news_post = News.objects.get(id=int(sysvar['news_featured_post']))
+    upcoming_events = Event.get_upcoming_events({ 'limit': 5 })
 
     payload = dict(
         board=board,
         news=news,
+        upcoming_events=upcoming_events,
         featured_news_post=featured_news_post
     )
 
