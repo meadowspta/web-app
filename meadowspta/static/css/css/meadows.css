@@ -1,63 +1,63 @@
-/* line 8, ../sass/base.scss */
+/* line 12, ../sass/base.scss */
 body {
   font-family: 'AvenirNextLTW01-Regular',Helvetica,Arial,sans-serif;
   /*font-family: 'Varela Round', sans-serif;*/
 }
 
-/* line 12, ../sass/base.scss */
+/* line 16, ../sass/base.scss */
 body.admin-bar {
   margin-top: 39px;
 }
 
-/* line 16, ../sass/base.scss */
+/* line 20, ../sass/base.scss */
 h1, h2, h3, h4, h5, h6 {
   margin: 0px;
   margin-bottom: .5em;
 }
 
-/* line 20, ../sass/base.scss */
+/* line 24, ../sass/base.scss */
 h1.title, h2.title, h3.title, h4.title, h5.title, h6.title {
   padding: 0px 0px 0px 0px;
   margin: 0px 0px 0px 0px;
 }
 
-/* line 25, ../sass/base.scss */
+/* line 29, ../sass/base.scss */
 .title-large {
   text-transform: uppercase;
 }
 
-/* line 28, ../sass/base.scss */
+/* line 32, ../sass/base.scss */
 h2.title-large {
   font-size: 60px;
 }
 
-/* line 31, ../sass/base.scss */
+/* line 35, ../sass/base.scss */
 h3.title-large {
   font-size: 40px;
 }
 
-/* line 34, ../sass/base.scss */
+/* line 38, ../sass/base.scss */
 h4.title-large {
   font-size: 30px;
 }
 
-/* line 38, ../sass/base.scss */
+/* line 42, ../sass/base.scss */
 a {
   color: #aa0000;
 }
 
-/* line 41, ../sass/base.scss */
+/* line 45, ../sass/base.scss */
 a, a:visited, a:hover {
   text-decoration: none;
 }
 
-/* line 45, ../sass/base.scss */
+/* line 49, ../sass/base.scss */
 hr {
   margin: 10px 0px 10px 0px;
 }
 
 /* Lists */
-/* line 50, ../sass/base.scss */
+/* line 54, ../sass/base.scss */
 ul.list-no-style, ul.list {
   margin: 0px;
   padding: 0px;
@@ -65,21 +65,21 @@ ul.list-no-style, ul.list {
   display: inline-block;
   width: 100%;
 }
-/* line 57, ../sass/base.scss */
+/* line 61, ../sass/base.scss */
 ul.list-no-style li, ul.list li {
   clear: both;
   float: left;
   width: 100%;
 }
 
-/* line 63, ../sass/base.scss */
+/* line 67, ../sass/base.scss */
 ul.list li.list-item, div.list-item {
   margin-bottom: 10px;
   padding-bottom: 10px;
   border-bottom: 1px solid #dcdcdc;
 }
 
-/* line 68, ../sass/base.scss */
+/* line 72, ../sass/base.scss */
 .list-item.last {
   border-bottom: 0px;
   margin-bottom: 0px;
@@ -87,94 +87,94 @@ ul.list li.list-item, div.list-item {
 }
 
 /* Forms */
-/* line 76, ../sass/base.scss */
+/* line 80, ../sass/base.scss */
 form label {
   color: #555555;
   font-size: 15px;
   font-weight: bold;
 }
-/* line 82, ../sass/base.scss */
+/* line 86, ../sass/base.scss */
 form ul.errorlist {
   padding: 0px;
   color: #cc0000;
 }
-/* line 86, ../sass/base.scss */
+/* line 90, ../sass/base.scss */
 form ul.errorlist li {
   list-style: none;
 }
 
-/* line 92, ../sass/base.scss */
+/* line 96, ../sass/base.scss */
 label {
   font-weight: normal;
   font-size: 1.3em;
 }
 
-/* line 99, ../sass/base.scss */
+/* line 103, ../sass/base.scss */
 textarea {
   width: 600px;
   height: 350px;
 }
 
-/* line 103, ../sass/base.scss */
+/* line 107, ../sass/base.scss */
 input[type='text'], input[type='password'], input[type='file'] {
   font-size: 2.0em;
   height: 35px;
   padding: 5px 10px 5px 10px;
 }
 
-/* line 108, ../sass/base.scss */
+/* line 112, ../sass/base.scss */
 input[type='text'].regular {
   font-size: 1.0em;
   padding: 0px 5px 0px 5px;
   height: 25px;
 }
 
-/* line 113, ../sass/base.scss */
+/* line 117, ../sass/base.scss */
 input[type='text'].micro {
   font-size: 1.0em;
   padding: 0px 5px 0px 5px;
   height: 25px;
 }
 
-/* line 118, ../sass/base.scss */
+/* line 122, ../sass/base.scss */
 input[type='checkbox'] {
   float: left;
 }
 
-/* line 121, ../sass/base.scss */
+/* line 125, ../sass/base.scss */
 .form-list-label {
   font-size: .9em;
   margin: 0px 0px 0px 10px;
   float: left;
 }
 
-/* line 126, ../sass/base.scss */
+/* line 130, ../sass/base.scss */
 input.fluid {
   width: 100% !important;
 }
 
-/* line 130, ../sass/base.scss */
+/* line 134, ../sass/base.scss */
 input.large {
   width: 600px !important;
 }
 
-/* line 133, ../sass/base.scss */
+/* line 137, ../sass/base.scss */
 input.medium {
   width: 400px !important;
 }
 
-/* line 136, ../sass/base.scss */
+/* line 140, ../sass/base.scss */
 input.small {
   width: 200px !important;
 }
 
-/* line 139, ../sass/base.scss */
+/* line 143, ../sass/base.scss */
 input.micro {
   width: 90px !important;
 }
 
 /* Header Chrome */
-/* line 144, ../sass/base.scss */
+/* line 148, ../sass/base.scss */
 .chrome {
   font-weight: bold;
   background-color: #efefef;
@@ -186,132 +186,132 @@ input.micro {
   line-height: 1em;
 }
 
-/* line 154, ../sass/base.scss */
+/* line 158, ../sass/base.scss */
 h1.chrome {
   font-size: 1.5em;
 }
 
-/* line 157, ../sass/base.scss */
+/* line 161, ../sass/base.scss */
 h2.chrome {
   font-size: 1.2em;
 }
 
-/* line 160, ../sass/base.scss */
+/* line 164, ../sass/base.scss */
 h3.chrome {
   font-size: 0.9em;
 }
 
-/* line 163, ../sass/base.scss */
+/* line 167, ../sass/base.scss */
 h4.chrome {
   font-size: 0.8em;
 }
 
 /* Helpers */
-/* line 168, ../sass/base.scss */
+/* line 172, ../sass/base.scss */
 .bg-splash {
   background-color: #003965;
   color: #ffffff;
 }
 
-/* line 172, ../sass/base.scss */
+/* line 176, ../sass/base.scss */
 .bg-splash.bg-splash-secondary {
   background-color: #ff6600;
   color: #ffffff;
 }
 
-/* line 176, ../sass/base.scss */
+/* line 180, ../sass/base.scss */
 .bg-splash.bg-splash-grey {
   background-color: #666666;
   color: #ffffff;
 }
 
-/* line 181, ../sass/base.scss */
+/* line 185, ../sass/base.scss */
 .text-primary {
   color: #003965;
 }
 
-/* line 184, ../sass/base.scss */
+/* line 188, ../sass/base.scss */
 .text-secondary {
   color: #ff6600;
 }
 
-/* line 188, ../sass/base.scss */
+/* line 192, ../sass/base.scss */
 .bright {
   color: #ee0000;
 }
 
-/* line 192, ../sass/base.scss */
+/* line 196, ../sass/base.scss */
 .small {
   font-size: 0.9em;
 }
 
-/* line 196, ../sass/base.scss */
+/* line 200, ../sass/base.scss */
 .fb-like-box {
   background: #ffffff;
 }
 
-/* line 200, ../sass/base.scss */
+/* line 204, ../sass/base.scss */
 .quiet {
   color: #999999;
 }
 
-/* line 204, ../sass/base.scss */
+/* line 208, ../sass/base.scss */
 .text-right {
   text-align: right;
 }
 
-/* line 207, ../sass/base.scss */
+/* line 211, ../sass/base.scss */
 .text-left {
   text-align: left;
 }
 
-/* line 210, ../sass/base.scss */
+/* line 214, ../sass/base.scss */
 .text-center {
   text-align: center;
 }
 
-/* line 214, ../sass/base.scss */
+/* line 218, ../sass/base.scss */
 .inline {
   display: inline !important;
 }
 
-/* line 218, ../sass/base.scss */
+/* line 222, ../sass/base.scss */
 .pad {
   padding: 10px;
 }
 
-/* line 221, ../sass/base.scss */
+/* line 225, ../sass/base.scss */
 .pad-top {
   padding-top: 10px;
 }
 
-/* line 224, ../sass/base.scss */
+/* line 228, ../sass/base.scss */
 .pad-right {
   padding-right: 10px;
 }
 
-/* line 227, ../sass/base.scss */
+/* line 231, ../sass/base.scss */
 .pad-bottom {
   padding-bottom: 10px;
 }
 
-/* line 230, ../sass/base.scss */
+/* line 234, ../sass/base.scss */
 .pad-left {
   padding-left: 10px;
 }
 
-/* line 234, ../sass/base.scss */
+/* line 238, ../sass/base.scss */
 img.shadow {
   box-shadow: 0px 1px 5px #666666;
 }
 
 /* Bootstrap overrides */
-/* line 239, ../sass/base.scss */
+/* line 243, ../sass/base.scss */
 div.first {
   margin-left: 0;
 }
 
-/* line 243, ../sass/base.scss */
+/* line 247, ../sass/base.scss */
 .form-inline input[type='text'] {
   margin-bottom: 10px;
 }
@@ -320,44 +320,49 @@ div.first {
 /* line 4, ../sass/meadows.scss */
 body {
   padding-top: 60px;
+  position: relative;
 }
 
-/* line 9, ../sass/meadows.scss */
+/* Media Queries */
+/* Small devices (tablets, 768px and up) */
+/* Medium devices (desktops, 992px and up) */
+/* Large devices (large desktops, 1200px and up) */
+/* line 26, ../sass/meadows.scss */
 header .navbar {
   border-bottom: 1px solid #ffffff;
 }
-/* line 12, ../sass/meadows.scss */
+/* line 29, ../sass/meadows.scss */
 header .navbar .logo-text {
   font-size: 14px;
   margin-top: 15px;
   display: block;
 }
-/* line 18, ../sass/meadows.scss */
+/* line 35, ../sass/meadows.scss */
 header .navbar .navbar-brand {
   background: url("/static/images/template/logo.png") no-repeat scroll 10px 0px;
   text-indent: -10000px;
   width: 85px;
   background-size: 65px;
 }
-/* line 28, ../sass/meadows.scss */
+/* line 45, ../sass/meadows.scss */
 header .navbar .main-navigation .navbar-nav li a {
   text-transform: uppercase;
   font-weight: bold;
   vertical-align: center;
 }
-/* line 33, ../sass/meadows.scss */
+/* line 50, ../sass/meadows.scss */
 header .navbar .main-navigation .navbar-nav li a, header .navbar .main-navigation .navbar-nav li a:visited {
   color: #ffffff;
 }
-/* line 38, ../sass/meadows.scss */
+/* line 55, ../sass/meadows.scss */
 header .navbar .main-navigation .navbar-nav li.active, header .navbar .main-navigation .navbar-nav li > a:hover {
   background: #18517d;
 }
-/* line 41, ../sass/meadows.scss */
+/* line 58, ../sass/meadows.scss */
 header .navbar .main-navigation .navbar-nav li.social {
   /*display: none;*/
 }
-/* line 45, ../sass/meadows.scss */
+/* line 62, ../sass/meadows.scss */
 header .navbar .main-navigation .navbar-nav .icon-social {
   -webkit-background-size: 30px;
   -moz-background-size: 30px;
@@ -371,16 +376,16 @@ header .navbar .main-navigation .navbar-nav .icon-social {
   -o-transition: opacity 0.2s ease-out;
   width: 30px;
 }
-/* line 46, ../sass/meadows.scss */
+/* line 63, ../sass/meadows.scss */
 header .navbar .main-navigation .navbar-nav .icon-social.icon-facebook-dark {
   background: url("/static/images/template/facebook-dark.svg") no-repeat scroll 50% 50% rgba(0, 0, 0, 0);
 }
-/* line 49, ../sass/meadows.scss */
+/* line 66, ../sass/meadows.scss */
 header .navbar .main-navigation .navbar-nav .icon-social.icon-twitter-dark {
   background: url("/static/images/template/twitter-dark.svg") no-repeat scroll 50% 50% rgba(0, 0, 0, 0);
 }
 
-/* line 57, ../sass/meadows.scss */
+/* line 74, ../sass/meadows.scss */
 footer {
   color: #333333;
   padding: 25px 0px 100px 0px;
@@ -388,77 +393,81 @@ footer {
   background-position: center 25px;
   margin-top: 25px;
 }
-/* line 64, ../sass/meadows.scss */
+/* line 81, ../sass/meadows.scss */
 footer a {
   color: #ababab;
 }
-/* line 67, ../sass/meadows.scss */
+/* line 84, ../sass/meadows.scss */
 footer a:hover {
   color: #ffffff;
 }
-/* line 71, ../sass/meadows.scss */
+/* line 88, ../sass/meadows.scss */
 footer .msd-logo {
   margin-right: 20px;
 }
-/* line 75, ../sass/meadows.scss */
+/* line 92, ../sass/meadows.scss */
 footer .section1 {
   min-height: 115px;
   padding-right: 0px;
 }
-/* line 79, ../sass/meadows.scss */
+/* line 96, ../sass/meadows.scss */
 footer .section1 .content {
   margin-right: 65px;
   margin-top: 5px;
 }
-/* line 85, ../sass/meadows.scss */
+/* line 102, ../sass/meadows.scss */
 footer .section2 .content {
   margin-left: 50px;
   margin-top: 5px;
 }
 
 /* Homepage */
-/* line 93, ../sass/meadows.scss */
+/* line 109, ../sass/meadows.scss */
+#homepage {
+  position: relative;
+}
+/* line 112, ../sass/meadows.scss */
 #homepage section {
   padding: 60px 25px;
   font-size: 24px;
   line-height: 28px;
 }
-/* line 98, ../sass/meadows.scss */
+/* line 117, ../sass/meadows.scss */
 #homepage section h2.title-large {
   text-align: center;
   margin-bottom: 35px;
 }
-/* line 102, ../sass/meadows.scss */
+/* line 121, ../sass/meadows.scss */
 #homepage section h2.title-large .glyphicon {
   top: 10px;
 }
-/* line 107, ../sass/meadows.scss */
+/* line 126, ../sass/meadows.scss */
 #homepage section h3 {
   margin-bottom: 25px;
 }
-/* line 111, ../sass/meadows.scss */
+/* line 130, ../sass/meadows.scss */
 #homepage section p {
   margin-bottom: 35px;
 }
-/* line 116, ../sass/meadows.scss */
+/* line 135, ../sass/meadows.scss */
 #homepage #news {
   padding-bottom: 25px;
 }
-/* line 119, ../sass/meadows.scss */
+/* line 138, ../sass/meadows.scss */
 #homepage #news #view-news-article .modal-content {
   width: 700px;
   margin-left: -50px;
 }
-/* line 123, ../sass/meadows.scss */
+/* line 142, ../sass/meadows.scss */
 #homepage #news #view-news-article .modal-content .post-image {
   text-align: center;
   margin-bottom: 25px;
 }
-/* line 129, ../sass/meadows.scss */
+/* line 148, ../sass/meadows.scss */
 #homepage #news #featured-news-post {
   position: relative;
 }
-/* line 132, ../sass/meadows.scss */
+/* line 151, ../sass/meadows.scss */
 #homepage #news #featured-news-post .title-bar {
   background-color: rgba(0, 0, 0, 0.7);
   padding: 15px 15px 10px 15px;
@@ -469,49 +478,49 @@ footer .section2 .content {
   -webkit-box-shadow: 0px 1px 3px 0px #ffffff;
   box-shadow: 0px 1px 3px 0px #ffffff;
 }
-/* line 142, ../sass/meadows.scss */
+/* line 161, ../sass/meadows.scss */
 #homepage #news #featured-news-post .title-bar a {
   text-decoration: none;
   color: #ffffff;
 }
-/* line 147, ../sass/meadows.scss */
+/* line 166, ../sass/meadows.scss */
 #homepage #news #featured-news-post .title-bar .title {
   color: #ffffff;
   font-size: 1.9em;
   margin-bottom: 3px;
 }
-/* line 153, ../sass/meadows.scss */
+/* line 172, ../sass/meadows.scss */
 #homepage #news #featured-news-post .title-bar .teaser {
   color: #ffffff;
   font-size: 1em;
 }
-/* line 161, ../sass/meadows.scss */
+/* line 180, ../sass/meadows.scss */
 #homepage #news #news-list h3 {
   font-size: 15px;
   line-height: 15px;
   margin-bottom: 3px;
 }
-/* line 167, ../sass/meadows.scss */
+/* line 186, ../sass/meadows.scss */
 #homepage #news #news-list .row {
   min-height: 80px;
 }
-/* line 175, ../sass/meadows.scss */
+/* line 194, ../sass/meadows.scss */
 #homepage #membership .support-statements p {
   font-size: 16px;
   line-height: 22px;
 }
-/* line 183, ../sass/meadows.scss */
+/* line 202, ../sass/meadows.scss */
 #homepage #volunteer h2.title-large {
   color: #cc0000;
 }
-/* line 194, ../sass/meadows.scss */
+/* line 213, ../sass/meadows.scss */
 #homepage #executive-board .list .title {
   font-size: 30px;
   line-height: 40px;
   text-align: right;
   font-weight: normal;
 }
-/* line 201, ../sass/meadows.scss */
+/* line 220, ../sass/meadows.scss */
 #homepage #executive-board .list .name {
   font-size: 30px;
   line-height: 40px;
@@ -520,45 +529,45 @@ footer .section2 .content {
 }
 
 /* Events */
-/* line 212, ../sass/meadows.scss */
+/* line 231, ../sass/meadows.scss */
 .event-calendar-date {
   border: 2px solid #003965;
 }
-/* line 215, ../sass/meadows.scss */
+/* line 234, ../sass/meadows.scss */
 .event-calendar-date .day, .event-calendar-date .month, .event-calendar-date .date {
   text-align: center;
   font-weight: bold;
 }
-/* line 220, ../sass/meadows.scss */
+/* line 239, ../sass/meadows.scss */
 .event-calendar-date .month {
   font-size: 20px;
   background: #003965;
   color: #ffffff;
   padding: 5px;
 }
-/* line 227, ../sass/meadows.scss */
+/* line 246, ../sass/meadows.scss */
 .event-calendar-date .date {
   font-size: 55px;
   line-height: 40px;
   padding: 10px 5px 0px 5px;
 }
-/* line 233, ../sass/meadows.scss */
+/* line 252, ../sass/meadows.scss */
 .event-calendar-date .day {
   color: #666666;
 }
 
-/* line 239, ../sass/meadows.scss */
+/* line 258, ../sass/meadows.scss */
 .event-calendar-date-small .month {
   font-size: 11px;
   padding: 3px;
 }
-/* line 244, ../sass/meadows.scss */
+/* line 263, ../sass/meadows.scss */
 .event-calendar-date-small .date {
   font-size: 25px;
   line-height: 25px;
   padding: 0px;
 }
-/* line 250, ../sass/meadows.scss */
+/* line 269, ../sass/meadows.scss */
 .event-calendar-date-small .day {
   font-size: 10px;
   padding: 0px;
