@@ -20,6 +20,10 @@ class News(ContentModel):
     def __unicode__(self):
         return str(self.title)
 
+    def before_save(self, action):
+        super(News, self).before_save(action)
+        self.slug = slugify('%s-%s' % (self.title, self.publish_date.strftime('%B-%-m-%Y')))
+
     def get_absolute_url(self):
         """
         Get the canonical url.
