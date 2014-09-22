@@ -22,7 +22,7 @@ class Event(ContentModel):
 
     def before_save(self, action):
         super(Event, self).before_save(action)
-        self.slug = slugify('%s-%s' % (self.title, self.start_date.strftime('%B-%-m-%Y')))
+        self.slug = slugify('%s-%s' % (self.title, self.start_date.strftime('%B-%-d-%Y')))
 
     def get_absolute_url(self):
         """

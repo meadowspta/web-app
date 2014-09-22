@@ -51,7 +51,7 @@ class ContentModel(BaseModel):
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, blank=True)
     user = models.ForeignKey(User)
-    publish_date = models.DateTimeField(auto_now_add=True)
+    publish_date = models.DateTimeField()
     update_date = models.DateTimeField(auto_now=True)
     is_published = models.BooleanField(default=True)
 

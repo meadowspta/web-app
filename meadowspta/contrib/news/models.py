@@ -22,7 +22,7 @@ class News(ContentModel):
 
     def before_save(self, action):
         super(News, self).before_save(action)
-        self.slug = slugify('%s-%s' % (self.title, self.publish_date.strftime('%B-%-m-%Y')))
+        self.slug = slugify('%s-%s' % (self.title, self.publish_date.strftime('%B-%-d-%Y')))
 
     def get_absolute_url(self):
         """
