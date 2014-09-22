@@ -21,8 +21,10 @@ class News(ContentModel):
         return str(self.title)
 
     def before_save(self, action):
-        super(News, self).before_save(action)
-        self.slug = slugify('%s-%s' % (self.title, self.publish_date.strftime('%B-%-d-%Y')))
+        # Only generate slug if a slug is not entered.
+        if not self.slug:
+            super(News, self).before_save(action)
+            self.slug = slugify('%s-%s' % (self.title, self.publish_date.strftime('%B-%-d-%Y')))
 
     def get_absolute_url(self):
         """

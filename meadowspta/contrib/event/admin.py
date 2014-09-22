@@ -3,7 +3,7 @@ from meadowspta.contrib.event.models import Event
 
 
 class EventAdmin(admin.ModelAdmin):
-    fields = ('title', 'is_all_day', 'start_date', 'end_date', 'location', 'description', 'user', 'is_published')
+    fields = ('title', 'is_all_day', 'start_date', 'end_date', 'location', 'user', 'is_published', 'description')
     list_display = ('title', 'is_all_day', 'start_date', 'end_date', 'publish_date', 'is_published')
 
     class Media:

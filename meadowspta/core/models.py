@@ -49,11 +49,11 @@ class BaseModel(models.Model):
 
 class ContentModel(BaseModel):
     title = models.CharField(max_length=255)
-    slug = models.SlugField(max_length=255, blank=True)
-    user = models.ForeignKey(User)
+    slug = models.SlugField(max_length=255, blank=True, help_text='A slug will be genereated if left blank.')
+    user = models.ForeignKey(User, verbose_name='Author')
     publish_date = models.DateTimeField()
     update_date = models.DateTimeField(auto_now=True)
-    is_published = models.BooleanField(default=True)
+    is_published = models.BooleanField(default=True, verbose_name='Publish')
 
     def before_save(self, action):
         self.slug = slugify(self.title)
