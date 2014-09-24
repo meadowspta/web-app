@@ -173,7 +173,7 @@ LOGGING = {
 }
 
 # Site settings.
-GOOGLE_ANALYTICS_ID = 'UA-36598051-1'
+GOOGLE_ANALYTICS_ID = 'UA-36598051-3'
 MAP_URL = 'https://www.google.com/maps/preview?authuser=0#!q=Meadows+Elementary+School%2C+Millbrae%2C+CA&data=!4m10!1m9!4m8!1m3!1d3136!2d-122.419435!3d37.6019973!3m2!1i1436!2i762!4f13.1'
 
 # Meta settings.
