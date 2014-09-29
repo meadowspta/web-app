@@ -13,6 +13,7 @@
           </div>
           <div class="col-lg-8 col-md-8 col-sm-8">
             <h4><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></h4>
+            <div class="quiet">{{ event.location }}</div>
           </div>
         </li>
       {% endfor %}
