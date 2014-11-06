@@ -1,0 +1,39 @@
+{% if user.is_authenticated %}
+  <div id="post-comment-list" class="row">
+    <h2 class="chrome">Comments</h2>
+
+    <ul class="list">
+      {% for comment in comments %}
+        <li class="list-item">
+          <div class="col-lg-2 col-md-2 col-sm-2">
+            [user pic]
+          </div>
+          <div class="col-lg-10 col-md-10 col-sm-10">
+            <a href="">{{ comment.user.first_name }} {{ comment.user.last_name }}</a>
+            <div>
+              {{ comment.body|linebreaks|safe }}
+            </div>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+
+    <div id="comment-form" class="well">
+      <div class="row">
+        <div class="col-lg-2 col-md-2 col-sm-2">
+          [user pic]
+        </div>
+        <div class="col-lg-10 col-md-10 col-sm-10">
+          <form action="" method="post">
+            {% csrf_token %}
+
+            {{ comment_form.as_p }}
+            <br />
+
+            <input type="submit" value="Post" class="btn btn-success">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}

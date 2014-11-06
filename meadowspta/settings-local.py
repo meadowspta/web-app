@@ -17,7 +17,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'meadowspta_140915',                      # Or path to database file if using sqlite3.
+        'NAME': 'meadowspta_141106',                      # Or path to database file if using sqlite3.
         'USER': 'meadowspta',                      # Not used with sqlite3.
         'PASSWORD': 'meadowspta',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -141,6 +141,7 @@ INSTALLED_APPS = (
     'meadowspta.contrib.member',
     'meadowspta.contrib.auction',
     'meadowspta.contrib.event',
+    'meadowspta.contrib.comment',
 )
 
 # A sample logging configuration. The only tangible logging

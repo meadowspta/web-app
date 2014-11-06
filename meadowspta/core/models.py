@@ -56,8 +56,9 @@ class ContentModel(BaseModel):
     update_date = models.DateTimeField(auto_now=True)
     is_published = models.BooleanField(default=True, verbose_name='Publish')
 
+    class Meta:
+        abstract = True
+
     def before_save(self, action):
         self.slug = slugify(self.title)
 
-    class Meta:
-        abstract = True

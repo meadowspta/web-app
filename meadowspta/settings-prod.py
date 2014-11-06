@@ -141,6 +141,7 @@ INSTALLED_APPS = (
     'meadowspta.contrib.member',
     'meadowspta.contrib.auction',
     'meadowspta.contrib.event',
+    'meadowspta.contrib.comment',
 )
 
 # A sample logging configuration. The only tangible logging
