@@ -15,7 +15,7 @@
           <div class="col-md-9">
             <a href="{{ news_item.get_absolute_url }}"><h3>{{ news_item.title }}</h3></a>
             <p>{{ news_item.teaser }}</p>
-            <span class="quiet"><em>{{ news_item.publish_date|date:"l, F jS, Y" }}</em></span> - {{ news_item.body|striptags|truncatewords:25 }} <a href="{{ news_item.get_absolute_url }}">read more &raquo;</a>
+            <span class="quiet"><em>{{ news_item.publish_date|date:"l, F jS, Y" }}</em></span> - {{ news_item.body|striptags|safe|truncatewords:25 }} <a href="{{ news_item.get_absolute_url }}">read more &raquo;</a>
           </div>
         </li>
       {% endfor %}
