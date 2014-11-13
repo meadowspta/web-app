@@ -2,7 +2,7 @@ from django.template import RequestContext, Context, loader
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from meta.views import Meta
-from meadowspta.contrib.auction.models import Item, Donor
+from auction.models import Item, Donor
 
 def list(request):
     items = Item.objects.all().order_by('-publish_date')

@@ -1,7 +1,7 @@
 import datetime
 from django.test import TestCase
-from meadowspta.contrib.event.models import Event
-from meadowspta.contrib.user.models import User
+from event.models import Event
+from user.models import User
 
 
 class EventModelTest(TestCase):

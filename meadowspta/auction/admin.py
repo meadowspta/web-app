@@ -1,5 +1,5 @@
 from django.contrib import admin
-from meadowspta.contrib.auction.models import Item, Donor
+from auction.models import Item, Donor
 
 class ItemAdmin(admin.ModelAdmin):
     list_display = ('admin_picture', 'item_number', 'donor', 'opening_bid', 'bid_increment', 'retail_value', 'quantity')

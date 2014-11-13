@@ -1,9 +1,9 @@
 from django.template import RequestContext, Context, loader
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
-from meadowspta.contrib.news.models import News
-from meadowspta.contrib.system.models import sysvar
-from meadowspta.contrib.event.models import Event
+from news.models import News
+from system.models import sysvar
+from event.models import Event
 
 
 def view(request):

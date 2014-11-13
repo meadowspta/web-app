@@ -1,5 +1,5 @@
 from django.contrib import admin
-from meadowspta.contrib.news.models import News
+from news.models import News
 
 class NewsAdmin(admin.ModelAdmin):
     fields = ('title', 'teaser', 'publish_date', 'image', 'slug', 'user', 'is_published', 'body')

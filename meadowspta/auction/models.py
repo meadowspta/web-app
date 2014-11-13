@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from imagekit.models import ImageSpecField
 from imagekit.processors import Thumbnail
-from meadowspta.core.models import *
+from core.models import BaseModel, ContentModel
 
 class Donor(BaseModel):
     first_name = models.CharField(max_length=255)

@@ -4,8 +4,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.utils.html import strip_tags
 from meta.views import Meta
-from meadowspta.contrib.news.models import News
-from meadowspta.contrib.system.models import sysvar
+from news.models import News
+from system.models import sysvar
 
 def list(request):
     news_items = News.objects.all().filter(is_published=1).order_by('-publish_date')

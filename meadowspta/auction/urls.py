@@ -1,7 +1,7 @@
 from django.conf.urls import *
-from meadowspta.contrib.auction.views import *
+from auction.views import *
 
-urlpatterns = patterns('meadowspta.contrib.auction.views',
+urlpatterns = patterns('auction.views',
     url(r'^$', list),
     url(r'^item/(?P<slug>[^\.^/]+)/$', item_view),
 )

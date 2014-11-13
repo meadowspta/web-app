@@ -2,8 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from imagekit.models import ImageSpecField
 from imagekit.processors import Thumbnail
-from meadowspta.core.models import *
-from meadowspta.contrib.system.models import sysvar
+from core.models import ContentModel
+from system.models import sysvar
 
 class News(ContentModel):
     class Meta:

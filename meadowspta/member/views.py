@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.contrib.auth import authenticate
 
-from meadowspta.contrib.member.forms import MemberRegistrationForm, MemberLoginForm
+from member.forms import MemberRegistrationForm, MemberLoginForm
 
 
 def register(request):

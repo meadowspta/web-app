@@ -1,5 +1,5 @@
 from django.contrib import admin
-from meadowspta.contrib.event.models import Event
+from event.models import Event
 
 
 class EventAdmin(admin.ModelAdmin):

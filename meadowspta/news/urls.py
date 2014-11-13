@@ -1,7 +1,7 @@
 from django.conf.urls import *
-from meadowspta.contrib.news.views import *
+from news.views import *
 
-urlpatterns = patterns('meadowspta.contrib.news.views',
+urlpatterns = patterns('news.views',
     url(r'^$', list),
     url(r'^(?P<slug>[^\.^/]+)/$', view),
     url(r'^feature/(?P<id>[^\.^/]+)/$', update_featured_post),
