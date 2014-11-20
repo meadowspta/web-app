@@ -573,3 +573,44 @@ footer .section2 .content {
   font-size: 10px;
   padding: 0px;
 }
+
+/* line 276, ../sass/meadows.scss */
+#crabfeed-home {
+  margin-top: -10px;
+}
+/* line 279, ../sass/meadows.scss */
+#crabfeed-home section {
+  height: 550px;
+  color: #ffffff;
+  background-size: 100%;
+  background-position: center;
+}
+/* line 285, ../sass/meadows.scss */
+#crabfeed-home section h2 {
+  font-size: 3.5em;
+}
+/* line 289, ../sass/meadows.scss */
+#crabfeed-home section h3 {
+  font-size: 2.3em;
+}
+/* line 293, ../sass/meadows.scss */
+#crabfeed-home section p {
+  font-size: 1.8em;
+}
+/* line 298, ../sass/meadows.scss */
+#crabfeed-home .section-1 {
+  background-image: url("/static/images/crabfeed/home/IMG_4628.jpg");
+}
+/* line 302, ../sass/meadows.scss */
+#crabfeed-home .section-2 {
+  background-image: url("https://lh4.googleusercontent.com/-mrZGgEXEvow/Uzep8UZ5X5I/AAAAAAABQp8/YVIlT8NDZhE/w2030-h1344-no/DSC_3955.JPG");
+}
+/* line 306, ../sass/meadows.scss */
+#crabfeed-home .section-3 {
+  /*background-image: url('https://lh4.googleusercontent.com/-KAhCdGdgOmA/UzemlnEgFzI/AAAAAAABQjg/C2VknVzAUhg/w2162-h1432-no/DSC_3810.JPG');*/
+  background-image: url("https://lh6.googleusercontent.com/-NZ1pLnMj034/Uzen06gZnUI/AAAAAAABQmI/GUqjKx1RQn0/w2030-h1344-no/DSC_3860.JPG");
+}
+/* line 311, ../sass/meadows.scss */
+#crabfeed-home .section-4 {
+  background-image: url("https://lh5.googleusercontent.com/-5fl5bSEjPLo/UzeoZG2LvoI/AAAAAAABQnQ/_DH5oRxbKbU/w2030-h1344-no/DSC_3886.JPG");
+}

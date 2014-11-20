@@ -1,7 +1,7 @@
 var MeadowsPTA = {};
 
 $(function() {
-    MeadowsPTA.eventAdminForm();
+  MeadowsPTA.eventAdminForm();
 });
 
 /*

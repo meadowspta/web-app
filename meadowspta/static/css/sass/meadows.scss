@@ -273,3 +273,42 @@ footer {
   }
 }
 
+#crabfeed-home {
+  margin-top: -10px;
+
+  section {
+    height: 550px;
+    color: #ffffff;
+    background-size: 100%;
+    background-position: center;
+
+    h2 {
+      font-size: 3.5em;
+    }
+
+    h3 {
+      font-size: 2.3em;
+    }
+
+    p {
+      font-size: 1.8em;
+    }
+  }
+
+  .section-1 {
+    background-image: url('/static/images/crabfeed/home/IMG_4628.jpg');
+  }
+
+  .section-2 {
+    background-image: url('https://lh4.googleusercontent.com/-mrZGgEXEvow/Uzep8UZ5X5I/AAAAAAABQp8/YVIlT8NDZhE/w2030-h1344-no/DSC_3955.JPG');
+  }
+
+  .section-3 {
+    /*background-image: url('https://lh4.googleusercontent.com/-KAhCdGdgOmA/UzemlnEgFzI/AAAAAAABQjg/C2VknVzAUhg/w2162-h1432-no/DSC_3810.JPG');*/
+    background-image: url('https://lh6.googleusercontent.com/-NZ1pLnMj034/Uzen06gZnUI/AAAAAAABQmI/GUqjKx1RQn0/w2030-h1344-no/DSC_3860.JPG');
+  }
+
+  .section-4 {
+    background-image: url('https://lh5.googleusercontent.com/-5fl5bSEjPLo/UzeoZG2LvoI/AAAAAAABQnQ/_DH5oRxbKbU/w2030-h1344-no/DSC_3886.JPG');
+  }
+}
