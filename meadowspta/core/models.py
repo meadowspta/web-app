@@ -11,7 +11,7 @@ class BaseModel(models.Model):
     class Meta:
         abstract = True
 
-    def save(self):
+    def save(self, save=False):
         """
         Override model save method to modify the object before and after saving.
         """
@@ -24,7 +24,7 @@ class BaseModel(models.Model):
 
         # Before save
         try:
-            self.before_save(action)
+            self.before_save(action, save)
         except AttributeError:
             pass
 

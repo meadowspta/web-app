@@ -1,58 +1,126 @@
 {% extends 'layouts/full.html' %}
 
 {% block content %}
+  <!-- Volunteer Sign-up Modal -->
+  <div class="modal fade" id="volunteer-sign-up-modal" tabindex="-1" role="dialog" ng-controller="VolunteerSignupController">
+    <form ng-submit="formSubmit();">
+      {% csrf_token %}
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" ng-click="showVolunteerSignupFormLoader = false;"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="myModalLabel">Volunteer Sign-up</h4>
+          </div>
+          <div class="loader-region">
+            <div class="loader" ng-show="showVolunteerSignupFormLoader"></div>
+            <div class="modal-body">
+              <p>
+                There's no better way to get involved with the Meadows community than by volunteering.  Thank you for your interest!
+              </p>
+
+              {{ volunteer_signup_form.full_name }}
+
+              {{ volunteer_signup_form.email }}
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+              <input type="submit" class="btn btn-success" value="Submit" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- Registration Modal -->
+  <div class="modal fade" id="purchase-tickets-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title" id="myModalLabel">Registration</h4>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <input type="submit" class="btn btn-success" value="Submit" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main sections -->
   <div id="crabfeed-home">
     <section class="section-1">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <h2>Come join us for the 2nd annual Meadows Crab Feed.</h2>
-            <p>
-              February 28, 2015, at the Caroline Shea Center, Taylor Middle School
-            </p>
+      &nbsp;
+      <div class="content">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <h2>Come join us for the 2nd annual Meadows Crab Feed.</h2>
+              <p>
+                February 28, 2015, at the Caroline Shea Center, Taylor Middle School
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <section class="section-2">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <h3>Help support the school and buy items from the auction.</h3>
-            <p>
-              Last year, the event raise over $45,000 that went towards Meadows programs, and supplies.
-            </p>
+      &nbsp;
+      <div class="content">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <h3>Help support the school and buy items from the auction.</h3>
+              <p>
+                Last year, the event raise over $45,000 that went towards Meadows programs, and supplies. Auction items included vacation packages,
+                paintings, sport memorabilia, and also original artwork from Meadows students!
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <section class="section-3">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <h3>Be a part of the Meadows community and volunteer for the event.</h3>
-            <p>
-              With over 40 voluneers in 2014, the key to the success of the event came from the helping hands of the parents.
-            </p>
+      &nbsp;
+      <div class="content">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <h3>Be a part of the Meadows community and volunteer for the event.</h3>
+              <p>
+                With over 40 voluneers in 2014, the key to the success of the event came from the helping hands of the parents.
+              </p>
 
-            <a href="" class="btn btn-success">View Volunteer Opportunities</a>
+              <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#volunteer-sign-up-modal">
+                Sign Up To Be A Volunteer
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <section class="section-4">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <h3>Act now before the event sells out!</h3>
-            <p>
-              With over 300 people last year, the event was sold out!
-            </p>
+      &nbsp;
+      <div class="content">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <h3>Act now before the event sells out!</h3>
+              <p>
+                With over 300 people last year, the event was sold out!
+              </p>
 
-            <a href="" class="btn btn-success">Buy Tickets</a>
+              <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#purchase-tickets-modal">
+                Buy Crabfeed Tickets
+              </button>
+            </div>
           </div>
         </div>
       </div>

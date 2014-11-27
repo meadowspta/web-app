@@ -33,7 +33,7 @@ header {
     }
 
     .navbar-brand {
-      background: url("/static/images/template/logo.png") no-repeat scroll 10px 0px;
+      background: url('/static/images/template/logo.png') no-repeat scroll 10px 0px;
       text-indent: -10000px;
       width: 85px;
       background-size: 65px;
@@ -277,10 +277,10 @@ footer {
   margin-top: -10px;
 
   section {
-    height: 550px;
+    height: 750px;
     color: #ffffff;
     background-size: 100%;
-    background-position: center;
+    background-position: bottom;
 
     h2 {
       font-size: 3.5em;
@@ -293,22 +293,44 @@ footer {
     p {
       font-size: 1.8em;
     }
+
+    .content {
+      margin-top: 450px;
+      height: 300px;
+      padding: 15px 0px;
+    }
   }
 
   .section-1 {
-    background-image: url('/static/images/crabfeed/home/IMG_4628.jpg');
+    background-image: url('/static/images/crabfeed/home/crab.jpg');
+
+    .content {
+      background-color: #d84438;
+    }
   }
 
   .section-2 {
-    background-image: url('https://lh4.googleusercontent.com/-mrZGgEXEvow/Uzep8UZ5X5I/AAAAAAABQp8/YVIlT8NDZhE/w2030-h1344-no/DSC_3955.JPG');
+    background-image: url('/static/images/crabfeed/home/auction.jpg');
+
+    .content {
+      background-color: #4286f5;
+    }
   }
 
   .section-3 {
     /*background-image: url('https://lh4.googleusercontent.com/-KAhCdGdgOmA/UzemlnEgFzI/AAAAAAABQjg/C2VknVzAUhg/w2162-h1432-no/DSC_3810.JPG');*/
-    background-image: url('https://lh6.googleusercontent.com/-NZ1pLnMj034/Uzen06gZnUI/AAAAAAABQmI/GUqjKx1RQn0/w2030-h1344-no/DSC_3860.JPG');
+    background-image: url('/static/images/crabfeed/home/volunteer.jpg');
+
+    .content {
+      background-color: #f5b400;
+    }
   }
 
   .section-4 {
-    background-image: url('https://lh5.googleusercontent.com/-5fl5bSEjPLo/UzeoZG2LvoI/AAAAAAABQnQ/_DH5oRxbKbU/w2030-h1344-no/DSC_3886.JPG');
+    background-image: url('/static/images/crabfeed/home/sign_up.jpg');
+
+    .content {
+      background-color: #109d58;
+    }
   }
 }

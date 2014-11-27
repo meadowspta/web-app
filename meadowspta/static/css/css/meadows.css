@@ -109,6 +109,11 @@ label {
   font-size: 1.3em;
 }
 
+/* line 100, ../sass/base.scss */
+input {
+  margin-bottom: 15px;
+}
+
 /* line 103, ../sass/base.scss */
 textarea {
   width: 600px;
@@ -118,7 +123,7 @@ textarea {
 /* line 107, ../sass/base.scss */
 input[type='text'], input[type='password'], input[type='file'] {
   font-size: 2.0em;
-  height: 35px;
+  height: 40px;
   padding: 5px 10px 5px 10px;
 }
 
@@ -314,6 +319,37 @@ div.first {
 /* line 247, ../sass/base.scss */
 .form-inline input[type='text'] {
   margin-bottom: 10px;
+}
+
+/* line 251, ../sass/base.scss */
+.ng-hide {
+  display: block !important;
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+/* Loader */
+/* line 259, ../sass/base.scss */
+.loader-region {
+  position: relative;
+}
+/* line 262, ../sass/base.scss */
+.loader-region .loader {
+  background: url("/static/images/loaders/loader-large.gif") no-repeat center;
+  background-color: rgba(255, 255, 255, 0.75);
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  color: #000000;
+  position: absolute;
+  z-index: 10000;
+  font-size: 1.2em;
+}
+/* line 273, ../sass/base.scss */
+.loader-region .loader span {
+  display: inline-block;
+  vertical-align: middle;
 }
 
 /* Template */
@@ -580,10 +616,10 @@ footer .section2 .content {
 }
 /* line 279, ../sass/meadows.scss */
 #crabfeed-home section {
-  height: 550px;
+  height: 750px;
   color: #ffffff;
   background-size: 100%;
-  background-position: center;
+  background-position: bottom;
 }
 /* line 285, ../sass/meadows.scss */
 #crabfeed-home section h2 {
@@ -597,20 +633,42 @@ footer .section2 .content {
 #crabfeed-home section p {
   font-size: 1.8em;
 }
-/* line 298, ../sass/meadows.scss */
+/* line 297, ../sass/meadows.scss */
+#crabfeed-home section .content {
+  margin-top: 450px;
+  height: 300px;
+  padding: 15px 0px;
+}
+/* line 304, ../sass/meadows.scss */
 #crabfeed-home .section-1 {
-  background-image: url("/static/images/crabfeed/home/IMG_4628.jpg");
+  background-image: url("/static/images/crabfeed/home/crab.jpg");
 }
-/* line 302, ../sass/meadows.scss */
+/* line 307, ../sass/meadows.scss */
+#crabfeed-home .section-1 .content {
+  background-color: #d84438;
+}
+/* line 312, ../sass/meadows.scss */
 #crabfeed-home .section-2 {
-  background-image: url("https://lh4.googleusercontent.com/-mrZGgEXEvow/Uzep8UZ5X5I/AAAAAAABQp8/YVIlT8NDZhE/w2030-h1344-no/DSC_3955.JPG");
+  background-image: url("/static/images/crabfeed/home/auction.jpg");
 }
-/* line 306, ../sass/meadows.scss */
+/* line 315, ../sass/meadows.scss */
+#crabfeed-home .section-2 .content {
+  background-color: #4286f5;
+}
+/* line 320, ../sass/meadows.scss */
 #crabfeed-home .section-3 {
   /*background-image: url('https://lh4.googleusercontent.com/-KAhCdGdgOmA/UzemlnEgFzI/AAAAAAABQjg/C2VknVzAUhg/w2162-h1432-no/DSC_3810.JPG');*/
-  background-image: url("https://lh6.googleusercontent.com/-NZ1pLnMj034/Uzen06gZnUI/AAAAAAABQmI/GUqjKx1RQn0/w2030-h1344-no/DSC_3860.JPG");
+  background-image: url("/static/images/crabfeed/home/volunteer.jpg");
 }
-/* line 311, ../sass/meadows.scss */
+/* line 324, ../sass/meadows.scss */
+#crabfeed-home .section-3 .content {
+  background-color: #f5b400;
+}
+/* line 329, ../sass/meadows.scss */
 #crabfeed-home .section-4 {
-  background-image: url("https://lh5.googleusercontent.com/-5fl5bSEjPLo/UzeoZG2LvoI/AAAAAAABQnQ/_DH5oRxbKbU/w2030-h1344-no/DSC_3886.JPG");
+  background-image: url("/static/images/crabfeed/home/sign_up.jpg");
+}
+/* line 332, ../sass/meadows.scss */
+#crabfeed-home .section-4 .content {
+  background-color: #109d58;
 }

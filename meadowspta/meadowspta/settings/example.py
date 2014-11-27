@@ -14,3 +14,10 @@ DATABASES = {
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
+
+# Meta settings.
+META_SITE_PROTOCOL = 'http'
+META_SITE_DOMAIN = 'localhost:4000'
+META_USE_OG_PROPERTIES = True
+
+CRABFEED_SECRET_KEY = ''
