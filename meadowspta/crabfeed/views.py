@@ -29,13 +29,30 @@ def dashboard(request):
 def check_in(request):
     id_hash = request.GET.get('id')
     ticket = Ticket.objects.get(id_hash=id_hash)
-    print dir(ticket.qr_code_image)
 
     payload = {
         'ticket': ticket,
     }
 
     return render_to_response('crabfeed/check-in.html', payload, context_instance=RequestContext(request))
+
+def search(request):
+    return render_to_response('crabfeed/search.html', {}, context_instance=RequestContext(request))
+
+def api_search(request):
+    q = request.GET.get('q')
+    results = []
+
+    tickets = Ticket.search(q)
+    for ticket in tickets:
+        results.append(ticket.as_api_object())
+
+    response = {
+        'statusCode': 200,
+        'response': results,
+    }
+
+    return HttpResponse(json.dumps(response), mimetype='application/json')
 
 def api_tickets(request):
     data = []

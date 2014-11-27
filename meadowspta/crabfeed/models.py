@@ -2,6 +2,7 @@ import datetime, hashlib, qrcode
 from cStringIO import StringIO
 
 from django.db import models
+from django.db.models import Q
 from django.conf import settings
 from django.core.files import File
 from django.core.files.base import ContentFile
@@ -90,3 +91,7 @@ class Ticket(BaseModel):
 
         return data
 
+    @staticmethod
+    def search(q):
+        results = Ticket.objects.all().filter(Q(first_name__icontains=q) | Q(last_name__icontains=q) | Q(email__icontains=q))
+        return results
