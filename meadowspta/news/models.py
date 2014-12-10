@@ -1,7 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.template.defaultfilters import slugify
+
 from imagekit.models import ImageSpecField
 from imagekit.processors import Thumbnail
+
 from core.models import ContentModel
 from system.models import sysvar
 

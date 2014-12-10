@@ -2,6 +2,7 @@ var MeadowsPTA = {};
 
 $(function() {
   MeadowsPTA.eventAdminForm();
+  MeadowsPTA.googleAnalytics();
 });
 
 /*
@@ -25,5 +26,11 @@ MeadowsPTA.eventAdminForm = function() {
       $('#id_start_date_1').val('');
       $('#id_end_date_1').val('');
     }
+  });
+}
+
+MeadowsPTA.googleAnalytics = function() {
+  $('.membership-form-download-button').click(function() {
+    _gaq.push(['_trackEvent', 'Links', 'Click', 'Membership Form Download Button']);
   });
 }

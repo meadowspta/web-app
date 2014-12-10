@@ -48,6 +48,10 @@ TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
+    'core.context_processors.view_variables',
+)
+
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
@@ -63,6 +67,6 @@ STATICFILES_DIRS = (
 )
 
 # Site settings.
-GOOGLE_ANALYTICS_ID = 'UA-36598051-2'
+GOOGLE_ANALYTICS_ID = 'UA-36598051-3'
 MAP_URL = 'https://www.google.com/maps/preview?authuser=0#!q=Meadows+Elementary+School%2C+Millbrae%2C+CA&data=!4m10!1m9!4m8!1m3!1d3136!2d-122.419435!3d37.6019973!3m2!1i1436!2i762!4f13.1'
 
