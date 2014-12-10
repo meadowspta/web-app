@@ -618,55 +618,62 @@ footer .section2 .content {
   color: #ffffff;
   background-size: 100%;
   background-position: bottom;
+  position: relative;
 }
-/* line 285, ../sass/meadows.scss */
+/* line 286, ../sass/meadows.scss */
 #crabfeed-home section h2 {
   font-size: 3.5em;
 }
-/* line 289, ../sass/meadows.scss */
+/* line 290, ../sass/meadows.scss */
 #crabfeed-home section h3 {
   font-size: 2.3em;
 }
-/* line 293, ../sass/meadows.scss */
+/* line 294, ../sass/meadows.scss */
 #crabfeed-home section p {
   font-size: 1.8em;
 }
-/* line 297, ../sass/meadows.scss */
+/* line 298, ../sass/meadows.scss */
 #crabfeed-home section .content {
   margin-top: 450px;
   height: 300px;
   padding: 15px 0px;
 }
-/* line 304, ../sass/meadows.scss */
+/* line 305, ../sass/meadows.scss */
 #crabfeed-home .section-1 {
   background-image: url("/static/images/crabfeed/home/crab.jpg");
 }
-/* line 307, ../sass/meadows.scss */
+/* line 308, ../sass/meadows.scss */
 #crabfeed-home .section-1 .content {
   background-color: #d84438;
 }
-/* line 312, ../sass/meadows.scss */
+/* line 311, ../sass/meadows.scss */
+#crabfeed-home .section-1 .content .crabfeed-logo {
+  position: absolute;
+  top: -475px;
+  right: 0px;
+}
+/* line 319, ../sass/meadows.scss */
 #crabfeed-home .section-2 {
   background-image: url("/static/images/crabfeed/home/auction.jpg");
 }
-/* line 315, ../sass/meadows.scss */
+/* line 322, ../sass/meadows.scss */
 #crabfeed-home .section-2 .content {
   background-color: #4286f5;
 }
-/* line 320, ../sass/meadows.scss */
+/* line 327, ../sass/meadows.scss */
 #crabfeed-home .section-3 {
   /*background-image: url('https://lh4.googleusercontent.com/-KAhCdGdgOmA/UzemlnEgFzI/AAAAAAABQjg/C2VknVzAUhg/w2162-h1432-no/DSC_3810.JPG');*/
   background-image: url("/static/images/crabfeed/home/volunteer.jpg");
 }
-/* line 324, ../sass/meadows.scss */
+/* line 331, ../sass/meadows.scss */
 #crabfeed-home .section-3 .content {
   background-color: #f5b400;
 }
-/* line 329, ../sass/meadows.scss */
+/* line 336, ../sass/meadows.scss */
 #crabfeed-home .section-4 {
   background-image: url("/static/images/crabfeed/home/sign_up.jpg");
 }
-/* line 332, ../sass/meadows.scss */
+/* line 339, ../sass/meadows.scss */
 #crabfeed-home .section-4 .content {
   background-color: #109d58;
 }
