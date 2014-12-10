@@ -254,67 +254,72 @@ h4.chrome {
 }
 
 /* line 206, ../sass/base.scss */
+.loud {
+  font-weight: bold;
+}
+
+/* line 210, ../sass/base.scss */
 .text-right {
   text-align: right;
 }
 
-/* line 209, ../sass/base.scss */
+/* line 213, ../sass/base.scss */
 .text-left {
   text-align: left;
 }
 
-/* line 212, ../sass/base.scss */
+/* line 216, ../sass/base.scss */
 .text-center {
   text-align: center;
 }
 
-/* line 216, ../sass/base.scss */
+/* line 220, ../sass/base.scss */
 .inline {
   display: inline !important;
 }
 
-/* line 220, ../sass/base.scss */
+/* line 224, ../sass/base.scss */
 .pad {
   padding: 10px;
 }
 
-/* line 223, ../sass/base.scss */
+/* line 227, ../sass/base.scss */
 .pad-top {
   padding-top: 10px;
 }
 
-/* line 226, ../sass/base.scss */
+/* line 230, ../sass/base.scss */
 .pad-right {
   padding-right: 10px;
 }
 
-/* line 229, ../sass/base.scss */
+/* line 233, ../sass/base.scss */
 .pad-bottom {
   padding-bottom: 10px;
 }
 
-/* line 232, ../sass/base.scss */
+/* line 236, ../sass/base.scss */
 .pad-left {
   padding-left: 10px;
 }
 
-/* line 236, ../sass/base.scss */
+/* line 240, ../sass/base.scss */
 img.shadow {
   box-shadow: 0px 1px 5px #666666;
 }
 
 /* Bootstrap overrides */
-/* line 241, ../sass/base.scss */
+/* line 245, ../sass/base.scss */
 div.first {
   margin-left: 0;
 }
 
-/* line 245, ../sass/base.scss */
+/* line 249, ../sass/base.scss */
 .form-inline input[type='text'] {
   margin-bottom: 10px;
 }
 
-/* line 249, ../sass/base.scss */
+/* line 253, ../sass/base.scss */
 .ng-hide {
   display: block !important;
   position: absolute;
@@ -323,11 +328,11 @@ div.first {
 }
 
 /* Loader */
-/* line 257, ../sass/base.scss */
+/* line 261, ../sass/base.scss */
 .loader-region {
   position: relative;
 }
-/* line 260, ../sass/base.scss */
+/* line 264, ../sass/base.scss */
 .loader-region .loader {
   background: url("/static/images/loaders/loader-large.gif") no-repeat center;
   background-color: rgba(255, 255, 255, 0.75);
@@ -339,7 +344,7 @@ div.first {
   z-index: 10000;
   font-size: 1.2em;
 }
-/* line 271, ../sass/base.scss */
+/* line 275, ../sass/base.scss */
 .loader-region .loader span {
   display: inline-block;
   vertical-align: middle;

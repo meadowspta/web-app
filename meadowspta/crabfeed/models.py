@@ -51,6 +51,7 @@ class Ticket(BaseModel):
     package = models.CharField(max_length=2, choices=TICKET_PACKAGES)
     create_date = models.DateTimeField(default=datetime.datetime.now)
     check_in_date = models.DateTimeField(blank=True, null=True)
+    # comments/notes
 
     def before_save(self, action, save):
         # Save the generated hash ID.
