@@ -273,7 +273,7 @@ footer {
   }
 }
 
-#crabfeed-home {
+#crabfeed-home, #crabfeed-raffle {
   margin-top: -10px;
 
   section {
@@ -302,7 +302,15 @@ footer {
     }
   }
 
-  .section-1 {
+  .section-raffle {
+    background-image: url('/static/images/crabfeed/home/crab.jpg');
+
+    .content {
+      background-color: #d84438;
+    }
+  }
+
+  .section-overview {
     background-image: url('/static/images/crabfeed/home/crab.jpg');
 
     .content {
@@ -316,7 +324,7 @@ footer {
     }
   }
 
-  .section-2 {
+  .section-auction {
     background-image: url('/static/images/crabfeed/home/auction.jpg');
 
     .content {
@@ -324,8 +332,7 @@ footer {
     }
   }
 
-  .section-3 {
-    /*background-image: url('https://lh4.googleusercontent.com/-KAhCdGdgOmA/UzemlnEgFzI/AAAAAAABQjg/C2VknVzAUhg/w2162-h1432-no/DSC_3810.JPG');*/
+  .section-volunteer {
     background-image: url('/static/images/crabfeed/home/volunteer.jpg');
 
     .content {
@@ -333,7 +340,15 @@ footer {
     }
   }
 
-  .section-4 {
+  .section-raffle {
+    background-image: url('/static/images/crabfeed/home/raffle.jpg');
+
+    .content {
+      background-color: #ff8400;
+    }
+  }
+
+  .section-tickets {
     background-image: url('/static/images/crabfeed/home/sign_up.jpg');
 
     .content {

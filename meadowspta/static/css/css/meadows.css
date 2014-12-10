@@ -609,11 +609,11 @@ footer .section2 .content {
 }
 
 /* line 276, ../sass/meadows.scss */
-#crabfeed-home {
+#crabfeed-home, #crabfeed-raffle {
   margin-top: -10px;
 }
 /* line 279, ../sass/meadows.scss */
-#crabfeed-home section {
+#crabfeed-home section, #crabfeed-raffle section {
   height: 750px;
   color: #ffffff;
   background-size: 100%;
@@ -621,59 +621,74 @@ footer .section2 .content {
   position: relative;
 }
 /* line 286, ../sass/meadows.scss */
-#crabfeed-home section h2 {
+#crabfeed-home section h2, #crabfeed-raffle section h2 {
   font-size: 3.5em;
 }
 /* line 290, ../sass/meadows.scss */
-#crabfeed-home section h3 {
+#crabfeed-home section h3, #crabfeed-raffle section h3 {
   font-size: 2.3em;
 }
 /* line 294, ../sass/meadows.scss */
-#crabfeed-home section p {
+#crabfeed-home section p, #crabfeed-raffle section p {
   font-size: 1.8em;
 }
 /* line 298, ../sass/meadows.scss */
-#crabfeed-home section .content {
+#crabfeed-home section .content, #crabfeed-raffle section .content {
   margin-top: 450px;
   height: 300px;
   padding: 15px 0px;
 }
 /* line 305, ../sass/meadows.scss */
-#crabfeed-home .section-1 {
+#crabfeed-home .section-raffle, #crabfeed-raffle .section-raffle {
   background-image: url("/static/images/crabfeed/home/crab.jpg");
 }
 /* line 308, ../sass/meadows.scss */
-#crabfeed-home .section-1 .content {
+#crabfeed-home .section-raffle .content, #crabfeed-raffle .section-raffle .content {
   background-color: #d84438;
 }
-/* line 311, ../sass/meadows.scss */
-#crabfeed-home .section-1 .content .crabfeed-logo {
+/* line 313, ../sass/meadows.scss */
+#crabfeed-home .section-overview, #crabfeed-raffle .section-overview {
+  background-image: url("/static/images/crabfeed/home/crab.jpg");
+}
+/* line 316, ../sass/meadows.scss */
+#crabfeed-home .section-overview .content, #crabfeed-raffle .section-overview .content {
+  background-color: #d84438;
+}
+/* line 319, ../sass/meadows.scss */
+#crabfeed-home .section-overview .content .crabfeed-logo, #crabfeed-raffle .section-overview .content .crabfeed-logo {
   position: absolute;
   top: -475px;
   right: 0px;
 }
-/* line 319, ../sass/meadows.scss */
-#crabfeed-home .section-2 {
+/* line 327, ../sass/meadows.scss */
+#crabfeed-home .section-auction, #crabfeed-raffle .section-auction {
   background-image: url("/static/images/crabfeed/home/auction.jpg");
 }
-/* line 322, ../sass/meadows.scss */
-#crabfeed-home .section-2 .content {
+/* line 330, ../sass/meadows.scss */
+#crabfeed-home .section-auction .content, #crabfeed-raffle .section-auction .content {
   background-color: #4286f5;
 }
-/* line 327, ../sass/meadows.scss */
-#crabfeed-home .section-3 {
-  /*background-image: url('https://lh4.googleusercontent.com/-KAhCdGdgOmA/UzemlnEgFzI/AAAAAAABQjg/C2VknVzAUhg/w2162-h1432-no/DSC_3810.JPG');*/
+/* line 335, ../sass/meadows.scss */
+#crabfeed-home .section-volunteer, #crabfeed-raffle .section-volunteer {
   background-image: url("/static/images/crabfeed/home/volunteer.jpg");
 }
-/* line 331, ../sass/meadows.scss */
-#crabfeed-home .section-3 .content {
+/* line 338, ../sass/meadows.scss */
+#crabfeed-home .section-volunteer .content, #crabfeed-raffle .section-volunteer .content {
   background-color: #f5b400;
 }
-/* line 336, ../sass/meadows.scss */
-#crabfeed-home .section-4 {
+/* line 343, ../sass/meadows.scss */
+#crabfeed-home .section-raffle, #crabfeed-raffle .section-raffle {
+  background-image: url("/static/images/crabfeed/home/raffle.jpg");
+}
+/* line 346, ../sass/meadows.scss */
+#crabfeed-home .section-raffle .content, #crabfeed-raffle .section-raffle .content {
+  background-color: #ff8400;
+}
+/* line 351, ../sass/meadows.scss */
+#crabfeed-home .section-tickets, #crabfeed-raffle .section-tickets {
   background-image: url("/static/images/crabfeed/home/sign_up.jpg");
 }
-/* line 339, ../sass/meadows.scss */
-#crabfeed-home .section-4 .content {
+/* line 354, ../sass/meadows.scss */
+#crabfeed-home .section-tickets .content, #crabfeed-raffle .section-tickets .content {
   background-color: #109d58;
 }
