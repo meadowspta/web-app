@@ -19,6 +19,13 @@ def home(request):
 
     return render_to_response('crabfeed/home.html', payload, context_instance=RequestContext(request))
 
+def test(request):
+    payload = {
+
+    }
+
+    return render_to_response('crabfeed/test.html', payload, context_instance=RequestContext(request))
+
 def dashboard(request):
     payload = {
 
