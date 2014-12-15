@@ -19,6 +19,9 @@ def home(request):
 
     return render_to_response('crabfeed/home.html', payload, context_instance=RequestContext(request))
 
+def save_the_date(request):
+    return render_to_response('crabfeed/save-the-date.html', context_instance=RequestContext(request))
+
 def test(request):
     payload = {
 

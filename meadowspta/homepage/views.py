@@ -62,6 +62,3 @@ def view(request):
     )
 
     return render_to_response('homepage/view.html', payload, context_instance=RequestContext(request))
-
-def crabfeed(request):
-    return render_to_response('homepage/crabfeed.html', context_instance=RequestContext(request))

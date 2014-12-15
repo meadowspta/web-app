@@ -692,3 +692,16 @@ footer .section2 .content {
 #crabfeed-home .section-tickets .content, #crabfeed-raffle .section-tickets .content {
   background-color: #109d58;
 }
+
+/* line 361, ../sass/meadows.scss */
+#crabfeed-save-the-date h1 {
+  font-weight: bold;
+  background: #cc0000;
+  color: #ffffff;
+  border-radius: 5px;
+}
+/* line 368, ../sass/meadows.scss */
+#crabfeed-save-the-date h2 {
+  font-weight: bold;
+  text-transform: uppercase;
+}
