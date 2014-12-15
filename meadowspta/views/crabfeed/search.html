@@ -1,0 +1,35 @@
+{% extends 'layouts/page.html' %}
+
+{% block content %}
+  <div id="crabfeed-ticket-search" ng-controller="CrabfeedTicketSearchController">
+    <div class="input-group">
+      <input type="text" class="form-control input-lg" placeholder="Search by name, email, or confirmation number" ng-model="q" ng-change="qChange();">
+      <span class="input-group-btn">
+        <button class="btn btn-success btn-lg" type="button"><span class="glyphicon glyphicon-search"></span></button>
+      </span>
+    </div>
+
+    <section ng-show="tickets.length">
+      <hr />
+      <h4>{[ tickets.length ]} results</h4>
+
+      <table class="table table-striped">
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Payment Type</th>
+          <th></th>
+        </tr>
+        <tr ng-repeat="ticket in tickets">
+          <td><a href="" class="loud">{[ ticket.first_name ]} {[ ticket.last_name ]}</a></td>
+          <td><a href="mailto:{[ ticket.email ]}" target="_blank">{[ ticket.email ]}</a></td>
+          <td>
+            <span class="glyphicon" ng-class="{ 'glyphicon-credit-card': ticket.payment_type_id == 'CC', 'glyphicon-ok': ticket.payment_type_id == 'CH' }"><span class="loud" ng-show="ticket.payment_type_id == 'CA'">$</span></span>
+            <span class="quiet">{[ ticket.payment_type ]}</span>
+          </td>
+          <td></td>
+        </tr>
+      </table>
+    </section>
+  </div>
+{% endblock content %}

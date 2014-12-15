@@ -1,0 +1,14 @@
+{% extends 'layouts/page.html' %}
+
+{% block content %}
+  <div id="crabfeed-check-in">
+    <h1>{{ ticket.first_name }} {{ ticket.last_name }}</h1>
+
+    <strong>Email:</strong> <a href="mailto:{{ ticket.email }}">{{ ticket.email }}</a><br />
+    <strong>Payment Type:</strong> {{ ticket.get_payment_type_display }}<br />
+    <strong>Package:</strong> {{ ticket.get_package_display }}<br />
+    <strong>Purchase Date:</strong> {{ ticket.create_date }}<br />
+
+    <img src="{{ ticket.qr_code_image.url }}">
+  </div>
+{% endblock content %}

@@ -1,8 +1,8 @@
 var MeadowsPTA = {};
 
 $(function() {
-    MeadowsPTA.eventAdminForm();
-    MeadowsPTA.googleAnalytics();
+  MeadowsPTA.eventAdminForm();
+  MeadowsPTA.googleAnalytics();
 });
 
 /*
