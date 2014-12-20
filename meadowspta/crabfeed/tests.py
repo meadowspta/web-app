@@ -1,7 +1,19 @@
 from django.test import TestCase
 
-from .models import Ticket
+from .models import Ticket, NotificationSignup
 
+class NotificationSignupTest(TestCase):
+    def test_email_exists(self):
+        email = 'test@meadowspta.org'
+
+        is_signed_up = NotificationSignup.email_exists(email)
+        self.assertFalse(is_signed_up)
+
+        signup = NotificationSignup(email=email)
+        signup.save()
+
+        is_signed_up = NotificationSignup.email_exists(email)
+        self.assertTrue(is_signed_up)
 
 class TicketTest(TestCase):
     def test_get_hash_id(self):

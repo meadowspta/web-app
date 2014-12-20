@@ -132,17 +132,24 @@
           </p>
 
           <hr />
-          <p>
-            <center class="loud">
-              Tickets on sale online here starting<br />
-              Friday, December 19th, 2014
-            </center>
-          </p>
-          <hr />
           <div>
-            <center>
-              <button data-toggle="modal" data-target="#crabfeed-faq-modal" class="btn btn-success">View Event F.A.Q.'s</button>
-            </center>
+            {% if not display_thankyou %}
+              <form action="/crabfeed/" method="post">
+                {% csrf_token %}
+                <!-- <button data-toggle="modal" data-target="#crabfeed-faq-modal" class="btn btn-success">View Event F.A.Q.'s</button> -->
+                <p><strong>Sign up to be notified when tickets are available for online purchase</strong></p>
+                <div class="input-group">
+                  {{ notification_signup_form.email }}
+                  <span class="input-group-btn">
+                    <input type="submit" class="btn btn-success" type="button" value="Submit">
+                  </span>
+                </div>
+
+                {{ notification_signup_form.email.errors }}
+              </form>
+            {% else %}
+              Thank You!
+            {% endif %}            
           </div>
         </div>
       </div>

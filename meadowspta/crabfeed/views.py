@@ -6,7 +6,7 @@ from django.shortcuts import render_to_response
 
 from meta.views import Meta
 
-from .forms import VolunteerSignupForm
+from .forms import VolunteerSignupForm, NotificationSignupForm
 from .models import Ticket
 
 
@@ -20,7 +20,19 @@ def home(request):
     return render_to_response('crabfeed/home.html', payload, context_instance=RequestContext(request))
 
 def save_the_date(request):
-    return render_to_response('crabfeed/save-the-date.html', context_instance=RequestContext(request))
+    notification_signup_form = NotificationSignupForm(request.POST or None)
+
+    display_thankyou = False
+    if notification_signup_form.is_valid():
+        notification_signup_form.save()
+        display_thankyou = True
+
+    payload = {
+        'notification_signup_form': notification_signup_form,
+        'display_thankyou': display_thankyou,
+    }
+
+    return render_to_response('crabfeed/save-the-date.html', payload, context_instance=RequestContext(request))
 
 def test(request):
     payload = {

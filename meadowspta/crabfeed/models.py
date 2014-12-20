@@ -10,7 +10,26 @@ from django.core.files.base import ContentFile
 from core.models import BaseModel
 
 
+class NotificationSignup(BaseModel):
+    class Meta:
+        db_table = 'crabfeed_notification_signup'
+
+    email = models.EmailField(max_length=255)
+    create_date = models.DateTimeField(default=datetime.datetime.now)
+
+    @staticmethod
+    def email_exists(email):
+        try:
+            signup = NotificationSignup.objects.get(email=email)
+        except Exception, e:
+            return False
+
+        return True
+
 class VolunteerSignup(BaseModel):
+    class Meta:
+        db_table = 'crabfeed_volunteer_signup'
+
     full_name = models.CharField(max_length=127)
     email = models.EmailField(max_length=255)
     create_date = models.DateTimeField(default=datetime.datetime.now)
