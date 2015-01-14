@@ -46,4 +46,9 @@ MeadowsPTA.crabfeed = function() {
     var quantity = $(this).val();
     $('.pp-raffle-ticket-quantity').val(quantity);
   });
+
+  $('#crabfeed-tickets .raffle-pack-quantity').change(function() {
+    var quantity = $(this).val();
+    $('.pp-raffle-pack-quantity').val(quantity);
+  });
 }

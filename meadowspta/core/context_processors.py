@@ -3,6 +3,7 @@ from django.conf import settings
 
 def view_variables(request):
     return {
+        'version': '0.3',
         'google_analytics_id': settings.GOOGLE_ANALYTICS_ID,
         'uri': 'http://%s%s' % (request.META['HTTP_HOST'], request.path),
         'site_root': 'http://%s' % (request.META['HTTP_HOST']),
