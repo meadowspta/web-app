@@ -1,5 +1,39 @@
 @media (min-width: 768px) and (max-width: 979px) {
+  #crabfeed-home {
+    h1, h2, h3, h4, h5 {
+      font-size: 2.4em !important;
+    }
 
+    p {
+      font-size: 1.6em !important;
+      margin: 0 0 5px 0;
+    }
+
+    section {
+      background-size: 800px;
+      height: 550px;
+
+      .content {
+        margin-top: 350px;
+        height: 400px;
+      }
+    }
+
+    .section-overview {
+      height: 800px !important;
+
+      .content {
+        .crabfeed-logo {
+          top: -400px !important;
+          width: 425px;
+        }
+      }
+    }
+
+    .section-raffle {
+      height: 700px !important;
+    }
+  }
 }
 
 @media (min-width: 1200px) {
@@ -7,7 +41,40 @@
 }
 
 @media (max-width: 767px) {
+  #crabfeed-home, #crabfeed-raffle {
+    h1, h2, h3, h4, h5 {
+      font-size: 1.5em !important;
+    }
 
+    p {
+      font-size: 1.2em !important;
+      margin: 0 0 5px 0;
+    }
+
+    section {
+      height: 500px !important;
+      background-size: 600px;
+
+      .content {
+        margin-top: 250px;
+      }
+    }
+
+    .section-overview {
+      height: 650px !important;
+
+      .content {
+        .crabfeed-logo {
+          top: -300px !important;
+          width: 325px;
+        }
+      }
+    }
+
+    .section-raffle {
+      height: 550px !important;
+    }
+  }
 }
 
 @media (min-width: 980px) {
@@ -15,9 +82,9 @@
 }
 
 @media (max-width: 979px) {
-    header {
-        font-size: 10px;
-    }
+  header {
+    font-size: 10px;
+  }
 }
 
 @media (max-width: 480px) {

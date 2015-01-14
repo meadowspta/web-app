@@ -277,10 +277,10 @@ footer {
   margin-top: -10px;
 
   section {
-    height: 750px;
+    height: 950px;
     color: #ffffff;
     background-size: 100%;
-    background-position: bottom;
+    background-position: top;
     position: relative;
 
     h2 {
@@ -296,15 +296,15 @@ footer {
     }
 
     .content {
-      margin-top: 450px;
-      height: 300px;
+      margin-top: 650px;
+      height: 500px;
       padding: 15px 0px;
     }
   }
 
   .section-raffle {
     background-image: url('/static/images/crabfeed/home/crab.jpg');
-    height: 850px;
+    height: 1050px;
 
     .content {
       background-color: #d84438;
@@ -314,7 +314,7 @@ footer {
 
   .section-overview {
     background-image: url('/static/images/crabfeed/home/crab.jpg');
-    height: 900px;
+    height: 1100px;
 
     .content {
       background-color: #d84438;
@@ -361,6 +361,7 @@ footer {
 
     .content {
       background-color: #109d58;
+      height: 300px;
     }
   }
 }

@@ -1,5 +1,72 @@
+@media (min-width: 768px) and (max-width: 979px) {
+  /* line 3, ../sass/responsive.scss */
+  #crabfeed-home h1, #crabfeed-home h2, #crabfeed-home h3, #crabfeed-home h4, #crabfeed-home h5 {
+    font-size: 2.4em !important;
+  }
+  /* line 7, ../sass/responsive.scss */
+  #crabfeed-home p {
+    font-size: 1.6em !important;
+    margin: 0 0 5px 0;
+  }
+  /* line 12, ../sass/responsive.scss */
+  #crabfeed-home section {
+    background-size: 800px;
+    height: 550px;
+  }
+  /* line 16, ../sass/responsive.scss */
+  #crabfeed-home section .content {
+    margin-top: 350px;
+    height: 400px;
+  }
+  /* line 22, ../sass/responsive.scss */
+  #crabfeed-home .section-overview {
+    height: 800px !important;
+  }
+  /* line 26, ../sass/responsive.scss */
+  #crabfeed-home .section-overview .content .crabfeed-logo {
+    top: -400px !important;
+    width: 425px;
+  }
+  /* line 33, ../sass/responsive.scss */
+  #crabfeed-home .section-raffle {
+    height: 700px !important;
+  }
+}
+@media (max-width: 767px) {
+  /* line 45, ../sass/responsive.scss */
+  #crabfeed-home h1, #crabfeed-home h2, #crabfeed-home h3, #crabfeed-home h4, #crabfeed-home h5, #crabfeed-raffle h1, #crabfeed-raffle h2, #crabfeed-raffle h3, #crabfeed-raffle h4, #crabfeed-raffle h5 {
+    font-size: 1.5em !important;
+  }
+  /* line 49, ../sass/responsive.scss */
+  #crabfeed-home p, #crabfeed-raffle p {
+    font-size: 1.2em !important;
+    margin: 0 0 5px 0;
+  }
+  /* line 54, ../sass/responsive.scss */
+  #crabfeed-home section, #crabfeed-raffle section {
+    height: 500px !important;
+    background-size: 600px;
+  }
+  /* line 58, ../sass/responsive.scss */
+  #crabfeed-home section .content, #crabfeed-raffle section .content {
+    margin-top: 250px;
+  }
+  /* line 63, ../sass/responsive.scss */
+  #crabfeed-home .section-overview, #crabfeed-raffle .section-overview {
+    height: 650px !important;
+  }
+  /* line 67, ../sass/responsive.scss */
+  #crabfeed-home .section-overview .content .crabfeed-logo, #crabfeed-raffle .section-overview .content .crabfeed-logo {
+    top: -300px !important;
+    width: 325px;
+  }
+  /* line 74, ../sass/responsive.scss */
+  #crabfeed-home .section-raffle, #crabfeed-raffle .section-raffle {
+    height: 550px !important;
+  }
+}
 @media (max-width: 979px) {
-  /* line 18, ../sass/responsive.scss */
+  /* line 85, ../sass/responsive.scss */
   header {
     font-size: 10px;
   }
