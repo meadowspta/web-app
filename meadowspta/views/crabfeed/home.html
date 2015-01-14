@@ -35,34 +35,6 @@
     </form>
   </div>
 
-  <!-- Registration Modal -->
-  <div class="modal fade" id="purchase-tickets-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-          <h4 class="modal-title" id="myModalLabel">Crabfeed Ticket Purchase</h4>
-        </div>
-        <div class="modal-body">
-          <div>
-            <input type="text" placeholder="first name" class="form-control">
-            <input type="text" placeholder="last name" class="form-control">
-          </div>
-          <div>
-            <input type="text" placeholder="email" class="form-control">
-          </div>
-          <div>
-            ...
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-          <input type="submit" class="btn btn-success" value="Submit" />
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- Main sections -->
   <div id="crabfeed-home">
     <section class="section-overview">
@@ -73,13 +45,28 @@
             <div class="col-lg-12">
               <img class="img-responsive crabfeed-logo" src="/static/images/crabfeed/home/logo.png">
 
-              <h2>Come join us for the 2nd annual Meadows Crab Feed.</h2>
+              <h2>Come join us for the 2nd annual Meadows Crab Feed and Auction.</h2>
               <p>
-                February 28, 2015, 6pm - 9pm at the Caroline Shea Center, Taylor Middle School
+                4:00 Pre-event wine & beer social at Rec Center<br />
+                5:00 Doors open for Auction Viewing<br />
+                6:00 - 9:00 PM Crab Feed & Auction<br />
+                <br />
               </p>
-              <p>
-                All proceeds will benefit the 400+ students at Meadows School.
-              </p>
+            </div>
+
+            <div>
+              <div class="col-lg-10">
+                <p>
+                  $50 Ticket<br />
+                  Ticket includes: crab, salad, pasta, bread, & dessert<br />
+                  <i>($60 if purchased after Feb 15)</i><br />
+                </p>
+              </div>
+              <div class="col-lg-2">
+                <a href="/crabfeed/tickets/" type="button" class="btn btn-success btn-lg">
+                  Buy Tickets
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -92,13 +79,9 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-12">
-              <h3>Help support the school and buy items from the auction.</h3>
+              <h3>Help support Meadows raise funds for educational programs and supplies.</h3>
               <p>
-                Last year, the event raise over $45,000 that went towards Meadows programs, and supplies. Auction items included vacation packages,
-                paintings, sport memorabilia, and also original artwork from Meadows students!
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+                Our auction items include vacation packages, paintings, sport memorabilia, and also original artwork from Meadows students!
               </p>
             </div>
           </div>
@@ -114,7 +97,13 @@
             <div class="col-lg-12">
               <h2>Win Prizes With Raffle Tickets</h2>
               <p>
-                In combination with our Crab Feed and Auctions, we are asking for your help by purchasing raffle tickets.
+                Our goal is to sell 5,000 raffle tickets!
+                Raffle tickets are $5 each or 5 for $20.<br />
+                <br />
+                <strong>Grand Prize:</strong> Disneyland One-Day Park Hopper for 4 plus $500 spending cash <i>(valued at $1,100)</i><br />
+                <strong>Second Prize:</strong> $500<br />
+                <strong>Third Prize:</strong> $250<br />
+                <i>Winner need not be present to win. </i>
               </p>
             </div>
           </div>
@@ -131,9 +120,6 @@
               <h3>Be a part of the Meadows community and volunteer.</h3>
               <p>
                 With over 40 voluneers in 2014, the key to the success of the event came from the helping hands of the parents.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
               </p>
 
               <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#volunteer-sign-up-modal">
@@ -155,13 +141,10 @@
               <p>
                 With over 300 people last year, the event was sold out!
               </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-              </p>
 
-              <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#purchase-tickets-modal">
-                Buy Event & Raffle Tickets
-              </button>
+              <a href="/crabfeed/tickets/" type="button" class="btn btn-danger btn-lg">
+                Buy Tickets
+              </a>
             </div>
           </div>
         </div>

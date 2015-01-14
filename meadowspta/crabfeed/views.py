@@ -15,9 +15,23 @@ def home(request):
 
     payload = {
         'volunteer_signup_form': volunteer_signup_form,
+        'quantity_range': range(1, 101),
     }
 
     return render_to_response('crabfeed/home.html', payload, context_instance=RequestContext(request))
+
+def tickets(request):
+    payload = {
+        'quantity_range': range(1, 101),
+    }
+
+    return render_to_response('crabfeed/tickets.html', payload, context_instance=RequestContext(request))
+
+def confirmation(request):
+    return render_to_response('crabfeed/confirmation.html', context_instance=RequestContext(request))
+
+def cancellation(request):
+    return render_to_response('crabfeed/cancellation.html', context_instance=RequestContext(request))
 
 def save_the_date(request):
     notification_signup_form = NotificationSignupForm(request.POST or None)

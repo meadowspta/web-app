@@ -3,28 +3,82 @@
 {% block content %}
   <script>
   $(function() {
-    $('.quantity').change(function() {
+    $('.ticket-quantity').change(function() {
       var quantity = $(this).val();
-      $('.pp-quantity').val(quantity);
+      $('.pp-ticket-quantity').val(quantity);
+    });
+
+    $('.raffle-quantity').change(function() {
+      var quantity = $(this).val();
+      $('.pp-raffle-quantity').val(quantity);
+    });
+
+    $('.btn-mega-submit').click(function() {
+      $.ajax({
+        type: 'POST',
+        url: 'https://www.sandbox.paypal.com/cgi-bin/webscr',
+        data: $('#event-ticket-form').serialize(),
+        success: function() {
+          console.log('here i am');
+        }
+      });
     });
   });
 </script>
 
-<select class="quantity">
-  <option value="1">1 Ticket</option>
-  <option value="2">2 Tickets</option>
-  <option value="3">3 Tickets</option>
-  <option value="4">4 Tickets</option>
-  <option value="5">5 Tickets</option>
-</select>
+<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+  <select class="ticket-quantity">
+    <option value="1">1 Ticket</option>
+    <option value="2">2 Tickets</option>
+    <option value="3">3 Tickets</option>
+    <option value="4">4 Tickets</option>
+    <option value="5">5 Tickets</option>
+  </select>
+
+  <input type="hidden" name="cmd" value="_s-xclick">
+  <input type="hidden" name="hosted_button_id" value="7RXJQLRGHS494">
+  <input type="hidden" class="pp-ticket-quantity" name="quantity" value="1">
+  <input type="text" name="address1">
+  <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+  <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+<hr />
+
 
 <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="7RXJQLRGHS494">
-<input type="hidden" class="pp-quantity" name="quantity" value="3">
-<input type="text" name="address1">
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+  <select class="raffle-quantity">
+    <option value="1">1 Ticket</option>
+    <option value="2">2 Tickets</option>
+    <option value="3">3 Tickets</option>
+    <option value="4">4 Tickets</option>
+    <option value="5">5 Tickets</option>
+  </select>
+
+  <input type="hidden" name="cmd" value="_s-xclick">
+  <input type="hidden" name="hosted_button_id" value="T37SAXJQZFXYN">
+  <input type="hidden" class="pp-raffle-quantity" name="quantity" value="1">
+  <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+  <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 </form>
+<hr />
+
+<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+  <input type="hidden" name="cmd" value="_s-xclick">
+  <input type="hidden" name="hosted_button_id" value="J8YZWSAPWKY5G">
+  <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+  <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+<hr />
+<h1>Sandbox</h1>
+
+<form target="paypal" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+  <input type="hidden" name="cmd" value="_s-xclick">
+  <input type="hidden" name="hosted_button_id" value="LQLF83D5ABY4E">
+  <input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+  <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+<hr />
+<button class="btn btn-lg btn-success btn-mega-submit">Submit</button>
+
 
 {% endblock content %}

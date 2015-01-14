@@ -3,6 +3,7 @@ var MeadowsPTA = {};
 $(function() {
   MeadowsPTA.eventAdminForm();
   MeadowsPTA.googleAnalytics();
+  MeadowsPTA.crabfeed();
 });
 
 /*
@@ -32,5 +33,17 @@ MeadowsPTA.eventAdminForm = function() {
 MeadowsPTA.googleAnalytics = function() {
   $('.membership-form-download-button').click(function() {
     _gaq.push(['_trackEvent', 'Links', 'Click', 'Membership Form Download Button']);
+  });
+}
+
+MeadowsPTA.crabfeed = function() {
+  $('#crabfeed-tickets .event-ticket-quantity').change(function() {
+    var quantity = $(this).val();
+    $('.pp-event-ticket-quantity').val(quantity);
+  });
+
+  $('#crabfeed-tickets .raffle-ticket-quantity').change(function() {
+    var quantity = $(this).val();
+    $('.pp-raffle-ticket-quantity').val(quantity);
   });
 }
