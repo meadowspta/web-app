@@ -21,7 +21,6 @@ INSTALLED_APPS = (
     'imagekit',
     'modeldict',
     'meta',
-    'paypal.standard.ipn',
     # 'meadowspta.middleware',
     'system',
     'homepage',
