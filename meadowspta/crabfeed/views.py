@@ -3,11 +3,14 @@ import json
 from django.template import RequestContext, Context, loader
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
+from django.db.models import Count, Min, Sum, Avg
+from django.contrib.auth.decorators import permission_required
 
 from meta.views import Meta
 
 from .forms import VolunteerSignupForm, NotificationSignupForm
 from .models import Ticket
+from system.models import PayPalTransaction, PayPalTransactionItem
 
 
 def home(request):
@@ -54,9 +57,25 @@ def test(request):
 
     return render_to_response('crabfeed/test.html', payload, context_instance=RequestContext(request))
 
+@permission_required('change_paypaltransaction')
 def dashboard(request):
-    payload = {
+    transactions = PayPalTransaction.objects.all().order_by('-date')
+    crabfeed_tickets = PayPalTransactionItem.objects.filter(item_title='Crab Feed Tickets').aggregate(sum=Sum('quantity'))
+    raffle_tickets = PayPalTransactionItem.objects.filter(item_title='Raffle Tickets').aggregate(sum=Sum('quantity'))
+    raffle_tickets_pack = PayPalTransactionItem.objects.filter(item_title='Raffle Ticket 5 Pack').aggregate(sum=Sum('quantity'))
+    turkey_trott_tshirts = PayPalTransactionItem.objects.filter(item_title='Turkey Trott T-Shirt').aggregate(sum=Sum('quantity'))
+    donations = PayPalTransactionItem.objects.filter(item_title='Donation').aggregate(sum=Sum('net'))
+    grand_total = PayPalTransactionItem.objects.aggregate(sum=Sum('net'))
 
+    payload = {
+        'transactions': transactions,
+        'totals': {
+            'crabfeed_tickets': crabfeed_tickets['sum'],
+            'raffle_tickets': (raffle_tickets['sum'] + (raffle_tickets_pack['sum'] * 5)),
+            'turkey_trott_tshirts': turkey_trott_tshirts['sum'],
+            'donations': donations['sum'],
+            'grand_total': grand_total['sum'],
+        }
     }
 
     return render_to_response('crabfeed/dashboard.html', payload, context_instance=RequestContext(request))

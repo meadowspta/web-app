@@ -4,3 +4,4 @@ meadowspta/static/css/.sass-cache
 meadowspta/media/*
 meadowspta/meadowspta/settings/local.py
 meadowspta/meadowspta/settings/production.py
+meadowspta/private

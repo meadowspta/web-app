@@ -17,9 +17,11 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.admindocs',
+    'django.contrib.humanize',
     'imagekit',
     'modeldict',
     'meta',
+    'paypal.standard.ipn',
     # 'meadowspta.middleware',
     'system',
     'homepage',
@@ -66,7 +68,8 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
+PRIVATE_ROOT = os.path.join(BASE_DIR, 'private')
+
 # Site settings.
 GOOGLE_ANALYTICS_ID = 'UA-57669787-1'
 MAP_URL = 'https://www.google.com/maps/preview?authuser=0#!q=Meadows+Elementary+School%2C+Millbrae%2C+CA&data=!4m10!1m9!4m8!1m3!1d3136!2d-122.419435!3d37.6019973!3m2!1i1436!2i762!4f13.1'
-

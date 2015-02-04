@@ -111,3 +111,9 @@ MAP_URL = 'https://www.google.com/maps/preview?authuser=0#!q=Meadows+Elementary+
 META_SITE_PROTOCOL = 'http'
 META_SITE_DOMAIN = 'www.meadowspta.org'
 META_USE_OG_PROPERTIES = True
+
+# PayPal
+PAYPAL_USERNAME = 'info@meadowspta.org'
+PAYPAL_ENDPOINT = 'api.paypal.com'
+PAYPAL_CLIENT_ID = 'AYu4fRC5qBXOE-l7voqQIpMiQa7NpGyCf98Wp-050darclyoF1OF64s5I3j4'
+PAYPAL_SECRET_KEY = 'EL3w3hBkVvVi_JqplD-4NZ9NUeY_ZM6bniiwp2lRF5V1ki5XzUlHWoF-Eu9D'

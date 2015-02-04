@@ -213,7 +213,7 @@ h4.chrome {
 
 /* line 174, ../sass/base.scss */
 .bg-splash.bg-splash-secondary {
-  background-color: #FF6600;
+  background-color: #ff6600;
   color: #ffffff;
 }
 
@@ -230,7 +230,7 @@ h4.chrome {
 
 /* line 186, ../sass/base.scss */
 .text-secondary {
-  color: #FF6600;
+  color: #ff6600;
 }
 
 /* line 190, ../sass/base.scss */
@@ -304,22 +304,32 @@ h4.chrome {
 }
 
 /* line 240, ../sass/base.scss */
+.no-margin {
+  margin: 0px !important;
+}
+
+/* line 243, ../sass/base.scss */
+.no-padding {
+  padding: 0px !important;
+}
+
+/* line 247, ../sass/base.scss */
 img.shadow {
   box-shadow: 0px 1px 5px #666666;
 }
 
 /* Bootstrap overrides */
-/* line 245, ../sass/base.scss */
+/* line 252, ../sass/base.scss */
 div.first {
   margin-left: 0;
 }
 
-/* line 249, ../sass/base.scss */
+/* line 256, ../sass/base.scss */
 .form-inline input[type='text'] {
   margin-bottom: 10px;
 }
 
-/* line 253, ../sass/base.scss */
+/* line 260, ../sass/base.scss */
 .ng-hide {
   display: block !important;
   position: absolute;
@@ -328,11 +338,11 @@ div.first {
 }
 
 /* Loader */
-/* line 261, ../sass/base.scss */
+/* line 268, ../sass/base.scss */
 .loader-region {
   position: relative;
 }
-/* line 264, ../sass/base.scss */
+/* line 271, ../sass/base.scss */
 .loader-region .loader {
   background: url("/static/images/loaders/loader-large.gif") no-repeat center;
   background-color: rgba(255, 255, 255, 0.75);
@@ -344,7 +354,7 @@ div.first {
   z-index: 10000;
   font-size: 1.2em;
 }
-/* line 275, ../sass/base.scss */
+/* line 282, ../sass/base.scss */
 .loader-region .loader span {
   display: inline-block;
   vertical-align: middle;

@@ -1,24 +1,29 @@
 {% extends 'layouts/page.html' %}
+{% load humanize %}
 
 {% block content %}
   <div id="crabfeed-dashboard" ng-controller="CrabfeedDashboardController">
     <header>
-      <ul>
+      <ul class="overview">
         <li>
-          <h2>Total Registered</h2>
-          <span>234</span>
+          <h2>Crabfeed Tickets</h2>
+          <span>{{ totals.crabfeed_tickets|intcomma }}</span>
         </li>
         <li>
-          <h2>Total Registered</h2>
-          <span>234</span>
+          <h2>Raffle Tickets</h2>
+          <span>{{ totals.raffle_tickets|intcomma }}</span>
         </li>
         <li>
-          <h2>Total Registered</h2>
-          <span>234</span>
+          <h2>Turkey Trott T-Shirts</h2>
+          <span>{{ totals.turkey_trott_tshirts|intcomma }}</span>
         </li>
         <li>
-          <h2>Total Registered</h2>
-          <span>234</span>
+          <h2>Donations</h2>
+          <span>${{ totals.donations|floatformat:2|intcomma }}</span>
+        </li>
+        <li class="grand-total">
+          <h2>Grand Total</h2>
+          <span>${{ totals.grand_total|floatformat:2|intcomma }}</span>
         </li>
       </ul>
     </header>
@@ -26,17 +31,36 @@
     <section>
       <table class="table table-striped">
         <tr>
+          <th>Date/Time</th>
           <th>Name</th>
           <th>Email</th>
+          <th>Items</th>
           <th>Payment Type</th>
           <th></th>
         </tr>
-        <tr ng-repeat="ticket in tickets">
-          <td><a href="">{[ ticket.first_name ]} {[ ticket.last_name ]}</a></td>
-          <td><a href="mailto:{[ ticket.email ]}" target="_blank">{[ ticket.email ]}</a></td>
-          <td>{[ ticket.payment_type ]}</td>
-          <td></td>
-        </tr>
+        {% for transaction in transactions %}
+          <tr>
+            <td><strong>{{ transaction.date|date:"n/j/y" }}</strong> <span class="quiet">{{ transaction.date|date:"g:i a" }}</span></td>
+            <td><a href="">{{ transaction.name }}</a></td>
+            <td><a href="mailto:{{ transaction.from_email_address }}" target="_blank">{{ transaction.from_email_address }}</a></td>
+            <td>
+              <ul class="no-padding">
+                {% for item in transaction.paypaltransactionitem_set.all %}
+                  <li>
+                    <strong>{{ item.item_title }}:</strong>
+                    {% if item.item_title == 'Donation' %}
+                      ${{ item.net }}
+                    {% else %}
+                      {{ item.quantity }}
+                    {% endif %}
+                  </li>
+                {% endfor %}
+              </ul>
+            </td>
+            <td>{{ transaction.get_payment_type }}</td>
+            <td></td>
+          </tr>
+        {% endfor %}
       </table>
     </section>
   </div>
