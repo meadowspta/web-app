@@ -5,6 +5,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.db.models import Count, Min, Sum, Avg
 from django.contrib.auth.decorators import permission_required
+from django.db.models import Q
 
 from meta.views import Meta
 
@@ -60,21 +61,22 @@ def test(request):
 @permission_required('change_paypaltransaction')
 def dashboard(request):
     transactions = PayPalTransaction.objects.all().order_by('-date')
-    crabfeed_tickets = PayPalTransactionItem.objects.filter(item_title='Crab Feed Tickets').aggregate(sum=Sum('quantity'))
+    crabfeed_tickets = PayPalTransactionItem.objects.filter(Q(item_title='Crab Feed Tickets') | Q(item_title='Crab Feed Ticket')).aggregate(sum=Sum('quantity'))
     raffle_tickets = PayPalTransactionItem.objects.filter(item_title='Raffle Tickets').aggregate(sum=Sum('quantity'))
     raffle_tickets_pack = PayPalTransactionItem.objects.filter(item_title='Raffle Ticket 5 Pack').aggregate(sum=Sum('quantity'))
     turkey_trott_tshirts = PayPalTransactionItem.objects.filter(item_title='Turkey Trott T-Shirt').aggregate(sum=Sum('quantity'))
-    donations = PayPalTransactionItem.objects.filter(item_title='Donation').aggregate(sum=Sum('net'))
-    grand_total = PayPalTransactionItem.objects.aggregate(sum=Sum('net'))
+    donations = PayPalTransactionItem.objects.filter(item_title='Donation').aggregate(sum=Sum('gross'))
+    grand_total = PayPalTransactionItem.objects.aggregate(sum=Sum('gross'))
 
     payload = {
         'transactions': transactions,
         'totals': {
-            'crabfeed_tickets': crabfeed_tickets['sum'],
-            'raffle_tickets': (raffle_tickets['sum'] + (raffle_tickets_pack['sum'] * 5)),
-            'turkey_trott_tshirts': turkey_trott_tshirts['sum'],
-            'donations': donations['sum'],
-            'grand_total': grand_total['sum'],
+            'crabfeed_tickets': crabfeed_tickets['sum'] if crabfeed_tickets['sum'] is not None else 0,
+            'raffle_tickets': raffle_tickets['sum'] if raffle_tickets['sum'] is not None else 0,
+            'raffle_ticket_pack': raffle_tickets_pack['sum'] if raffle_tickets_pack['sum'] is not None else 0,
+            'turkey_trott_tshirts': turkey_trott_tshirts['sum'] if turkey_trott_tshirts['sum'] is not None else 0,
+            'donations': donations['sum'] if donations['sum'] is not None else 0,
+            'grand_total': grand_total['sum'] if grand_total['sum'] is not None else 0,
         }
     }
 

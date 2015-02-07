@@ -6,12 +6,16 @@
     <header>
       <ul class="overview">
         <li>
-          <h2>Crabfeed Tickets</h2>
+          <h2>Crab Feed Tickets</h2>
           <span>{{ totals.crabfeed_tickets|intcomma }}</span>
         </li>
         <li>
           <h2>Raffle Tickets</h2>
           <span>{{ totals.raffle_tickets|intcomma }}</span>
+        </li>
+        <li>
+          <h2>Raffle Ticket 5 Pack</h2>
+          <span>{{ totals.raffle_ticket_pack|intcomma }}</span>
         </li>
         <li>
           <h2>Turkey Trott T-Shirts</h2>
@@ -36,12 +40,13 @@
           <th>Email</th>
           <th>Items</th>
           <th>Payment Type</th>
+          <th>Seller</th>
           <th></th>
         </tr>
         {% for transaction in transactions %}
           <tr>
             <td><strong>{{ transaction.date|date:"n/j/y" }}</strong> <span class="quiet">{{ transaction.date|date:"g:i a" }}</span></td>
-            <td><a href="">{{ transaction.name }}</a></td>
+            <td>{{ transaction.name }}</td>
             <td><a href="mailto:{{ transaction.from_email_address }}" target="_blank">{{ transaction.from_email_address }}</a></td>
             <td>
               <ul class="no-padding">
@@ -58,6 +63,7 @@
               </ul>
             </td>
             <td>{{ transaction.get_payment_type }}</td>
+            <td>{{ transaction.get_seller }}</td>
             <td></td>
           </tr>
         {% endfor %}

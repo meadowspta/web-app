@@ -1,7 +1,7 @@
 from django.template import RequestContext, Context, loader
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login
 
 from member.forms import MemberRegistrationForm, MemberLoginForm
 
@@ -30,7 +30,8 @@ def login(request):
         if form.is_valid():
             user = authenticate(username=form.cleaned_data['email'], password=form.cleaned_data['password'])
             if user is not None:
-                return HttpResponseRedirect('/me/')
+                login(request)
+                return HttpResponseRedirect('/crabfeed/dashboard')
 
     payload = dict(
         form=form,

@@ -5,6 +5,13 @@ from django.db import models
 
 from core.models import BaseModel
 
+PAYPAL_HERE_SELLERS = {
+    'kfbetts10': 'Keisa Betts',
+    'opalenik': 'Gina',
+    'INAHMARCELO': 'Inah Marcelo',
+    'lisamoca': 'Lisa Oca',
+    'calebwhang': 'Caleb Whang',
+}
 
 class Var(models.Model):
     key = models.CharField(max_length=255)
@@ -22,6 +29,8 @@ class PayPalTransaction(BaseModel):
     type = models.CharField(max_length=255, null=True)
     transaction_id = models.CharField(max_length=128, null=True)
     invoice_number = models.CharField(max_length=128, null=True)
+    seller_id = models.CharField(max_length=64, null=True)
+    payment_type = models.CharField(max_length=128, null=True)
 
     def get_payment_type(self):
         payment_type = self.type
@@ -31,6 +40,12 @@ class PayPalTransaction(BaseModel):
             payment_type = 'Form'
 
         return '%s' % (payment_type)
+
+    def get_seller(self):
+        if self.seller_id:
+            return PAYPAL_HERE_SELLERS[self.seller_id]
+        else:
+            return ''
 
 class PayPalTransactionItem(BaseModel):
     class Meta:
@@ -52,12 +67,15 @@ class PayPalRawTransaction(BaseModel):
     name = models.CharField(max_length=255, null=True)
     type = models.CharField(max_length=255, null=True)
     status = models.CharField(max_length=64, null=True)
+    subject = models.CharField(max_length=255, null=True)
     gross = models.DecimalField(max_digits=16, decimal_places=2, default=Decimal('0.00'), null=True)
     fee = models.DecimalField(max_digits=16, decimal_places=2, null=True)
+    note = models.CharField(max_length=255, null=True)
     net = models.DecimalField(max_digits=16, decimal_places=2, null=True)
     from_email_address = models.EmailField(max_length=255, null=True)
     to_email_address = models.EmailField(max_length=255, null=True)
     transaction_id = models.CharField(max_length=128, null=True)
+    payment_type = models.CharField(max_length=128, null=True)
     counterparty_status = models.CharField(max_length=64, null=True)
     address_status = models.CharField(max_length=64, null=True)
     item_title = models.CharField(max_length=255, null=True)
@@ -65,18 +83,18 @@ class PayPalRawTransaction(BaseModel):
     shipping_and_handling_amount = models.DecimalField(max_digits=16, decimal_places=2, null=True)
     insurance_amount = models.DecimalField(max_digits=16, decimal_places=2, null=True)
     sales_tax = models.DecimalField(max_digits=16, decimal_places=2, null=True)
+    seller_id = models.CharField(max_length=64, null=True)
     option_1_name = models.CharField(max_length=128, null=True)
     option_1_value = models.CharField(max_length=128, null=True)
     option_2_name = models.CharField(max_length=128, null=True)
     option_2_value = models.CharField(max_length=128, null=True)
-    auction_state = models.CharField(max_length=128, null=True)
+    auction_site = models.CharField(max_length=128, null=True)
     buyer_id = models.CharField(max_length=128, null=True)
     item_url = models.URLField(max_length=128, null=True)
     closing_date = models.DateTimeField(null=True)
-    escrow_id = models.CharField(max_length=128, null=True)
-    invoice_id = models.CharField(max_length=128, null=True)
     reference_txn_id = models.CharField(max_length=128, null=True)
     invoice_number = models.CharField(max_length=128, null=True)
+    subscription_number = models.CharField(max_length=128, null=True)
     customer_number = models.CharField(max_length=128, null=True)
     quantity = models.IntegerField(null=True)
     receipt_id = models.CharField(max_length=128, null=True)
@@ -88,3 +106,5 @@ class PayPalRawTransaction(BaseModel):
     zip_postal_code = models.CharField(max_length=64, null=True)
     country = models.CharField(max_length=128, null=True)
     contact_phone_number = models.CharField(max_length=128, null=True)
+    balance_impace = models.CharField(max_length=128, null=True)
+
