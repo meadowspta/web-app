@@ -1,8 +1,10 @@
 from django.db.models import Q
 from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
+from django.core.validators import validate_email
+from django.core.exceptions import ValidationError
 
-from system.models import PayPalRawTransaction, PayPalTransaction, PayPalTransactionItem
+from system.models import PayPalRawTransaction, PayPalTransaction, PayPalTransactionItem, PayPalTransactionOverrides
 
 
 class Command(BaseCommand):
@@ -30,11 +32,13 @@ class Command(BaseCommand):
                 # Save the main transaction.
                 transaction = PayPalTransaction()
                 transaction.date = raw_transaction.date
-                transaction.name = raw_transaction.name
-                transaction.from_email_address = raw_transaction.from_email_address
+                transaction.name = raw_transaction.name if raw_transaction.name != 'noreply@here.paypal.com' else None
+                transaction.from_email_address = raw_transaction.from_email_address if raw_transaction.from_email_address != 'info@meadowspta.org' and raw_transaction.from_email_address != '' else None
                 transaction.type = raw_transaction.type
                 transaction.transaction_id = raw_transaction.transaction_id
                 transaction.save()
+
+                self.sync_transaction_override(transaction)
 
                 print '[CREATED] Transaction: %s' % (raw_transaction.transaction_id)
 
@@ -71,11 +75,13 @@ class Command(BaseCommand):
                 # Save the main transaction.
                 transaction = PayPalTransaction()
                 transaction.date = raw_transaction.date
-                transaction.name = raw_transaction.name
-                transaction.from_email_address = raw_transaction.from_email_address
+                transaction.name = raw_transaction.name if raw_transaction.name != 'noreply@here.paypal.com' else None
+                transaction.from_email_address = raw_transaction.from_email_address if raw_transaction.from_email_address != 'info@meadowspta.org' else None
                 transaction.type = raw_transaction.type
                 transaction.transaction_id = raw_transaction.transaction_id
                 transaction.save()
+
+                self.sync_transaction_override(transaction)
 
                 print '[CREATED] Transaction: %s' % (raw_transaction.transaction_id)
 
@@ -111,13 +117,15 @@ class Command(BaseCommand):
                 # Save the main transaction.
                 transaction = PayPalTransaction()
                 transaction.date = raw_transaction.date
-                transaction.name = raw_transaction.name
-                transaction.from_email_address = raw_transaction.from_email_address
+                transaction.name = raw_transaction.name if raw_transaction.name != 'noreply@here.paypal.com' else None
+                transaction.from_email_address = raw_transaction.from_email_address if raw_transaction.from_email_address != 'info@meadowspta.org' else None
                 transaction.type = raw_transaction.type
                 transaction.transaction_id = raw_transaction.transaction_id
                 transaction.seller_id = raw_transaction.seller_id
                 transaction.payment_type = raw_transaction.payment_type
                 transaction.save()
+
+                self.sync_transaction_override(transaction)
 
                 print '[CREATED] Transaction: %s' % (raw_transaction.transaction_id)
 
@@ -134,6 +142,40 @@ class Command(BaseCommand):
                     transaction_item.save()
 
                     print '[CREATED] Transaction Item: %s' % (item.item_id)
+
+    def sync_transaction_override(self, transaction):
+        try:
+            # Update.
+            override = PayPalTransactionOverrides.objects.get(paypal_transaction=transaction)
+        except Exception, e:
+            # Save.
+            override = PayPalTransactionOverrides()
+            override.paypal_transaction = transaction
+            override.notes = ''
+
+            # Process email and name.
+            override.from_email_address = None
+            override.name = None
+
+            if transaction.from_email_address != 'info@meadowspta.org':
+                override.from_email_address = transaction.from_email_address
+
+            try:
+                # If the name field has an email address, copy it to the email field.
+                validate_email(transaction.name)
+            except ValidationError as e:
+                # Process name.
+                if transaction.name != 'noreply@here.paypal.com' and transaction.name != '':
+                    override.name = transaction.name
+            else:
+                override.name = ''
+                if transaction.name != 'noreply@here.paypal.com':
+                    override.from_email_address = transaction.name
+
+            override.save()
+
+            print '[CREATE] Transaction Override: %s' % (transaction.id)
+
 
 
 

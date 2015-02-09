@@ -32,12 +32,23 @@ class PayPalTransaction(BaseModel):
     seller_id = models.CharField(max_length=64, null=True)
     payment_type = models.CharField(max_length=128, null=True)
 
-    def get_payment_type(self):
-        payment_type = self.type
+    def get_payment_source(self):
+        payment_source = self.type
         if self.type == 'Shopping Cart Payment Received':
-            payment_type = 'Online'
+            payment_source = 'Online'
         elif self.type == 'Invoice Sent':
-            payment_type = 'Form'
+            payment_source = 'Form'
+
+        return '%s' % (payment_source)
+
+    def get_payment_type(self):
+        payment_type = self.payment_type
+        if self.payment_type == 'CASH':
+            payment_type = 'Cash'
+        elif self.payment_type == 'CHECK':
+            payment_type = 'Check'
+        elif self.get_payment_source() == 'Online' or self.get_payment_source() == 'PayPal Here':
+            payment_type = 'Credit'
 
         return '%s' % (payment_type)
 
@@ -46,6 +57,32 @@ class PayPalTransaction(BaseModel):
             return PAYPAL_HERE_SELLERS[self.seller_id]
         else:
             return ''
+
+    def get_name(self):
+        override_name = self.paypaltransactionoverrides_set.get().name
+
+        if override_name is not None:
+            return override_name
+        else:
+            return self.name
+
+    def get_email(self):
+        override_email = self.paypaltransactionoverrides_set.get().from_email_address
+        print '=============================='
+        print override_email
+        if override_email is not None:
+            return override_email
+        else:
+            return self.from_email_address
+
+class PayPalTransactionOverrides(BaseModel):
+    class Meta:
+        db_table = 'paypal_transaction_overrides'
+
+    name = models.CharField(max_length=255, null=True)
+    from_email_address = models.EmailField(max_length=255, null=True)
+    paypal_transaction = models.ForeignKey(PayPalTransaction)
+    notes = models.TextField()
 
 class PayPalTransactionItem(BaseModel):
     class Meta:
