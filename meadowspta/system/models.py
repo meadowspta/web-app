@@ -68,8 +68,6 @@ class PayPalTransaction(BaseModel):
 
     def get_email(self):
         override_email = self.paypaltransactionoverrides_set.get().from_email_address
-        print '=============================='
-        print override_email
         if override_email is not None:
             return override_email
         else:

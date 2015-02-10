@@ -7,6 +7,7 @@ BASE_DIR = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '../..'))
 SECRET_KEY = 'lksdkjkfid]s[r[?/><gdjj5s9ba020f2si$@55620d))(@$(02wd2@$%TDFGs/s/as'
 ALLOWED_HOSTS = []
 SITE_ID = 1
+LOGIN_URL = '/login/'
 
 INSTALLED_APPS = (
     'django.contrib.auth',

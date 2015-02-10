@@ -37,7 +37,7 @@ class VolunteerSignup(BaseModel):
 class CheckIn(BaseModel):
     class Meta:
         permissions = (
-            ("view_crabfeed_dashboard", "Can view Crab Feed dashboard"),
+            ('view_crabfeed_dashboard', 'Can view Crab Feed dashboard'),
         )
 
 class Ticket(BaseModel):

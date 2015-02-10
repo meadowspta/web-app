@@ -58,7 +58,7 @@ def test(request):
 
     return render_to_response('crabfeed/test.html', payload, context_instance=RequestContext(request))
 
-@permission_required('change_paypaltransaction')
+@permission_required('crabfeed.view_crabfeed_dashboard')
 def dashboard(request):
     transactions = PayPalTransaction.objects.all().order_by('-date')
     crabfeed_tickets = PayPalTransactionItem.objects.filter(Q(item_title='Crab Feed Tickets') | Q(item_title='Crab Feed Ticket')).aggregate(sum=Sum('quantity'))

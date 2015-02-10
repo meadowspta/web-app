@@ -24,4 +24,5 @@ urlpatterns = patterns('',
     url(r'^register/$', 'member.views.register'),
     url(r'^register/success/$', 'member.views.success'),
     url(r'^login/$', 'member.views.login'),
+    url(r'^logout/$', 'member.views.logout'),
 )
