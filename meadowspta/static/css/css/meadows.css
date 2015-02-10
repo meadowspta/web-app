@@ -742,13 +742,13 @@ footer .section2 .content {
 }
 /* line 388, ../sass/meadows.scss */
 #crabfeed-dashboard ul.overview li {
-  margin: 0px 15px 15px 0px;
+  margin: 0px 10px 10px 0px;
   border-radius: 15px;
   display: inline-block;
   text-align: center;
-  width: 275px;
-  height: 200px;
-  padding: 15px;
+  width: 140px;
+  height: 100px;
+  padding: 10px;
   border: 1px solid #666666;
   background: gainsboro;
   vertical-align: top;
@@ -756,11 +756,11 @@ footer .section2 .content {
 /* line 400, ../sass/meadows.scss */
 #crabfeed-dashboard ul.overview li h2 {
   font-weight: bold;
-  font-size: 2.8em;
+  font-size: 1.3em;
 }
 /* line 405, ../sass/meadows.scss */
 #crabfeed-dashboard ul.overview li span {
-  font-size: 2.8em;
+  font-size: 1.8em;
   font-weight: bold;
 }
 /* line 411, ../sass/meadows.scss */

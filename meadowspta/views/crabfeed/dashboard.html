@@ -33,7 +33,107 @@
     </header>
     <hr />
 
-    <section>
+    <section ng-controller="CrabfeedTransactionListController">
+      <div class="row">
+        <div class="col-lg-3">
+          <h4>Filter by:</h4>
+
+          <div class="well">
+            <h4>Payment Source</h4>
+            <div ng-repeat="source in paymentSources">
+              <label>
+                <input type="radio" ng-checked="radioButtonState('source', source);" ng-click="filter('source', source);"> {[ source.name ]}
+              </label>
+            </div>
+          </div>
+
+          <div class="well">
+            <h4>Payment Type</h4>
+            <div ng-repeat="paymentType in paymentTypes">
+              <label>
+                <input type="radio" ng-checked="radioButtonState('paymentType', paymentType);" ng-click="filter('paymentType', paymentType);"> {[ paymentType.name ]}
+              </label>
+            </div>
+          </div>
+
+          <div class="well">
+            <h4>Seller</h4>
+            <div ng-repeat="seller in sellers">
+              <label>
+                <input type="radio" ng-checked="radioButtonState('seller', seller);" ng-click="filter('seller', seller);"> {[ seller.name ]}
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-9">
+          <h2 class="chrome">{[ resultCount ]} Results</h2>
+
+          <ul class="list-no-style" ng-repeat="transaction in transactions">
+            <li>
+              <div class="list-item row">
+                <div class="col-lg-3">
+                  <strong>Purchased: </strong>
+                  {[ utils.dateFormat(transaction.date) ]}
+                  <span class="quiet">{{ transaction.date|date:"g:i a" }}</span>
+                  <br />
+
+                  <strong>Source: </strong>
+                  {[ transaction.payment_source ]}<br />
+
+                  <strong>Payment Type: </strong>
+                  {% if transaction.get_payment_type == 'Credit' or transaction.get_payment_type == 'Check' %}
+                    <span class="glyphicon {% if transaction.get_payment_type == 'Credit' %}glyphicon-credit-card{% elif transaction.get_payment_type == 'Check' %}glyphicon-ok{% endif %}"></span>
+                  {% elif transaction.get_payment_type == 'Cash' %}
+                    <strong>$</strong>
+                  {% endif %}
+                  {[ transaction.payment_type ]}
+                  <br />
+
+                  <div ng-show="transaction.seller">
+                    <strong>Seller: </strong>
+                    {[ transaction.seller ]}<br />
+                  </div>
+                </div>
+                <div class="col-lg-5">
+                  <strong>Name: </strong>
+                  <span ng-if="transaction.name">{[ transaction.name ]}</span>
+                  <span class="quiet italic" ng-if="! transaction.name">(no name)</span>
+                  <br />
+
+                  <strong>Email: </strong>
+                  <span ng-if="transaction.from_email_address">{[ transaction.from_email_address ]}</span>
+                  <span class="quiet italic" ng-if="! transaction.from_email_address">(no email)</span>
+                  <br />
+
+                  <strong>Transaction ID: </strong>
+                  {[ transaction.transaction_id ]}
+                  <br />
+                </div>
+                <div class="col-lg-3">
+                  <strong>Purchases:</strong>
+                  <ul class="list-no-style">
+                    <li class="no-wrap" ng-repeat="item in transaction.items">
+                      {[ item.item_title ]}:
+                      <span ng-if="item.item_title == 'Donation'">
+                        ${[ item.net ]}
+                      </span>
+                      <span ng-if="item.item_title != 'Donation'">
+                        {[ item.quantity ]}
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-lg-1">
+
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!--
       <ul class="list-no-style">
         {% for transaction in transactions %}
           <li>
@@ -105,7 +205,6 @@
         {% endfor %}
       </ul>
 
-      <!--
       <table class="table table-striped">
         <tr>
           <th>Date/Time</th>

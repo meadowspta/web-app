@@ -11,7 +11,7 @@ from meta.views import Meta
 
 from .forms import VolunteerSignupForm, NotificationSignupForm
 from .models import Ticket
-from system.models import PayPalTransaction, PayPalTransactionItem
+from system.models import PayPalTransaction, PayPalTransactionItem, PAYMENT_SOURCES, PAYPAL_HERE_SELLERS, PAYMENT_TYPES
 
 
 def home(request):
@@ -138,3 +138,35 @@ def api_volunteer_signup_save(request):
     }
 
     return HttpResponse(json.dumps(response), mimetype='application/json')
+
+def api_transactions(request):
+    data = []
+    transactions = PayPalTransaction.objects.all().order_by('-date')
+
+    # Filter: Payment Source.
+    source = request.GET.get('source')
+    if source:
+        transactions = transactions.filter(type=PAYMENT_SOURCES[source])
+
+    # Filter: Seller
+    seller = request.GET.get('seller')
+    if seller:
+        transactions = transactions.filter(seller_id=seller)
+
+    # Filter: Seller
+    payment_type = request.GET.get('paymentType')
+    if payment_type:
+        payment_type = PAYMENT_TYPES[payment_type] if payment_type != 'credit' else None
+        transactions = transactions.filter(payment_type=payment_type)
+
+    # Convert results.
+    for transaction in transactions:
+        data.append(transaction.as_api_object())
+
+    response = {
+        'statusCode': 200,
+        'response': data,
+    }
+
+    return HttpResponse(json.dumps(response), mimetype='application/json')
+

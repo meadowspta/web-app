@@ -52,3 +52,14 @@ MeadowsPTA.crabfeed = function() {
     $('.pp-raffle-pack-quantity').val(quantity);
   });
 }
+
+function Utils() {
+  var that = {};
+
+  that.dateFormat = function(date) {
+    var dateObj = new Date(date);
+    return dateObj.toLocaleDateString();
+  }
+
+  return that;
+}

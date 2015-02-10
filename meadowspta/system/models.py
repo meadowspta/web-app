@@ -2,8 +2,10 @@ from decimal import Decimal
 from modeldict import ModelDict
 
 from django.db import models
+from django.utils.timezone import localtime
 
 from core.models import BaseModel
+
 
 PAYPAL_HERE_SELLERS = {
     'kfbetts10': 'Keisa Betts',
@@ -11,6 +13,18 @@ PAYPAL_HERE_SELLERS = {
     'INAHMARCELO': 'Inah Marcelo',
     'lisamoca': 'Lisa Oca',
     'calebwhang': 'Caleb Whang',
+}
+
+PAYMENT_SOURCES = {
+    'paypal_here': 'PayPal Here',
+    'online': 'Shopping Cart Payment Received',
+    'form': 'Invoice Sent',
+}
+
+PAYMENT_TYPES = {
+    'cash': 'CASH',
+    'credit': 'CREDIT',
+    'check': 'CHECK',
 }
 
 class Var(models.Model):
@@ -73,6 +87,29 @@ class PayPalTransaction(BaseModel):
         else:
             return self.from_email_address
 
+    def as_api_object(self):
+        items = []
+
+        transaction_items = self.paypaltransactionitem_set.all()
+        for item in transaction_items:
+            items.append(item.as_api_object());
+
+        data = {
+            'id': self.id,
+            'date': self.date.isoformat(),
+            'name': self.get_name(),
+            'from_email_address': self.get_email(),
+            'type': self.type,
+            'transaction_id': self.transaction_id,
+            'invoice_number': self.invoice_number,
+            'seller': self.get_seller(),
+            'payment_type': self.get_payment_type(),
+            'payment_source': self.get_payment_source(),
+            'items': items,
+        }
+
+        return data
+
 class PayPalTransactionOverrides(BaseModel):
     class Meta:
         db_table = 'paypal_transaction_overrides'
@@ -92,6 +129,17 @@ class PayPalTransactionItem(BaseModel):
     gross = models.DecimalField(max_digits=16, decimal_places=2, default=Decimal('0.00'), null=True)
     fee = models.DecimalField(max_digits=16, decimal_places=2, null=True)
     net = models.DecimalField(max_digits=16, decimal_places=2, null=True)
+
+    def as_api_object(self):
+        data = {
+            'item_title': self.item_title,
+            'quantity': self.quantity,
+            'gross': str(self.gross),
+            'fee': str(self.fee),
+            'net': str(self.net),
+        }
+
+        return data
 
 class PayPalRawTransaction(BaseModel):
     class Meta:
