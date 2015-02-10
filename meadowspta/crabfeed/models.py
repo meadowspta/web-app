@@ -34,6 +34,12 @@ class VolunteerSignup(BaseModel):
     email = models.EmailField(max_length=255)
     create_date = models.DateTimeField(default=datetime.datetime.now)
 
+class CheckIn(BaseModel):
+    class Meta:
+        permissions = (
+            ("view_crabfeed_dashboard", "Can view Crab Feed dashboard"),
+        )
+
 class Ticket(BaseModel):
     PAYMENT_TYPE_CREDIT_CARD = 'CC'
     PAYMENT_TYPE_CASH = 'CA'
