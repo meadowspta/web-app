@@ -88,7 +88,7 @@ function CrabfeedTransactionListController($scope, $http) {
 
     $scope.paymentSources = [
       { name: 'PayPal Here', id: 'paypal_here' },
-      { name: 'Online', id: 'online' },
+      { name: 'PayPal Online', id: 'paypal_online' },
       { name: 'Form', id: 'form' },
     ];
 

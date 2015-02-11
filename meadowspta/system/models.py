@@ -17,14 +17,14 @@ PAYPAL_HERE_SELLERS = {
 
 PAYMENT_SOURCES = {
     'paypal_here': 'PayPal Here',
-    'online': 'Shopping Cart Payment Received',
-    'form': 'Invoice Sent',
+    'paypal_online': 'PayPal Online',
+    'form': 'Form',
 }
 
 PAYMENT_TYPES = {
-    'cash': 'CASH',
-    'credit': 'CREDIT',
-    'check': 'CHECK',
+    'cash': 'Cash',
+    'credit': 'Credit',
+    'check': 'Check',
 }
 
 class Var(models.Model):
@@ -43,31 +43,14 @@ class PayPalTransaction(BaseModel):
     date = models.DateTimeField(null=True)
     name = models.CharField(max_length=255, null=True)
     from_email_address = models.EmailField(max_length=255, null=True)
-    type = models.CharField(max_length=255, null=True)
+    source = models.CharField(max_length=255, null=True)
     transaction_id = models.CharField(max_length=128, null=True)
     invoice_number = models.CharField(max_length=128, null=True)
     seller_id = models.CharField(max_length=64, null=True)
     payment_type = models.CharField(max_length=128, null=True)
 
     def get_payment_source(self):
-        payment_source = self.type
-        if self.type == 'Shopping Cart Payment Received':
-            payment_source = 'Online'
-        elif self.type == 'Invoice Sent':
-            payment_source = 'Form'
-
-        return '%s' % (payment_source)
-
-    def get_payment_type(self):
-        payment_type = self.payment_type
-        if self.payment_type == 'CASH':
-            payment_type = 'Cash'
-        elif self.payment_type == 'CHECK':
-            payment_type = 'Check'
-        elif self.get_payment_source() == 'Online' or self.get_payment_source() == 'PayPal Here':
-            payment_type = 'Credit'
-
-        return '%s' % (payment_type)
+        return PAYMENT_SOURCES[self.source]
 
     def get_seller(self):
         if self.seller_id:
@@ -90,6 +73,9 @@ class PayPalTransaction(BaseModel):
         else:
             return self.from_email_address
 
+    def get_payment_type(self):
+        return PAYMENT_TYPES[self.payment_type]
+
     def as_api_object(self):
         items = []
 
@@ -102,12 +88,15 @@ class PayPalTransaction(BaseModel):
             'date': self.date.isoformat(),
             'name': self.get_name(),
             'from_email_address': self.get_email(),
-            'type': self.type,
+            'source_id': self.source,
+            'source': self.get_payment_source(),
             'transaction_id': self.transaction_id,
             'invoice_number': self.invoice_number,
             'seller': self.get_seller(),
+            'payment_type_id': self.payment_type,
             'payment_type': self.get_payment_type(),
             'payment_source': self.get_payment_source(),
+            'payment_source_id': self.source,
             'items': items,
         }
 

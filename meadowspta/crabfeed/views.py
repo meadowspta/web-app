@@ -146,7 +146,7 @@ def api_transactions(request):
     # Filter: Payment Source.
     source = request.GET.get('source')
     if source:
-        transactions = transactions.filter(type=PAYMENT_SOURCES[source])
+        transactions = transactions.filter(source=source)
 
     # Filter: Seller
     seller = request.GET.get('seller')
@@ -156,7 +156,6 @@ def api_transactions(request):
     # Filter: Seller
     payment_type = request.GET.get('paymentType')
     if payment_type:
-        payment_type = PAYMENT_TYPES[payment_type] if payment_type != 'credit' else None
         transactions = transactions.filter(payment_type=payment_type)
 
     # Convert results.

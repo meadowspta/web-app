@@ -67,7 +67,7 @@
         </div>
 
         <div class="col-lg-9">
-          <h2 class="chrome">{[ resultCount ]} Results</h2>
+          <h2 class="chrome">{[ resultCount ]} Transactions</h2>
 
           <ul class="list-no-style" ng-repeat="transaction in transactions">
             <li>
@@ -82,9 +82,9 @@
                   {[ transaction.payment_source ]}<br />
 
                   <strong>Payment Type: </strong>
-                  {% if transaction.get_payment_type == 'Credit' or transaction.get_payment_type == 'Check' %}
-                    <span class="glyphicon {% if transaction.get_payment_type == 'Credit' %}glyphicon-credit-card{% elif transaction.get_payment_type == 'Check' %}glyphicon-ok{% endif %}"></span>
-                  {% elif transaction.get_payment_type == 'Cash' %}
+                  {% if transaction.get_payment_type_id == 'credit' or transaction.get_payment_type_id == 'check' %}
+                    <span class="glyphicon {% if transaction.get_payment_type_id == 'credit' %}glyphicon-credit-card{% elif transaction.get_payment_type_id == 'check' %}glyphicon-ok{% endif %}"></span>
+                  {% elif transaction.get_payment_type_id == 'cash' %}
                     <strong>$</strong>
                   {% endif %}
                   {[ transaction.payment_type ]}
