@@ -84,7 +84,7 @@ class Command(BaseCommand):
                     transaction = PayPalRawTransaction()
                     transaction.date = datetime.strptime('%s %s' % (row[FIELD_DATE], row[FIELD_TIME]), '%m/%d/%Y %H:%M:%S')
                     transaction.time_zone = row[FIELD_TIME_ZONE]
-                    transaction.name = row[FIELD_NAME]
+                    transaction.name = row[FIELD_NAME].strip()
                     transaction.type = row[FIELD_TYPE]
                     transaction.status = row[FIELD_STATUS]
                     transaction.subject = row[FIELD_SUBJECT]
@@ -92,8 +92,8 @@ class Command(BaseCommand):
                     transaction.fee = row[FIELD_FEE] if len(row[FIELD_FEE]) > 0 else None
                     transaction.note = row[FIELD_NOTE]
                     transaction.net = row[FIELD_NET] if len(row[FIELD_NET]) > 0 else None
-                    transaction.from_email_address = row[FIELD_FROM_EMAIL_ADDRESS]
-                    transaction.to_email_address = row[FIELD_TO_EMAIL_ADDRESS]
+                    transaction.from_email_address = row[FIELD_FROM_EMAIL_ADDRESS].strip()
+                    transaction.to_email_address = row[FIELD_TO_EMAIL_ADDRESS].strip()
                     transaction.transaction_id = row[FIELD_TRANSACTION_ID]
                     transaction.payment_type = row[FIELD_PAYMENT_TYPE]
                     transaction.counterparty_status = row[FIELD_COUNTERPARTY_STATUS]
@@ -119,13 +119,13 @@ class Command(BaseCommand):
                     transaction.quantity = row[FIELD_QUANTITY] if len(row[FIELD_QUANTITY]) > 0 else 0
                     transaction.receipt_id = row[FIELD_RECEIPT_ID]
                     transaction.balance = row[FIELD_BALANCE].replace(',', '') if len(row[FIELD_BALANCE]) > 0 and row[FIELD_BALANCE] != '...' else None
-                    transaction.address_line_1 = row[FIELD_ADDRESS_LINE_1]
-                    transaction.address_line_2_district_neighborhood = row[FIELD_ADDRESS_LINE_2_DISTRICT_NEIGHBORHOOD]
-                    transaction.town_city = row[FIELD_TOWN_CITY]
-                    transaction.state_provice_region_county_territory_prefecture_republic = row[FIELD_STATE_PROVICE_REGION_COUNTY_TERRITORY_PREFECTURE_REPUBLIC]
-                    transaction.zip_postal_code = row[FIELD_ZIP_POSTAL_CODE]
-                    transaction.country = row[FIELD_COUNTRY]
-                    transaction.contact_phone_number = row[FIELD_CONTACT_PHONE_NUMBER]
+                    transaction.address_line_1 = row[FIELD_ADDRESS_LINE_1].strip()
+                    transaction.address_line_2_district_neighborhood = row[FIELD_ADDRESS_LINE_2_DISTRICT_NEIGHBORHOOD].strip()
+                    transaction.town_city = row[FIELD_TOWN_CITY].strip()
+                    transaction.state_provice_region_county_territory_prefecture_republic = row[FIELD_STATE_PROVICE_REGION_COUNTY_TERRITORY_PREFECTURE_REPUBLIC].strip()
+                    transaction.zip_postal_code = row[FIELD_ZIP_POSTAL_CODE].strip()
+                    transaction.country = row[FIELD_COUNTRY].strip()
+                    transaction.contact_phone_number = row[FIELD_CONTACT_PHONE_NUMBER].strip()
                     transaction.balance_impact = row[FIELD_BALANCE_IMPACT]
                     transaction.save()
 

@@ -37,6 +37,9 @@ class PayPalTransaction(BaseModel):
     class Meta:
         db_table = 'paypal_transactions'
 
+    def __unicode__(self):
+        return self.transaction_id
+
     date = models.DateTimeField(null=True)
     name = models.CharField(max_length=255, null=True)
     from_email_address = models.EmailField(max_length=255, null=True)
@@ -73,7 +76,7 @@ class PayPalTransaction(BaseModel):
             return ''
 
     def get_name(self):
-        override_name = self.paypaltransactionoverrides_set.get().name
+        override_name = self.paypaltransactionoverride_set.get().name
 
         if override_name is not None:
             return override_name
@@ -81,7 +84,7 @@ class PayPalTransaction(BaseModel):
             return self.name
 
     def get_email(self):
-        override_email = self.paypaltransactionoverrides_set.get().from_email_address
+        override_email = self.paypaltransactionoverride_set.get().from_email_address
         if override_email is not None:
             return override_email
         else:
@@ -110,14 +113,14 @@ class PayPalTransaction(BaseModel):
 
         return data
 
-class PayPalTransactionOverrides(BaseModel):
+class PayPalTransactionOverride(BaseModel):
     class Meta:
         db_table = 'paypal_transaction_overrides'
 
     name = models.CharField(max_length=255, null=True)
     from_email_address = models.EmailField(max_length=255, null=True)
     paypal_transaction = models.ForeignKey(PayPalTransaction)
-    notes = models.TextField()
+    notes = models.TextField(null=True, blank=True)
 
 class PayPalTransactionItem(BaseModel):
     class Meta:

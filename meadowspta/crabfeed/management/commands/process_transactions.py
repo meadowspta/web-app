@@ -4,7 +4,7 @@ from django.core.management.base import BaseCommand, CommandError
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 
-from system.models import PayPalRawTransaction, PayPalTransaction, PayPalTransactionItem, PayPalTransactionOverrides
+from system.models import PayPalRawTransaction, PayPalTransaction, PayPalTransactionItem, PayPalTransactionOverride
 
 
 class Command(BaseCommand):
@@ -32,19 +32,21 @@ class Command(BaseCommand):
                 # Save the main transaction.
                 transaction = PayPalTransaction()
                 transaction.date = raw_transaction.date
-                transaction.name = raw_transaction.name if raw_transaction.name != 'noreply@here.paypal.com' else None
+                transaction.name = raw_transaction.name if raw_transaction.name != 'noreply@here.paypal.com' and raw_transaction.name != '' else None
                 transaction.from_email_address = raw_transaction.from_email_address if raw_transaction.from_email_address != 'info@meadowspta.org' and raw_transaction.from_email_address != '' else None
                 transaction.type = raw_transaction.type
                 transaction.transaction_id = raw_transaction.transaction_id
                 transaction.save()
 
-                self.sync_transaction_override(transaction)
-
                 print '[CREATED] Transaction: %s' % (raw_transaction.transaction_id)
 
                 # Query by invoice number to get the items.
+                item_email = None
                 items = PayPalRawTransaction.objects.all().filter(transaction_id=raw_transaction.invoice_number, type='Invoice item')
                 for item in items:
+                    if item.name != 'noreply@here.paypal.com':
+                        item_email = item.name
+
                     transaction_item = PayPalTransactionItem()
                     transaction_item.paypal_transaction = transaction
                     transaction_item.item_title = item.item_id
@@ -55,6 +57,12 @@ class Command(BaseCommand):
                     transaction_item.save()
 
                     print '[CREATED] Transaction Item: %s' % (item.item_id)
+
+                if item_email is not None and transaction.from_email_address != '':
+                    transaction.from_email_address = item_email
+                    transaction.save()
+
+                self.sync_transaction_override(transaction)
 
     def process_shopping_cart(self):
         print '************************************************'
@@ -146,10 +154,10 @@ class Command(BaseCommand):
     def sync_transaction_override(self, transaction):
         try:
             # Update.
-            override = PayPalTransactionOverrides.objects.get(paypal_transaction=transaction)
+            override = PayPalTransactionOverride.objects.get(paypal_transaction=transaction)
         except Exception, e:
             # Save.
-            override = PayPalTransactionOverrides()
+            override = PayPalTransactionOverride()
             override.paypal_transaction = transaction
             override.notes = ''
 
