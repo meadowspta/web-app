@@ -107,8 +107,8 @@ class PayPalTransactionOverride(BaseModel):
         db_table = 'paypal_transaction_overrides'
 
     date = models.DateTimeField(null=True)
-    name = models.CharField(max_length=255, null=True)
-    from_email_address = models.EmailField(max_length=255, null=True)
+    name = models.CharField(max_length=255, null=True, blank=True)
+    from_email_address = models.EmailField(max_length=255, null=True, blank=True)
     paypal_transaction = models.ForeignKey(PayPalTransaction)
     notes = models.TextField(null=True, blank=True)
 
