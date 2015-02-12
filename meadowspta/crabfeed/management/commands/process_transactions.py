@@ -181,9 +181,12 @@ class Command(BaseCommand):
         try:
             # Update.
             override = PayPalTransactionOverride.objects.get(paypal_transaction=transaction)
+            override.date = transaction.date
+            override.save()
         except Exception, e:
             # Save.
             override = PayPalTransactionOverride()
+            override.date = transaction.date
             override.paypal_transaction = transaction
             override.notes = ''
 

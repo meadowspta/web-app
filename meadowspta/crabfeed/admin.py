@@ -15,11 +15,7 @@ class TicketAdmin(admin.ModelAdmin):
 admin.site.register(Ticket, TicketAdmin)
 
 class PayPalTransactionOverrideAdmin(admin.ModelAdmin):
-    list_display = ('get_date', 'name', 'from_email_address', 'paypal_transaction', 'notes')
-
-    def get_date(self, obj):
-        return obj.paypal_transaction.date
-
-    get_date.short_description = 'Date'
+    list_display = ('date', 'name', 'from_email_address', 'paypal_transaction', 'notes')
+    ordering = ['-date']
 
 admin.site.register(PayPalTransactionOverride, PayPalTransactionOverrideAdmin)
