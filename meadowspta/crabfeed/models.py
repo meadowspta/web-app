@@ -39,6 +39,8 @@ class CheckIn(BaseModel):
     class Meta:
         permissions = (
             ('view_crabfeed_dashboard', 'Can view Crab Feed dashboard'),
+            ('view_crabfeed_checkin', 'Can view Crab Feed check-in'),
+            ('view_crabfeed_checkin_search', 'Can view Crab Feed check-in search'),
         )
 
 class Ticket(BaseModel):

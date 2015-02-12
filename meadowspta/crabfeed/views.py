@@ -84,6 +84,7 @@ def dashboard(request):
 
     return render_to_response('crabfeed/dashboard.html', payload, context_instance=RequestContext(request))
 
+@permission_required('crabfeed.view_crabfeed_checkin')
 def check_in(request):
     id_hash = request.GET.get('id')
     ticket = Ticket.objects.get(id_hash=id_hash)
@@ -94,6 +95,7 @@ def check_in(request):
 
     return render_to_response('crabfeed/check-in/index.html', payload, context_instance=RequestContext(request))
 
+@permission_required('crabfeed.view_crabfeed_checkin_search')
 def check_in_search(request):
     payload = {
 
