@@ -8,6 +8,7 @@ from django.core.files import File
 from django.core.files.base import ContentFile
 
 from core.models import BaseModel
+from system.models import PayPalTransaction, PayPalTransactionItem, PayPalTransactionOverride
 
 
 class NotificationSignup(BaseModel):

@@ -7,3 +7,4 @@ Pillow==2.3.0
 flup==1.0.2
 django-meta==0.1.0
 qrcode==5.1
+pymongo==2.8
