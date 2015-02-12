@@ -63,14 +63,14 @@ function CrabfeedTicketSearchController($scope, $http) {
 
   $scope.qChange = function() {
     $scope.search(function(response) {
-      $scope.tickets = response.response
+      $scope.transactions = response.response;
     });
   }
 
   $scope.search = function(callback) {
     $http.get('/api/crabfeed/search?q=' + $scope.q).
       success(function(data, status, headers, config) {
-        $scope.transactions = data.response
+        $scope.transactions = data.response;
       }).
       error(function(data, status, headers, config) {
 

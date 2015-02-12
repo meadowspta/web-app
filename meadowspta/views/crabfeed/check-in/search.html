@@ -9,23 +9,25 @@
       </span>
     </div>
 
-    <section ng-show="tickets.length">
+    <section ng-show="transactions.length">
       <hr />
-      <h4>{[ tickets.length ]} results</h4>
+      <h4>{[ transactions.length ]} results</h4>
 
       <table class="table table-striped">
         <tr>
           <th>Name</th>
           <th>Email</th>
+          <th>Transaction ID</th>
           <th>Payment Type</th>
           <th></th>
         </tr>
-        <tr ng-repeat="ticket in tickets">
-          <td><a href="" class="loud">{[ ticket.first_name ]} {[ ticket.last_name ]}</a></td>
-          <td><a href="mailto:{[ ticket.email ]}" target="_blank">{[ ticket.email ]}</a></td>
+        <tr ng-repeat="transaction in transactions">
+          <td>{[ transaction.name ]}</td>
+          <td><a href="mailto:{[ transaction.email ]}" target="_blank">{[ transaction.email ]}</a></td>
+          <td>{[ transaction.transaction_id ]}</td>
           <td>
             <span class="glyphicon" ng-class="{ 'glyphicon-credit-card': ticket.payment_type_id == 'CC', 'glyphicon-ok': ticket.payment_type_id == 'CH' }"><span class="loud" ng-show="ticket.payment_type_id == 'CA'">$</span></span>
-            <span class="quiet">{[ ticket.payment_type ]}</span>
+            <span class="quiet">{[ transaction.source ]}</span>
           </td>
           <td></td>
         </tr>

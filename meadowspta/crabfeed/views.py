@@ -1,5 +1,7 @@
 import json
+from  pymongo import MongoClient
 
+from django.conf import settings
 from django.template import RequestContext, Context, loader
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
@@ -90,18 +92,44 @@ def check_in(request):
         'ticket': ticket,
     }
 
-    return render_to_response('crabfeed/check-in.html', payload, context_instance=RequestContext(request))
+    return render_to_response('crabfeed/check-in/index.html', payload, context_instance=RequestContext(request))
+
+def check_in_search(request):
+    payload = {
+
+    }
+
+    return render_to_response('crabfeed/check-in/search.html', payload, context_instance=RequestContext(request))
 
 def search(request):
     return render_to_response('crabfeed/search.html', {}, context_instance=RequestContext(request))
 
 def api_search(request):
-    q = request.GET.get('q')
+    q = request.GET.get('q').lower()
     results = []
 
-    tickets = Ticket.search(q)
-    for ticket in tickets:
-        results.append(ticket.as_api_object())
+    # Setup mongodb.
+    mongo_config = settings.DATABASES['mongodb']
+    client = MongoClient('mongodb://%s:%s/' % (mongo_config['HOST'], mongo_config['PORT']))
+    db = client['meadowspta']
+    collection = db['search.transactions'];
+
+    search_results = collection.find({ '$text': { '$search': q } })
+    for result in search_results:
+        data = {
+            'id': result['id'],
+            'name': result['name'],
+            'email': result['from_email_address'],
+            'date': result['date'],
+            'source_id': result['source_id'],
+            'source': result['source'],
+            'seller': result['seller'],
+            'transaction_id': result['transaction_id'],
+            'payment_type_id': result['payment_type_id'],
+            'payment_type': result['payment_type'],
+        }
+
+        results.append(data)
 
     response = {
         'statusCode': 200,

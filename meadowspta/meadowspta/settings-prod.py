@@ -78,6 +78,13 @@ DATABASES = {
         'PASSWORD': ';O!-`5&I$bh~1CE39c469E)s9xj9SjsBnVAs"U%Z1yylIUDnZW',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+    },
+    'mongodb': {
+        'NAME': 'meadowspta',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '127.0.0.1',
+        'PORT': '27017',
     }
 }
 

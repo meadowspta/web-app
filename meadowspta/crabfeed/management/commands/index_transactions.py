@@ -24,6 +24,7 @@ class Command(BaseCommand):
         transactions = PayPalTransaction.objects.all()
         for transaction in transactions:
             items = []
+            keywords = []
 
             transaction_items = transaction.paypaltransactionitem_set.all()
             for item in transaction_items:
@@ -40,14 +41,34 @@ class Command(BaseCommand):
                 'seller': transaction.get_seller(),
                 'payment_type_id': transaction.payment_type,
                 'payment_type': transaction.get_payment_type(),
-                'payment_source': transaction.get_payment_source(),
-                'payment_source_id': transaction.source,
                 'items': items,
             }
+
+            data['keywords'] = self.generate_language_stem(data)
 
             collection.insert(data)
 
             print '[INDEXING] Transaction ID: %s' % (transaction.transaction_id)
+
+    def generate_language_stem(self, data):
+        words = []
+        stems = []
+
+        fields = ['name', 'from_email_address', 'transaction_id']
+        for field in fields:
+            if data[field]:
+                words.append(data[field])
+
+        words = ' '.join(words).lower().split()
+
+        for word in words:
+            stem = ''
+            for char in word:
+                stem += char
+                stems.append(stem)
+
+        return ' '.join(stems)
+
 
 """
 db.search.transactions.ensureIndex(
@@ -55,13 +76,11 @@ db.search.transactions.ensureIndex(
         name: 'text',
         from_email_address: 'text',
         transaction_id: 'text',
-        seller: 'text',
     },
     {
         weights: {
             name: 10,
             from_email_address: 7,
-            seller: 3,
         },
         name: 'TextIndex',
     }
