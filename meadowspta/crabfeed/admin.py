@@ -1,3 +1,5 @@
+from decimal import Decimal
+
 from django.contrib import admin
 
 from crabfeed.models import Ticket, NotificationSignup, VolunteerSignup
@@ -15,7 +17,17 @@ class TicketAdmin(admin.ModelAdmin):
 admin.site.register(Ticket, TicketAdmin)
 
 class PayPalTransactionOverrideAdmin(admin.ModelAdmin):
-    list_display = ('date', 'name', 'from_email_address', 'paypal_transaction', 'notes')
+    list_display = ('date', 'name', 'from_email_address', 'get_total', 'paypal_transaction', 'notes')
     ordering = ['-date']
+
+    def get_total(self, obj):
+        total = Decimal(0.00)
+
+        items = obj.paypal_transaction.paypaltransactionitem_set.all()
+        for item in items:
+            total = total + Decimal(item.gross)
+        return '$%s' % total
+
+    get_total.short_description = 'Purchase Total'
 
 admin.site.register(PayPalTransactionOverride, PayPalTransactionOverrideAdmin)
