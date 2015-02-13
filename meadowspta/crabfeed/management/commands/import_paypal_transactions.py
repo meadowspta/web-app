@@ -5,8 +5,23 @@ from decimal import Decimal
 from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 
-from system.models import PayPalRawTransaction
+from system.models import PayPalRawTransaction, PayPalTransaction, PayPalTransactionItem, PayPalTransactionOverride
 
+
+EXCLUDED_TRANSACTIONS = [
+    'INV2-9JXU-MVWA-EX2C-RDME',
+    '38535433EY150362J',
+    'INV2-BYGP-HYVW-55FA-DSYY',
+    'INV2-QSYT-LE67-NLZE-JANB',
+    'INV2-CVHX-7ER3-GW66-P2F4',
+    '3VS827324L1527345',
+    '9U964987FY041874S',
+    '34337964TN235861T',
+    'INV2-32E6-CKXZ-6AAE-4UPM',
+    'INV2-CGYT-AVKY-S9MY-Z4UR',
+    'INV2-UNSS-E7QQ-P35W-MWGD',
+    'INV2-LWLY-XH6Z-EAJP-4D7V',
+]
 
 FIELD_DATE = 0
 FIELD_TIME = 1
@@ -56,16 +71,6 @@ FIELD_CONTACT_PHONE_NUMBER = 44
 FIELD_BALANCE_IMPACT = 45
 
 CSV_FILE = 'transactions_150203.csv'
-EXCLUDED_TRANSACTIONS = [
-    'INV2-9JXU-MVWA-EX2C-RDME',
-    '38535433EY150362J',
-    'INV2-BYGP-HYVW-55FA-DSYY',
-    'INV2-QSYT-LE67-NLZE-JANB',
-    'INV2-CVHX-7ER3-GW66-P2F4',
-    '3VS827324L1527345',
-    '9U964987FY041874S',
-    '34337964TN235861T',
-]
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
@@ -133,30 +138,28 @@ class Command(BaseCommand):
 
             count = count + 1
 
-                # # Save District.
-                # try:
-                #     district = District.objects.get(name=row[SCHOOL_DISTRICT])
+        # Delete excluded transactions and releated data.
+        for transaction_id in EXCLUDED_TRANSACTIONS:
+            PayPalRawTransaction.objects.filter(transaction_id=transaction_id).delete()
 
-                #     print '[UPDATING DISTRICT] %s' % (row[SCHOOL_DISTRICT])
-                # except Exception, e:
-                #     district = District()
+            try:
+                transaction = PayPalTransaction.objects.filter(transaction_id=transaction_id).get()
 
-                #     print '[CREATING DISTRICT] %s' % (row[SCHOOL_DISTRICT])
+                items = transaction.paypaltransactionitem_set.all()
+                for item in items:
+                    item.delete()
+            except Exception, e:
+                pass
 
-                # district.name = row[SCHOOL_DISTRICT]
-                # district.save()
+            try:
+                transaction.paypaltransactionoverride_set.get().delete()
+            except Exception, e:
+                pass
 
-                # # Save School.
-                # try:
-                #     school = School.objects.get(name=row[SCHOOL_NAME])
+            try:
+                transaction.delete()
+            except Exception, e:
+                pass
 
-                #     print '[UPDATING SCHOOL] %s' % (row[SCHOOL_NAME])
-                # except Exception, e:
-                #     school = School()
-
-                #     print '[CREATING SCHOOL] %s' % (row[SCHOOL_NAME])
-
-                # school.name = row[SCHOOL_NAME]
-                # school.district = district
-                # school.save()
+            print '[DELETE] Transaction ID: %s' % (transaction_id)
 
