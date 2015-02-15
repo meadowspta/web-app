@@ -735,12 +735,16 @@ footer .section2 .content {
   text-transform: uppercase;
 }
 
-/* line 384, ../sass/meadows.scss */
+/* line 385, ../sass/meadows.scss */
+#crabfeed-dashboard .crabfeed-transaction-filters label {
+  font-size: 1.0em;
+}
+/* line 390, ../sass/meadows.scss */
 #crabfeed-dashboard ul.overview {
   list-style: none;
   padding: 0px;
 }
-/* line 388, ../sass/meadows.scss */
+/* line 394, ../sass/meadows.scss */
 #crabfeed-dashboard ul.overview li {
   margin: 0px 10px 10px 0px;
   border-radius: 15px;
@@ -753,17 +757,17 @@ footer .section2 .content {
   background: gainsboro;
   vertical-align: top;
 }
-/* line 400, ../sass/meadows.scss */
+/* line 406, ../sass/meadows.scss */
 #crabfeed-dashboard ul.overview li h2 {
   font-weight: bold;
   font-size: 1.3em;
 }
-/* line 405, ../sass/meadows.scss */
+/* line 411, ../sass/meadows.scss */
 #crabfeed-dashboard ul.overview li span {
   font-size: 1.8em;
   font-weight: bold;
 }
-/* line 411, ../sass/meadows.scss */
+/* line 417, ../sass/meadows.scss */
 #crabfeed-dashboard ul.overview li.grand-total {
   background: #003965;
   color: #ff6600;

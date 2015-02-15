@@ -171,7 +171,18 @@ def api_volunteer_signup_save(request):
 
 def api_transactions(request):
     data = []
-    transactions = PayPalTransaction.objects.all().order_by('-date')
+
+    # Filter: Crabfeed Ticket Count.
+    crabfeed_ticket_quantity = request.GET.get('crabfeedTicketQuantity')
+    if crabfeed_ticket_quantity:
+        crabfeed_ticket_quantity = int(crabfeed_ticket_quantity)
+        if crabfeed_ticket_quantity < 6:
+            transactions = PayPalTransaction.objects.filter(paypaltransactionitem__item_title='Crab Feed Tickets', paypaltransactionitem__quantity=crabfeed_ticket_quantity)
+        else:
+            transactions = PayPalTransaction.objects.filter(paypaltransactionitem__item_title='Crab Feed Tickets', paypaltransactionitem__quantity__gte=6)
+
+    else:
+        transactions = PayPalTransaction.objects.all().order_by('-date')
 
     # Filter: Payment Source.
     source = request.GET.get('source')

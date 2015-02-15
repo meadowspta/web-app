@@ -381,6 +381,12 @@ footer {
 }
 
 #crabfeed-dashboard {
+  .crabfeed-transaction-filters {
+    label {
+      font-size: 1.0em;
+    }
+  }
+
   ul.overview {
     list-style: none;
     padding: 0px;

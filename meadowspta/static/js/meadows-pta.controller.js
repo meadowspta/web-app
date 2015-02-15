@@ -100,10 +100,19 @@ function CrabfeedTransactionListController($scope, $http) {
 
     $scope.sellers = [
       { id: 'kfbetts10', name: 'Keisa Betts' },
-      { id: 'opalenik', name: 'Gina' },
+      { id: 'opalenik', name: 'Gina Opalenik' },
       { id: 'INAHMARCELO', name: 'Inah Marcelo' },
       { id: 'lisamoca', name: 'Lisa Oca' },
       { id: 'calebwhang', name: 'Caleb Whang' },
+    ];
+
+    $scope.crabfeedTicketQuantities = [
+      { id: 1, name: '1 ticket' },
+      { id: 2, name: '2 tickets' },
+      { id: 3, name: '3 tickets' },
+      { id: 4, name: '4 tickets' },
+      { id: 5, name: '5 tickets' },
+      { id: 6, name: '6 or more Tickets' },
     ];
   }
 
