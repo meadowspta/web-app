@@ -112,6 +112,7 @@ class Command(BaseCommand):
                 for item in items:
                     transaction_item = PayPalTransactionItem()
                     transaction_item.paypal_transaction = transaction
+                    transaction_item.item_title = item.item_title if item.item_title != 'Crab Feed Ticket' else 'Crab Feed Tickets'
                     transaction_item.item_title = item.item_title
                     transaction_item.quantity = item.quantity
                     transaction_item.gross = item.gross

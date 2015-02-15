@@ -63,7 +63,7 @@ def test(request):
 @permission_required('crabfeed.view_crabfeed_dashboard')
 def dashboard(request):
     transactions = PayPalTransaction.objects.all().order_by('-date')
-    crabfeed_tickets = PayPalTransactionItem.objects.filter(Q(item_title='Crab Feed Tickets') | Q(item_title='Crab Feed Ticket')).aggregate(sum=Sum('quantity'))
+    crabfeed_tickets = PayPalTransactionItem.objects.filter(item_title='Crab Feed Tickets').aggregate(sum=Sum('quantity'))
     raffle_tickets = PayPalTransactionItem.objects.filter(item_title='Raffle Tickets').aggregate(sum=Sum('quantity'))
     raffle_tickets_pack = PayPalTransactionItem.objects.filter(item_title='Raffle Ticket 5 Pack').aggregate(sum=Sum('quantity'))
     turkey_trott_tshirts = PayPalTransactionItem.objects.filter(item_title='Turkey Trott T-Shirt').aggregate(sum=Sum('quantity'))
