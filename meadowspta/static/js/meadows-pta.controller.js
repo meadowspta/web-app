@@ -98,6 +98,14 @@ function CrabfeedTransactionListController($scope, $http) {
       { name: 'Credit', id: 'credit' },
     ];
 
+    $scope.items = [
+      { name: 'Dinner Tickets', id: 'dinner_ticket' },
+      { name: 'Raffle Ticket 5 Pack', id: 'raffle_ticket_5_pack' },
+      { name: 'Raffle Tickets', id: 'raffle_ticket' },
+      { name: 'Turkey Trott T-Shirt', id: 'turkey_trott_tshirt' },
+      { name: 'Donations', id: 'donation' },
+    ];
+
     $scope.sellers = [
       { id: 'kfbetts10', name: 'Keisa Betts' },
       { id: 'opalenik', name: 'Gina Opalenik' },
@@ -114,6 +122,10 @@ function CrabfeedTransactionListController($scope, $http) {
       { id: 5, name: '5 tickets' },
       { id: 6, name: '6 or more Tickets' },
     ];
+
+    $scope.infoNeeded = [
+      { id: 1, name: 'Information Needed' },
+    ]
   }
 
   $scope.getTransactions = function() {

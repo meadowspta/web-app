@@ -27,6 +27,14 @@ PAYMENT_TYPES = {
     'check': 'Check',
 }
 
+ITEMS = {
+    'dinner_ticket': 'Dinner Tickets',
+    'raffle_ticket_5_pack': 'Raffle Ticket 5 Pack',
+    'raffle_ticket': 'Raffle Tickets',
+    'turkey_trott_tshirt': 'Turkey Trott T-Shirt',
+    'donation': 'Donations',
+}
+
 class Var(models.Model):
     key = models.CharField(max_length=255)
     value = models.TextField()
@@ -125,7 +133,8 @@ class PayPalTransactionItem(BaseModel):
 
     def as_api_object(self):
         data = {
-            'item_title': self.item_title,
+            'item_id': self.item_title,
+            'item_title': ITEMS[self.item_title],
             'quantity': self.quantity,
             'gross': str(self.gross),
             'fee': str(self.fee),

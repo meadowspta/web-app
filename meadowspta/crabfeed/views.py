@@ -13,7 +13,7 @@ from meta.views import Meta
 
 from .forms import VolunteerSignupForm, NotificationSignupForm
 from .models import Ticket
-from system.models import PayPalTransaction, PayPalTransactionItem, PAYMENT_SOURCES, PAYPAL_HERE_SELLERS, PAYMENT_TYPES
+from system.models import PayPalTransaction, PayPalTransactionItem, PAYMENT_SOURCES, PAYPAL_HERE_SELLERS, PAYMENT_TYPES, ITEMS
 
 
 def home(request):
@@ -63,11 +63,11 @@ def test(request):
 @permission_required('crabfeed.view_crabfeed_dashboard')
 def dashboard(request):
     transactions = PayPalTransaction.objects.all().order_by('-date')
-    crabfeed_tickets = PayPalTransactionItem.objects.filter(item_title='Crab Feed Tickets').aggregate(sum=Sum('quantity'))
-    raffle_tickets = PayPalTransactionItem.objects.filter(item_title='Raffle Tickets').aggregate(sum=Sum('quantity'))
-    raffle_tickets_pack = PayPalTransactionItem.objects.filter(item_title='Raffle Ticket 5 Pack').aggregate(sum=Sum('quantity'))
-    turkey_trott_tshirts = PayPalTransactionItem.objects.filter(item_title='Turkey Trott T-Shirt').aggregate(sum=Sum('quantity'))
-    donations = PayPalTransactionItem.objects.filter(item_title='Donation').aggregate(sum=Sum('gross'))
+    crabfeed_tickets = PayPalTransactionItem.objects.filter(item_title='dinner_ticket').aggregate(sum=Sum('quantity'))
+    raffle_tickets = PayPalTransactionItem.objects.filter(item_title='raffle_ticket').aggregate(sum=Sum('quantity'))
+    raffle_tickets_pack = PayPalTransactionItem.objects.filter(item_title='raffle_ticket_5_pack').aggregate(sum=Sum('quantity'))
+    turkey_trott_tshirts = PayPalTransactionItem.objects.filter(item_title='turkey_trott_tshirt').aggregate(sum=Sum('quantity'))
+    donations = PayPalTransactionItem.objects.filter(item_title='donation').aggregate(sum=Sum('gross'))
     grand_total = PayPalTransactionItem.objects.aggregate(sum=Sum('gross'))
 
     payload = {
@@ -177,9 +177,9 @@ def api_transactions(request):
     if crabfeed_ticket_quantity:
         crabfeed_ticket_quantity = int(crabfeed_ticket_quantity)
         if crabfeed_ticket_quantity < 6:
-            transactions = PayPalTransaction.objects.filter(paypaltransactionitem__item_title='Crab Feed Tickets', paypaltransactionitem__quantity=crabfeed_ticket_quantity)
+            transactions = PayPalTransaction.objects.filter(paypaltransactionitem__item_title='dinner_ticket', paypaltransactionitem__quantity=crabfeed_ticket_quantity)
         else:
-            transactions = PayPalTransaction.objects.filter(paypaltransactionitem__item_title='Crab Feed Tickets', paypaltransactionitem__quantity__gte=6)
+            transactions = PayPalTransaction.objects.filter(paypaltransactionitem__item_title='dinner_ticket', paypaltransactionitem__quantity__gte=6)
 
     else:
         transactions = PayPalTransaction.objects.all().order_by('-date')
@@ -198,6 +198,11 @@ def api_transactions(request):
     payment_type = request.GET.get('paymentType')
     if payment_type:
         transactions = transactions.filter(payment_type=payment_type)
+
+    # Filter: Information needed.
+    info_needed = request.GET.get('infoNeeded')
+    if info_needed is not None:
+        transactions = transactions.filter(Q(paypaltransactionoverride__name=None) or Q(paypaltransactionoverride__name='') or Q(paypaltransactionoverride__from_email_address=None) or Q(paypaltransactionoverride__from_email_address=None))
 
     # Convert results.
     for transaction in transactions:

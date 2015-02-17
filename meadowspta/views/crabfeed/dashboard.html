@@ -35,19 +35,29 @@
 
     <section ng-controller="CrabfeedTransactionListController">
       <div class="row">
-        <div class="col-lg-3 crabfeed-transaction-filters">
+        <div class="col-lg-3 crabfeed-transaction-filters well">
           <h4>Filter by:</h4>
 
-          <div class="well">
-            <h4>Purchased Crab Feed Tickets</h4>
+          <div>
+            <div ng-repeat="info in infoNeeded">
+              <label>
+                <input type="radio" ng-checked="radioButtonState('infoNeeded', info);" ng-click="filter('infoNeeded', info);"> {[ info.name ]}
+              </label>
+            </div>
+          </div>
+          <hr />
+
+          <div>
+            <h4>Dinner Tickets</h4>
             <div ng-repeat="crabfeedTicketQuantity in crabfeedTicketQuantities">
               <label>
                 <input type="radio" ng-checked="radioButtonState('crabfeedTicketQuantity', crabfeedTicketQuantity);" ng-click="filter('crabfeedTicketQuantity', crabfeedTicketQuantity);"> {[ crabfeedTicketQuantity.name ]}
               </label>
             </div>
           </div>
+          <hr />
 
-          <div class="well">
+          <div>
             <h4>Payment Source</h4>
             <div ng-repeat="source in paymentSources">
               <label>
@@ -55,8 +65,9 @@
               </label>
             </div>
           </div>
+          <hr />
 
-          <div class="well">
+          <div>
             <h4>Payment Type</h4>
             <div ng-repeat="paymentType in paymentTypes">
               <label>
@@ -64,8 +75,9 @@
               </label>
             </div>
           </div>
+          <hr />
 
-          <div class="well">
+          <div>
             <h4>Seller</h4>
             <div ng-repeat="seller in sellers">
               <label>
@@ -73,6 +85,7 @@
               </label>
             </div>
           </div>
+          <hr />
         </div>
 
         <div class="col-lg-9">

@@ -12,6 +12,16 @@ PAYMENT_SOURCES = {
     '': 'form',
 }
 
+ITEMS = {
+    'Crab Feed Tickets': 'dinner_ticket',
+    'Crab Feed Ticket': 'dinner_ticket',
+    'Raffle Ticket 5 Pack': 'raffle_ticket_5_pack',
+    'Raffle Ticket': 'raffle_ticket',
+    'Raffle Tickets': 'raffle_ticket',
+    'Turkey Trott T-Shirt': 'turkey_trott_tshirt',
+    'Donations': 'donation',
+}
+
 class Command(BaseCommand):
     def handle(self, *args, **options):
         self.process_paypal_here()
@@ -59,7 +69,7 @@ class Command(BaseCommand):
 
                     transaction_item = PayPalTransactionItem()
                     transaction_item.paypal_transaction = transaction
-                    transaction_item.item_title = item.item_id
+                    transaction_item.item_title = ITEMS[item.item_id]
                     transaction_item.quantity = item.quantity
                     transaction_item.gross = item.gross
                     transaction_item.fee = item.fee
@@ -112,8 +122,7 @@ class Command(BaseCommand):
                 for item in items:
                     transaction_item = PayPalTransactionItem()
                     transaction_item.paypal_transaction = transaction
-                    transaction_item.item_title = item.item_title if item.item_title != 'Crab Feed Ticket' else 'Crab Feed Tickets'
-                    transaction_item.item_title = item.item_title
+                    transaction_item.item_title = ITEMS[item.item_title]
                     transaction_item.quantity = item.quantity
                     transaction_item.gross = item.gross
                     transaction_item.fee = item.fee
@@ -162,12 +171,12 @@ class Command(BaseCommand):
 
             # Query by invoice number to get the items.
             if transaction_action == 'CREATED':
-                items = PayPalRawTransaction.objects.all().filter(transaction_id=raw_transaction.transaction_id, type='Invoice Item')
+                items = PayPalRawTransaction.objects.all().filter(transaction_id=raw_transaction.transaction_id, type='Invoice Item').exclude(item_id="6")
                 transaction_item_action = 'CREATED'
                 for item in items:
                     transaction_item = PayPalTransactionItem()
                     transaction_item.paypal_transaction = transaction
-                    transaction_item.item_title = item.item_id
+                    transaction_item.item_title = ITEMS[item.item_id]
                     transaction_item.quantity = item.quantity
                     transaction_item.gross = item.gross
                     transaction_item.fee = item.fee
