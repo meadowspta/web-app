@@ -81,7 +81,7 @@ class Ticket(BaseModel):
     check_in_date = models.DateTimeField(blank=True, null=True)
     # comments/notes
 
-    def before_save(self, action, save):
+    def before_save(self, action):
         # Save the generated hash ID.
         self.id_hash = self.get_hash_id()
 
