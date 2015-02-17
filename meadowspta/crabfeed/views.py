@@ -202,7 +202,7 @@ def api_transactions(request):
     # Filter: Information needed.
     info_needed = request.GET.get('infoNeeded')
     if info_needed is not None:
-        transactions = transactions.filter(Q(paypaltransactionoverride__name=None) or Q(paypaltransactionoverride__name='') or Q(paypaltransactionoverride__from_email_address=None) or Q(paypaltransactionoverride__from_email_address=None))
+        transactions = transactions.filter(Q(paypaltransactionoverride__name=None)|Q(paypaltransactionoverride__name='')|Q(paypaltransactionoverride__from_email_address=None)|Q(paypaltransactionoverride__from_email_address=None))
 
     # Convert results.
     for transaction in transactions:
