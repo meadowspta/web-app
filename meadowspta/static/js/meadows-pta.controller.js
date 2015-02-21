@@ -112,6 +112,7 @@ function CrabfeedTransactionListController($scope, $http) {
       { id: 'INAHMARCELO', name: 'Inah Marcelo' },
       { id: 'lisamoca', name: 'Lisa Oca' },
       { id: 'calebwhang', name: 'Caleb Whang' },
+      { id: 'dominiquerhodes', name: 'Dominique Rhodes' },
     ];
 
     $scope.crabfeedTicketQuantities = [

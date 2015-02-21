@@ -13,6 +13,7 @@ PAYPAL_HERE_SELLERS = {
     'INAHMARCELO': 'Inah Marcelo',
     'lisamoca': 'Lisa Oca',
     'calebwhang': 'Caleb Whang',
+    'dominiquerhodes': 'Dominique Rhodes',
 }
 
 PAYMENT_SOURCES = {
