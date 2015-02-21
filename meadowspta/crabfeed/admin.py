@@ -17,7 +17,7 @@ class TicketAdmin(admin.ModelAdmin):
 admin.site.register(Ticket, TicketAdmin)
 
 class PayPalTransactionOverrideAdmin(admin.ModelAdmin):
-    list_display = ('date', 'name', 'from_email_address', 'get_total', 'paypal_transaction', 'notes')
+    list_display = ('date', 'name', 'from_email_address', 'get_total', 'get_payment_source', 'paypal_transaction', 'notes')
     ordering = ['-date']
 
     def get_total(self, obj):
@@ -29,5 +29,10 @@ class PayPalTransactionOverrideAdmin(admin.ModelAdmin):
         return '$%s' % total
 
     get_total.short_description = 'Purchase Total'
+
+    def get_payment_source(self, obj):
+        return obj.paypal_transaction.get_source_display()
+
+    get_payment_source.short_description = 'Source'
 
 admin.site.register(PayPalTransactionOverride, PayPalTransactionOverrideAdmin)

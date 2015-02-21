@@ -36,11 +36,11 @@ class Command(BaseCommand):
                 'name': transaction.get_name(),
                 'from_email_address': transaction.get_email(),
                 'source_id': transaction.source,
-                'source': transaction.get_payment_source(),
+                'source': transaction.get_source_display(),
                 'transaction_id': transaction.transaction_id,
                 'seller': transaction.get_seller(),
                 'payment_type_id': transaction.payment_type,
-                'payment_type': transaction.get_payment_type(),
+                'payment_type': transaction.get_payment_type_display(),
                 'items': items,
             }
 

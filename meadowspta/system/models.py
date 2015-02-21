@@ -7,34 +7,34 @@ from django.utils.timezone import localtime
 from core.models import BaseModel
 
 
-PAYPAL_HERE_SELLERS = {
-    'kfbetts10': 'Keisa Betts',
-    'opalenik': 'Gina',
-    'INAHMARCELO': 'Inah Marcelo',
-    'lisamoca': 'Lisa Oca',
-    'calebwhang': 'Caleb Whang',
-    'dominiquerhodes': 'Dominique Rhodes',
-}
+PAYPAL_HERE_SELLERS = (
+    ('kfbetts10', 'Keisa Betts'),
+    ('opalenik', 'Gina'),
+    ('INAHMARCELO', 'Inah Marcelo'),
+    ('lisamoca', 'Lisa Oca'),
+    ('calebwhang', 'Caleb Whang'),
+    ('dominiquerhodes', 'Dominique Rhodes'),
+)
 
-PAYMENT_SOURCES = {
-    'paypal_here': 'PayPal Here',
-    'paypal_online': 'PayPal Online',
-    'form': 'Form',
-}
+PAYMENT_SOURCES = (
+    ('paypal_here', 'PayPal Here'),
+    ('paypal_online', 'PayPal Online'),
+    ('form', 'Form'),
+)
 
-PAYMENT_TYPES = {
-    'cash': 'Cash',
-    'credit': 'Credit',
-    'check': 'Check',
-}
+PAYMENT_TYPES = (
+    ('cash', 'Cash'),
+    ('credit', 'Credit'),
+    ('check', 'Check'),
+)
 
-ITEMS = {
-    'dinner_ticket': 'Dinner Tickets',
-    'raffle_ticket_5_pack': 'Raffle Ticket 5 Pack',
-    'raffle_ticket': 'Raffle Tickets',
-    'turkey_trott_tshirt': 'Turkey Trott T-Shirt',
-    'donation': 'Donations',
-}
+ITEMS = (
+    ('dinner_ticket', 'Dinner Tickets'),
+    ('raffle_ticket_5_pack', 'Raffle Ticket 5 Pack'),
+    ('raffle_ticket', 'Raffle Tickets'),
+    ('turkey_trott_tshirt', 'Turkey Trott T-Shirt'),
+    ('donation', 'Donations'),
+)
 
 class Var(models.Model):
     key = models.CharField(max_length=255)
@@ -52,18 +52,15 @@ class PayPalTransaction(BaseModel):
     date = models.DateTimeField(null=True)
     name = models.CharField(max_length=255, null=True)
     from_email_address = models.EmailField(max_length=255, null=True)
-    source = models.CharField(max_length=255, null=True)
+    source = models.CharField(max_length=255, null=True, choices=PAYMENT_SOURCES)
     transaction_id = models.CharField(max_length=128, null=True)
     invoice_number = models.CharField(max_length=128, null=True)
-    seller_id = models.CharField(max_length=64, null=True)
-    payment_type = models.CharField(max_length=128, null=True)
-
-    def get_payment_source(self):
-        return PAYMENT_SOURCES[self.source]
+    seller_id = models.CharField(max_length=64, null=True, choices=PAYPAL_HERE_SELLERS)
+    payment_type = models.CharField(max_length=128, null=True, choices=PAYMENT_TYPES)
 
     def get_seller(self):
         if self.seller_id:
-            return PAYPAL_HERE_SELLERS[self.seller_id]
+            return self.get_seller_id_display()
         else:
             return ''
 
@@ -82,9 +79,6 @@ class PayPalTransaction(BaseModel):
         else:
             return self.from_email_address
 
-    def get_payment_type(self):
-        return PAYMENT_TYPES[self.payment_type]
-
     def as_api_object(self):
         items = []
 
@@ -97,14 +91,13 @@ class PayPalTransaction(BaseModel):
             'date': self.date.isoformat(),
             'name': self.get_name(),
             'from_email_address': self.get_email(),
-            'source_id': self.source,
-            'source': self.get_payment_source(),
             'transaction_id': self.transaction_id,
             'invoice_number': self.invoice_number,
             'seller': self.get_seller(),
+            'seller_id': self.seller_id,
             'payment_type_id': self.payment_type,
-            'payment_type': self.get_payment_type(),
-            'payment_source': self.get_payment_source(),
+            'payment_type': self.get_payment_type_display(),
+            'payment_source': self.get_source_display(),
             'payment_source_id': self.source,
             'items': items,
         }
@@ -126,7 +119,7 @@ class PayPalTransactionItem(BaseModel):
         db_table = 'paypal_transaction_items'
 
     paypal_transaction = models.ForeignKey(PayPalTransaction)
-    item_title = models.CharField(max_length=255, null=True)
+    item_title = models.CharField(max_length=255, null=True, choices=ITEMS)
     quantity = models.IntegerField(null=True)
     gross = models.DecimalField(max_digits=16, decimal_places=2, default=Decimal('0.00'), null=True)
     fee = models.DecimalField(max_digits=16, decimal_places=2, null=True)
@@ -135,7 +128,7 @@ class PayPalTransactionItem(BaseModel):
     def as_api_object(self):
         data = {
             'item_id': self.item_title,
-            'item_title': ITEMS[self.item_title],
+            'item_title': self.get_item_title_display(),
             'quantity': self.quantity,
             'gross': str(self.gross),
             'fee': str(self.fee),

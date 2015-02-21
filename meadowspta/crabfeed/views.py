@@ -13,7 +13,7 @@ from meta.views import Meta
 
 from .forms import VolunteerSignupForm, NotificationSignupForm
 from .models import Ticket
-from system.models import PayPalTransaction, PayPalTransactionItem, PAYMENT_SOURCES, PAYPAL_HERE_SELLERS, PAYMENT_TYPES, ITEMS
+from system.models import PayPalTransaction, PayPalTransactionItem
 
 
 def home(request):
