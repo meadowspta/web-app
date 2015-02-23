@@ -3,7 +3,7 @@ from  pymongo import MongoClient
 from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 
-from system.models import PayPalRawTransaction, PayPalTransaction, PayPalTransactionItem, PayPalTransactionOverride
+from crabfeed.models import Reservation, ReservationTransaction, ReservationTransactionItem
 
 
 class Command(BaseCommand):
@@ -21,46 +21,34 @@ class Command(BaseCommand):
         # Remove existing indexes.
         collection.remove({})
 
-        transactions = PayPalTransaction.objects.all()
-        for transaction in transactions:
+        reservations = Reservation.objects.all()
+        for reservation in reservations:
             items = []
             keywords = []
 
-            transaction_items = transaction.paypaltransactionitem_set.all()
-            for item in transaction_items:
-                items.append(item.as_api_object());
+            data = reservation.as_api_object()
 
-            data = {
-                'id': transaction.id,
-                'date': transaction.date.isoformat(),
-                'name': transaction.get_name(),
-                'from_email_address': transaction.get_email(),
-                'source_id': transaction.source,
-                'source': transaction.get_source_display(),
-                'transaction_id': transaction.transaction_id,
-                'seller': transaction.get_seller(),
-                'payment_type_id': transaction.payment_type,
-                'payment_type': transaction.get_payment_type_display(),
-                'items': items,
-            }
+            names = []
+            for transaction in data['transactions']:
+                names.append(transaction['name'])
 
-            data['keywords'] = self.generate_language_stem(data)
+            keywords = [
+                self.generate_language_stem(data['email']),
+                self.generate_language_stem(' '.join(names)),
+            ]
+
+            data['keywords'] = ' '.join(keywords)
+            data['reservation_number_index'] = '%s %s' % (reservation.reservation_number, reservation.reservation_number.replace('-', ''))
 
             collection.insert(data)
 
-            print '[INDEXING] Transaction ID: %s' % (transaction.transaction_id)
+            print '[INDEXING] Transaction email: %s' % (data['email'])
 
-    def generate_language_stem(self, data):
+    def generate_language_stem(self, str):
         words = []
         stems = []
 
-        fields = ['name', 'from_email_address', 'transaction_id']
-        for field in fields:
-            if data[field]:
-                words.append(data[field])
-
-        words = ' '.join(words).lower().split()
-
+        words = ' '.join(str.split()).lower().split()
         for word in words:
             stem = ''
             for char in word:
@@ -81,6 +69,27 @@ db.search.transactions.ensureIndex(
         weights: {
             name: 10,
             from_email_address: 7,
+        },
+        name: 'TextIndex',
+    }
+);
+
+db.search.transactions.dropIndexes();
+db.search.transactions.ensureIndex(
+    {
+        email: 'text',
+        'transactions.name': 'text',
+        reservation_number_index: 'text',
+        'transactions.transaction_id': 'text',
+        keywords: 'text',
+    },
+    {
+        weights: {
+            email: 10,
+            'transactions.name': 10,
+            reservation_number_index: 7,
+            'transactions.transaction_id': 3,
+            keywords: 7
         },
         name: 'TextIndex',
     }

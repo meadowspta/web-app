@@ -70,7 +70,7 @@ function CrabfeedTicketSearchController($scope, $http) {
   $scope.search = function(callback) {
     $http.get('/api/crabfeed/search?q=' + $scope.q).
       success(function(data, status, headers, config) {
-        $scope.transactions = data.response;
+        $scope.reservations = data.response;
       }).
       error(function(data, status, headers, config) {
 

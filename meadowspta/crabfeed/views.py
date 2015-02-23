@@ -1,5 +1,6 @@
 import json
-from  pymongo import MongoClient
+from pymongo import MongoClient
+from bson.json_util import dumps, loads
 
 from django.conf import settings
 from django.template import RequestContext, Context, loader
@@ -12,7 +13,7 @@ from django.db.models import Q
 from meta.views import Meta
 
 from .forms import VolunteerSignupForm, NotificationSignupForm
-from .models import Ticket
+from .models import Reservation, ReservationTransaction, ReservationTransactionItem
 from system.models import PayPalTransaction, PayPalTransactionItem
 
 
@@ -116,22 +117,11 @@ def api_search(request):
     db = client['meadowspta']
     collection = db['search.transactions'];
 
-    search_results = collection.find({ '$text': { '$search': q } })
+    # {email:1, reservation_number:1, score: { $meta: "textScore" } }).limit(10).sort( { score: { $meta: "textScore" } } )
+    # search_results = collection.find({ '$text': { '$search': q } }, { '_id': 0, 'keywords': 0, 'score': { '$meta': 'textScore' } }).sort({ 'score': { '$meta': 'textScore' } })
+    search_results = collection.find({ '$text': { '$search': q } }, { '_id': 0, 'keywords': 0, 'score': { '$meta': 'textScore' } }).sort('score', { '$meta': 'textScore' })
     for result in search_results:
-        data = {
-            'id': result['id'],
-            'name': result['name'],
-            'email': result['from_email_address'],
-            'date': result['date'],
-            'source_id': result['source_id'],
-            'source': result['source'],
-            'seller': result['seller'],
-            'transaction_id': result['transaction_id'],
-            'payment_type_id': result['payment_type_id'],
-            'payment_type': result['payment_type'],
-        }
-
-        results.append(data)
+        results.append(result)
 
     response = {
         'statusCode': 200,
@@ -215,3 +205,16 @@ def api_transactions(request):
 
     return HttpResponse(json.dumps(response), mimetype='application/json')
 
+def api_reservation(request):
+    data = []
+
+    reservations = Reservation.objects.all()
+    for reservation in reservations:
+        data.append(reservation.as_api_object())
+
+    response = {
+        'statusCode': 200,
+        'response': data,
+    }
+
+    return HttpResponse(json.dumps(response), mimetype='application/json')

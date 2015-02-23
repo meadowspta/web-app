@@ -9,29 +9,29 @@
       </span>
     </div>
 
-    <section ng-show="transactions.length">
+    <section ng-show="reservations.length">
       <hr />
-      <h4>{[ transactions.length ]} results</h4>
+      <h4>{[ reservations.length ]} results</h4>
+      <hr />
 
-      <table class="table table-striped">
-        <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Transaction ID</th>
-          <th>Payment Type</th>
-          <th></th>
-        </tr>
-        <tr ng-repeat="transaction in transactions">
-          <td>{[ transaction.name ]}</td>
-          <td><a href="mailto:{[ transaction.email ]}" target="_blank">{[ transaction.email ]}</a></td>
-          <td>{[ transaction.transaction_id ]}</td>
-          <td>
-            <span class="glyphicon" ng-class="{ 'glyphicon-credit-card': ticket.payment_type_id == 'CC', 'glyphicon-ok': ticket.payment_type_id == 'CH' }"><span class="loud" ng-show="ticket.payment_type_id == 'CA'">$</span></span>
-            <span class="quiet">{[ transaction.source ]}</span>
-          </td>
-          <td></td>
-        </tr>
-      </table>
+      <div class="list-item row" ng-repeat="reservation in reservations">
+        <div class="col-lg-12"><h2>{[ reservation.email]}</h2></div>
+        <div class="col-lg-3">
+          <strong>Reservation #:</strong> {[ reservation.reservation_number ]}<br />
+          <strong>Check-in Status:</strong> {[ reservation.party_checked_in ]} / {[ reservation.party_count ]}<br />
+        </div>
+        <div class="col-lg-9">
+          <div ng-repeat="transaction in reservation.transactions">
+            {[ transaction.name ]}<br />
+            <strong>Payment Type:</strong>
+            {[ transaction.payment_type ]}
+            <span class="glyphicon" ng-class="{ 'glyphicon-credit-card': transaction.payment_type_id == 'credit', 'glyphicon-ok': transaction.payment_type_id == 'check' }"><span class="loud" ng-show="transaction.payment_type_id == 'cash'">$</span></span><br />
+            <strong>Source:</strong> {[ transaction.source ]}<br />
+
+            <hr ng-show="reservation.transactions.length > 1" />
+          </div>
+        </div>
+      </div>
     </section>
   </div>
 {% endblock content %}
