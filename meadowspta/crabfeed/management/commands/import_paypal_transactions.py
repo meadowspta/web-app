@@ -6,6 +6,7 @@ from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 
 from system.models import PayPalRawTransaction, PayPalTransaction, PayPalTransactionItem, PayPalTransactionOverride
+from crabfeed.models import Reservation, ReservationTransaction, ReservationTransactionItem
 
 
 EXCLUDED_TRANSACTIONS = [
@@ -22,6 +23,9 @@ EXCLUDED_TRANSACTIONS = [
     'INV2-UNSS-E7QQ-P35W-MWGD',
     'INV2-LWLY-XH6Z-EAJP-4D7V',
     'INV2-YZA9-YCBE-A5VW-CKL3',
+    'INV2-KMW8-7LFW-RMZE-VJ3B',
+    '4UB99834NJ821615H',
+    '1YM4481693333734K',
 ]
 
 FIELD_DATE = 0
@@ -161,6 +165,11 @@ class Command(BaseCommand):
                 transaction.delete()
             except Exception, e:
                 pass
+
+            # try:
+            #     reservation = transaction.reservationtransaction_set.get()
+            # except Exception, e:
+            #     pass
 
             print '[DELETE] Transaction ID: %s' % (transaction_id)
 

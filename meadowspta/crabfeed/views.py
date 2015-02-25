@@ -88,10 +88,10 @@ def dashboard(request):
 @permission_required('crabfeed.view_crabfeed_checkin')
 def check_in(request):
     id_hash = request.GET.get('id')
-    ticket = Ticket.objects.get(id_hash=id_hash)
+    reservation = Reservation.objects.get(id_hash=id_hash)
 
     payload = {
-        'ticket': ticket,
+        'reservation': reservation,
     }
 
     return render_to_response('crabfeed/check-in/index.html', payload, context_instance=RequestContext(request))
@@ -119,7 +119,11 @@ def api_search(request):
 
     # {email:1, reservation_number:1, score: { $meta: "textScore" } }).limit(10).sort( { score: { $meta: "textScore" } } )
     # search_results = collection.find({ '$text': { '$search': q } }, { '_id': 0, 'keywords': 0, 'score': { '$meta': 'textScore' } }).sort({ 'score': { '$meta': 'textScore' } })
-    search_results = collection.find({ '$text': { '$search': q } }, { '_id': 0, 'keywords': 0, 'score': { '$meta': 'textScore' } }).sort('score', { '$meta': 'textScore' })
+    if q == '*':
+        search_results = collection.find({}, { '_id': 0 })
+    else:
+        search_results = collection.find({ '$text': { '$search': q } }, { '_id': 0, 'keywords': 0, 'score': { '$meta': 'textScore' } }).sort('score', { '$meta': 'textScore' })
+
     for result in search_results:
         results.append(result)
 

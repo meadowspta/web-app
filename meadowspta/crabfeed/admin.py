@@ -31,3 +31,8 @@ class PayPalTransactionOverrideAdmin(admin.ModelAdmin):
     get_payment_source.short_description = 'Source'
 
 admin.site.register(PayPalTransactionOverride, PayPalTransactionOverrideAdmin)
+
+class ReservationAdmin(admin.ModelAdmin):
+    list_display = ('email', 'reservation_number', 'party_count', 'transaction_count', 'email_sent')
+
+admin.site.register(Reservation, ReservationAdmin)

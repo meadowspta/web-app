@@ -89,15 +89,17 @@ class Reservation(BaseModel):
     check_in_date = models.DateTimeField(blank=True, null=True)
     qr_code_image = models.ImageField(upload_to='images/crabfeed/qr-codes')
     id_hash = models.CharField(max_length=255)
+    email_sent = models.BooleanField(default=False)
+    email_sent_date = models.DateTimeField(null=True)
 
     def before_save(self, action):
         # Save the generated hash ID and confirmation number.
         self.id_hash = self.get_hash_id()
 
         # Generate QR code image.
-        # image = qrcode.make(self.get_check_in_url())
-        # image.save('media/images/crabfeed/qr-codes/%s.jpg' % self.id_hash)
-        # self.qr_code_image = 'images/crabfeed/qr-codes/%s.jpg' % self.id_hash
+        image = qrcode.make(self.get_check_in_url())
+        image.save('media/images/crabfeed/qr-codes/%s.jpg' % self.id_hash)
+        self.qr_code_image = 'images/crabfeed/qr-codes/%s.jpg' % self.id_hash
 
     def get_hash_id(self):
         """
@@ -135,6 +137,9 @@ class Reservation(BaseModel):
 
         return party_count
 
+    def get_qr_code_url(self):
+        return '%s://%s%s' % (settings.META_SITE_PROTOCOL, settings.META_SITE_DOMAIN, self.qr_code_image.url)
+
     def as_api_object(self):
         transactions = []
         reservation_transactions = self.reservationtransaction_set.all()
@@ -167,8 +172,6 @@ class ReservationTransaction(BaseModel):
     transaction_id = models.CharField(max_length=128, null=True)
     seller_id = models.CharField(max_length=64, null=True, choices=PAYPAL_HERE_SELLERS)
     payment_type = models.CharField(max_length=128, null=True, choices=PAYMENT_TYPES)
-    email_sent = models.BooleanField(default=False)
-    email_sent_date = models.DateTimeField(null=True)
 
     def as_api_object(self):
         items = []
