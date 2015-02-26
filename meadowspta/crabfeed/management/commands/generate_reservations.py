@@ -1,3 +1,5 @@
+import os.path, qrcode
+
 from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 from django.db.models import Q
@@ -43,6 +45,13 @@ class Command(BaseCommand):
             # Create/update canonical user.
             reservation.email = email
             reservation.save()
+
+            # Generate a QR code image.
+            if not os.path.isfile('media/images/crabfeed/qr-codes/%s.jpg' % reservation.id_hash):
+                image = qrcode.make(reservation.get_check_in_url())
+                image.save('media/images/crabfeed/qr-codes/%s.jpg' % reservation.id_hash)
+                reservation.qr_code_image = 'images/crabfeed/qr-codes/%s.jpg' % reservation.id_hash
+                reservation.save()
 
     def update_reservation_number(self):
         print '\n************************************************'

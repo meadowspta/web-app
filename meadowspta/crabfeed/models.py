@@ -1,4 +1,4 @@
-import datetime, hashlib, qrcode
+import datetime, hashlib
 from decimal import Decimal
 from cStringIO import StringIO
 
@@ -95,11 +95,6 @@ class Reservation(BaseModel):
     def before_save(self, action):
         # Save the generated hash ID and confirmation number.
         self.id_hash = self.get_hash_id()
-
-        # Generate QR code image.
-        image = qrcode.make(self.get_check_in_url())
-        image.save('media/images/crabfeed/qr-codes/%s.jpg' % self.id_hash)
-        self.qr_code_image = 'images/crabfeed/qr-codes/%s.jpg' % self.id_hash
 
     def get_hash_id(self):
         """
