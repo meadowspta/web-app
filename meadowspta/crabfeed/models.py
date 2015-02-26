@@ -89,8 +89,8 @@ class Reservation(BaseModel):
     check_in_date = models.DateTimeField(blank=True, null=True)
     qr_code_image = models.ImageField(upload_to='images/crabfeed/qr-codes')
     id_hash = models.CharField(max_length=255)
-    email_sent = models.BooleanField(default=False)
-    email_sent_date = models.DateTimeField(null=True)
+    email_sent = models.BooleanField(default=False, blank=True)
+    email_sent_date = models.DateTimeField(null=True, blank=True)
 
     def before_save(self, action):
         # Save the generated hash ID and confirmation number.
