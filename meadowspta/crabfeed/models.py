@@ -135,6 +135,22 @@ class Reservation(BaseModel):
     def get_qr_code_url(self):
         return '%s://%s%s' % (settings.META_SITE_PROTOCOL, settings.META_SITE_DOMAIN, self.qr_code_image.url)
 
+    def consolidate_names(self):
+        names = []
+        new_names = []
+        current_name = None
+
+        for transaction in self.reservationtransaction_set.all():
+            names.append(transaction.name)
+
+        for name in names:
+            if current_name is None or current_name != name.lower():
+                new_names.append(name)
+
+            current_name = name.lower()
+
+        return new_names
+
     def as_api_object(self):
         transactions = []
         reservation_transactions = self.reservationtransaction_set.all()
@@ -143,6 +159,7 @@ class Reservation(BaseModel):
 
         data = {
             'id': self.id,
+            'name': self.consolidate_names(),
             'reservation_number': self.reservation_number,
             # 'table_assignment': self.table_assignment,
             'email': self.email,

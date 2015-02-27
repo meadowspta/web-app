@@ -21,12 +21,8 @@ class Command(BaseCommand):
         for reservation in reservations:
             # Only generate emails for those who have not received it.
             if reservation.email_sent is False:
-                names = []
-                for transaction in reservation.reservationtransaction_set.all():
-                    names.append(transaction.name)
-
                 token_map = {
-                    'name': self.consolidate_names(names),
+                    'name': '<br />'.join(reservation.consolidate_names()),
                     'email': reservation.email,
                     'reservation_number': reservation.reservation_number,
                     'party_count': reservation.party_count,
@@ -49,16 +45,4 @@ class Command(BaseCommand):
             body = body.replace('{{ %s }}' % token, str(replacement))
 
         return body
-
-    def consolidate_names(self, names):
-        current_name = None
-        new_names = []
-        for name in names:
-            if current_name is None or current_name != name.lower():
-                new_names.append(name)
-
-
-            current_name = name.lower()
-
-        return '<br />'.join(new_names)
 

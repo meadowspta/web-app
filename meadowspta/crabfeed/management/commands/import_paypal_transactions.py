@@ -25,7 +25,7 @@ EXCLUDED_TRANSACTIONS = [
     'INV2-YZA9-YCBE-A5VW-CKL3',
     'INV2-KMW8-7LFW-RMZE-VJ3B',
     '4UB99834NJ821615H',
-    '1YM4481693333734K',
+    # '1YM4481693333734K',
 ]
 
 FIELD_DATE = 0
@@ -137,6 +137,14 @@ class Command(BaseCommand):
                     transaction.country = row[FIELD_COUNTRY].strip()
                     transaction.contact_phone_number = row[FIELD_CONTACT_PHONE_NUMBER].strip()
                     transaction.balance_impact = row[FIELD_BALANCE_IMPACT]
+
+                    # Exceptions.
+                    if transaction.transaction_id == '1YM4481693333734K':
+                        transaction.gross = 50
+                        transaction.fee = -1.45
+                        transaction.net = 48.55
+                        transaction.quantity = 1
+
                     transaction.save()
 
                     print '[CREATE] Transaction ID: %s' % (row[FIELD_TRANSACTION_ID])
