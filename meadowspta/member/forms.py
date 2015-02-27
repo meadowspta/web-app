@@ -60,7 +60,7 @@ class MemberRegistrationForm(forms.Form):
         return user
 
 class MemberLoginForm(forms.Form):
-    email = forms.EmailField(
+    email = forms.CharField(
         required=True,
         label='Email',
         widget=forms.TextInput(

@@ -1,11 +1,16 @@
 from django.contrib import admin
-from auction.models import Item, Donor
+from auction.models import Item
 
 class ItemAdmin(admin.ModelAdmin):
-    list_display = ('admin_picture', 'item_number', 'donor', 'opening_bid', 'bid_increment', 'retail_value', 'quantity')
+    # fields = ('title', 'description', 'is_published')
+    list_display = ('title', 'description')
 
-class DonorAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name')
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == 'user':
+            kwargs['initial'] = request.user.id
+
+        return super(ItemAdmin, self).formfield_for_foreignkey(
+            db_field, request, **kwargs
+        )
 
 admin.site.register(Item, ItemAdmin)
-admin.site.register(Donor, DonorAdmin)
