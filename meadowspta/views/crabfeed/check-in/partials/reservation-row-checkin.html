@@ -16,7 +16,7 @@
   </div>
 
   <div class="col-lg-1 col-md-1">
-    <a href="/crabfeed/check-in/?id={[ reservation.id_hash ]}" class="btn btn-success pull-right" ng-show="reservation.party_checked_in < reservation.party_count">Check-In</a>
+    <a href="/crabfeed/check-in/?id={[ reservation.id_hash ]}&source=search" class="btn btn-success pull-right" ng-show="reservation.party_checked_in < reservation.party_count">Check-In</a>
     <button class="btn disabled pull-right" ng-show="reservation.party_checked_in == reservation.party_count">Check-In</button>
   </div>
 </div>

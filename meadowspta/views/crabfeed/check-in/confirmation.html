@@ -19,6 +19,10 @@
       <div>Check-in Confirmed <img src="/static/images/crabfeed/email/check.png"></div>
     </div>
 
+    {% if display_search_button == True %}
+      <a href="/crabfeed/check-in/search/" class="btn btn-primary btn-block btn-lg">&laquo; Go Back To Search</a>
+    {% endif %}
+
     <br /><br /><br /><br /><br /><br /><br /><br /><br />
   </div>
 {% endblock content %}

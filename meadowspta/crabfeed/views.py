@@ -88,16 +88,18 @@ def dashboard(request):
 @permission_required('crabfeed.view_crabfeed_checkin')
 def check_in(request):
     id_hash = request.GET.get('id')
+    source = request.GET.get('source')
     reservation = Reservation.objects.get(id_hash=id_hash)
     form = CheckInForm(request.POST or None, initial={ 'reservation_id': reservation.id })
 
     if form.is_valid():
         form.save()
-        return HttpResponseRedirect('/crabfeed/check-in/confirmation?id=%s' % reservation.id_hash)
+        return HttpResponseRedirect('/crabfeed/check-in/confirmation?id=%s&source=%s' % (reservation.id_hash, source))
 
     payload = {
         'reservation': reservation,
         'form': form,
+        'source': source,
     }
 
     return render_to_response('crabfeed/check-in/index.html', payload, context_instance=RequestContext(request))
@@ -105,10 +107,12 @@ def check_in(request):
 @permission_required('crabfeed.view_crabfeed_checkin')
 def check_in_confirmation(request):
     id_hash = request.GET.get('id')
+    source = request.GET.get('source')
     reservation = Reservation.objects.get(id_hash=id_hash)
 
     payload = {
         'reservation': reservation,
+        'display_search_button': True if source == 'search' else False,
     }
 
     return render_to_response('crabfeed/check-in/confirmation.html', payload, context_instance=RequestContext(request))
@@ -141,8 +145,6 @@ def api_search(request):
     if q == 'all':
         search_results = collection.find({}, { '_id': 0 })
     else:
-        print '=============================='
-        print q
         search_results = collection.find({ '$text': { '$search': q } }, { '_id': 0, 'keywords': 0, 'score': { '$meta': 'textScore' } }).sort('score', { '$meta': 'textScore' })
 
     for result in search_results:

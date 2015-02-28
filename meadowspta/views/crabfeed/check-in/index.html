@@ -38,7 +38,7 @@
       </div>
 
       <div class="check-in-submit-button">
-        <form action="/crabfeed/check-in/?id={{ reservation.id_hash }}" method="post">
+        <form action="/crabfeed/check-in/?id={{ reservation.id_hash }}&source={{ source }}" method="post">
           {% csrf_token %}
 
           <input type="submit" class="btn btn-lg btn-block btn-success" ng-class="{ 'disabled': checkInCount == 0 }" value="Submit">

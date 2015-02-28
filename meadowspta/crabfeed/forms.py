@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from django import forms
+from django.core.management import call_command
 from django.contrib.auth.models import User
 from django.core.validators import validate_email
 
@@ -108,5 +109,6 @@ class CheckInForm(forms.Form):
 
         if commit:
             reservation.save()
+            call_command('index_transactions')
 
         return reservation
