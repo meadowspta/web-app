@@ -83,7 +83,7 @@ class Reservation(BaseModel):
 
     email = models.EmailField(max_length=255, null=True)
     reservation_number = models.CharField(max_length=255, null=True)
-    # table_assignment = models.CharField(max_length=64, null=True, choices=DINNER_TABLES)
+    table_assignment = models.CharField(max_length=64, null=True)
     transaction_count = models.IntegerField(null=True)
     party_count = models.IntegerField(null=True)
     party_checked_in = models.IntegerField(null=True, default=0)
@@ -162,7 +162,7 @@ class Reservation(BaseModel):
             'id': self.id,
             'name': self.consolidate_names(),
             'reservation_number': self.reservation_number,
-            # 'table_assignment': self.table_assignment,
+            'table_assignment': self.table_assignment,
             'email': self.email,
             'transaction_count': self.transaction_count,
             'party_count': self.party_count,

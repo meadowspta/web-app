@@ -34,6 +34,6 @@ admin.site.register(PayPalTransactionOverride, PayPalTransactionOverrideAdmin)
 
 class ReservationAdmin(admin.ModelAdmin):
     # fields = ('email', 'reservation_number', 'transaction_count', 'party_count', 'party_checked_in', 'email_sent', 'email_sent_date')
-    list_display = ('email', 'reservation_number', 'party_count', 'transaction_count', 'email_sent')
+    list_display = ('email', 'reservation_number', 'party_count', 'table_assignment', 'transaction_count', 'email_sent')
 
 admin.site.register(Reservation, ReservationAdmin)

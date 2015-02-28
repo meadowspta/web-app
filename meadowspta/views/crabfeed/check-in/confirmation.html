@@ -17,6 +17,9 @@
     <hr />
     <div class="text-center well">
       <div>Check-in Confirmed <img src="/static/images/crabfeed/email/check.png"></div>
+      {% if reservation.table_assignment %}
+        <button class="btn btn-lg btn-danger table-assignment">Table #{{ reservation.table_assignment }}</button>
+      {% endif %}
     </div>
 
     {% if display_search_button == True %}
