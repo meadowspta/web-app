@@ -353,12 +353,17 @@ div.first {
   left: -9999px;
 }
 
+/* line 280, ../sass/base.scss */
+.btn-default {
+  background: #cc0000;
+}
+
 /* Loader */
-/* line 281, ../sass/base.scss */
+/* line 285, ../sass/base.scss */
 .loader-region {
   position: relative;
 }
-/* line 284, ../sass/base.scss */
+/* line 288, ../sass/base.scss */
 .loader-region .loader {
   background: url("/static/images/loaders/loader-large.gif") no-repeat center;
   background-color: rgba(255, 255, 255, 0.75);
@@ -370,7 +375,7 @@ div.first {
   z-index: 10000;
   font-size: 1.2em;
 }
-/* line 295, ../sass/base.scss */
+/* line 299, ../sass/base.scss */
 .loader-region .loader span {
   display: inline-block;
   vertical-align: middle;

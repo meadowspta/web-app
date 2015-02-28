@@ -1,0 +1,24 @@
+{% extends 'layouts/page.html' %}
+
+{% block content %}
+  <div id="crabfeed-check-in-confirmation">
+    <h3>
+      {% for name in reservation.consolidate_names %}
+        {{ name }}<br />
+      {% endfor %}
+    </h3>
+
+    <div class="quiet">{{ reservation.email }}</div>
+
+    <strong>Reservation Number:</strong> {{ reservation.reservation_number }}<br />
+    <hr />
+    <strong>Party of <span class="alerter">{{ reservation.party_count }}</span> <span class="pull-right"><span class="alerter">{{ reservation.party_checked_in }}</span> checked-in</span></strong><br />
+    <input type="hidden" ng-model="partyCount" value="{{ reservation.party_count }}">
+    <hr />
+    <div class="text-center well">
+      <div>Check-in Confirmed <img src="/static/images/crabfeed/email/check.png"></div>
+    </div>
+
+    <br /><br /><br /><br /><br /><br /><br /><br /><br />
+  </div>
+{% endblock content %}

@@ -1,0 +1,46 @@
+{% extends 'layouts/page.html' %}
+
+{% block content %}
+  <div id="crabfeed-check-in-dashboard" ng-controller="CheckInDashboardController">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="big-stats well">
+          <h2>Total Check-Ins</h2>
+          <div class="big-stats-number">{[ checkInCount ]}</div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="big-stats well">
+          <h2>Check-Ins Remaining</h2>
+          <div class="big-stats-number">{[ checkInOpenCount ]}</div>
+        </div>
+      </div>
+    </div>
+
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#checked-in" data-toggle="tab">Fully Checked-In ({[ checkInFull.count ]})</a></li>
+      <li><a href="#partial-check-in" data-toggle="tab">Partial Check-In ({[ checkInPartial.count ]})</a></li>
+      <li><a href="#open" data-toggle="tab">Open Reservations ({[ checkInOpen.count ]})</a></li>
+    </ul>
+    <br />
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div class="tab-pane active list" id="checked-in">
+        <div class="list-item" ng-repeat="reservation in checkInFull.reservations">
+          {% include 'crabfeed/check-in/partials/reservation-row.html' %}
+        </div>
+      </div>
+      <div class="tab-pane" id="partial-check-in">
+        <div class="list-item" ng-repeat="reservation in checkInPartial.reservations">
+          {% include 'crabfeed/check-in/partials/reservation-row.html' %}
+        </div>
+      </div>
+      <div class="tab-pane" id="open">
+        <div class="list-item" ng-repeat="reservation in checkInOpen.reservations">
+          {% include 'crabfeed/check-in/partials/reservation-row.html' %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

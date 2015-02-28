@@ -12,7 +12,7 @@ from django.db.models import Q
 
 from meta.views import Meta
 
-from .forms import VolunteerSignupForm, NotificationSignupForm
+from .forms import VolunteerSignupForm, NotificationSignupForm, CheckInForm
 from .models import Reservation, ReservationTransaction, ReservationTransactionItem
 from system.models import PayPalTransaction, PayPalTransactionItem
 
@@ -89,19 +89,38 @@ def dashboard(request):
 def check_in(request):
     id_hash = request.GET.get('id')
     reservation = Reservation.objects.get(id_hash=id_hash)
+    form = CheckInForm(request.POST or None, initial={ 'reservation_id': reservation.id })
+
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect('/crabfeed/check-in/confirmation?id=%s' % reservation.id_hash)
+
+    payload = {
+        'reservation': reservation,
+        'form': form,
+    }
+
+    return render_to_response('crabfeed/check-in/index.html', payload, context_instance=RequestContext(request))
+
+@permission_required('crabfeed.view_crabfeed_checkin')
+def check_in_confirmation(request):
+    id_hash = request.GET.get('id')
+    reservation = Reservation.objects.get(id_hash=id_hash)
 
     payload = {
         'reservation': reservation,
     }
 
-    return render_to_response('crabfeed/check-in/index.html', payload, context_instance=RequestContext(request))
+    return render_to_response('crabfeed/check-in/confirmation.html', payload, context_instance=RequestContext(request))
+
+@permission_required('crabfeed.view_crabfeed_checkin')
+def check_in_dashboard(request):
+    payload = {}
+    return render_to_response('crabfeed/check-in/dashboard.html', payload, context_instance=RequestContext(request))
 
 @permission_required('crabfeed.view_crabfeed_checkin_search')
 def check_in_search(request):
-    payload = {
-
-    }
-
+    payload = {}
     return render_to_response('crabfeed/check-in/search.html', payload, context_instance=RequestContext(request))
 
 def search(request):
@@ -119,9 +138,11 @@ def api_search(request):
 
     # {email:1, reservation_number:1, score: { $meta: "textScore" } }).limit(10).sort( { score: { $meta: "textScore" } } )
     # search_results = collection.find({ '$text': { '$search': q } }, { '_id': 0, 'keywords': 0, 'score': { '$meta': 'textScore' } }).sort({ 'score': { '$meta': 'textScore' } })
-    if q == '*':
+    if q == 'all':
         search_results = collection.find({}, { '_id': 0 })
     else:
+        print '=============================='
+        print q
         search_results = collection.find({ '$text': { '$search': q } }, { '_id': 0, 'keywords': 0, 'score': { '$meta': 'textScore' } }).sort('score', { '$meta': 'textScore' })
 
     for result in search_results:
@@ -219,6 +240,53 @@ def api_reservation(request):
     response = {
         'statusCode': 200,
         'response': data,
+    }
+
+    return HttpResponse(json.dumps(response), mimetype='application/json')
+
+def api_check_in_details(request):
+    reservation_data = []
+
+    # reservations = Reservation.objects.all()
+    # for reservation in reservations:
+    #     data.append(reservation.as_api_object())
+
+    # Check-in full.
+    check_in_full_data = []
+    for reservation in Reservation.get_full_check_in():
+        check_in_full_data.append(reservation.as_api_object())
+
+    # Check-in partial.
+    check_in_partial_data = []
+    for reservation in Reservation.get_partial_check_in():
+        check_in_partial_data.append(reservation.as_api_object())
+
+    # Check-in open.
+    check_in_open_data = []
+    for reservation in Reservation.get_check_in_open():
+        check_in_open_data.append(reservation.as_api_object())
+
+    response_data = {
+        'reservations': reservation_data,
+        'check_in_count': Reservation.get_check_in_count(),
+        'check_in_open_count': Reservation.get_check_in_open_count(),
+        'check_in_open': {
+            'count': len(check_in_open_data),
+            'reservations': check_in_open_data,
+        },
+        'check_in_partial': {
+            'count': len(check_in_partial_data),
+            'reservations': check_in_partial_data,
+        },
+        'check_in_full': {
+            'count': len(check_in_full_data),
+            'reservations': check_in_full_data,
+        },
+    }
+
+    response = {
+        'statusCode': 200,
+        'response': response_data,
     }
 
     return HttpResponse(json.dumps(response), mimetype='application/json')

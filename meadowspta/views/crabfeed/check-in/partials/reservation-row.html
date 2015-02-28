@@ -1,0 +1,17 @@
+<div class="row reservation-list-item">
+  <div class="col-lg-6 col-md-6">
+    <div ng-repeat="name in reservation.name">
+      <strong class="names">{[ name ]}</strong><br />
+    </div>
+    <div class="quiet">
+      {[ reservation.email ]}
+    </div>
+  </div>
+
+  <div class="col-lg-6 col-md-6">
+    <strong>Reservation #:</strong> {[ reservation.reservation_number ]}<br />
+    <strong>Party of:</strong> {[ reservation.party_count ]}<br />
+    <strong>Party Check-ins:</strong> {[ reservation.party_checked_in ]}<br />
+    <!-- <strong>Check-in Time:</strong> {[ reservation.check_in_date|date:medium ]}<br /> -->
+  </div>
+</div>

@@ -431,6 +431,15 @@ footer {
 
   .check-in-count-form {
     font-size: 1.8em;
+    margin-bottom: 20px;
+
+    .check-in-count {
+      padding: 0px 15px;
+      font-size: 1.3em;
+    }
+  }
+
+  .check-in-all-button {
     margin-bottom: 15px;
   }
 
@@ -451,5 +460,27 @@ footer {
   p, p span {
     font-size: 1.2em !important;
     color: $dark-grey;
+  }
+}
+
+#crabfeed-check-in-dashboard {
+  .big-stats {
+    text-align: center;
+
+    .big-stats-number {
+      font-size: 5.0em;
+    }
+  }
+
+  .nav-tabs {
+    font-size: 1.4em;
+  }
+}
+
+.reservation-list-item {
+  font-size: 1.4em;
+
+  .names {
+    font-size: 1.6em;
   }
 }

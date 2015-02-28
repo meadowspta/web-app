@@ -6,6 +6,7 @@ from django.db import models
 from django.db.models import Q
 from django.conf import settings
 from django.core.files import File
+from django.db.models import Count, Min, Sum, Avg
 from django.core.files.base import ContentFile
 
 from core.models import BaseModel
@@ -166,12 +167,43 @@ class Reservation(BaseModel):
             'transaction_count': self.transaction_count,
             'party_count': self.party_count,
             'party_checked_in': self.party_checked_in,
+            'check_in_date': self.check_in_date.isoformat() if self.check_in_date else None,
             # 'qr_code_image': self.qr_code_image,
             'id_hash': self.id_hash,
             'transactions': transactions,
         }
 
         return data
+
+    @staticmethod
+    def get_check_in_count():
+        return Reservation.objects.aggregate(sum=Sum('party_checked_in'))['sum']
+
+    @staticmethod
+    def get_total_party_count():
+        return Reservation.objects.aggregate(sum=Sum('party_count'))['sum']
+
+    @staticmethod
+    def get_check_in_open_count():
+        total_party_count = Reservation.get_total_party_count()
+        total_checked_in_count = Reservation.objects.aggregate(sum=Sum('party_checked_in'))['sum']
+        return (total_party_count - total_checked_in_count)
+
+    @staticmethod
+    def get_check_in_open():
+        return Reservation.objects.filter(party_checked_in=0).order_by('-check_in_date')
+
+    @staticmethod
+    def get_partial_check_in():
+        return Reservation.objects.filter(Q(party_checked_in__lt=models.F('party_count')) & Q(party_checked_in__gt=0)).order_by('-check_in_date')
+
+    @staticmethod
+    def get_full_check_in():
+        return Reservation.objects.filter(party_checked_in=models.F('party_count')).order_by('-check_in_date')
+
+    def is_all_checked_in(self):
+        return self.party_checked_in == self.party_count
+
 
 class ReservationTransaction(BaseModel):
     class Meta:

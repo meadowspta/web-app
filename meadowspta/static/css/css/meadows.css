@@ -353,12 +353,17 @@ div.first {
   left: -9999px;
 }
 
+/* line 280, ../sass/base.scss */
+.btn-default {
+  background: #cc0000;
+}
+
 /* Loader */
-/* line 281, ../sass/base.scss */
+/* line 285, ../sass/base.scss */
 .loader-region {
   position: relative;
 }
-/* line 284, ../sass/base.scss */
+/* line 288, ../sass/base.scss */
 .loader-region .loader {
   background: url("/static/images/loaders/loader-large.gif") no-repeat center;
   background-color: rgba(255, 255, 255, 0.75);
@@ -370,7 +375,7 @@ div.first {
   z-index: 10000;
   font-size: 1.2em;
 }
-/* line 295, ../sass/base.scss */
+/* line 299, ../sass/base.scss */
 .loader-region .loader span {
   display: inline-block;
   vertical-align: middle;
@@ -791,19 +796,50 @@ footer .section2 .content {
 /* line 432, ../sass/meadows.scss */
 #crabfeed-check-in .check-in-count-form, #crabfeed-check-in-confirmation .check-in-count-form {
   font-size: 1.8em;
+  margin-bottom: 20px;
+}
+/* line 436, ../sass/meadows.scss */
+#crabfeed-check-in .check-in-count-form .check-in-count, #crabfeed-check-in-confirmation .check-in-count-form .check-in-count {
+  padding: 0px 15px;
+  font-size: 1.3em;
+}
+/* line 442, ../sass/meadows.scss */
+#crabfeed-check-in .check-in-all-button, #crabfeed-check-in-confirmation .check-in-all-button {
   margin-bottom: 15px;
 }
-/* line 437, ../sass/meadows.scss */
+/* line 446, ../sass/meadows.scss */
 #crabfeed-check-in .check-in-party-count, #crabfeed-check-in-confirmation .check-in-party-count {
   font-size: 1.3em;
 }
 
-/* line 447, ../sass/meadows.scss */
+/* line 456, ../sass/meadows.scss */
 #auction-item-list h2 {
   font-size: 2.3em;
 }
-/* line 451, ../sass/meadows.scss */
+/* line 460, ../sass/meadows.scss */
 #auction-item-list p, #auction-item-list p span {
   font-size: 1.2em !important;
   color: #666666;
+}
+
+/* line 467, ../sass/meadows.scss */
+#crabfeed-check-in-dashboard .big-stats {
+  text-align: center;
+}
+/* line 470, ../sass/meadows.scss */
+#crabfeed-check-in-dashboard .big-stats .big-stats-number {
+  font-size: 5.0em;
+}
+/* line 475, ../sass/meadows.scss */
+#crabfeed-check-in-dashboard .nav-tabs {
+  font-size: 1.4em;
+}
+
+/* line 480, ../sass/meadows.scss */
+.reservation-list-item {
+  font-size: 1.4em;
+}
+/* line 483, ../sass/meadows.scss */
+.reservation-list-item .names {
+  font-size: 1.6em;
 }

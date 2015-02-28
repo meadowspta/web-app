@@ -3,7 +3,7 @@
 {% block content %}
   <div id="crabfeed-ticket-search" ng-controller="CrabfeedTicketSearchController">
     <div class="input-group">
-      <input type="text" class="form-control input-lg" placeholder="Search by name, email, or confirmation number" ng-model="q" ng-keypress="qChange();">
+      <input type="text" class="form-control input-lg" placeholder="Search by name, email, or confirmation number" ng-model="q" ng-keyup="qChange();">
       <span class="input-group-btn">
         <button class="btn btn-success btn-lg" type="button"><span class="glyphicon glyphicon-search"></span></button>
       </span>
@@ -14,8 +14,15 @@
       <h4>{[ reservations.length ]} results</h4>
       <hr />
 
-      <div class="list-item row" ng-repeat="reservation in reservations">
-        <div class="col-lg-12">
+      <div class="list-item" ng-repeat="reservation in reservations">
+        {% include 'crabfeed/check-in/partials/reservation-row-checkin.html' %}
+      </div>
+    </section>
+  </div>
+{% endblock content %}
+
+<!--
+<div class="col-lg-12">
           <span ng-repeat="name in reservation.name">{[ name ]}<br /></span>
           {[ reservation.email ]}
         </div>
@@ -34,7 +41,4 @@
             <hr ng-show="reservation.transactions.length > 1" />
           </div>
         </div>
-      </div>
-    </section>
-  </div>
-{% endblock content %}
+-->

@@ -180,3 +180,57 @@ function CrabfeedTransactionListController($scope, $http) {
 
   $scope.init();
 }
+
+function CheckInController($scope, $http) {
+  $scope.init = function() {
+    $scope.partyCount = partyCount;
+    $scope.partyCheckedInCount = partyCheckedInCount;
+    $scope.checkInCount = 0;
+    $scope.checkInMax = partyCount - partyCheckedInCount;
+    $scope.checkInMin = partyCheckedInCount * -1;
+  }
+
+  $scope.subtractCheckIn = function() {
+    if ($scope.checkInCount > $scope.checkInMin) {
+      $scope.checkInCount--;
+    }
+  }
+
+  $scope.addCheckIn = function() {
+    if ($scope.checkInCount < $scope.checkInMax) {
+      $scope.checkInCount++;
+    }
+  }
+
+  $scope.checkInAll = function() {
+    $scope.checkInCount = $scope.partyCount - $scope.partyCheckedInCount;
+  }
+
+  $scope.init();
+}
+
+function CheckInDashboardController($scope, $http) {
+  $scope.init = function() {
+    $scope.fetchData();
+
+    var interval = setInterval(function() {
+      $scope.fetchData();
+    }, 3000);
+  }
+
+  $scope.fetchData = function() {
+    $http.get('/api/crabfeed/check-in/details').
+      success(function(data, status, headers, config) {
+        $scope.checkInCount = data.response.check_in_count;
+        $scope.checkInOpenCount = data.response.check_in_open_count;
+        $scope.checkInOpen = data.response.check_in_open;
+        $scope.checkInPartial = data.response.check_in_partial;
+        $scope.checkInFull = data.response.check_in_full;
+      }).
+      error(function(data, status, headers, config) {
+
+      });
+  }
+
+  $scope.init();
+}

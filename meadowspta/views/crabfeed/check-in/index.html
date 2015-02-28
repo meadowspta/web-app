@@ -1,14 +1,54 @@
 {% extends 'layouts/page.html' %}
 
 {% block content %}
-  <div id="crabfeed-check-in">
-    <a href="/logout">logout</a><br />
-    <h1>{{ reservation.email }}</h1>
+  <script>
+    var partyCount = {{ reservation.party_count }};
+    var partyCheckedInCount = {{ reservation.party_checked_in }};
+  </script>
 
-    <strong>Email:</strong> <a href="mailto:{{ reservation.email }}">{{ reservation.email }}</a><br />
+  <div id="crabfeed-check-in" ng-controller="CheckInController">
+    <h3>
+      {% for name in reservation.consolidate_names %}
+        {{ name }}<br />
+      {% endfor %}
+    </h3>
+
+    <div class="quiet">{{ reservation.email }}</div>
+
     <strong>Reservation Number:</strong> {{ reservation.reservation_number }}<br />
-    <strong>Party:</strong> {{ reservation.party_count }} people<br />
-    <strong>Referer:</strong> {{ http_referer }}<br />
-    <img class="img-responsive" src="{{ reservation.qr_code_image.url }}">
+    <hr />
+
+    <strong>Party of <span class="alerter">{{ reservation.party_count }}</span> <span class="pull-right"><span class="alerter">{{ reservation.party_checked_in }}</span> checked-in</span></strong><br />
+    <input type="hidden" ng-model="partyCount" value="">
+    <hr />
+
+    <div class="text-center">
+      {% if reservation.is_all_checked_in == True %}
+        <div class="well">This party is all checked-in <img src="/static/images/crabfeed/email/check.png"></div>
+      {% endif %}
+
+      <div class="check-in-count-form">
+        <button class="btn btn-lg btn-primary" ng-class="{ 'disabled': checkInCount == checkInMin }" ng-click="subtractCheckIn()"><span class="glyphicon glyphicon-minus"></span></button>
+        <span class="check-in-count">{[ checkInCount ]}</span>
+        <button class="btn btn-lg btn-primary" ng-class="{ 'disabled': checkInCount == checkInMax }" ng-click="addCheckIn()"><span class="glyphicon glyphicon-plus"></span></button>
+      </div>
+
+      <div class="check-in-all-button">
+        <button class="btn btn-lg btn-danger btn-block" ng-class="{ disabled: checkInCount == checkInMax }" ng-click="checkInAll();">Check-In Entire Party</button>
+      </div>
+
+      <div class="check-in-submit-button">
+        <form action="/crabfeed/check-in/?id={{ reservation.id_hash }}" method="post">
+          {% csrf_token %}
+
+          <input type="submit" class="btn btn-lg btn-block btn-success" ng-class="{ 'disabled': checkInCount == 0 }" value="Submit">
+
+          {{ form.as_p }}
+        </form>
+      </div>
+
+    </div>
+
+    <br /><br /><br />
   </div>
 {% endblock content %}
