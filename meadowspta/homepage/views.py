@@ -5,7 +5,6 @@ from news.models import News
 from system.models import sysvar
 from event.models import Event
 
-
 def view(request):
     board = [
         {
@@ -13,40 +12,52 @@ def view(request):
             'name': 'Leola Meiners',
         },
         {
-            'title': 'VP of Membership',
-            'name': 'Chris Mezzetta',
-        },
-        {
-            'title': 'VP of After School Activities',
-            'name': 'Heather Butts',
-        },
-        {
-            'title': 'VP of Communications',
-            'name': 'Lia Hanson',
-        },
-        {
-            'title': 'VP of Fundraising',
+            'title': 'Vice President, Fundraising',
             'name': 'Vivian Chu',
         },
         {
-            'title': 'Secretary',
+            'title': 'Vice President, Communications',
             'name': 'Heather Mezzetta',
         },
         {
-            'title': 'Treasurer',
-            'name': 'Steven Cashiola',
+            'title': 'Vice President, Membership',
+            'name': 'Inah Abary‐Marcelo',
         },
         {
-            'title': 'Volunteer Coordinator',
-            'name': 'Larry Wong',
+            'title': 'Vice President, Events & Programs',
+            'name': 'Jen Pedroza',
         },
         {
-            'title': 'Auditor',
-            'name': 'Doris Lim',
+            'title': 'Secretary',
+            'name': 'Chris Mezzetta',
         },
         {
             'title': 'Parliamentarian',
             'name': 'Craig Yonemura',
+        },
+        {
+            'title': 'Treasurer',
+            'name': 'Jay Price',
+        },
+        {
+            'title': 'Financial Secretary',
+            'name': 'Lisa Price',
+        },
+        {
+            'title': 'Historian',
+            'name': 'Larry Wong',
+        },
+        {
+            'title': 'Volunteer Coordinator',
+            'name': 'Irene Wong',
+        },
+        {
+            'title': 'At‐Large',
+            'name': 'Woody Baltgalvis',
+        },
+        {
+            'title': 'Crab Feed Committee Chair',
+            'name': 'Pam Yonemura',
         },
     ]
 
