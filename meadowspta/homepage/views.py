@@ -21,7 +21,7 @@ def view(request):
         },
         {
             'title': 'Vice President, Membership',
-            'name': 'Inah Abary‐Marcelo',
+            'name': 'Inah Abary-Marcelo',
         },
         {
             'title': 'Vice President, Events & Programs',
@@ -52,7 +52,7 @@ def view(request):
             'name': 'Irene Wong',
         },
         {
-            'title': 'At‐Large',
+            'title': 'At-Large',
             'name': 'Woody Baltgalvis',
         },
         {
