@@ -61,3 +61,12 @@ class ContentModel(BaseModel):
 
     class Meta:
         abstract = True
+
+class SimpleContentModel(BaseModel):
+    user = models.ForeignKey(User, verbose_name='Author')
+    publish_date = models.DateTimeField(default=datetime.datetime.now)
+    update_date = models.DateTimeField(auto_now=True)
+    is_published = models.BooleanField(default=True, verbose_name='Publish')
+
+    class Meta:
+        abstract = True
