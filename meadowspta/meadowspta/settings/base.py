@@ -30,6 +30,7 @@ INSTALLED_APPS = (
     'auction',
     'event',
     'crabfeed',
+    'food',
 )
 
 MIDDLEWARE_CLASSES = (
