@@ -48,4 +48,4 @@ class SquareApi:
 
         :return: the request response
         """
-        return self.request('/orders')
+        return self.request('/payments')

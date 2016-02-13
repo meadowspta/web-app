@@ -12,16 +12,12 @@ from django.db.models import Q
 
 from meta.views import Meta
 
-from .forms import VolunteerSignupForm, NotificationSignupForm, CheckInForm
+from .forms import CheckInForm
 from .models import Reservation, ReservationTransaction, ReservationTransactionItem
-from system.models import PayPalTransaction, PayPalTransactionItem
 
 
 def home(request):
-    volunteer_signup_form = VolunteerSignupForm(request.POST or None)
-
     payload = {
-        'volunteer_signup_form': volunteer_signup_form,
         'quantity_range': range(1, 101),
     }
 
@@ -40,48 +36,28 @@ def confirmation(request):
 def cancellation(request):
     return render_to_response('crabfeed/cancellation.html', context_instance=RequestContext(request))
 
-def save_the_date(request):
-    notification_signup_form = NotificationSignupForm(request.POST or None)
-
-    if notification_signup_form.is_valid():
-        notification_signup_form.save()
-        return HttpResponseRedirect('?confirmation=true')
-
-    payload = {
-        'notification_signup_form': notification_signup_form,
-        'display_thankyou': request.GET.get('confirmation'),
-    }
-
-    return render_to_response('crabfeed/save-the-date.html', payload, context_instance=RequestContext(request))
-
-def test(request):
-    payload = {
-
-    }
-
-    return render_to_response('crabfeed/test.html', payload, context_instance=RequestContext(request))
-
 @permission_required('crabfeed.view_crabfeed_dashboard')
 def dashboard(request):
-    transactions = PayPalTransaction.objects.all().order_by('-date')
-    crabfeed_tickets = PayPalTransactionItem.objects.filter(item_title='dinner_ticket').aggregate(sum=Sum('quantity'))
-    raffle_tickets = PayPalTransactionItem.objects.filter(item_title='raffle_ticket').aggregate(sum=Sum('quantity'))
-    raffle_tickets_pack = PayPalTransactionItem.objects.filter(item_title='raffle_ticket_5_pack').aggregate(sum=Sum('quantity'))
-    turkey_trott_tshirts = PayPalTransactionItem.objects.filter(item_title='turkey_trott_tshirt').aggregate(sum=Sum('quantity'))
-    donations = PayPalTransactionItem.objects.filter(item_title='donation').aggregate(sum=Sum('gross'))
-    grand_total = PayPalTransactionItem.objects.aggregate(sum=Sum('gross'))
-
-    payload = {
-        'transactions': transactions,
-        'totals': {
-            'crabfeed_tickets': crabfeed_tickets['sum'] if crabfeed_tickets['sum'] is not None else 0,
-            'raffle_tickets': raffle_tickets['sum'] if raffle_tickets['sum'] is not None else 0,
-            'raffle_ticket_pack': raffle_tickets_pack['sum'] if raffle_tickets_pack['sum'] is not None else 0,
-            'turkey_trott_tshirts': turkey_trott_tshirts['sum'] if turkey_trott_tshirts['sum'] is not None else 0,
-            'donations': donations['sum'] if donations['sum'] is not None else 0,
-            'grand_total': grand_total['sum'] if grand_total['sum'] is not None else 0,
-        }
-    }
+    # transactions = PayPalTransaction.objects.all().order_by('-date')
+    # crabfeed_tickets = PayPalTransactionItem.objects.filter(item_title='dinner_ticket').aggregate(sum=Sum('quantity'))
+    # raffle_tickets = PayPalTransactionItem.objects.filter(item_title='raffle_ticket').aggregate(sum=Sum('quantity'))
+    # raffle_tickets_pack = PayPalTransactionItem.objects.filter(item_title='raffle_ticket_5_pack').aggregate(sum=Sum('quantity'))
+    # turkey_trott_tshirts = PayPalTransactionItem.objects.filter(item_title='turkey_trott_tshirt').aggregate(sum=Sum('quantity'))
+    # donations = PayPalTransactionItem.objects.filter(item_title='donation').aggregate(sum=Sum('gross'))
+    # grand_total = PayPalTransactionItem.objects.aggregate(sum=Sum('gross'))
+    #
+    # payload = {
+    #     'transactions': transactions,
+    #     'totals': {
+    #         'crabfeed_tickets': crabfeed_tickets['sum'] if crabfeed_tickets['sum'] is not None else 0,
+    #         'raffle_tickets': raffle_tickets['sum'] if raffle_tickets['sum'] is not None else 0,
+    #         'raffle_ticket_pack': raffle_tickets_pack['sum'] if raffle_tickets_pack['sum'] is not None else 0,
+    #         'turkey_trott_tshirts': turkey_trott_tshirts['sum'] if turkey_trott_tshirts['sum'] is not None else 0,
+    #         'donations': donations['sum'] if donations['sum'] is not None else 0,
+    #         'grand_total': grand_total['sum'] if grand_total['sum'] is not None else 0,
+    #     }
+    # }
+    payload = {}
 
     return render_to_response('crabfeed/dashboard.html', payload, context_instance=RequestContext(request))
 

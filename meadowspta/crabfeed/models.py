@@ -1,16 +1,35 @@
-import datetime, hashlib
+import hashlib
 from decimal import Decimal
-from cStringIO import StringIO
 
 from django.db import models
 from django.db.models import Q
 from django.conf import settings
-from django.core.files import File
-from django.db.models import Count, Min, Sum, Avg
-from django.core.files.base import ContentFile
+from django.db.models import Sum
 
 from core.models import BaseModel
-from system.models import PayPalTransaction, PayPalTransactionItem, PayPalTransactionOverride, PAYMENT_SOURCES, PAYMENT_TYPES, PAYPAL_HERE_SELLERS, ITEMS
+
+PAYMENT_SELLERS = (
+    ('opalenik', 'Gina'),
+    ('INAHMARCELO', 'Inah Marcelo'),
+    ('calebwhang', 'Caleb Whang'),
+)
+
+PAYMENT_SOURCES = (
+    ('square_app', 'Mobile App'),
+    ('square_online', 'Online'),
+    ('form', 'Form'),
+)
+
+PAYMENT_TYPES = (
+    ('cash', 'Cash'),
+    ('credit', 'Credit'),
+    ('check', 'Check'),
+)
+
+ITEMS = (
+    ('1101', 'Crabfeed Dinner Ticket (Earlybird)'),
+    ('1003', 'Raffle Ticket')
+)
 
 DINNER_TABLES = (
     ('table_01', 'Table 1'),
@@ -44,30 +63,6 @@ DINNER_TABLES = (
     ('table_29', 'Table 29'),
     ('table_30', 'Table 30'),
 )
-
-class NotificationSignup(BaseModel):
-    class Meta:
-        db_table = 'crabfeed_notification_signup'
-
-    email = models.EmailField(max_length=255)
-    create_date = models.DateTimeField(default=datetime.datetime.now)
-
-    @staticmethod
-    def email_exists(email):
-        try:
-            signup = NotificationSignup.objects.get(email=email)
-        except Exception, e:
-            return False
-
-        return True
-
-class VolunteerSignup(BaseModel):
-    class Meta:
-        db_table = 'crabfeed_volunteer_signup'
-
-    full_name = models.CharField(max_length=127)
-    email = models.EmailField(max_length=255)
-    create_date = models.DateTimeField(default=datetime.datetime.now)
 
 class CheckIn(BaseModel):
     class Meta:
@@ -115,13 +110,6 @@ class Reservation(BaseModel):
     def get_reservation_number(self):
         number = str(10000 + self.id * 7)
         return '%s-%s' % (number[:2], number[2:])
-
-    @staticmethod
-    def get_paypal_canonical_emails():
-        return PayPalTransaction.objects.filter(Q(paypaltransactionitem__item_title='dinner_ticket') & ~Q(paypaltransactionoverride__from_email_address=None) & ~Q(paypaltransactionoverride__from_email_address=''))
-
-    def get_paypal_transactions(self):
-        return PayPalTransaction.objects.filter(Q(paypaltransactionitem__item_title='dinner_ticket') & Q(paypaltransactionoverride__from_email_address=self.email))
 
     def get_party_count(self):
         party_count = 0
@@ -214,7 +202,7 @@ class ReservationTransaction(BaseModel):
     name = models.CharField(max_length=255, null=True)
     source = models.CharField(max_length=255, null=True, choices=PAYMENT_SOURCES)
     transaction_id = models.CharField(max_length=128, null=True)
-    seller_id = models.CharField(max_length=64, null=True, choices=PAYPAL_HERE_SELLERS)
+    seller_id = models.CharField(max_length=64, null=True, choices=PAYMENT_SELLERS)
     payment_type = models.CharField(max_length=128, null=True, choices=PAYMENT_TYPES)
 
     def as_api_object(self):
@@ -254,6 +242,75 @@ class ReservationTransactionItem(BaseModel):
             'item_title': self.get_item_title_display(),
             'quantity': self.quantity,
             'gross': str(self.gross),
+        }
+
+        return data
+
+class SquareTransaction(BaseModel):
+    class Meta:
+        db_table = 'crabfeed_square_transactions'
+
+    def __unicode__(self):
+        return self.transaction_id
+
+    date = models.DateTimeField(null=True)
+    source = models.CharField(max_length=255, null=True, choices=PAYMENT_SOURCES)
+    transaction_id = models.CharField(max_length=128, null=True)
+    seller_id = models.CharField(max_length=64, null=True, choices=PAYMENT_SELLERS)
+    payment_type = models.CharField(max_length=128, null=True, choices=PAYMENT_TYPES)
+    payment_url = models.CharField(max_length=255)
+    receipt_url = models.CharField(max_length=255)
+    gross_sale = models.DecimalField(max_digits=16, decimal_places=2, default=Decimal('0.00'))
+    net_sale = models.DecimalField(max_digits=16, decimal_places=2, default=Decimal('0.00'))
+
+    def get_seller(self):
+        if self.seller_id:
+            return self.get_seller_id_display()
+        else:
+            return ''
+
+    def as_api_object(self):
+        items = []
+
+        transaction_items = self.paypaltransactionitem_set.all()
+        for item in transaction_items:
+            items.append(item.as_api_object())
+
+        data = {
+            'id': self.id,
+            'date': self.date.isoformat(),
+            'transaction_id': self.transaction_id,
+            'seller': self.get_seller(),
+            'seller_id': self.seller_id,
+            'payment_type_id': self.payment_type,
+            'payment_type': self.get_payment_type_display(),
+            'payment_source': self.get_source_display(),
+            'payment_source_id': self.source,
+            'items': items,
+            'receipt_url': self.receipt_url,
+            'payment_url': self.payment_url,
+            'gross_sale': str(self.gross_sale),
+            'net_sale': str(self.net_sale),
+        }
+
+        return data
+
+
+class SquareTransactionItem(BaseModel):
+    class Meta:
+        db_table = 'crabfeed_square_transaction_items'
+
+    transaction = models.ForeignKey(SquareTransaction)
+    quantity = models.IntegerField(null=True)
+    item_title = models.CharField(max_length=255, null=True, choices=ITEMS)
+    gross_sale = models.DecimalField(max_digits=16, decimal_places=2, default=Decimal('0.00'))
+
+    def as_api_object(self):
+        data = {
+            'item_id': self.item_title,
+            'item_title': self.get_item_title_display(),
+            'quantity': self.quantity,
+            'gross_sale': str(self.gross_sale),
         }
 
         return data

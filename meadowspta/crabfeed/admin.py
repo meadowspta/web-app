@@ -2,38 +2,51 @@ from decimal import Decimal
 
 from django.contrib import admin
 
-from crabfeed.models import NotificationSignup, VolunteerSignup, Reservation, ReservationTransaction, ReservationTransactionItem
-from system.models import PayPalRawTransaction, PayPalTransaction, PayPalTransactionItem, PayPalTransactionOverride
+from crabfeed.models import Reservation, ReservationTransaction, ReservationTransactionItem, SquareTransaction, SquareTransactionItem
 
 
-class NotificationSignupAdmin(admin.ModelAdmin):
-    list_display = ('email', 'create_date')
-
-admin.site.register(NotificationSignup, NotificationSignupAdmin)
-
-class PayPalTransactionOverrideAdmin(admin.ModelAdmin):
-    list_display = ('date', 'name', 'from_email_address', 'get_total', 'get_payment_source', 'paypal_transaction', 'notes')
+class SquareTransactionAdmin(admin.ModelAdmin):
     ordering = ['-date']
 
-    def get_total(self, obj):
-        total = Decimal(0.00)
+    list_display = (
+        'date',
+        'get_items',
+        'source',
+        'transaction_id',
+        'seller_id',
+        'payment_type',
+        'get_payment_url',
+        'get_receipt_url',
+        'gross_sale',
+        'net_sale'
+    )
 
-        items = obj.paypal_transaction.paypaltransactionitem_set.all()
-        for item in items:
-            total = total + Decimal(item.gross)
-        return '$%s' % total
+    def get_items(self, obj):
+        items = []
+        for item in obj.squaretransactionitem_set.all():
+            items.append('<li>%s: %s</li>' % (item.item_title, item.quantity))
 
-    get_total.short_description = 'Purchase Total'
+        return '<ul>%s</ul>' % ''.join(items)
 
-    def get_payment_source(self, obj):
-        return obj.paypal_transaction.get_source_display()
+    get_items.allow_tags = True
+    get_items.short_description = 'Items'
 
-    get_payment_source.short_description = 'Source'
+    def get_payment_url(self, obj):
+        return '<a href="%s" target="_blank">view &raquo;</a>' % obj.payment_url
 
-admin.site.register(PayPalTransactionOverride, PayPalTransactionOverrideAdmin)
+    get_payment_url.allow_tags = True
+    get_payment_url.short_description = 'Payment URL'
 
-class ReservationAdmin(admin.ModelAdmin):
-    # fields = ('email', 'reservation_number', 'transaction_count', 'party_count', 'party_checked_in', 'email_sent', 'email_sent_date')
-    list_display = ('email', 'reservation_number', 'party_count', 'table_assignment', 'transaction_count', 'email_sent')
+    def get_receipt_url(self, obj):
+        return '<a href="%s" target="_blank">view &raquo;</a>' % obj.receipt_url
 
-admin.site.register(Reservation, ReservationAdmin)
+    get_receipt_url.allow_tags = True
+    get_receipt_url.short_description = 'Receipt URL'
+
+admin.site.register(SquareTransaction, SquareTransactionAdmin)
+
+# class ReservationAdmin(admin.ModelAdmin):
+#     # fields = ('email', 'reservation_number', 'transaction_count', 'party_count', 'party_checked_in', 'email_sent', 'email_sent_date')
+#     list_display = ('email', 'reservation_number', 'party_count', 'table_assignment', 'transaction_count', 'email_sent')
+#
+# admin.site.register(Reservation, ReservationAdmin)
