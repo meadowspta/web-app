@@ -10,10 +10,12 @@ class SquareTransactionAdmin(admin.ModelAdmin):
 
     list_display = (
         'date',
+        'name',
+        'email',
         'get_items',
         'source',
         'transaction_id',
-        'seller_id',
+        # 'seller_id',
         'payment_type',
         'get_payment_url',
         'get_receipt_url',
@@ -45,8 +47,43 @@ class SquareTransactionAdmin(admin.ModelAdmin):
 
 admin.site.register(SquareTransaction, SquareTransactionAdmin)
 
-# class ReservationAdmin(admin.ModelAdmin):
-#     # fields = ('email', 'reservation_number', 'transaction_count', 'party_count', 'party_checked_in', 'email_sent', 'email_sent_date')
-#     list_display = ('email', 'reservation_number', 'party_count', 'table_assignment', 'transaction_count', 'email_sent')
-#
-# admin.site.register(Reservation, ReservationAdmin)
+class ReservationAdmin(admin.ModelAdmin):
+    ordering = ['-date']
+
+    list_display = (
+        'date',
+        'email',
+        'get_reservation_number',
+        'party_count',
+        'table_assignment',
+        'email_sent',
+    )
+
+    def get_reservation_number(self, obj):
+        return obj.get_reservation_number()
+
+    get_reservation_number.short_description = 'Reservation Number'
+
+admin.site.register(Reservation, ReservationAdmin)
+
+class ReservationTransactionAdmin(admin.ModelAdmin):
+    ordering = ['-date']
+
+    list_display = (
+        'date',
+        'name',
+        'source',
+        'transaction_id',
+        'payment_type',
+    )
+
+admin.site.register(ReservationTransaction, ReservationTransactionAdmin)
+
+class ReservationTransactionItemAdmin(admin.ModelAdmin):
+    list_display = (
+        'item_title',
+        'quantity',
+        'gross',
+    )
+
+admin.site.register(ReservationTransactionItem, ReservationTransactionItemAdmin)
