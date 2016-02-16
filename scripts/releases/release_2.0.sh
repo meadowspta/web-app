@@ -14,11 +14,11 @@ DROP TABLE paypal_transactions;
 
 # Testing
 DROP TABLE crabfeed_checkin;
-DROP TABLE crabfeed_reservations;
-DROP TABLE crabfeed_reservation_transactions;
 DROP TABLE crabfeed_reservation_items;
-DROP TABLE crabfeed_square_transactions;
+DROP TABLE crabfeed_reservation_transactions;
 DROP TABLE crabfeed_square_transaction_items;
+DROP TABLE crabfeed_square_transactions;
+DROP TABLE crabfeed_reservations;
 
 # CLI
 python manage.py syncdb
