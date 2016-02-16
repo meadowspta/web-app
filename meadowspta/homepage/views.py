@@ -37,7 +37,7 @@ def view(request):
         },
         {
             'title': 'Treasurer',
-            'name': 'Jay Price',
+            'name': 'Jane Kim',
         },
         {
             'title': 'Financial Secretary',
