@@ -17,18 +17,14 @@
           <h2>Raffle Ticket 5 Pack</h2>
           <span>{{ totals.raffle_ticket_pack|intcomma }}</span>
         </li>
-        <li>
-          <h2>Turkey Trott T-Shirts</h2>
-          <span>{{ totals.turkey_trott_tshirts|intcomma }}</span>
-        </li>
-        <li>
-          <h2>Donations</h2>
-          <span>${{ totals.donations|floatformat:2|intcomma }}</span>
-        </li>
-        <li class="grand-total">
-          <h2>Grand Total</h2>
-          <span>${{ totals.grand_total|floatformat:2|intcomma }}</span>
-        </li>
+{#        <li>#}
+{#          <h2>Donations</h2>#}
+{#          <span>${{ totals.donations|floatformat:2|intcomma }}</span>#}
+{#        </li>#}
+{#        <li class="grand-total">#}
+{#          <h2>Grand Total</h2>#}
+{#          <span>${{ totals.grand_total|floatformat:2|intcomma }}</span>#}
+{#        </li>#}
       </ul>
     </header>
     <hr />
@@ -38,14 +34,14 @@
         <div class="col-lg-3 crabfeed-transaction-filters well">
           <h4>Filter by:</h4>
 
-          <div>
-            <div ng-repeat="info in infoNeeded">
-              <label>
-                <input type="radio" ng-checked="radioButtonState('infoNeeded', info);" ng-click="filter('infoNeeded', info);"> {[ info.name ]}
-              </label>
-            </div>
-          </div>
-          <hr />
+{#          <div>#}
+{#            <div ng-repeat="info in infoNeeded">#}
+{#              <label>#}
+{#                <input type="radio" ng-checked="radioButtonState('infoNeeded', info);" ng-click="filter('infoNeeded', info);"> {[ info.name ]}#}
+{#              </label>#}
+{#            </div>#}
+{#          </div>#}
+{#          <hr />#}
 
           <div>
             <h4>Dinner Tickets</h4>
@@ -77,77 +73,61 @@
           </div>
           <hr />
 
-          <div>
-            <h4>Seller</h4>
-            <div ng-repeat="seller in sellers">
-              <label>
-                <input type="radio" ng-checked="radioButtonState('seller', seller);" ng-click="filter('seller', seller);"> {[ seller.name ]}
-              </label>
-            </div>
-          </div>
+{#          <div>#}
+{#            <h4>Seller</h4>#}
+{#            <div ng-repeat="seller in sellers">#}
+{#              <label>#}
+{#                <input type="radio" ng-checked="radioButtonState('seller', seller);" ng-click="filter('seller', seller);"> {[ seller.name ]}#}
+{#              </label>#}
+{#            </div>#}
+{#          </div>#}
           <hr />
         </div>
 
         <div class="col-lg-9">
-          <h2 class="chrome">{[ resultCount ]} Transactions</h2>
+          <h2 class="chrome">{[ resultCount ]} Reservations</h2>
 
-          <ul class="list-no-style" ng-repeat="transaction in transactions">
+          <ul class="list-no-style" ng-repeat="reservation in reservations">
             <li>
               <div class="list-item row">
-                <div class="col-lg-3">
-                  <strong>Purchased: </strong>
-                  {[ utils.dateFormat(transaction.date) ]}
-                  <span class="quiet">{{ transaction.date|date:"g:i a" }}</span>
+                <div class="col-lg-12">
+                  <span ng-if="reservation.names">
+                    <span ng-repeat="name in reservation.names">
+                      <strong>{[ name ]}<span ng-if="!$last">, </span></strong><br />
+                    </span>
+                  </span>
+                  <span class="quiet italic" ng-if="reservation.names.length == 0">
+                    (no name)<br />
+                  </span>
+
+                  <span ng-if="reservation.email">{[ reservation.email ]}</span>
+                  <span class="quiet italic" ng-if="! reservation.email">(no email)</span>
                   <br />
+                </div>
 
-                  <strong>Source: </strong>
-                  {[ transaction.payment_source ]}<br />
+                <div ng-repeat="transaction in reservation.transactions">
+                  <div class="col-lg-6 col-lg-push-1">
+                    <strong>Date: </strong>
+                    {[ utils.dateFormat(transaction.date) ]}<br />
 
-                  <strong>Payment Type: </strong>
-                  {% if transaction.get_payment_type_id == 'credit' or transaction.get_payment_type_id == 'check' %}
-                    <span class="glyphicon {% if transaction.get_payment_type_id == 'credit' %}glyphicon-credit-card{% elif transaction.get_payment_type_id == 'check' %}glyphicon-ok{% endif %}"></span>
-                  {% elif transaction.get_payment_type_id == 'cash' %}
-                    <strong>$</strong>
-                  {% endif %}
-                  {[ transaction.payment_type ]}
-                  <br />
+                    <strong>Source: </strong>
+                    {[ transaction.source ]}<br />
 
-                  <div ng-show="transaction.seller">
-                    <strong>Seller: </strong>
-                    {[ transaction.seller ]}<br />
+                    <strong>Payment Type: </strong>
+                    {[ transaction.payment_type ]}<br />
+
+                    <strong>Transaction ID: </strong>
+                    {[ transaction.transaction_id ]}<br />
                   </div>
-                </div>
-                <div class="col-lg-5">
-                  <strong>Name: </strong>
-                  <span ng-if="transaction.name">{[ transaction.name ]}</span>
-                  <span class="quiet italic" ng-if="! transaction.name">(no name)</span>
-                  <br />
-
-                  <strong>Email: </strong>
-                  <span ng-if="transaction.from_email_address">{[ transaction.from_email_address ]}</span>
-                  <span class="quiet italic" ng-if="! transaction.from_email_address">(no email)</span>
-                  <br />
-
-                  <strong>Transaction ID: </strong>
-                  {[ transaction.transaction_id ]}
-                  <br />
-                </div>
-                <div class="col-lg-3">
-                  <strong>Purchases:</strong>
-                  <ul class="list-no-style">
-                    <li class="no-wrap" ng-repeat="item in transaction.items">
-                      {[ item.item_title ]}:
-                      <span ng-if="item.item_title == 'Donation'">
-                        ${[ item.net ]}
-                      </span>
-                      <span ng-if="item.item_title != 'Donation'">
-                        {[ item.quantity ]}
-                      </span>
-                    </li>
-                  </ul>
-                </div>
-                <div class="col-lg-1">
-
+                  <div class="col-lg-5">
+                    <strong>Purchases:</strong>
+                    <ul>
+                      <li ng-repeat="item in transaction.items">
+                        <strong>{[ item.quantity ]}</strong> {[ item.item_title ]}
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-10 col-lg-push-1" ng-show="!$last"><hr /></div>
                 </div>
               </div>
             </li>

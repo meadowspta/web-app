@@ -16,32 +16,12 @@ function HompageController($scope, $http) {
   }
 }
 
-function VolunteerSignupController($scope, $http) {
-  $scope.init = function() {
-    $scope.showVolunteerSignupFormLoader = false;
-  }
-
-  $scope.formSubmit = function() {
-    $scope.showVolunteerSignupFormLoader = true;
-
-    $http.get('').
-      success(function(data, status, headers, config) {
-
-      }).
-      error(function(data, status, headers, config) {
-
-      });
-  }
-
-  $scope.init();
-}
-
 function CrabfeedDashboardController($scope, $http) {
   $scope.init = function() {
     $scope.getTickets(function(response) {
       $scope.tickets = response.response;
     });
-  }
+  };
 
   $scope.getTickets = function(callback) {
     $http.get('/api/crabfeed/tickets').
@@ -51,7 +31,7 @@ function CrabfeedDashboardController($scope, $http) {
       error(function(data, status, headers, config) {
 
       });
-  }
+  };
 
   $scope.init();
 }
@@ -87,15 +67,15 @@ function CrabfeedTransactionListController($scope, $http) {
     $scope.filters = {};
 
     $scope.paymentSources = [
-      { name: 'PayPal Here', id: 'paypal_here' },
-      { name: 'PayPal Online', id: 'paypal_online' },
-      { name: 'Form', id: 'form' },
+      { name: 'Mobile App', id: 'square_app' },
+      { name: 'Online', id: 'square_online' },
+      { name: 'Form', id: 'form' }
     ];
 
     $scope.paymentTypes = [
       { name: 'Check', id: 'check' },
       { name: 'Cash', id: 'cash' },
-      { name: 'Credit', id: 'credit' },
+      { name: 'Credit', id: 'credit' }
     ];
 
     $scope.items = [
@@ -127,20 +107,20 @@ function CrabfeedTransactionListController($scope, $http) {
     $scope.infoNeeded = [
       { id: 1, name: 'Information Needed' },
     ]
-  }
+  };
 
   $scope.getTransactions = function() {
     $scope.generateQueryString();
 
     $http.get('/api/crabfeed/transactions/?' + $scope.query).
       success(function(data, status, headers, config) {
-        $scope.transactions = data.response;
-        $scope.resultCount = $scope.transactions.length;
+        $scope.reservations = data.response;
+        $scope.resultCount = $scope.reservations.length;
       }).
       error(function(data, status, headers, config) {
 
       });
-  }
+  };
 
   $scope.filter = function(type, source) {
     if ($scope.isFilterActive(type, source)) {
