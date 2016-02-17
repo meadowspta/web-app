@@ -12,7 +12,7 @@ from django.db.models import Q
 
 from meta.views import Meta
 
-from .forms import CheckInForm
+from .forms import CheckInForm, ReservationForm
 from .models import Reservation, ReservationTransaction, ReservationTransactionItem
 
 
@@ -152,7 +152,7 @@ def api_transactions(request):
             pass
         else:
             # transactions = PayPalTransaction.objects.filter(paypaltransactionitem__item_title='dinner_ticket', paypaltransactionitem__quantity__gte=6)
-            reservations = Reservation.objects.filter(party_count__quantity__gte=6).order_by('-date')
+            reservations = Reservation.objects.filter(party_count__gte=6).order_by('-date')
             pass
 
     else:
@@ -239,3 +239,25 @@ def api_check_in_details(request):
     }
 
     return HttpResponse(json.dumps(response), mimetype='application/json')
+
+@permission_required('crabfeed.view_crabfeed_dashboard')
+def reservation_add(request):
+    form = ReservationForm(request.POST or None)
+
+    print 'reservation_add()'
+
+    if request.method == 'POST':
+        print 'POST'
+        print form.is_valid()
+        print form.errors.as_text()
+
+        if form.is_valid():
+            form.save()
+            # return HttpResponseRedirect('/crabfeed/dashboard')
+
+    payload = {
+        'form': form,
+        'range': range(1, 6)
+    }
+
+    return render_to_response('crabfeed/reservation/create.html', payload, context_instance=RequestContext(request))

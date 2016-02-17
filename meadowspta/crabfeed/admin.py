@@ -57,6 +57,7 @@ class ReservationAdmin(admin.ModelAdmin):
         'party_count',
         'table_assignment',
         'email_sent',
+        'notes',
     )
 
     def get_reservation_number(self, obj):
@@ -84,6 +85,7 @@ class ReservationTransactionItemAdmin(admin.ModelAdmin):
         'item_title',
         'quantity',
         'gross',
+        'type',
     )
 
 admin.site.register(ReservationTransactionItem, ReservationTransactionItemAdmin)

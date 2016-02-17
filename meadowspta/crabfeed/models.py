@@ -37,6 +37,13 @@ ITEMS = (
     ('1204', 'Donation - $250'),
 )
 
+TICKET_TYPES = (
+    ('regular', 'Regular Purchase'),
+    ('membership', 'PTA Membership Package'),
+    ('complimentary', 'Complimentary'),
+    ('teacher_sponsorship', 'Teacher Sponsorship')
+)
+
 DINNER_TABLES = (
     ('table_01', 'Table 1'),
     ('table_02', 'Table 2'),
@@ -95,6 +102,7 @@ class Reservation(BaseModel):
     id_hash = models.CharField(max_length=255)
     email_sent = models.BooleanField(default=False, blank=True)
     email_sent_date = models.DateTimeField(null=True, blank=True)
+    notes = models.TextField(null=True)
 
     def before_save(self, action):
         # Save the generated hash ID and confirmation number.
@@ -274,6 +282,7 @@ class Reservation(BaseModel):
                     item.item_title = square_item.sku
                     item.quantity = square_item.quantity
                     item.gross = square_item.gross_sale
+                    item.type = 'regular'
                     item.save()
 
                     print '[CREATED] Reservation Item: %s' % (item.item_title)
@@ -329,6 +338,7 @@ class ReservationTransactionItem(BaseModel):
     item_title = models.CharField(max_length=255, null=True, choices=ITEMS)
     quantity = models.IntegerField(null=True)
     gross = models.DecimalField(max_digits=16, decimal_places=2, default=Decimal('0.00'), null=True)
+    type = models.CharField(max_length=255, null=True, choices=TICKET_TYPES)
 
     def as_api_object(self):
         data = {
