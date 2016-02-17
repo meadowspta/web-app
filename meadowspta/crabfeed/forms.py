@@ -235,7 +235,6 @@ class ReservationForm(forms.Form):
         reservation.email = self.cleaned_data['email']
         reservation.date = self.cleaned_data['date']
         reservation.notes = self.cleaned_data['notes']
-        reservation.party_count = 123
 
         if commit:
             reservation.save()
@@ -294,5 +293,8 @@ class ReservationForm(forms.Form):
 
         print '*=====================================================*'
         print 'saved'
+
+        reservation.party_count = reservation.get_total_party_count()
+        reservation.save()
 
         return reservation
