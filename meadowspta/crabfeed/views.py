@@ -253,7 +253,7 @@ def reservation_add(request):
 
         if form.is_valid():
             form.save()
-            # return HttpResponseRedirect('/crabfeed/dashboard')
+            return HttpResponseRedirect('/crabfeed/dashboard')
 
     payload = {
         'form': form,
