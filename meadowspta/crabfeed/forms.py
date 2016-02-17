@@ -295,10 +295,7 @@ class ReservationForm(forms.Form):
             item.type = self.cleaned_data['ticket_type']
             item.save()
 
-        print '*=====================================================*'
-        print 'saved'
-
-
+        # Update the party count.
         reservation.party_count = party_count
         reservation.save()
 

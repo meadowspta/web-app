@@ -4,7 +4,18 @@ $(function() {
   MeadowsPTA.eventAdminForm();
   MeadowsPTA.googleAnalytics();
   MeadowsPTA.crabfeed();
+  MeadowsPTA.tinymce();
 });
+
+MeadowsPTA.tinymce = function() {
+  tinymce.init({
+      selector: 'textarea',
+      toolbar: 'bold italic underline strikethrough link unlink image bullist numlist outdent indent blockquote subscript superscript | alignleft aligncenter alignright alignjustify styleselect formatselect fontselect fontsizeselect',
+      width: 900,
+      height: 400,
+      plugins: 'link image',
+  });
+};
 
 /*
 Meadows.statusMessageManager = function() {

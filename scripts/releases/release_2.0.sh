@@ -23,3 +23,8 @@ DROP TABLE crabfeed_reservations;
 # CLI
 python manage.py syncdb
 python manage.py import_square_transactions
+
+# MySQL
+ALTER TABLE crabfeed_reservations ADD COLUMN notes LONGTEXT;
+ALTER TABLE crabfeed_reservation_items ADD COLUMN type VARCHAR(255);
+UPDATE crabfeed_reservation_items SET type = 'regular';
