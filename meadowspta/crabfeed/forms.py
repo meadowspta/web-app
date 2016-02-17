@@ -255,6 +255,10 @@ class ReservationForm(forms.Form):
         item.type = self.cleaned_data['ticket_type']
         item.save()
 
+        party_count = 0
+        if self.cleaned_data['item_1'] == '1101':
+            party_count = party_count + int(self.cleaned_data['quantity_1'])
+
         if self.cleaned_data['item_2'] != '0':
             item = ReservationTransactionItem()
             item.reservation_transaction = transaction
@@ -294,7 +298,8 @@ class ReservationForm(forms.Form):
         print '*=====================================================*'
         print 'saved'
 
-        reservation.party_count = reservation.get_total_party_count()
+
+        reservation.party_count = party_count
         reservation.save()
 
         return reservation
