@@ -24,7 +24,7 @@ PAYMENT_TYPES = (
     ('cash', 'Cash'),
     ('credit', 'Credit'),
     ('check', 'Check'),
-    ('membership', 'PTA Membership Package'),
+    ('membership', 'PTA Membership Sponsorship'),
     ('complimentary', 'Complimentary'),
     ('teacher_sponsorship', 'Teacher Sponsorship')
 )

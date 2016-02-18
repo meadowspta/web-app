@@ -159,12 +159,12 @@ def api_transactions(request):
     # Filter: Payment Source.
     source = request.GET.get('source')
     if source:
-        transactions = transactions.filter(reservationtransaction__source=source)
+        transactions = transactions.filter(source=source)
 
     # Filter: Payment Type
     payment_type = request.GET.get('paymentType')
     if payment_type:
-        transactions = transactions.filter(reservationtransaction__payment_type=payment_type)
+        transactions = transactions.filter(payment_type=payment_type)
 
     # Convert results.
     data = []

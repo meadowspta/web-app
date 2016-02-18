@@ -75,7 +75,10 @@ function CrabfeedTransactionListController($scope, $http, $sce) {
     $scope.paymentTypes = [
       { name: 'Check', id: 'check' },
       { name: 'Cash', id: 'cash' },
-      { name: 'Credit', id: 'credit' }
+      { name: 'Credit', id: 'credit' },
+      { name: 'PTA Membership Sponsorship', id: 'membership' },
+      { name: 'Complimentary', id: 'complimentary' },
+      { name: 'Teacher Sponsorship', id: 'teacher_sponsorship' },
     ];
 
     $scope.items = [
