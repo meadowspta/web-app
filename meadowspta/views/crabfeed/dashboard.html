@@ -32,7 +32,7 @@
     <section ng-controller="CrabfeedTransactionListController">
       <div class="row">
         <div class="col-lg-3 crabfeed-transaction-filters well">
-          <a href="/crabfeed/reservations/add" class="btn btn-success">Add Reservation</a>
+          <a href="/crabfeed/transactions/create" class="btn btn-success">Add Transaction</a>
           <br /><br />
 
 {#          <h4>Filter by:</h4>#}
@@ -88,49 +88,64 @@
         </div>
 
         <div class="col-lg-9">
-          <h2 class="chrome">{[ resultCount ]} Reservations</h2>
+          <h2 class="chrome">{[ resultCount ]} Transactions</h2>
 
-          <ul class="list-no-style" ng-repeat="reservation in reservations">
-            <li>
+          <ul class="list-no-style crabfeed-reservation-list" ng-repeat="transaction in transactions">
+            <li class="crabfeed-reservation-list-item">
               <div class="list-item row">
                 <div class="col-lg-12">
-                  <span ng-if="reservation.names">
-                    <span ng-repeat="name in reservation.names">
-                      <strong>{[ name ]}<span ng-if="!$last">, </span></strong><br />
-                    </span>
-                  </span>
-                  <span class="quiet italic" ng-if="reservation.names.length == 0">
-                    (no name)<br />
-                  </span>
+                  <div class="well">
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <span ng-show="transaction.name">
+                          <strong class="full-name">{[ transaction.name ]}</strong>
+                        </span>
+                        <span class="quiet italic" ng-show="! transaction.name">
+                          (no name)
+                        </span>
+                        <br />
+                      </div>
 
-                  <span ng-if="reservation.email">{[ reservation.email ]}</span>
-                  <span class="quiet italic" ng-if="! reservation.email">(no email)</span>
-                  <br />
+                      <div class="col-lg-6">
+                        <span ng-show="transaction.email">{[ transaction.email ]}</span>
+                        <span class="quiet italic" ng-show="! transaction.email">(no email)</span>
+                        <a href="/crabfeed/transactions/update/{[ transaction.id ]}" class="btn btn-success pull-right">Edit</a>
+                      </div>
+
+                      <div class="col-lg-12">
+                        <div ng-show="((transaction.notes + '').length) > 0">
+                          <br />
+                          <strong>Notes:</strong>
+                          <div ng-bind-html="transaction.notes"></div>
+                        </div>
+                      </div>
+
+                      <div class="clearfix"></div>
+                    </div>
+                  </div>
                 </div>
 
-                <div ng-repeat="transaction in reservation.transactions">
-                  <div class="col-lg-6 col-lg-push-1">
-                    <strong>Date: </strong>
-                    {[ utils.dateFormat(transaction.date) ]}<br />
+                <div class="col-lg-6">
+                  <strong>Date: </strong>
+                  {[ utils.dateFormat(transaction.date) ]}<br />
 
-                    <strong>Source: </strong>
-                    {[ transaction.source ]}<br />
+                  <strong>Source: </strong>
+                  {[ transaction.source ]}<br />
 
-                    <strong>Payment Type: </strong>
-                    {[ transaction.payment_type ]}<br />
+                  <strong>Payment Type: </strong>
+                  {[ transaction.payment_type ]}<br />
 
-                    <strong>Transaction ID: </strong>
-                    {[ transaction.transaction_id ]}<br />
-                  </div>
-                  <div class="col-lg-5">
-                    <strong>Purchases:</strong>
-                    <ul>
-                      <li ng-repeat="item in transaction.items">
-                        <strong>{[ item.quantity ]}</strong> {[ item.item_title ]}
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="col-lg-10 col-lg-push-1" ng-show="!$last"><hr /></div>
+                  <strong>Transaction ID: </strong>
+                  {[ transaction.transaction_id ]}<br />
+                </div>
+                <div class="col-lg-6">
+                  <strong>Purchases:</strong>
+                  <ul>
+                    <li ng-repeat="item in transaction.items">
+                      <strong>{[ item.quantity ]}</strong> {[ item.item_title ]}
+                    </li>
+                  </ul>
+                  <br />
                 </div>
               </div>
             </li>

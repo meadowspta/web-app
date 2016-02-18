@@ -12,7 +12,7 @@ from django.db.models import Q
 
 from meta.views import Meta
 
-from .forms import CheckInForm, ReservationForm
+from .forms import CheckInForm, ReservationTransactionForm
 from .models import Reservation, ReservationTransaction, ReservationTransactionItem
 
 
@@ -43,7 +43,7 @@ def dashboard(request):
 
     payload = {
         'totals': {
-            'crabfeed_tickets': Reservation.get_total_party_count(),
+            'crabfeed_tickets': ReservationTransaction.get_total_party_count(),
             'raffle_tickets': Reservation.get_total_raffle_ticket_count('single'),
             'raffle_ticket_pack': Reservation.get_total_raffle_ticket_count('5pack'),
             'donations': Reservation.get_total_donation_count(),
@@ -140,37 +140,37 @@ def api_tickets(request):
     return HttpResponse(json.dumps(response), mimetype='application/json')
 
 def api_transactions(request):
-    data = []
-
     # Filter: Crabfeed Ticket Count.
     crabfeed_ticket_quantity = request.GET.get('crabfeedTicketQuantity')
     if crabfeed_ticket_quantity:
         crabfeed_ticket_quantity = int(crabfeed_ticket_quantity)
         if crabfeed_ticket_quantity < 6:
             # transactions = PayPalTransaction.objects.filter(paypaltransactionitem__item_title='dinner_ticket', paypaltransactionitem__quantity=crabfeed_ticket_quantity)
-            reservations = Reservation.objects.filter(party_count=crabfeed_ticket_quantity).order_by('-date')
+            transactions = ReservationTransaction.objects.filter(party_count=crabfeed_ticket_quantity).order_by('-date')
             pass
         else:
             # transactions = PayPalTransaction.objects.filter(paypaltransactionitem__item_title='dinner_ticket', paypaltransactionitem__quantity__gte=6)
-            reservations = Reservation.objects.filter(party_count__gte=6).order_by('-date')
+            transactions = ReservationTransaction.objects.filter(party_count__gte=6).order_by('-date')
             pass
 
     else:
-        reservations = Reservation.objects.all().order_by('-date')
+        transactions = ReservationTransaction.objects.all().order_by('-date')
 
     # Filter: Payment Source.
     source = request.GET.get('source')
     if source:
-        reservations = reservations.filter(reservationtransaction__source=source)
+        transactions = transactions.filter(reservationtransaction__source=source)
 
     # Filter: Payment Type
     payment_type = request.GET.get('paymentType')
     if payment_type:
-        reservations = reservations.filter(reservationtransaction__payment_type=payment_type)
+        transactions = transactions.filter(reservationtransaction__payment_type=payment_type)
 
     # Convert results.
-    for reservation in reservations:
-        data.append(reservation.as_api_object())
+    data = []
+
+    for transaction in transactions:
+        data.append(transaction.as_api_object())
 
     response = {
         'statusCode': 200,
@@ -241,16 +241,10 @@ def api_check_in_details(request):
     return HttpResponse(json.dumps(response), mimetype='application/json')
 
 @permission_required('crabfeed.view_crabfeed_dashboard')
-def reservation_add(request):
-    form = ReservationForm(request.POST or None)
-
-    print 'reservation_add()'
+def transaction_create(request):
+    form = ReservationTransactionForm(request.POST or None)
 
     if request.method == 'POST':
-        print 'POST'
-        print form.is_valid()
-        print form.errors.as_text()
-
         if form.is_valid():
             form.save()
             return HttpResponseRedirect('/crabfeed/dashboard')
@@ -260,4 +254,24 @@ def reservation_add(request):
         'range': range(1, 6)
     }
 
-    return render_to_response('crabfeed/reservation/create.html', payload, context_instance=RequestContext(request))
+    return render_to_response('crabfeed/transaction/create.html', payload, context_instance=RequestContext(request))
+
+
+@permission_required('crabfeed.view_crabfeed_dashboard')
+def transaction_update(request, id):
+    transaction = ReservationTransaction.objects.get(id=id)
+    form = ReservationTransactionForm(request.POST or None, transaction=transaction)
+
+    if request.method == 'POST':
+        if form.is_valid():
+            form.update(transaction)
+            return HttpResponseRedirect('/crabfeed/dashboard')
+
+    payload = {
+        'form': form,
+        'range': range(1, 6),
+        'transaction': transaction,
+    }
+
+    return render_to_response('crabfeed/transaction/update.html', payload, context_instance=RequestContext(request))
+

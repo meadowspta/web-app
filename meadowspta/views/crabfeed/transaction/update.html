@@ -1,0 +1,117 @@
+{% extends 'layouts/page.html' %}
+
+{% block content %}
+  <div id="crabfeed-reservation-add">
+    <h1>Edit Crabfeed Transaction</h1>
+
+    <form action="/crabfeed/transactions/update/{{ transaction.id }}" method="post">
+      {% csrf_token %}
+
+      {% if form.non_field_errors %}
+        <div class="well">
+          <ul>
+            {{ form.non_field_errors.as_ul }}
+          </ul>
+        </div>
+      {% endif %}
+
+      <div class="row">
+        <div class="col-lg-6">
+          <label>Name:</label>
+          {{ form.name }}
+        </div>
+        <div class="col-lg-6">
+          <label>Email:</label>
+          {{ form.email }}
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6">
+          <label>Date:</label>
+          {{ form.date }}
+        </div>
+        <div class="col-lg-6">
+          <label>Payment Type:</label>
+          {{ form.payment_type }}
+        </div>
+      </div>
+      <br />
+
+      <div class="well">
+        <div class="row">
+          <div class="col-lg-6">
+            <label>Item:</label>
+            {{ form.item_1 }}
+          </div>
+          <div class="col-lg-6">
+            <label>Quantity:</label>
+            {{ form.quantity_1 }}
+          </div>
+        </div>
+        <hr />
+
+        <div class="row">
+          <div class="col-lg-6">
+            <label>Item:</label>
+            {{ form.item_2 }}
+          </div>
+          <div class="col-lg-6">
+            <label>Quantity:</label>
+            {{ form.quantity_2 }}
+          </div>
+        </div>
+        <hr />
+
+        <div class="row">
+          <div class="col-lg-6">
+            <label>Item:</label>
+            {{ form.item_3 }}
+          </div>
+          <div class="col-lg-6">
+            <label>Quantity:</label>
+            {{ form.quantity_3 }}
+          </div>
+        </div>
+        <hr />
+
+        <div class="row">
+          <div class="col-lg-6">
+            <label>Item:</label>
+            {{ form.item_4 }}
+          </div>
+          <div class="col-lg-6">
+            <label>Quantity:</label>
+            {{ form.quantity_4 }}
+          </div>
+        </div>
+        <hr />
+
+        <div class="row">
+          <div class="col-lg-6">
+            <label>Item:</label>
+            {{ form.item_5 }}
+          </div>
+          <div class="col-lg-6">
+            <label>Quantity:</label>
+            {{ form.quantity_5 }}
+          </div>
+        </div>
+        <hr />
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <label>Notes:</label>
+          {{ form.notes }}
+        </div>
+      </div>
+
+      <br />
+      <input type="submit" class="btn btn-success" type="button" value="Save">
+
+      {{ form.errors }}
+    </form>
+
+  </div>
+{% endblock content %}

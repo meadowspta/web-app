@@ -16,7 +16,7 @@ function HompageController($scope, $http) {
   }
 }
 
-function CrabfeedDashboardController($scope, $http) {
+function CrabfeedDashboardController($scope, $http, $sce) {
   $scope.init = function() {
     $scope.getTickets(function(response) {
       $scope.tickets = response.response;
@@ -60,7 +60,7 @@ function CrabfeedTicketSearchController($scope, $http) {
   $scope.init();
 }
 
-function CrabfeedTransactionListController($scope, $http) {
+function CrabfeedTransactionListController($scope, $http, $sce) {
   $scope.init = function() {
     $scope.utils = new Utils();
     $scope.getTransactions();
@@ -114,8 +114,14 @@ function CrabfeedTransactionListController($scope, $http) {
 
     $http.get('/api/crabfeed/transactions/?' + $scope.query).
       success(function(data, status, headers, config) {
-        $scope.reservations = data.response;
-        $scope.resultCount = $scope.reservations.length;
+        var transactions = [];
+        data.response.forEach(function(transaction) {
+          transaction.notes = $sce.trustAsHtml(transaction.notes);
+          transactions.push(transaction);
+        });
+
+        $scope.transactions = transactions;
+        $scope.resultCount = $scope.transactions.length;
       }).
       error(function(data, status, headers, config) {
 

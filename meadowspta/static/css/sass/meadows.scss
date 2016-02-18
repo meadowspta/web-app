@@ -381,6 +381,14 @@ footer {
 }
 
 #crabfeed-dashboard {
+  .crabfeed-reservation-list {
+    .crabfeed-reservation-list-item {
+      .full-name {
+        font-size: 1.4em;
+      }
+    }
+  }
+  
   .crabfeed-transaction-filters {
     label {
       font-size: 1.0em;

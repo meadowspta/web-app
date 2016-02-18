@@ -4,7 +4,7 @@
   <div id="crabfeed-reservation-add">
     <h1>Add Crabfeed Reservation</h1>
 
-    <form action="/crabfeed/reservations/add/" method="post">
+    <form action="/crabfeed/transactions/create/" method="post">
       {% csrf_token %}
 
       {% if form.non_field_errors %}
@@ -32,18 +32,8 @@
           {{ form.date }}
         </div>
         <div class="col-lg-6">
-          <label>Ticket Type:</label>
-          {{ form.ticket_type }}
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-6">
           <label>Payment Type:</label>
           {{ form.payment_type }}
-        </div>
-        <div class="col-lg-6">
-
         </div>
       </div>
       <br />

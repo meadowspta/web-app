@@ -35,7 +35,22 @@ class CheckInForm(forms.Form):
         return reservation
 
 
-class ReservationForm(forms.Form):
+class ReservationTransactionForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        transaction = kwargs.pop('transaction', None)
+
+        super(ReservationTransactionForm, self).__init__(*args, **kwargs)
+        if transaction:
+            self.fields['name'].initial = transaction.name
+            self.fields['email'].initial = transaction.email
+            self.fields['date'].initial = transaction.date
+            self.fields['payment_type'].initial = transaction.payment_type
+            self.fields['notes'].initial = transaction.notes
+
+            for index, item in enumerate(transaction.reservationtransactionitem_set.all()):
+                self.fields['item_' + str(index + 1)].initial = item.item_title
+                self.fields['quantity_' + str(index + 1)].initial = item.quantity
+
     # def __init__(self, questions, *args, **kwargs):
     #     super(ReservationForm, self).__init__(*args, **kwargs)
     #     for i in range(1, 6):
@@ -82,16 +97,6 @@ class ReservationForm(forms.Form):
         widget=forms.DateInput(
             attrs={
                 'placeholder': 'mm/dd/yy',
-                'class': 'form-control',
-            },
-        )
-    )
-
-    ticket_type = forms.ChoiceField(
-        required=True,
-        choices=TICKET_TYPES,
-        widget=forms.Select(
-            attrs={
                 'class': 'form-control',
             },
         )
@@ -231,72 +236,115 @@ class ReservationForm(forms.Form):
     )
 
     def save(self, commit=True):
-        reservation = Reservation()
-        reservation.email = self.cleaned_data['email']
-        reservation.date = self.cleaned_data['date']
-        reservation.notes = self.cleaned_data['notes']
-
-        if commit:
-            reservation.save()
-
         transaction = ReservationTransaction()
-        transaction.reservation = reservation
         transaction.date = self.cleaned_data['date']
         transaction.name = self.cleaned_data['name']
+        transaction.email = self.cleaned_data['email']
         transaction.payment_type = self.cleaned_data['payment_type']
+        transaction.notes = self.cleaned_data['notes']
         transaction.source = 'form'
         transaction.save()
 
         item = ReservationTransactionItem()
         item.reservation_transaction = transaction
         item.item_title = self.cleaned_data['item_1']
+        item.sku = self.cleaned_data['item_1']
         item.quantity = self.cleaned_data['quantity_1']
         item.gross = 0.0
-        item.type = self.cleaned_data['ticket_type']
         item.save()
-
-        party_count = 0
-        if self.cleaned_data['item_1'] == '1101':
-            party_count = party_count + int(self.cleaned_data['quantity_1'])
 
         if self.cleaned_data['item_2'] != '0':
             item = ReservationTransactionItem()
             item.reservation_transaction = transaction
             item.item_title = self.cleaned_data['item_2']
+            item.sku = self.cleaned_data['item_2']
             item.quantity = self.cleaned_data['quantity_2']
             item.gross = 0.0
-            item.type = self.cleaned_data['ticket_type']
             item.save()
 
         if self.cleaned_data['item_3'] != '0':
             item = ReservationTransactionItem()
             item.reservation_transaction = transaction
             item.item_title = self.cleaned_data['item_3']
+            item.sku = self.cleaned_data['item_3']
             item.quantity = self.cleaned_data['quantity_3']
             item.gross = 0.0
-            item.type = self.cleaned_data['ticket_type']
             item.save()
 
         if self.cleaned_data['item_4'] != '0':
             item = ReservationTransactionItem()
             item.reservation_transaction = transaction
             item.item_title = self.cleaned_data['item_4']
+            item.sku = self.cleaned_data['item_4']
             item.quantity = self.cleaned_data['quantity_4']
             item.gross = 0.0
-            item.type = self.cleaned_data['ticket_type']
             item.save()
 
         if self.cleaned_data['item_5'] != '0':
             item = ReservationTransactionItem()
             item.reservation_transaction = transaction
             item.item_title = self.cleaned_data['item_5']
+            item.sku = self.cleaned_data['item_5']
             item.quantity = self.cleaned_data['quantity_5']
             item.gross = 0.0
-            item.type = self.cleaned_data['ticket_type']
             item.save()
 
-        # Update the party count.
-        reservation.party_count = party_count
-        reservation.save()
+        return transaction
 
-        return reservation
+    def update(self, transaction):
+        transaction.date = self.cleaned_data['date']
+        transaction.name = self.cleaned_data['name']
+        transaction.email = self.cleaned_data['email']
+        transaction.payment_type = self.cleaned_data['payment_type']
+        transaction.notes = self.cleaned_data['notes']
+        transaction.source = 'form'
+        transaction.save()
+
+        # Refresh transaction items.
+        transaction.reservationtransactionitem_set.all().delete()
+
+        item = ReservationTransactionItem()
+        item.reservation_transaction = transaction
+        item.item_title = self.cleaned_data['item_1']
+        item.sku = self.cleaned_data['item_1']
+        item.quantity = self.cleaned_data['quantity_1']
+        item.gross = 0.0
+        item.save()
+
+        if self.cleaned_data['item_2'] != '0':
+            item = ReservationTransactionItem()
+            item.reservation_transaction = transaction
+            item.item_title = self.cleaned_data['item_2']
+            item.sku = self.cleaned_data['item_2']
+            item.quantity = self.cleaned_data['quantity_2']
+            item.gross = 0.0
+            item.save()
+
+        if self.cleaned_data['item_3'] != '0':
+            item = ReservationTransactionItem()
+            item.reservation_transaction = transaction
+            item.item_title = self.cleaned_data['item_3']
+            item.sku = self.cleaned_data['item_3']
+            item.quantity = self.cleaned_data['quantity_3']
+            item.gross = 0.0
+            item.save()
+
+        if self.cleaned_data['item_4'] != '0':
+            item = ReservationTransactionItem()
+            item.reservation_transaction = transaction
+            item.item_title = self.cleaned_data['item_4']
+            item.sku = self.cleaned_data['item_4']
+            item.quantity = self.cleaned_data['quantity_4']
+            item.gross = 0.0
+            item.save()
+
+        if self.cleaned_data['item_5'] != '0':
+            item = ReservationTransactionItem()
+            item.reservation_transaction = transaction
+            item.item_title = self.cleaned_data['item_5']
+            item.sku = self.cleaned_data['item_5']
+            item.quantity = self.cleaned_data['quantity_5']
+            item.gross = 0.0
+            item.save()
+
+        return transaction

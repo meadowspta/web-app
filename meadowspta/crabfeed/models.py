@@ -24,6 +24,9 @@ PAYMENT_TYPES = (
     ('cash', 'Cash'),
     ('credit', 'Credit'),
     ('check', 'Check'),
+    ('membership', 'PTA Membership Package'),
+    ('complimentary', 'Complimentary'),
+    ('teacher_sponsorship', 'Teacher Sponsorship')
 )
 
 ITEMS = (
@@ -102,7 +105,6 @@ class Reservation(BaseModel):
     id_hash = models.CharField(max_length=255)
     email_sent = models.BooleanField(default=False, blank=True)
     email_sent_date = models.DateTimeField(null=True, blank=True)
-    notes = models.TextField(null=True)
 
     def before_save(self, action):
         # Save the generated hash ID and confirmation number.
@@ -158,6 +160,7 @@ class Reservation(BaseModel):
         data = {
             'id': self.id,
             'date': self.date.isoformat(),
+            'name': self.name,
             'names': self.consolidate_names(),
             'reservation_number': self.reservation_number,
             'table_assignment': self.table_assignment,
@@ -169,6 +172,7 @@ class Reservation(BaseModel):
             # 'qr_code_image': self.qr_code_image,
             'id_hash': self.id_hash,
             'transactions': transactions,
+            # 'notes': self.notes if self.notes is not None else '',
         }
 
         return data
@@ -248,64 +252,57 @@ class Reservation(BaseModel):
         square_transactions = SquareTransaction.objects.all()
 
         for square_transaction in square_transactions:
-            # Create a crabfeed reservation.
-            reservation_exists, reservation = Reservation.get_reservation_by_transaction_id(square_transaction.transaction_id)
+            try:
+                # Update
+                transaction = ReservationTransaction.objects.get(transaction_id=square_transaction.transaction_id)
+                transaction_created = False
+            except ReservationTransaction.DoesNotExist:
+                # Create
+                transaction_created = True
+                transaction = ReservationTransaction()
 
-            # Create/Update extra Square transaction data.
-            reservation.date = square_transaction.date
-            reservation.email = square_transaction.email
-            reservation.party_count = square_transaction.get_party_count()
-            reservation.save()
+            # Create/update reservation transaction.
+            transaction.date = square_transaction.date
+            transaction.name = square_transaction.name
+            transaction.email = square_transaction.email
+            transaction.source = square_transaction.source
+            transaction.transaction_id = square_transaction.transaction_id
+            transaction.payment_type = square_transaction.payment_type
+            # transaction.party_count = square_transaction.get_party_count()
+            transaction.save()
 
-            # Reference reservation from the Square transaction.
-            square_transaction.reservation = reservation
-            square_transaction.save()
+            action = 'CREATED' if transaction_created else 'UPDATED'
+            print '[%s] Transaction ID: %s' % (action, transaction.transaction_id)
 
-            if reservation_exists is not True:
-                # Create reservation transaction - only runs once.
-                reservation_transaction = ReservationTransaction()
-                reservation_transaction.reservation = reservation
-                reservation_transaction.date = square_transaction.date
-                reservation_transaction.name = ''
-                reservation_transaction.source = square_transaction.source
-                reservation_transaction.transaction_id = square_transaction.transaction_id
-                # reservation_transaction.seller_id = models.CharField(max_length=64, null=True, choices=PAYMENT_SELLERS)
-                reservation_transaction.payment_type = square_transaction.payment_type
-                reservation_transaction.save()
-
-                print '[CREATED] Reservation Number: %s' % (reservation.reservation_number)
-
-                # Create reservation transaction items.
+            # Create reservation transaction items - only runs once.
+            if transaction_created is True:
                 for square_item in square_transaction.squaretransactionitem_set.all():
                     item = ReservationTransactionItem()
-                    item.reservation_transaction = reservation_transaction
+                    item.reservation_transaction = transaction
                     item.item_title = square_item.sku
                     item.quantity = square_item.quantity
                     item.gross = square_item.gross_sale
+                    item.sku = square_item.sku
                     item.type = 'regular'
                     item.save()
 
                     print '[CREATED] Reservation Item: %s' % (item.item_title)
-            else:
-                # Update the reservation transaction from the Square data.
-                reservation_transaction = ReservationTransaction.objects.get(transaction_id=square_transaction.transaction_id)
-                reservation_transaction.name = square_transaction.name
-                reservation_transaction.save()
-
-                print '[UPDATED] Reservation Number: %s' % (reservation_transaction.transaction_id)
 
 
 class ReservationTransaction(BaseModel):
     class Meta:
         db_table = 'crabfeed_reservation_transactions'
 
-    reservation = models.ForeignKey(Reservation)
+    reservation = models.ForeignKey(Reservation, null=True, blank=True)
     date = models.DateTimeField(null=True)
     name = models.CharField(max_length=255, null=True)
+    email = models.EmailField(max_length=255, null=True)
     source = models.CharField(max_length=255, null=True, choices=PAYMENT_SOURCES)
     transaction_id = models.CharField(max_length=128, null=True)
-    seller_id = models.CharField(max_length=64, null=True, choices=PAYMENT_SELLERS)
+    # seller_id = models.CharField(max_length=64, null=True, choices=PAYMENT_SELLERS)
     payment_type = models.CharField(max_length=128, null=True, choices=PAYMENT_TYPES)
+    party_count = models.IntegerField(null=True, default=0)
+    notes = models.TextField(null=True, blank=True)
 
     def as_api_object(self):
         items = []
@@ -316,19 +313,38 @@ class ReservationTransaction(BaseModel):
             items.append(item.as_api_object())
 
         data = {
+            'id': self.id,
             'date': self.date.isoformat(),
             'name': self.name,
+            'email': self.email,
             'source_id': self.source,
             'source': self.get_source_display(),
             'transaction_id': self.transaction_id,
-            'seller_id': self.seller_id,
-            'seller': self.get_seller_id_display(),
+            # 'seller_id': self.seller_id,
+            # 'seller': self.get_seller_id_display(),
             'payment_type_id': self.payment_type,
             'payment_type': self.get_payment_type_display(),
-            'items': items
+            'items': items,
+            'notes': self.notes,
         }
 
         return data
+
+    @staticmethod
+    def get_total_party_count():
+        return ReservationTransaction.objects.aggregate(sum=Sum('party_count'))['sum']
+
+    def get_party_count(self):
+        """Get the number of tickets sold party count for the transaction."""
+        party_count = 0
+
+        print 'get_party_count()'
+        for item in self.reservationtransactionitem_set.all():
+            print 'item: %s' % item
+            if item.sku in DINNER_TICKET_SKUS:
+                party_count = party_count + int(item.quantity)
+
+        return party_count
 
 class ReservationTransactionItem(BaseModel):
     class Meta:
@@ -338,7 +354,7 @@ class ReservationTransactionItem(BaseModel):
     item_title = models.CharField(max_length=255, null=True, choices=ITEMS)
     quantity = models.IntegerField(null=True)
     gross = models.DecimalField(max_digits=16, decimal_places=2, default=Decimal('0.00'), null=True)
-    type = models.CharField(max_length=255, null=True, choices=TICKET_TYPES)
+    sku = models.CharField(max_length=64)
 
     def as_api_object(self):
         data = {
@@ -350,6 +366,19 @@ class ReservationTransactionItem(BaseModel):
 
         return data
 
+    def after_save(self, action):
+        """
+        Update the party count for the parent reservation transaction.
+
+        :param action:
+        :return:
+        """
+        print '*=====================================================*'
+        print 'after_save()'
+        print self.reservation_transaction.get_party_count()
+        self.reservation_transaction.party_count = self.reservation_transaction.get_party_count()
+        self.reservation_transaction.save()
+
 class SquareTransaction(BaseModel):
     class Meta:
         db_table = 'crabfeed_square_transactions'
@@ -357,7 +386,6 @@ class SquareTransaction(BaseModel):
     def __unicode__(self):
         return self.transaction_id
 
-    reservation = models.ForeignKey(Reservation, null=True)
     name = models.CharField(max_length=255, null=True)
     email = models.CharField(max_length=255, null=True)
     date = models.DateTimeField(null=True)
@@ -470,7 +498,7 @@ class SquareTransactionItem(BaseModel):
     quantity = models.IntegerField(null=True)
     item_title = models.CharField(max_length=255, null=True, choices=ITEMS)
     gross_sale = models.DecimalField(max_digits=16, decimal_places=2, default=Decimal('0.00'))
-    sku = models.CharField(max_length=16)
+    sku = models.CharField(max_length=64)
 
     def as_api_object(self):
         data = {
