@@ -55,3 +55,13 @@ mysql -uroot meadowspta < /var/www/meadowspta.org/databases/meadowspta_160224_2.
 ALTER TABLE crabfeed_reservations ADD COLUMN name VARCHAR(255);
 python manage.py generate_reservations
 python manage.py index_reservations
+
+
+mkdir media/images/crabfeed/2015
+mkdir media/images/crabfeed/2015/qr-codes
+mkdir media/images/crabfeed/2015/emails
+mv media/images/crabfeed/qr-codes/2015/* media/images/crabfeed/2015/qr-codes/
+mv media/images/crabfeed/emails/* media/images/crabfeed/2015/emails/
+
+
+python manage.py generate_emails

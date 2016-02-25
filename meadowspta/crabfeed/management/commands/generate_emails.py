@@ -18,7 +18,7 @@ class Command(BaseCommand):
             # Only generate emails for those who have not received it.
             if reservation.email_sent is False:
                 token_map = {
-                    'name': '<br />'.join(reservation.consolidate_names()),
+                    'name': reservation.name,
                     'email': reservation.email,
                     'reservation_number': reservation.reservation_number,
                     'party_count': reservation.party_count,
