@@ -8,9 +8,7 @@
 
   <div id="crabfeed-check-in" ng-controller="CheckInController">
     <h3>
-      {% for name in reservation.consolidate_names %}
-        {{ name }}<br />
-      {% endfor %}
+      {{ reservation.name }}<br />
     </h3>
 
     <div class="quiet">{{ reservation.email }}</div>
