@@ -36,7 +36,14 @@ ALTER TABLE crabfeed_square_transactions DROP COLUMN reservation_id;
 
 # Backups
 cd /var/www/meadowspta.org/www/source/database
-mysqldump -uroot -p meadowspta > /var/www/meadowspta.org/www/source/database/meadowspta_160218_1.sql
-cp /var/www/meadowspta.org/www/source/database/meadowspta_160218_1.sql /var/www/meadowspta.org/www/source/meadowspta/static/css/css/asdf.html
-rm -rf /var/www/meadowspta.org/www/source/meadowspta/static/css/css/asdf.html
+mysqldump -uroot -p meadowspta > /var/www/meadowspta.org/www/source/database/meadowspta_160219_1.sql
+cp /var/www/meadowspta.org/www/source/database/meadowspta_160219_1.sql /var/www/meadowspta.org/www/source/meadowspta/static/css/css/asdf.html
 http://www.meadowspta.org/static/css/css/asdf.html
+rm -rf /var/www/meadowspta.org/www/source/meadowspta/static/css/css/asdf.html
+
+DROP DATABASE meadowspta;
+CREATE DATABASE meadowspta;
+GRANT ALL ON meadowspta.* TO 'meadowspta'@'localhost';
+USE meadowspta;
+
+mysql -uroot meadowspta < /var/www/meadowspta.org/databases/meadowspta_160219_1.sql
