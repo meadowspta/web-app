@@ -1,11 +1,7 @@
-import os
-
 from django.conf import settings
-from django.core.management.base import BaseCommand, CommandError
-from django.db.models import Q
+from django.core.management.base import BaseCommand
 
-from system.models import PayPalRawTransaction, PayPalTransaction, PayPalTransactionItem, PayPalTransactionOverride
-from crabfeed.models import Reservation, ReservationTransaction, ReservationTransactionItem
+from crabfeed.models import Reservation
 
 
 EMAIL_SUBJECT = 'Your Meadows Crab Feed Dinner Information (Reservation #%s)'

@@ -38,14 +38,20 @@ ALTER TABLE crabfeed_square_transactions DROP COLUMN reservation_id;
 
 # Backups
 cd /var/www/meadowspta.org/www/source/database
-mysqldump -uroot -p meadowspta > /var/www/meadowspta.org/www/source/database/meadowspta_160219_1.sql
-cp /var/www/meadowspta.org/www/source/database/meadowspta_160219_1.sql /var/www/meadowspta.org/www/source/meadowspta/static/css/css/asdf.html
-http://www.meadowspta.org/static/css/css/asdf.html
-rm -rf /var/www/meadowspta.org/www/source/meadowspta/static/css/css/asdf.html
+mysqldump -uroot -p meadowspta > /var/www/meadowspta.org/www/source/database/meadowspta_160224_2.sql
+cp /var/www/meadowspta.org/www/source/database/meadowspta_160224_2.sql /var/www/meadowspta.org/www/source/meadowspta/static/css/css/asdf.sql
+http://www.meadowspta.org/static/css/css/asdf.sql
+rm -rf /var/www/meadowspta.org/www/source/meadowspta/static/css/css/asdf.sql
 
 DROP DATABASE meadowspta;
 CREATE DATABASE meadowspta;
 GRANT ALL ON meadowspta.* TO 'meadowspta'@'localhost';
 USE meadowspta;
 
-mysql -uroot meadowspta < /var/www/meadowspta.org/databases/meadowspta_160219_1.sql
+mysql -uroot meadowspta < /var/www/meadowspta.org/databases/meadowspta_160224_2.sql
+
+
+
+ALTER TABLE crabfeed_reservations ADD COLUMN name VARCHAR(255);
+python manage.py generate_reservations
+python manage.py index_reservations

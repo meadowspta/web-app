@@ -30,7 +30,7 @@ class CheckInForm(forms.Form):
 
         if commit:
             reservation.save()
-            call_command('index_transactions')
+            call_command('index_reservations')
 
         return reservation
 

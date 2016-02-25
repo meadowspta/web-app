@@ -95,6 +95,7 @@ class Reservation(BaseModel):
         db_table = 'crabfeed_reservations'
 
     date = models.DateTimeField(null=True, blank=True)
+    name = models.CharField(max_length=255, null=True)
     email = models.EmailField(max_length=255, null=True)
     reservation_number = models.CharField(max_length=255, null=True)
     table_assignment = models.CharField(max_length=64, null=True)
@@ -132,12 +133,20 @@ class Reservation(BaseModel):
     def get_party_count(self):
         party_count = 0
 
-        transactions = self.reservationtransaction_set.all()
+        transactions = ReservationTransaction.objects.filter(email=self.email).all()
         for transaction in transactions:
-            dinner_ticket = transaction.reservationtransactionitem_set.get(item_title='dinner_ticket')
-            party_count = party_count + dinner_ticket.quantity
+            party_count = party_count + transaction.party_count
 
         return party_count
+
+    def get_names(self):
+        names = []
+
+        transactions = ReservationTransaction.objects.filter(email=self.email).all()
+        for transaction in transactions:
+            names.append(transaction.name)
+
+        return set(names)
 
     def get_qr_code_url(self):
         return '%s://%s%s' % (settings.META_SITE_PROTOCOL, settings.META_SITE_DOMAIN, self.qr_code_image.url)
@@ -161,18 +170,16 @@ class Reservation(BaseModel):
             'id': self.id,
             'date': self.date.isoformat(),
             'name': self.name,
-            'names': self.consolidate_names(),
             'reservation_number': self.reservation_number,
             'table_assignment': self.table_assignment,
             'email': self.email,
-            # 'transaction_count': self.transaction_count,
             'party_count': self.party_count,
             'party_checked_in': self.party_checked_in,
             'check_in_date': self.check_in_date.isoformat() if self.check_in_date else None,
             # 'qr_code_image': self.qr_code_image,
             'id_hash': self.id_hash,
             'transactions': transactions,
-            # 'notes': self.notes if self.notes is not None else '',
+            # 'notes': self.notes,
         }
 
         return data

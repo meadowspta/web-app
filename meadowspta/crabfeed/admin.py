@@ -51,18 +51,30 @@ class ReservationAdmin(admin.ModelAdmin):
     ordering = ['-date']
 
     list_display = (
-        'date',
         'email',
-        'get_reservation_number',
+        'name',
+        'date',
+        'reservation_number',
         'party_count',
+        'party_checked_in',
+        'check_in_date',
         'table_assignment',
         'email_sent',
+        'get_qr_code',
+        'get_url_hash',
     )
 
-    def get_reservation_number(self, obj):
-        return obj.get_reservation_number()
+    def get_qr_code(self, reservation):
+        return '<img src="%s" width="50">' % reservation.qr_code_image.url
 
-    get_reservation_number.short_description = 'Reservation Number'
+    get_qr_code.allow_tags = True
+    get_qr_code.short_description = 'QR Code'
+
+    def get_url_hash(self, reservation):
+        return '<a href="%s" target="_blank">%s</a>' % (reservation.get_check_in_url(), reservation.get_check_in_url())
+
+    get_url_hash.allow_tags = True
+    get_url_hash.short_description = 'Check-in URL'
 
 admin.site.register(Reservation, ReservationAdmin)
 

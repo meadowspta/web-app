@@ -39,13 +39,13 @@ function CrabfeedDashboardController($scope, $http, $sce) {
 function CrabfeedTicketSearchController($scope, $http) {
   $scope.init = function() {
 
-  }
+  };
 
   $scope.qChange = function() {
     $scope.search(function(response) {
       $scope.transactions = response.response;
     });
-  }
+  };
 
   $scope.search = function(callback) {
     $http.get('/api/crabfeed/search?q=' + $scope.q).
@@ -55,7 +55,7 @@ function CrabfeedTicketSearchController($scope, $http) {
       error(function(data, status, headers, config) {
 
       });
-  }
+  };
 
   $scope.init();
 }

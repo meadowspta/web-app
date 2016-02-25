@@ -106,7 +106,7 @@ def api_search(request):
     mongo_config = settings.DATABASES['mongodb']
     client = MongoClient('mongodb://%s:%s/' % (mongo_config['HOST'], mongo_config['PORT']))
     db = client['meadowspta']
-    collection = db['search.transactions'];
+    collection = db['search.reservations'];
 
     # {email:1, reservation_number:1, score: { $meta: "textScore" } }).limit(10).sort( { score: { $meta: "textScore" } } )
     # search_results = collection.find({ '$text': { '$search': q } }, { '_id': 0, 'keywords': 0, 'score': { '$meta': 'textScore' } }).sort({ 'score': { '$meta': 'textScore' } })

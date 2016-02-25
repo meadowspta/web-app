@@ -1,11 +1,8 @@
 import os.path, qrcode
 
-from django.conf import settings
-from django.core.management.base import BaseCommand, CommandError
-from django.db.models import Q
+from django.core.management.base import BaseCommand
 
-from system.models import PayPalRawTransaction, PayPalTransaction, PayPalTransactionItem, PayPalTransactionOverride
-from crabfeed.models import Reservation, ReservationTransaction, ReservationTransactionItem
+from crabfeed.models import Reservation, ReservationTransaction
 
 
 class Command(BaseCommand):
@@ -16,7 +13,7 @@ class Command(BaseCommand):
 
         self.create_canonical_emails()
         self.update_reservation_number()
-        self.associate_transactions()
+        # self.associate_transactions()
         self.update_reservation_party_count()
 
     def create_canonical_emails(self):
@@ -25,24 +22,23 @@ class Command(BaseCommand):
         print '************************************************'
 
         # Query dinner ticket transactions based on email address.
-        transactions = Reservation.get_paypal_canonical_emails()
+        transactions = ReservationTransaction.objects.all()
 
         for transaction in transactions:
-            email = transaction.paypaltransactionoverride_set.get().from_email_address
+            email = transaction.email if len(transaction.email) > 0 else 'no-email@meadowspta.org'
 
             try:
                 # Check if canonical user exists.
                 reservation = Reservation.objects.get(email=email)
-                party_count = reservation.party_count
 
                 print '[UPDATE] Reservation: %s' % (email)
             except Exception, e:
                 reservation = Reservation()
-                party_count = 0
 
                 print '[CREATE] Reservation: %s' % (email)
 
             # Create/update canonical user.
+            reservation.date = transaction.date
             reservation.email = email
             reservation.save()
 
@@ -55,11 +51,12 @@ class Command(BaseCommand):
 
     def update_reservation_number(self):
         print '\n************************************************'
-        print '* Generate confirmation numbers'
+        print '* Generate confirmation numbers and names'
         print '************************************************'
 
         reservations = Reservation.objects.all()
         for reservation in reservations:
+            reservation.name = '; '.join(reservation.get_names())
             reservation.reservation_number = reservation.get_reservation_number()
             reservation.save()
 
