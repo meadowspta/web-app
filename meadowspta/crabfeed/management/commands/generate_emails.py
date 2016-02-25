@@ -28,11 +28,11 @@ class Command(BaseCommand):
                 subject = EMAIL_SUBJECT % (reservation.reservation_number)
                 body = self.replace_email_body_tokens(token_map, EMAIL_BODY)
 
-                file_path = '%s/images/crabfeed/emails/%s.html' % (settings.MEDIA_ROOT, str(reservation.email))
+                file_path = '%s/images/crabfeed/emails/%s.html' % (settings.MEDIA_ROOT, str(reservation.reservation_number))
 
                 with open(file_path, 'w+') as file:
                     print 'Creating email file: %s' % file_path
-                    file.write('%s\n\n%s' % (str(subject), str(body)))
+                    file.write('%s\n\n%s\n\n%s' % (str(subject), str(reservation.email), str(body)))
                     file.close()
 
 

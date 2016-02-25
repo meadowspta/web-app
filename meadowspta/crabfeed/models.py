@@ -8,6 +8,7 @@ from django.db.models import Sum
 
 from core.models import BaseModel
 
+
 PAYMENT_SELLERS = (
     ('opalenik', 'Gina'),
     ('INAHMARCELO', 'Inah Marcelo'),
