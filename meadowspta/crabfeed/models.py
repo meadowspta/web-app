@@ -99,7 +99,7 @@ class Reservation(BaseModel):
     name = models.CharField(max_length=255, null=True)
     email = models.EmailField(max_length=255, null=True)
     reservation_number = models.CharField(max_length=255, null=True)
-    table_assignment = models.CharField(max_length=64, null=True)
+    table_assignment = models.CharField(max_length=64, null=True, blank=True)
     party_count = models.IntegerField(null=True)
     party_checked_in = models.IntegerField(null=True, default=0)
     check_in_date = models.DateTimeField(blank=True, null=True)
