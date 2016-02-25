@@ -20,6 +20,8 @@ DROP TABLE crabfeed_square_transaction_items;
 DROP TABLE crabfeed_square_transactions;
 DROP TABLE crabfeed_reservations;
 
+
+
 # CLI
 python manage.py syncdb
 python manage.py import_square_transactions
