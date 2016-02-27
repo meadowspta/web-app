@@ -23,14 +23,13 @@ class Command(BaseCommand):
 
         reservations = Reservation.objects.all()
         for reservation in reservations:
-            items = []
-            keywords = []
+            if reservation.party_count > 0:
+                data = reservation.as_api_object()
+                data['notes'] = reservation.get_notes()
 
-            data = reservation.as_api_object()
+                collection.insert(data)
 
-            collection.insert(data)
-
-            print '[INDEXING] Transaction email: %s' % (data['email'])
+                print '[INDEXING] Transaction email: %s' % (data['email'])
 
     def generate_language_stem(self, str):
         words = []

@@ -161,6 +161,17 @@ class Reservation(BaseModel):
 
         return names
 
+    def get_notes(self):
+        # Consolidate the notes from the transactions associated to the reservation.
+        transactions = ReservationTransaction.objects.filter(email=self.email).all()
+
+        notes = []
+        for transaction in transactions:
+            if transaction.notes is not None and len(transaction.notes) > 0:
+                notes.append(transaction.notes)
+
+        return '<br />'.join(notes) if len(notes) > 0 else None
+
     def as_api_object(self):
         transactions = []
         reservation_transactions = self.reservationtransaction_set.all()
@@ -222,7 +233,7 @@ class Reservation(BaseModel):
 
     @staticmethod
     def get_check_in_open():
-        return Reservation.objects.filter(party_checked_in=0).order_by('-check_in_date')
+        return Reservation.objects.filter(party_checked_in=0).exclude(party_count=0).order_by('-check_in_date')
 
     @staticmethod
     def get_partial_check_in():
@@ -230,7 +241,7 @@ class Reservation(BaseModel):
 
     @staticmethod
     def get_full_check_in():
-        return Reservation.objects.filter(party_checked_in=models.F('party_count')).order_by('-check_in_date')
+        return Reservation.objects.filter(party_checked_in=models.F('party_count')).exclude(party_count=0).order_by('-check_in_date')
 
     def is_all_checked_in(self):
         return self.party_checked_in == self.party_count

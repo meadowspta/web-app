@@ -33,6 +33,10 @@
         <button class="btn btn-lg btn-primary" ng-class="{ 'disabled': checkInCount == checkInMax }" ng-click="addCheckIn()"><span class="glyphicon glyphicon-plus"></span></button>
       </div>
 
+      {% if reservation.get_notes %}
+        <div class="well small">{{ reservation.get_notes|safe }}</div>
+      {% endif %}
+
       <div class="check-in-all-button">
         <button class="btn btn-lg btn-danger btn-block" ng-class="{ disabled: checkInCount == checkInMax }" ng-click="checkInAll();">Check-In Entire Party</button>
       </div>

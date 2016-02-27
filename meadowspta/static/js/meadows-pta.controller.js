@@ -36,7 +36,7 @@ function CrabfeedDashboardController($scope, $http, $sce) {
   $scope.init();
 }
 
-function CrabfeedTicketSearchController($scope, $http) {
+function CrabfeedTicketSearchController($scope, $http, $sce) {
   $scope.init = function() {
 
   };
@@ -50,6 +50,11 @@ function CrabfeedTicketSearchController($scope, $http) {
   $scope.search = function(callback) {
     $http.get('/api/crabfeed/search?q=' + $scope.q).
       success(function(data, status, headers, config) {
+        data.response.forEach(function(item) {
+          item.has_notes = item.notes && item.notes.length > 0 ? true : false;
+          item.notes = $sce.trustAsHtml(item.notes);
+        });
+
         $scope.reservations = data.response;
       }).
       error(function(data, status, headers, config) {
@@ -205,7 +210,7 @@ function CheckInDashboardController($scope, $http) {
     var interval = setInterval(function() {
       $scope.fetchData();
     }, 3000);
-  }
+  };
 
   $scope.fetchData = function() {
     $http.get('/api/crabfeed/check-in/details').
