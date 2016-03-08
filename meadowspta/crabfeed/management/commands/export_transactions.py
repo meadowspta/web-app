@@ -3,7 +3,7 @@ import re, csv
 from django.core.management.base import BaseCommand
 from django.conf import settings
 
-from crabfeed.models import ReservationTransaction
+from crabfeed.models import ReservationTransaction, SquareTransaction
 
 CSV_FILE = '2016-crabfeed-transactions.csv'
 
@@ -25,15 +25,24 @@ class Command(BaseCommand):
             'Source',
             'Square Transaction ID',
             'Payment Type',
+            'Items',
+            'Gross Sale',
+            'Net Sale',
             'Notes',
         ]
 
         csv_file.writerow(header)
 
-        transactions = ReservationTransaction.objects.all()
+        transactions = SquareTransaction.objects.all()
 
         for transaction in transactions:
-            notes = transaction.notes if transaction.notes is not None else ''
+            reservation = ReservationTransaction.objects.get(transaction_id=transaction.transaction_id)
+
+            items = []
+            for item in transaction.squaretransactionitem_set.all():
+                items.append('%s: %s' % (item.item_title, item.quantity))
+
+            notes = reservation.notes if reservation.notes is not None else ''
             notes = re.sub('<.*?>', '', notes)
 
             row = [
@@ -43,6 +52,9 @@ class Command(BaseCommand):
                 transaction.source,
                 transaction.transaction_id if transaction.transaction_id is not None else '',
                 transaction.payment_type,
+                '; '.join(items),
+                transaction.gross_sale,
+                transaction.net_sale,
                 notes.replace('&nbsp;', ' '),
             ]
 

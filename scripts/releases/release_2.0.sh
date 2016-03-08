@@ -66,4 +66,9 @@ python manage.py generate_reservations; python manage.py index_reservations; pyt
 
 ALTER TABLE crabfeed_reservations ADD COLUMN transaction_id VARCHAR(255);
 
+python manage.py import_square_transactions
+python manage.py generate_reservations
 python manage.py export_transactions
+
+cp /var/www/meadowspta.org/www/source/meadowspta/private/files/crabfeed/2016-crabfeed-transactions.csv /var/www/meadowspta.org/www/source/meadowspta/static/css/css/asdf.sql
+rm -rf /var/www/meadowspta.org/www/source/meadowspta/static/css/css/asdf.sql
