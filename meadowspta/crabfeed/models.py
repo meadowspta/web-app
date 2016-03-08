@@ -107,6 +107,7 @@ class Reservation(BaseModel):
     id_hash = models.CharField(max_length=255)
     email_sent = models.BooleanField(default=False, blank=True)
     email_sent_date = models.DateTimeField(null=True, blank=True)
+    # transaction_id = models.CharField(max_length=128, null=True)
 
     def before_save(self, action):
         # Save the generated hash ID and confirmation number.

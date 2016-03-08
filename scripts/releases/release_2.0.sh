@@ -63,3 +63,7 @@ mv media/images/crabfeed/emails/* media/images/crabfeed/2015/emails/
 
 
 python manage.py generate_reservations; python manage.py index_reservations; python manage.py generate_emails;
+
+ALTER TABLE crabfeed_reservations ADD COLUMN transaction_id VARCHAR(255);
+
+python manage.py export_transactions

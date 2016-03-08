@@ -58,6 +58,7 @@ class Command(BaseCommand):
         for reservation in reservations:
             reservation.name = '; '.join(reservation.get_names())
             reservation.reservation_number = reservation.get_reservation_number()
+            # reservation.transaction_id = ''
             reservation.save()
 
     def associate_transactions(self):
