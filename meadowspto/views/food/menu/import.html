@@ -1,0 +1,17 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block title %}Import Menu{% endblock %}
+
+{% block content %}
+
+  <h2>Import Menu</h2>
+
+  <form action="/admin/menu/import/" method="post">
+    {% csrf_token %}
+    {{ form.menu_list }}
+
+    <input type="submit" class="btn btn-success" type="button" value="Submit">
+  </form>
+
+{% endblock %}

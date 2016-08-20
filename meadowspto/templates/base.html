@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="meadowspta">
+  <head>
+    <meta charset="utf-8">
+    <title>
+      {% if meta.title %}
+        {{ meta.title }} |
+      {% endif %}
+      Millbrae Meadows PTO
+    </title>
+
+    {% include 'meta.html' %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="LUe69Dk1B-vSR11RXnV7rQ1gEzssln4JMqMbReEvB-E" />
+
+    <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+    <link type="text/css" rel="stylesheet" media="all" href="{{ STATIC_URL }}libraries/bootstrap/3.0.3.990/css/bootstrap.min.css?v={{ version }}" />
+    <link type="text/css" rel="stylesheet" media="all" href="{{ STATIC_URL }}css/css/meadows.css?v={{ version }}" />
+    <link type="text/css" rel="stylesheet" media="all" href="{{ STATIC_URL }}css/css/responsive.css?v={{ version }}" />
+
+    <script type="text/javascript">var MeadowsPTA = {};</script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.8.1.min.js?v={{ version }}"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}libraries/underscore/underscore-min.js?v={{ version }}"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}libraries/underscore/underscore.string.min.js?v={{ version }}"></script>
+    <!--
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular-route.min.js"></script>
+    -->
+    <script type="text/javascript" src="{{ STATIC_URL }}libraries/angular/angular.min.js?v={{ version }}"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}libraries/angular/angular-route.min.js?v={{ version }}"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}libraries/bootstrap/3.0.3.990/js/bootstrap.min.js?v={{ version }}"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}libraries/tinymce/js/tinymce/tinymce.min.js?v={{ version }}"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/meadows-pta.js?v={{ version }}"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/meadows-pta.app.js?v={{ version }}"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/meadows-pta.controller.js?v={{ version }}"></script>
+
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=635860923137318";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', '{{ google_analytics_id }}']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="{{ STATIC_URL }}ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ STATIC_URL }}images/template/app-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ STATIC_URL }}images/template/app-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ STATIC_URL }}images/template/app-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="{{ STATIC_URL }}images/template/app-icon-57-precomposed.png">
+  </head>
+
+  <body data-spy="scroll" data-target="#main-navigation">
+    <div id="fb-root"></div>
+    {% block body %}
+    {% endblock body %}
+
+    <!-- <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53059e85218c18c3"></script> -->
+  </body>
+</html>
