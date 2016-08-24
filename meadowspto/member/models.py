@@ -20,6 +20,10 @@ class Member(models.Model):
     last_name = models.CharField(max_length=64)
     email = models.EmailField(max_length=255)
     phone_number = models.CharField(max_length=64)
+    address = models.ForeignKey('MemberAddress')
+    students = models.ManyToManyField('MemberStudent')
+    employer = models.ForeignKey('MemberEmployer')
+    sponsorshipPackage = models.ManyToManyField('MemberSponsorshipPackage')
 
 
 class MemberAddress(models.Model):
@@ -29,7 +33,7 @@ class MemberAddress(models.Model):
     address = models.CharField(max_length=64)
     city = models.CharField(max_length=64)
     state = models.CharField(max_length=64)
-    member = models.ForeignKey(Member)
+    zip_code = models.CharField(max_length=16)
 
 
 class MemberEmployer(models.Model):
@@ -38,7 +42,6 @@ class MemberEmployer(models.Model):
 
     employer = models.CharField(max_length=64)
     offers_matching = models.BooleanField(default=False)
-    member = models.ForeignKey(Member)
 
 
 class MemberStudent(models.Model):
@@ -49,7 +52,6 @@ class MemberStudent(models.Model):
     last_name = models.CharField(max_length=64)
     grade = models.CharField(max_length=64, choices=GRADES)
     is_new = models.BooleanField(default=False)
-    member = models.ForeignKey(Member)
 
 
 class MemberSponsorshipPackage(models.Model):
@@ -59,4 +61,3 @@ class MemberSponsorshipPackage(models.Model):
     name = models.CharField(max_length=64)
     price = models.DecimalField(decimal_places=2, max_digits=5)
     description = models.TextField()
-    member = models.ForeignKey(Member)
