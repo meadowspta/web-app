@@ -21,7 +21,6 @@ from django.views.static import serve
 
 import homepage.views
 import member.views
-# import crabfeed.views
 
 admin.autodiscover()
 
