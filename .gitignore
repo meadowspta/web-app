@@ -1,7 +1,7 @@
 .DS_Store
 *.pyc
-meadowspta/static/css/.sass-cache
-meadowspta/media/*
-meadowspta/meadowspta/settings/local.py
-meadowspta/meadowspta/settings/production.py
-meadowspta/private
+meadowspto/static/css/.sass-cache
+meadowspto/media/*
+meadowspto/meadowspta/settings/local.py
+meadowspto/meadowspta/settings/production.py
+meadowspto/private

@@ -1,8 +1,9 @@
-from django.template import RequestContext, Context, loader
+from django.template import RequestContext
 from django.shortcuts import render_to_response
-from news.models import News
+
 from system.models import sysvar
-from event.models import Event
+from blog.models import BlogPost
+
 
 def view(request):
     board = [
@@ -60,15 +61,17 @@ def view(request):
         },
     ]
 
-    news = News.objects.all().filter(is_published=1).exclude(id=int(sysvar['news_featured_post'])).order_by('-publish_date')[:4]
-    featured_news_post = News.objects.get(id=int(sysvar['news_featured_post']))
-    upcoming_events = Event.get_upcoming_events({ 'limit': 5 })
+
+    # news = News.objects.all().filter(is_published=1).exclude(id=int(sysvar['news_featured_post'])).order_by('-publish_date')[:4]
+    posts = BlogPost.objects.all().filter(is_published=1).exclude(id=int(sysvar['news_featured_post'])).order_by('-publish_date')[:4]
+    featured_post = BlogPost.objects.get(id=int(sysvar['news_featured_post']))
+    # upcoming_events = Event.get_upcoming_events({ 'limit': 5 })
 
     payload = dict(
         board=board,
-        news=news,
-        upcoming_events=upcoming_events,
-        featured_news_post=featured_news_post
+        posts=posts,
+        # upcoming_events=upcoming_events,
+        featured_post=featured_post
     )
 
     return render_to_response('homepage/view.html', payload, context_instance=RequestContext(request))

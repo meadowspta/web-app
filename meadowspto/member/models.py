@@ -1,5 +1,5 @@
 from django.db import models
-from core.models import BaseModel
+
 
 GRADES = (
     ('tk', 'TK'),
@@ -25,6 +25,9 @@ class Member(models.Model):
     employer = models.ForeignKey('MemberEmployer')
     sponsorshipPackage = models.ManyToManyField('MemberSponsorshipPackage')
 
+    def __unicode__(self):
+        return '%s %s' % (self.first_name, self.last_name)
+
 
 class MemberAddress(models.Model):
     class Meta:
@@ -35,6 +38,9 @@ class MemberAddress(models.Model):
     state = models.CharField(max_length=64)
     zip_code = models.CharField(max_length=16)
 
+    def __unicode__(self):
+        return '%s %s, %s' % (self.address, self.city, self.state)
+
 
 class MemberEmployer(models.Model):
     class Meta:
@@ -42,6 +48,9 @@ class MemberEmployer(models.Model):
 
     employer = models.CharField(max_length=64)
     offers_matching = models.BooleanField(default=False)
+
+    def __unicode__(self):
+        return '%s' % (self.employer)
 
 
 class MemberStudent(models.Model):
@@ -53,6 +62,13 @@ class MemberStudent(models.Model):
     grade = models.CharField(max_length=64, choices=GRADES)
     is_new = models.BooleanField(default=False)
 
+    def __unicode__(self):
+        return '%s %s' % (self.first_name, self.last_name)
+
+
+    def get_full_name(self):
+        return '%s %s' % (self.first_name, self.last_name)
+
 
 class MemberSponsorshipPackage(models.Model):
     class Meta:
@@ -61,3 +77,6 @@ class MemberSponsorshipPackage(models.Model):
     name = models.CharField(max_length=64)
     price = models.DecimalField(decimal_places=2, max_digits=5)
     description = models.TextField()
+
+    def __unicode__(self):
+        return '%s' % (self.name)

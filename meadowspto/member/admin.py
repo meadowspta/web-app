@@ -20,7 +20,16 @@ class MemberSponsorshipPackageAdmin(admin.ModelAdmin):
 
 
 class MemberStudentAdmin(admin.ModelAdmin):
-    pass
+    list_display = (
+        'get_full_name',
+        'grade',
+        'is_new',
+    )
+
+    def get_full_name(self, obj):
+        return '%s %s' % (obj.first_name, obj.last_name)
+
+    get_full_name.short_description = 'Name'
 
 
 admin.site.register(Member, MemberAdmin)

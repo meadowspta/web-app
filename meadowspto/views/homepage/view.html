@@ -8,19 +8,16 @@
           <div id="featured-news-post" class="pad-bottom">
             <div class="title-bar">
               <div class="title">
-                <a href="{{ featured_news_post.get_absolute_url }}">{{ featured_news_post.title }}</a>
-              </div>
-              <div class="teaser">
-                <a href="{{ featured_news_post.get_absolute_url }}">{{ featured_news_post.teaser }}</a>
+                <a href="{{ featured_post.get_absolute_url }}">{{ featured_post.title }}</a>
               </div>
             </div>
-            <a href="{{ featured_news_post.get_absolute_url }}">
-              <img src="{{ featured_news_post.image_large.url }}" class="img-responsive">
+            <a href="{{ featured_post.get_absolute_url }}">
+              <img src="{{ featured_post.main_image.file.url }}" class="img-responsive">
             </a>
           </div>
 
           <div id="news-list" class="row">
-            {% for news_item in news %}
+            {% for post in posts %}
               {% if forloop.counter0|divisibleby:2 %}
                 <div class="row">
                   <div class="col-md-12 col-sm-12">
@@ -28,13 +25,12 @@
                 <div class="col-md-6 col-sm-6">
                   <div class="row">
                     <div class="col-md-4 col-sm-4 col-xs-4">
-                      <a href="{{ news_item.get_absolute_url }}"><img src="{{ news_item.image_thumbnail.url }}" class="img-responsive"></a>
+                      <a href="{{ post.get_absolute_url }}"><img src="{{ post.main_image.file.url }}" class="img-responsive"></a>
                     </div>
                     <div class="col-md-8 col-sm-8 col-xs-8">
-                      <a href="{{ news_item.get_absolute_url }}"><h3>{{ news_item.title }}</h3></a>
+                      <a href="{{ post.get_absolute_url }}"><h3>{{ post.title }}</h3></a>
                       <p class="small">
-                        {{ news_item.teaser }}<br />
-                        <span class="small quiet"><em>{{ news_item.publish_date|date:"F jS, Y" }}</em></span>
+                        <span class="small quiet"><em>{{ post.publish_date|date:"F jS, Y" }}</em></span>
                       </p>
                     </div>
                     <div class="clearfix"></div>
