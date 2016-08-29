@@ -15,6 +15,7 @@
 
     <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+    <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link type="text/css" rel="stylesheet" media="all" href="{{ STATIC_URL }}libraries/bootstrap/3.0.3.990/css/bootstrap.min.css?v={{ version }}" />
     <link type="text/css" rel="stylesheet" media="all" href="{{ STATIC_URL }}css/css/meadows.css?v={{ version }}" />
     <link type="text/css" rel="stylesheet" media="all" href="{{ STATIC_URL }}css/css/responsive.css?v={{ version }}" />
@@ -31,15 +32,15 @@
     <script type="text/javascript" src="{{ STATIC_URL }}libraries/angular/angular-route.min.js?v={{ version }}"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}libraries/bootstrap/3.0.3.990/js/bootstrap.min.js?v={{ version }}"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}libraries/tinymce/js/tinymce/tinymce.min.js?v={{ version }}"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}js/meadows-pta.js?v={{ version }}"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}js/meadows-pta.app.js?v={{ version }}"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}js/meadows-pta.controller.js?v={{ version }}"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/meadows-pto.js?v={{ version }}"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/meadows-pto.app.js?v={{ version }}"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/meadows-pto.controller.js?v={{ version }}"></script>
 
     <script>(function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
       js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=635860923137318";
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7&appId=157808610960227";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
 
@@ -70,6 +71,7 @@
 
   <body data-spy="scroll" data-target="#main-navigation">
     <div id="fb-root"></div>
+
     {% block body %}
     {% endblock body %}
 

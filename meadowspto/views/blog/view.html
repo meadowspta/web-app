@@ -1,33 +1,25 @@
 {% extends 'layouts/page.html' %}
 
 {% block content %}
-  {% if user.is_authenticated %}
-    {% if blog_post.is_featured %}
-      <a href="#" class="btn btn-block btn-success" disabled="disabled">This post is featured</a>
-    {% else %}
-      <a href="/news/feature/{{ blog_post.id }}/" class="btn btn-block btn-success">Feature This Post</a>
+  <div id="blog-post">
+    {% if user.is_authenticated %}
+      {% if blog_post.is_featured %}
+        <a href="#" class="btn btn-block btn-success" disabled="disabled">This post is featured</a>
+      {% else %}
+        <a href="/news/feature/{{ blog_post.id }}/" class="btn btn-block btn-success">Feature This Post</a>
+      {% endif %}
+      <br />
     {% endif %}
-    <br />
-  {% endif %}
 
-  <div id="news-page">
-    <h1 class="title">{{ blog_post.title }}</h1>
-    <div><img src="{{ blog_post.main_image.file_large.url }}" class="img-responsive"></div>
-    <br />
+    <div id="news-page">
+      <h1 class="title">{{ blog_post.title }}</h1>
+      <div><img src="{{ blog_post.main_image.file_large.url }}" class="img-responsive"></div>
+      <br />
 
-    <div class="row">
-      <!--
-      <div class="col-md-1 col-sm-1 col-xs-2">
-        <div class="addthis_toolbox addthis_floating_style addthis_32x32_style" style="position: relative">
-          <a class="addthis_button_facebook"></a>
-          <a class="addthis_button_twitter"></a>
-          <a class="addthis_button_pinterest_share"></a>
-          <a class="addthis_button_google_plusone_share"></a>
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          {{ blog_post.body|safe }}
         </div>
-      </div>
-      -->
-      <div class="col-md-12 col-sm-12 col-xs-12">
-        {{ blog_post.body|safe }}
       </div>
     </div>
   </div>

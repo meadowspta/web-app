@@ -1,9 +1,9 @@
 from django.contrib import admin
 
-from asset.models import AssetFile
+from asset.models import File
 
 
-class AssetFileAdmin(admin.ModelAdmin):
+class FileAdmin(admin.ModelAdmin):
     # ordering = ['-date']
 
     list_display = (
@@ -14,8 +14,8 @@ class AssetFileAdmin(admin.ModelAdmin):
         if db_field.name == 'user':
             kwargs['initial'] = request.user.id
 
-        return super(AssetFileAdmin, self).formfield_for_foreignkey(
+        return super(FileAdmin, self).formfield_for_foreignkey(
             db_field, request, **kwargs
         )
 
-admin.site.register(AssetFile, AssetFileAdmin)
+admin.site.register(File, FileAdmin)

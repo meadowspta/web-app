@@ -1,9 +1,9 @@
 from django.contrib import admin
 
-from blog.models import BlogPost
+from blog.models import Post
 
 
-class BlogPostAdmin(admin.ModelAdmin):
+class PostAdmin(admin.ModelAdmin):
     # ordering = ['-date']
 
     fields = (
@@ -30,8 +30,8 @@ class BlogPostAdmin(admin.ModelAdmin):
         if db_field.name == 'user':
             kwargs['initial'] = request.user.id
 
-        return super(BlogPostAdmin, self).formfield_for_foreignkey(
+        return super(PostAdmin, self).formfield_for_foreignkey(
             db_field, request, **kwargs
         )
 
-admin.site.register(BlogPost, BlogPostAdmin)
+admin.site.register(Post, PostAdmin)
