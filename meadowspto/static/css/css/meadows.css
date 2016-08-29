@@ -1,6 +1,6 @@
 /* line 12, ../sass/base.scss */
 body {
-  font-family: 'AvenirNextLTW01-Regular',Helvetica,Arial,sans-serif;
+  font-family: Roboto,Helvetica,Arial,sans-serif;
   /*font-family: 'Varela Round', sans-serif;*/
 }
 
@@ -56,8 +56,16 @@ hr {
   margin: 10px 0px 10px 0px;
 }
 
+/* line 53, ../sass/base.scss */
+p {
+  font-family: Georgia,Cambria,"Times New Roman",Times,serif;
+  color: #666666;
+  line-height: 1.8em;
+  margin-bottom: 1.8em;
+}
+
 /* Lists */
-/* line 54, ../sass/base.scss */
+/* line 61, ../sass/base.scss */
 ul.list-no-style, ul.list, div.list {
   margin: 0px;
   padding: 0px;
@@ -65,21 +73,21 @@ ul.list-no-style, ul.list, div.list {
   display: inline-block;
   width: 100%;
 }
-/* line 61, ../sass/base.scss */
+/* line 68, ../sass/base.scss */
 ul.list-no-style li, ul.list li, div.list li {
   clear: both;
   float: left;
   width: 100%;
 }
 
-/* line 67, ../sass/base.scss */
+/* line 74, ../sass/base.scss */
 ul.list li.list-item, div.list-item {
   margin-bottom: 10px;
   padding-bottom: 10px;
   border-bottom: 1px solid #dcdcdc;
 }
 
-/* line 72, ../sass/base.scss */
+/* line 79, ../sass/base.scss */
 .list-item.last {
   border-bottom: 0px;
   margin-bottom: 0px;
@@ -87,92 +95,92 @@ ul.list li.list-item, div.list-item {
 }
 
 /* Forms */
-/* line 80, ../sass/base.scss */
+/* line 87, ../sass/base.scss */
 form label {
   color: #555555;
   font-size: 15px;
   font-weight: bold;
 }
-/* line 86, ../sass/base.scss */
+/* line 93, ../sass/base.scss */
 form ul.errorlist {
   padding: 0px;
   color: #cc0000;
 }
-/* line 90, ../sass/base.scss */
+/* line 97, ../sass/base.scss */
 form ul.errorlist li {
   list-style: none;
 }
 
-/* line 96, ../sass/base.scss */
+/* line 103, ../sass/base.scss */
 label {
   font-weight: normal;
   font-size: 1.3em;
 }
 
-/* line 100, ../sass/base.scss */
+/* line 107, ../sass/base.scss */
 input {
   margin-bottom: 15px;
 }
 
-/* line 103, ../sass/base.scss */
+/* line 110, ../sass/base.scss */
 textarea {
   width: 600px;
   height: 350px;
 }
 
-/* line 110, ../sass/base.scss */
+/* line 117, ../sass/base.scss */
 input[type='text'].regular {
   font-size: 1.0em;
   padding: 0px 5px 0px 5px;
   height: 25px;
 }
 
-/* line 115, ../sass/base.scss */
+/* line 122, ../sass/base.scss */
 input[type='text'].micro {
   font-size: 1.0em;
   padding: 0px 5px 0px 5px;
   height: 25px;
 }
 
-/* line 120, ../sass/base.scss */
+/* line 127, ../sass/base.scss */
 input[type='checkbox'] {
   float: left;
 }
 
-/* line 123, ../sass/base.scss */
+/* line 130, ../sass/base.scss */
 .form-list-label {
   font-size: .9em;
   margin: 0px 0px 0px 10px;
   float: left;
 }
 
-/* line 128, ../sass/base.scss */
+/* line 135, ../sass/base.scss */
 input.fluid {
   width: 100% !important;
 }
 
-/* line 132, ../sass/base.scss */
+/* line 139, ../sass/base.scss */
 input.large {
   width: 600px !important;
 }
 
-/* line 135, ../sass/base.scss */
+/* line 142, ../sass/base.scss */
 input.medium {
   width: 400px !important;
 }
 
-/* line 138, ../sass/base.scss */
+/* line 145, ../sass/base.scss */
 input.small {
   width: 200px !important;
 }
 
-/* line 141, ../sass/base.scss */
+/* line 148, ../sass/base.scss */
 input.micro {
   width: 90px !important;
 }
 
 /* Header Chrome */
-/* line 146, ../sass/base.scss */
+/* line 153, ../sass/base.scss */
 .chrome {
   font-weight: bold;
   background-color: #efefef;
@@ -184,173 +192,198 @@ input.micro {
   line-height: 1em;
 }
 
-/* line 156, ../sass/base.scss */
+/* line 163, ../sass/base.scss */
 h1.chrome {
   font-size: 1.5em;
 }
 
-/* line 159, ../sass/base.scss */
+/* line 166, ../sass/base.scss */
 h2.chrome {
   font-size: 1.2em;
 }
 
-/* line 162, ../sass/base.scss */
+/* line 169, ../sass/base.scss */
 h3.chrome {
   font-size: 0.9em;
 }
 
-/* line 165, ../sass/base.scss */
+/* line 172, ../sass/base.scss */
 h4.chrome {
   font-size: 0.8em;
 }
 
 /* Helpers */
-/* line 170, ../sass/base.scss */
+/* line 177, ../sass/base.scss */
 .bg-splash {
   background-color: #003965;
   color: #ffffff;
 }
 
-/* line 174, ../sass/base.scss */
+/* line 181, ../sass/base.scss */
 .bg-splash.bg-splash-secondary {
-  background-color: #ff6600;
+  background-color: #FF6600;
   color: #ffffff;
 }
 
-/* line 178, ../sass/base.scss */
+/* line 185, ../sass/base.scss */
 .bg-splash.bg-splash-grey {
   background-color: #666666;
   color: #ffffff;
 }
 
-/* line 183, ../sass/base.scss */
+/* line 190, ../sass/base.scss */
 .text-primary {
   color: #003965;
 }
 
-/* line 186, ../sass/base.scss */
+/* line 193, ../sass/base.scss */
 .text-secondary {
-  color: #ff6600;
+  color: #FF6600;
 }
 
-/* line 190, ../sass/base.scss */
+/* line 197, ../sass/base.scss */
 .bright {
   color: #ee0000;
 }
 
-/* line 194, ../sass/base.scss */
+/* line 201, ../sass/base.scss */
 .small {
   font-size: 0.9em;
 }
 
-/* line 198, ../sass/base.scss */
+/* line 205, ../sass/base.scss */
 .fb-like-box {
   background: #ffffff;
 }
 
-/* line 202, ../sass/base.scss */
+/* line 209, ../sass/base.scss */
 .quiet {
   color: #999999;
 }
 
-/* line 206, ../sass/base.scss */
+/* line 213, ../sass/base.scss */
 .small {
   font-size: .8em;
 }
 
-/* line 210, ../sass/base.scss */
+/* line 217, ../sass/base.scss */
 .alerter {
   color: #cc0000;
   font-weight: bold;
 }
 
-/* line 215, ../sass/base.scss */
+/* line 222, ../sass/base.scss */
 .italic {
   font-style: italic;
 }
 
-/* line 219, ../sass/base.scss */
+/* line 226, ../sass/base.scss */
 .no-wrap {
   white-space: nowrap;
 }
 
-/* line 223, ../sass/base.scss */
+/* line 230, ../sass/base.scss */
 .loud {
   font-weight: bold;
 }
 
-/* line 227, ../sass/base.scss */
+/* line 234, ../sass/base.scss */
 .text-right {
   text-align: right;
 }
 
-/* line 230, ../sass/base.scss */
+/* line 237, ../sass/base.scss */
 .text-left {
   text-align: left;
 }
 
-/* line 233, ../sass/base.scss */
+/* line 240, ../sass/base.scss */
 .text-center {
   text-align: center;
 }
 
-/* line 237, ../sass/base.scss */
+/* line 244, ../sass/base.scss */
 .inline {
   display: inline !important;
 }
 
-/* line 241, ../sass/base.scss */
+/* line 248, ../sass/base.scss */
 .pad {
   padding: 10px;
 }
 
-/* line 244, ../sass/base.scss */
+/* line 251, ../sass/base.scss */
 .pad-top {
   padding-top: 10px;
 }
 
-/* line 247, ../sass/base.scss */
+/* line 254, ../sass/base.scss */
 .pad-right {
   padding-right: 10px;
 }
 
-/* line 250, ../sass/base.scss */
+/* line 257, ../sass/base.scss */
 .pad-bottom {
   padding-bottom: 10px;
 }
 
-/* line 253, ../sass/base.scss */
+/* line 260, ../sass/base.scss */
 .pad-left {
   padding-left: 10px;
 }
 
-/* line 257, ../sass/base.scss */
+/* line 264, ../sass/base.scss */
+.bump {
+  padding: 10px;
+}
+
+/* line 267, ../sass/base.scss */
+.bump-top {
+  padding-top: 10px;
+}
+
+/* line 270, ../sass/base.scss */
+.bump-right {
+  padding-right: 10px;
+}
+
+/* line 273, ../sass/base.scss */
+.bump-bottom {
+  padding-bottom: 10px;
+}
+
+/* line 276, ../sass/base.scss */
+.bump-left {
+  padding-left: 10px;
+}
+
+/* line 280, ../sass/base.scss */
 .no-margin {
   margin: 0px !important;
 }
 
-/* line 260, ../sass/base.scss */
+/* line 283, ../sass/base.scss */
 .no-padding {
   padding: 0px !important;
 }
 
-/* line 264, ../sass/base.scss */
+/* line 287, ../sass/base.scss */
 img.shadow {
   box-shadow: 0px 1px 5px #666666;
 }
 
 /* Bootstrap overrides */
-/* line 269, ../sass/base.scss */
+/* line 292, ../sass/base.scss */
 div.first {
   margin-left: 0;
 }
 
-/* line 273, ../sass/base.scss */
+/* line 296, ../sass/base.scss */
 .form-inline input[type='text'] {
   margin-bottom: 10px;
 }
 
-/* line 277, ../sass/base.scss */
+/* line 300, ../sass/base.scss */
 .ng-hide {
   display: block !important;
   position: absolute;
@@ -358,17 +391,17 @@ div.first {
   left: -9999px;
 }
 
-/* line 284, ../sass/base.scss */
+/* line 307, ../sass/base.scss */
 .btn-default {
   background: #cc0000;
 }
 
 /* Loader */
-/* line 289, ../sass/base.scss */
+/* line 312, ../sass/base.scss */
 .loader-region {
   position: relative;
 }
-/* line 292, ../sass/base.scss */
+/* line 315, ../sass/base.scss */
 .loader-region .loader {
   background: url("/static/images/loaders/loader-large.gif") no-repeat center;
   background-color: rgba(255, 255, 255, 0.75);
@@ -380,10 +413,28 @@ div.first {
   z-index: 10000;
   font-size: 1.2em;
 }
-/* line 303, ../sass/base.scss */
+/* line 326, ../sass/base.scss */
 .loader-region .loader span {
   display: inline-block;
   vertical-align: middle;
+}
+
+/* Cards */
+/* line 334, ../sass/base.scss */
+.card {
+  border: 1px solid #cdcdcd;
+  background: #ffffff;
+  cursor: pointer;
+}
+/* line 339, ../sass/base.scss */
+.card .card-body {
+  margin: 0px;
+  padding: 10px;
+}
+
+/* line 345, ../sass/base.scss */
+a .card {
+  color: #000000;
 }
 
 /* Template */
@@ -448,149 +499,157 @@ header .navbar .main-navigation .navbar-nav .icon-social {
 }
 /* line 63, ../sass/meadows.scss */
 header .navbar .main-navigation .navbar-nav .icon-social.icon-facebook-dark {
-  background: url("/static/images/template/facebook-dark.svg") no-repeat scroll 50% 50% rgba(0, 0, 0, 0);
+  background: url("/static/images/template/facebook-dark.svg") no-repeat scroll 50% 50% transparent;
 }
 /* line 66, ../sass/meadows.scss */
 header .navbar .main-navigation .navbar-nav .icon-social.icon-twitter-dark {
-  background: url("/static/images/template/twitter-dark.svg") no-repeat scroll 50% 50% rgba(0, 0, 0, 0);
+  background: url("/static/images/template/twitter-dark.svg") no-repeat scroll 50% 50% transparent;
 }
 
 /* line 74, ../sass/meadows.scss */
+section#pre-footer {
+  margin-top: 15px;
+  background: #efefef;
+  min-height: 100px;
+}
+
+/* line 80, ../sass/meadows.scss */
 footer {
   color: #333333;
   padding: 25px 0px 100px 0px;
   background: url("/static/images/template/msd_logo.png") no-repeat;
   background-position: center 25px;
-  margin-top: 25px;
 }
-/* line 81, ../sass/meadows.scss */
+/* line 86, ../sass/meadows.scss */
 footer a {
   color: #ababab;
 }
-/* line 84, ../sass/meadows.scss */
+/* line 89, ../sass/meadows.scss */
 footer a:hover {
   color: #ffffff;
 }
-/* line 88, ../sass/meadows.scss */
+/* line 93, ../sass/meadows.scss */
 footer .msd-logo {
   margin-right: 20px;
 }
-/* line 92, ../sass/meadows.scss */
+/* line 97, ../sass/meadows.scss */
 footer .section1 {
   min-height: 115px;
   padding-right: 0px;
 }
-/* line 96, ../sass/meadows.scss */
+/* line 101, ../sass/meadows.scss */
 footer .section1 .content {
   margin-right: 65px;
   margin-top: 5px;
 }
-/* line 102, ../sass/meadows.scss */
+/* line 107, ../sass/meadows.scss */
 footer .section2 .content {
   margin-left: 50px;
   margin-top: 5px;
 }
 
 /* Homepage */
-/* line 109, ../sass/meadows.scss */
+/* line 114, ../sass/meadows.scss */
 #homepage {
   position: relative;
+  background: #f0f0f0;
+  padding-top: 15px;
+  margin-top: -15px;
 }
-/* line 112, ../sass/meadows.scss */
+/* line 120, ../sass/meadows.scss */
+#homepage p {
+  font-family: Roboto;
+  font-size: 1.8em;
+  line-height: 1.8em;
+}
+/* line 128, ../sass/meadows.scss */
+#homepage #membership p,
+#homepage #donate p {
+  color: #ffffff;
+}
+/* line 133, ../sass/meadows.scss */
 #homepage section {
   padding: 60px 25px;
-  font-size: 24px;
-  line-height: 28px;
 }
-/* line 117, ../sass/meadows.scss */
+/* line 136, ../sass/meadows.scss */
 #homepage section h2.title-large {
   text-align: center;
   margin-bottom: 35px;
 }
-/* line 121, ../sass/meadows.scss */
+/* line 140, ../sass/meadows.scss */
 #homepage section h2.title-large .glyphicon {
   top: 10px;
 }
-/* line 126, ../sass/meadows.scss */
+/* line 145, ../sass/meadows.scss */
 #homepage section h3 {
   margin-bottom: 25px;
 }
-/* line 130, ../sass/meadows.scss */
+/* line 149, ../sass/meadows.scss */
 #homepage section p {
   margin-bottom: 35px;
 }
-/* line 135, ../sass/meadows.scss */
+/* line 154, ../sass/meadows.scss */
 #homepage #news {
   padding-bottom: 25px;
 }
-/* line 138, ../sass/meadows.scss */
+/* line 157, ../sass/meadows.scss */
 #homepage #news #view-news-article .modal-content {
   width: 700px;
   margin-left: -50px;
 }
-/* line 142, ../sass/meadows.scss */
+/* line 161, ../sass/meadows.scss */
 #homepage #news #view-news-article .modal-content .post-image {
   text-align: center;
   margin-bottom: 25px;
 }
-/* line 148, ../sass/meadows.scss */
-#homepage #news #featured-news-post {
+/* line 167, ../sass/meadows.scss */
+#homepage #news #featured-blog-post {
   position: relative;
 }
-/* line 151, ../sass/meadows.scss */
-#homepage #news #featured-news-post .title-bar {
-  background-color: rgba(0, 0, 0, 0.7);
-  padding: 15px 15px 10px 15px;
-  position: absolute;
-  bottom: 30px;
-  right: 0px;
-  -moz-box-shadow: 0px 1px 3px 0px #ffffff;
-  -webkit-box-shadow: 0px 1px 3px 0px #ffffff;
-  box-shadow: 0px 1px 3px 0px #ffffff;
+/* line 170, ../sass/meadows.scss */
+#homepage #news #featured-blog-post .title {
+  font-size: 2.2em;
 }
-/* line 161, ../sass/meadows.scss */
-#homepage #news #featured-news-post .title-bar a {
-  text-decoration: none;
-  color: #ffffff;
+/* line 174, ../sass/meadows.scss */
+#homepage #news #featured-blog-post p {
+  font-size: 1.3em;
+  line-height: 1.3em;
+  margin: 0px;
 }
-/* line 166, ../sass/meadows.scss */
-#homepage #news #featured-news-post .title-bar .title {
-  color: #ffffff;
-  font-size: 1.9em;
-  margin-bottom: 3px;
+/* line 182, ../sass/meadows.scss */
+#homepage #news #blog-post-list .title {
+  font-size: 1.2em;
+  line-height: 1.2em;
 }
-/* line 172, ../sass/meadows.scss */
-#homepage #news #featured-news-post .title-bar .teaser {
-  color: #ffffff;
-  font-size: 1em;
-}
-/* line 180, ../sass/meadows.scss */
-#homepage #news #news-list h3 {
-  font-size: 15px;
-  line-height: 15px;
-  margin-bottom: 3px;
-}
-/* line 186, ../sass/meadows.scss */
-#homepage #news #news-list .row {
+/* line 187, ../sass/meadows.scss */
+#homepage #news #blog-post-list .row {
   min-height: 80px;
 }
-/* line 194, ../sass/meadows.scss */
+/* line 195, ../sass/meadows.scss */
 #homepage #membership .support-statements p {
   font-size: 16px;
   line-height: 22px;
 }
 /* line 202, ../sass/meadows.scss */
+#homepage #volunteer {
+  background: #ffffff;
+}
+/* line 205, ../sass/meadows.scss */
 #homepage #volunteer h2.title-large {
   color: #cc0000;
 }
-/* line 213, ../sass/meadows.scss */
+/* line 214, ../sass/meadows.scss */
+#homepage #executive-board {
+  background: #ffffff;
+}
+/* line 218, ../sass/meadows.scss */
 #homepage #executive-board .list .title {
   font-size: 30px;
   line-height: 40px;
   text-align: right;
   font-weight: normal;
 }
-/* line 220, ../sass/meadows.scss */
+/* line 225, ../sass/meadows.scss */
 #homepage #executive-board .list .name {
   font-size: 30px;
   line-height: 40px;
@@ -599,56 +658,56 @@ footer .section2 .content {
 }
 
 /* Events */
-/* line 231, ../sass/meadows.scss */
+/* line 236, ../sass/meadows.scss */
 .event-calendar-date {
   border: 2px solid #003965;
   border-radius: 4px;
 }
-/* line 235, ../sass/meadows.scss */
+/* line 240, ../sass/meadows.scss */
 .event-calendar-date .day, .event-calendar-date .month, .event-calendar-date .date {
   text-align: center;
   font-weight: bold;
 }
-/* line 240, ../sass/meadows.scss */
+/* line 245, ../sass/meadows.scss */
 .event-calendar-date .month {
   font-size: 20px;
   background: #003965;
   color: #ffffff;
   padding: 5px;
 }
-/* line 247, ../sass/meadows.scss */
+/* line 252, ../sass/meadows.scss */
 .event-calendar-date .date {
   font-size: 55px;
   line-height: 40px;
   padding: 10px 5px 0px 5px;
 }
-/* line 253, ../sass/meadows.scss */
+/* line 258, ../sass/meadows.scss */
 .event-calendar-date .day {
   color: #666666;
 }
 
-/* line 259, ../sass/meadows.scss */
+/* line 264, ../sass/meadows.scss */
 .event-calendar-date-small .month {
   font-size: 11px;
   padding: 3px;
 }
-/* line 264, ../sass/meadows.scss */
+/* line 269, ../sass/meadows.scss */
 .event-calendar-date-small .date {
   font-size: 25px;
   line-height: 25px;
   padding: 0px;
 }
-/* line 270, ../sass/meadows.scss */
+/* line 275, ../sass/meadows.scss */
 .event-calendar-date-small .day {
   font-size: 10px;
   padding: 0px;
 }
 
-/* line 276, ../sass/meadows.scss */
+/* line 281, ../sass/meadows.scss */
 #crabfeed-home, #crabfeed-raffle {
   margin-top: -10px;
 }
-/* line 279, ../sass/meadows.scss */
+/* line 284, ../sass/meadows.scss */
 #crabfeed-home section, #crabfeed-raffle section {
   height: 950px;
   color: #ffffff;
@@ -656,115 +715,115 @@ footer .section2 .content {
   background-position: top;
   position: relative;
 }
-/* line 286, ../sass/meadows.scss */
+/* line 291, ../sass/meadows.scss */
 #crabfeed-home section h2, #crabfeed-raffle section h2 {
   font-size: 3.5em;
 }
-/* line 290, ../sass/meadows.scss */
+/* line 295, ../sass/meadows.scss */
 #crabfeed-home section h3, #crabfeed-raffle section h3 {
   font-size: 2.3em;
 }
-/* line 294, ../sass/meadows.scss */
+/* line 299, ../sass/meadows.scss */
 #crabfeed-home section p, #crabfeed-raffle section p {
   font-size: 1.8em;
 }
-/* line 298, ../sass/meadows.scss */
+/* line 303, ../sass/meadows.scss */
 #crabfeed-home section .content, #crabfeed-raffle section .content {
   margin-top: 650px;
   height: 500px;
   padding: 15px 0px;
 }
-/* line 305, ../sass/meadows.scss */
+/* line 310, ../sass/meadows.scss */
 #crabfeed-home .section-raffle, #crabfeed-raffle .section-raffle {
   background-image: url("/static/images/crabfeed/home/crab.jpg");
   height: 1050px;
 }
-/* line 309, ../sass/meadows.scss */
+/* line 314, ../sass/meadows.scss */
 #crabfeed-home .section-raffle .content, #crabfeed-raffle .section-raffle .content {
   background-color: #d84438;
   height: 400px;
 }
-/* line 315, ../sass/meadows.scss */
+/* line 320, ../sass/meadows.scss */
 #crabfeed-home .section-overview, #crabfeed-raffle .section-overview {
   background-image: url("/static/images/crabfeed/home/crab.jpg");
   height: 1100px;
 }
-/* line 319, ../sass/meadows.scss */
+/* line 324, ../sass/meadows.scss */
 #crabfeed-home .section-overview .content, #crabfeed-raffle .section-overview .content {
   background-color: #d84438;
   height: 450px;
 }
-/* line 323, ../sass/meadows.scss */
+/* line 328, ../sass/meadows.scss */
 #crabfeed-home .section-overview .content a, #crabfeed-raffle .section-overview .content a {
   color: #ffffff;
 }
-/* line 327, ../sass/meadows.scss */
+/* line 332, ../sass/meadows.scss */
 #crabfeed-home .section-overview .content .crabfeed-logo, #crabfeed-raffle .section-overview .content .crabfeed-logo {
   position: absolute;
   top: -475px;
   right: 0px;
 }
-/* line 335, ../sass/meadows.scss */
+/* line 340, ../sass/meadows.scss */
 #crabfeed-home .section-auction, #crabfeed-raffle .section-auction {
   background-image: url("/static/images/crabfeed/home/auction.jpg");
 }
-/* line 338, ../sass/meadows.scss */
+/* line 343, ../sass/meadows.scss */
 #crabfeed-home .section-auction .content, #crabfeed-raffle .section-auction .content {
   background-color: #4286f5;
 }
-/* line 343, ../sass/meadows.scss */
+/* line 348, ../sass/meadows.scss */
 #crabfeed-home .section-volunteer, #crabfeed-raffle .section-volunteer {
   background-image: url("/static/images/crabfeed/home/volunteer.jpg");
 }
-/* line 346, ../sass/meadows.scss */
+/* line 351, ../sass/meadows.scss */
 #crabfeed-home .section-volunteer .content, #crabfeed-raffle .section-volunteer .content {
   background-color: #f5b400;
 }
-/* line 351, ../sass/meadows.scss */
+/* line 356, ../sass/meadows.scss */
 #crabfeed-home .section-raffle, #crabfeed-raffle .section-raffle {
   background-image: url("/static/images/crabfeed/home/raffle.jpg");
 }
-/* line 354, ../sass/meadows.scss */
+/* line 359, ../sass/meadows.scss */
 #crabfeed-home .section-raffle .content, #crabfeed-raffle .section-raffle .content {
   background-color: #ff8400;
 }
-/* line 359, ../sass/meadows.scss */
+/* line 364, ../sass/meadows.scss */
 #crabfeed-home .section-tickets, #crabfeed-raffle .section-tickets {
   background-image: url("/static/images/crabfeed/home/sign_up.jpg");
 }
-/* line 362, ../sass/meadows.scss */
+/* line 367, ../sass/meadows.scss */
 #crabfeed-home .section-tickets .content, #crabfeed-raffle .section-tickets .content {
   background-color: #109d58;
   height: 300px;
 }
 
-/* line 370, ../sass/meadows.scss */
+/* line 375, ../sass/meadows.scss */
 #crabfeed-save-the-date h1 {
   font-weight: bold;
   background: #cc0000;
   color: #ffffff;
   border-radius: 5px;
 }
-/* line 377, ../sass/meadows.scss */
+/* line 382, ../sass/meadows.scss */
 #crabfeed-save-the-date h2 {
   font-weight: bold;
   text-transform: uppercase;
 }
 
-/* line 386, ../sass/meadows.scss */
+/* line 391, ../sass/meadows.scss */
 #crabfeed-dashboard .crabfeed-reservation-list .crabfeed-reservation-list-item .full-name {
   font-size: 1.4em;
 }
-/* line 393, ../sass/meadows.scss */
+/* line 398, ../sass/meadows.scss */
 #crabfeed-dashboard .crabfeed-transaction-filters label {
   font-size: 1.0em;
 }
-/* line 398, ../sass/meadows.scss */
+/* line 403, ../sass/meadows.scss */
 #crabfeed-dashboard ul.overview {
   list-style: none;
   padding: 0px;
 }
-/* line 402, ../sass/meadows.scss */
+/* line 407, ../sass/meadows.scss */
 #crabfeed-dashboard ul.overview li {
   margin: 0px 10px 10px 0px;
   border-radius: 15px;
@@ -774,85 +833,95 @@ footer .section2 .content {
   height: 100px;
   padding: 10px;
   border: 1px solid #666666;
-  background: gainsboro;
+  background: #dcdcdc;
   vertical-align: top;
 }
-/* line 414, ../sass/meadows.scss */
+/* line 419, ../sass/meadows.scss */
 #crabfeed-dashboard ul.overview li h2 {
   font-weight: bold;
   font-size: 1.3em;
 }
-/* line 419, ../sass/meadows.scss */
+/* line 424, ../sass/meadows.scss */
 #crabfeed-dashboard ul.overview li span {
   font-size: 1.8em;
   font-weight: bold;
 }
-/* line 425, ../sass/meadows.scss */
+/* line 430, ../sass/meadows.scss */
 #crabfeed-dashboard ul.overview li.grand-total {
   background: #003965;
-  color: #ff6600;
+  color: #FF6600;
 }
 
-/* line 432, ../sass/meadows.scss */
+/* line 437, ../sass/meadows.scss */
 #crabfeed-check-in, #crabfeed-check-in-confirmation {
   font-size: 1.4em;
 }
-/* line 435, ../sass/meadows.scss */
+/* line 440, ../sass/meadows.scss */
 #crabfeed-check-in h3, #crabfeed-check-in-confirmation h3 {
   font-size: 1.5em;
   margin: 0px 0px 5px 0px;
 }
-/* line 440, ../sass/meadows.scss */
+/* line 445, ../sass/meadows.scss */
 #crabfeed-check-in .check-in-count-form, #crabfeed-check-in-confirmation .check-in-count-form {
   font-size: 1.8em;
   margin-bottom: 20px;
 }
-/* line 444, ../sass/meadows.scss */
+/* line 449, ../sass/meadows.scss */
 #crabfeed-check-in .check-in-count-form .check-in-count, #crabfeed-check-in-confirmation .check-in-count-form .check-in-count {
   padding: 0px 15px;
   font-size: 1.3em;
 }
-/* line 450, ../sass/meadows.scss */
+/* line 455, ../sass/meadows.scss */
 #crabfeed-check-in .check-in-all-button, #crabfeed-check-in-confirmation .check-in-all-button {
   margin-bottom: 15px;
 }
-/* line 454, ../sass/meadows.scss */
+/* line 459, ../sass/meadows.scss */
 #crabfeed-check-in .check-in-party-count, #crabfeed-check-in-confirmation .check-in-party-count {
   font-size: 1.3em;
 }
-/* line 462, ../sass/meadows.scss */
+/* line 467, ../sass/meadows.scss */
 #crabfeed-check-in .table-assignment, #crabfeed-check-in-confirmation .table-assignment {
   font-size: 1.6em;
 }
 
-/* line 468, ../sass/meadows.scss */
+/* line 473, ../sass/meadows.scss */
 #auction-item-list h2 {
   font-size: 2.3em;
 }
-/* line 472, ../sass/meadows.scss */
+/* line 477, ../sass/meadows.scss */
 #auction-item-list p, #auction-item-list p span {
   font-size: 1.2em !important;
   color: #666666;
 }
 
-/* line 479, ../sass/meadows.scss */
+/* line 484, ../sass/meadows.scss */
 #crabfeed-check-in-dashboard .big-stats {
   text-align: center;
 }
-/* line 482, ../sass/meadows.scss */
+/* line 487, ../sass/meadows.scss */
 #crabfeed-check-in-dashboard .big-stats .big-stats-number {
   font-size: 5.0em;
 }
-/* line 487, ../sass/meadows.scss */
+/* line 492, ../sass/meadows.scss */
 #crabfeed-check-in-dashboard .nav-tabs {
   font-size: 1.4em;
 }
 
-/* line 492, ../sass/meadows.scss */
+/* line 497, ../sass/meadows.scss */
 .reservation-list-item {
   font-size: 1.4em;
 }
-/* line 495, ../sass/meadows.scss */
+/* line 500, ../sass/meadows.scss */
 .reservation-list-item .names {
   font-size: 1.6em;
+}
+
+/* line 505, ../sass/meadows.scss */
+#blog-post {
+  font-size: 1.6em;
+}
+/* line 508, ../sass/meadows.scss */
+#blog-post p {
+  line-height: 1.8em;
+  margin-bottom: 1.8em;
 }

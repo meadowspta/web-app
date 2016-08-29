@@ -20,11 +20,13 @@ INSTALLED_APPS = [
     'meta',
     'system',
     'homepage',
-    'news',
     'member',
-    'auction',
-    'event',
-    'crabfeed',
+    'blog',
+    'asset',
+    # 'news',
+    # 'event',
+    # 'auction',
+    # 'crabfeed',
 ]
 
 MIDDLEWARE_CLASSES = [

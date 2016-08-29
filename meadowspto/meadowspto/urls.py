@@ -21,7 +21,6 @@ from django.views.static import serve
 
 import homepage.views
 import member.views
-# import crabfeed.views
 
 admin.autodiscover()
 
@@ -29,8 +28,9 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
     url(r'^$', homepage.views.view),
-    url(r'^news/', include('news.urls')),
-    url(r'^events/', include('event.urls')),
+    url(r'^blog/', include('blog.urls')),
+    # url(r'^news/', include('news.urls')),
+    # url(r'^events/', include('event.urls')),
     # url(r'^auction/', include('auction.urls')),
     # url(r'^api/crabfeed/tickets', crabfeed.views.api_tickets),
     # url(r'^api/crabfeed/search', crabfeed.views.api_search),

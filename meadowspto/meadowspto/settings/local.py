@@ -11,7 +11,7 @@ DATABASES = {
         'NAME': 'meadowspto',
         'USER': 'meadowspto',
         'PASSWORD': 'meadowspto',
-        'HOST': '',
-        'PORT': '',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }

@@ -39,7 +39,7 @@ class News(ContentModel):
         """
         Check if the post is featured.
         """
-        if self.id == int(sysvar['news_featured_post']):
+        if self.id == int(sysvar['featured_blog_post']):
             return True
         else:
             return False

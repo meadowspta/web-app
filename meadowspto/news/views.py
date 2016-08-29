@@ -44,6 +44,6 @@ def get(request, id):
     return HttpResponse(json.dumps(data), content_type="application/json")
 
 def update_featured_post(request, id):
-    sysvar['news_featured_post'] = int(id)
+    sysvar['featured_blog_post'] = int(id)
     news_item = News.objects.get(id=int(id))
     return HttpResponseRedirect(news_item.get_absolute_url())

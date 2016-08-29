@@ -1,0 +1,23 @@
+{% extends 'layouts/sidebar_right.html' %}
+
+{% block sidebar %}
+  {% include 'blocks/facebook_likes.html' %}
+{% endblock sidebar %}
+
+{% block content %}
+  <div id="blog-list">
+    <ul class="list">
+      {% for blog_post in blog_posts %}
+        <li class="list-item row">
+          <div class="col-md-3">
+            <a href="{{ blog_post.get_absolute_url }}"><img src="{{ blog_post.main_image.file_medium.url }}"></a>
+          </div>
+          <div class="col-md-9">
+            <a href="{{ blog_post.get_absolute_url }}"><h3>{{ blog_post.title }}</h3></a>
+            <span class="quiet"><em>{{ blog_post.publish_date|date:"l, F jS, Y" }}</em></span> - {{ blog_post.body|striptags|safe|truncatewords:25 }} <a href="{{ blog_post.get_absolute_url }}">read more &raquo;</a>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock content %}

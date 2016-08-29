@@ -10,7 +10,7 @@ $screen-md-min: 992px;
 $screen-lg-min: 1200px;
 
 body {
-  font-family: 'AvenirNextLTW01-Regular',Helvetica,Arial,sans-serif;
+  font-family: Roboto,Helvetica,Arial,sans-serif;
   /*font-family: 'Varela Round', sans-serif;*/
 }
 body.admin-bar {
@@ -48,6 +48,13 @@ a, a:visited, a:hover {
 
 hr {
   margin: 10px 0px 10px 0px;
+}
+
+p {
+  font-family: Georgia,Cambria,"Times New Roman",Times,serif;
+  color: #666666;
+  line-height: 1.8em;
+  margin-bottom: 1.8em;
 }
 
 /* Lists */
@@ -254,6 +261,22 @@ h4.chrome {
   padding-left: 10px;
 }
 
+.bump {
+  padding: 10px;
+}
+.bump-top {
+  padding-top: 10px;
+}
+.bump-right {
+  padding-right: 10px;
+}
+.bump-bottom {
+  padding-bottom: 10px;
+}
+.bump-left {
+  padding-left: 10px;
+}
+
 .no-margin {
   margin: 0px !important;
 }
@@ -304,5 +327,22 @@ div.first {
       display: inline-block;
       vertical-align: middle;
     }
+  }
+}
+
+/* Cards */
+.card {
+  border: 1px solid #cdcdcd;
+  background: #ffffff;
+  cursor: pointer;
+
+  .card-body {
+    margin: 0px;
+    padding: 10px;
+  }
+}
+a {
+  .card {
+    color: #000000;
   }
 }

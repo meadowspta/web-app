@@ -5,50 +5,39 @@
     <div id="news" class="container">
       <div class="row">
         <div class="col-md-8 col-sm-8">
-          <div id="featured-news-post" class="pad-bottom">
-            <div class="title-bar">
-              <div class="title">
-                <a href="{{ featured_news_post.get_absolute_url }}">{{ featured_news_post.title }}</a>
-              </div>
-              <div class="teaser">
-                <a href="{{ featured_news_post.get_absolute_url }}">{{ featured_news_post.teaser }}</a>
+          <a href="{{ featured_post.get_absolute_url }}">
+            <div id="featured-blog-post" class="card">
+              <img src="{{ featured_post.main_image.file_jumbotron.url }}" class="img-responsive">
+              <div class="card-body">
+                <div class="title">{{ featured_post.title }}</div>
+                <span class="quiet">{{ featured_post.publish_date|date:"F jS, Y" }}</span>
+                <p>
+                  {{ featured_post.body|striptags|safe|truncatewords:40 }}
+                  read more &raquo;
+                </p>
               </div>
             </div>
-            <a href="{{ featured_news_post.get_absolute_url }}">
-              <img src="{{ featured_news_post.image_large.url }}" class="img-responsive">
-            </a>
-          </div>
+          </a>
 
-          <div id="news-list" class="row">
-            {% for news_item in news %}
-              {% if forloop.counter0|divisibleby:2 %}
-                <div class="row">
-                  <div class="col-md-12 col-sm-12">
-              {% endif %}
-                <div class="col-md-6 col-sm-6">
-                  <div class="row">
-                    <div class="col-md-4 col-sm-4 col-xs-4">
-                      <a href="{{ news_item.get_absolute_url }}"><img src="{{ news_item.image_thumbnail.url }}" class="img-responsive"></a>
+          <div id="blog-post-list" class="bump-top row">
+            {% for post in posts %}
+              <div class="col-md-4 col-sm-4">
+                <a href="{{ post.get_absolute_url }}">
+                  <div class="card">
+                    <img src="{{ post.main_image.file_thumbnail.url }}" class="img-responsive">
+                    <div class="card-body">
+                      <div class="title">{{ post.title }}</div>
+                      <span class="quiet">{{ post.publish_date|date:"F jS, Y" }}</span>
                     </div>
-                    <div class="col-md-8 col-sm-8 col-xs-8">
-                      <a href="{{ news_item.get_absolute_url }}"><h3>{{ news_item.title }}</h3></a>
-                      <p class="small">
-                        {{ news_item.teaser }}<br />
-                        <span class="small quiet"><em>{{ news_item.publish_date|date:"F jS, Y" }}</em></span>
-                      </p>
-                    </div>
-                    <div class="clearfix"></div>
                   </div>
-                </div>
-              {% if forloop.counter|divisibleby:2 %}
-                  </div>
-                </div>
-              {% endif %}
+                </a>
+              </div>
             {% endfor %}
           </div>
+
           <div class="row">
             <hr />
-            <div class="text-center"><a href="/news/" class="btn btn-success btn-xs">Read More News &raquo;</a></div>
+            <div class="text-center"><a href="/blog/" class="btn btn-success btn-xs">More &raquo;</a></div>
           </div>
         </div>
         <div class="col-md-4 col-sm-4">
@@ -196,12 +185,7 @@
         </p>
 
         <div class="text-center">
-          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-            <input type="hidden" name="cmd" value="_s-xclick">
-            <input type="hidden" name="hosted_button_id" value="JRVHYHLA5ETRQ">
-            <input type="image" src="https://s3-us-west-1.amazonaws.com/meadowspta/media/images/template/buttons/make-a-donation.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-          </form>
+          <a href="https://squareup.com/store/meadowspta/item/donation" target="_blank" class="btn btn-success">Make A Donation</a>
         </div>
       </div>
     </section>

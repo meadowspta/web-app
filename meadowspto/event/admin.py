@@ -8,7 +8,7 @@ class EventAdmin(admin.ModelAdmin):
 
     class Media:
         js = (
-            'js/meadows-pta.js',
+            'js/meadows-pto.js',
         )
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):

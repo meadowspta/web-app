@@ -1,8 +1,8 @@
-from django.conf.urls import *
-from event.views import list, view
+from django.conf.urls import url
+from event import views
 
 
-urlpatterns = patterns('event.views',
-    url(r'^$', list),
-    url(r'^(?P<slug>[^\.^/]+)/$', view),
-)
+urlpatterns = [
+    url(r'^$', views.list),
+    url(r'^(?P<slug>[^\.^/]+)/$', views.view),
+]
