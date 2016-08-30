@@ -29,6 +29,7 @@ urlpatterns = [
     url(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
     url(r'^$', homepage.views.view),
     url(r'^blog/', include('blog.urls')),
+    url(r'^members/', include('member.urls')),
     # url(r'^news/', include('news.urls')),
     # url(r'^events/', include('event.urls')),
     # url(r'^auction/', include('auction.urls')),

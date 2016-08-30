@@ -1,7 +1,7 @@
 from django.db import models
 
 
-GRADES = (
+GRADES = [
     ('tk', 'TK'),
     ('k', 'Kindergarten'),
     ('1', '1st Grade'),
@@ -9,7 +9,7 @@ GRADES = (
     ('3', '3rd Grade'),
     ('4', '4th Grade'),
     ('5', '5th Grade'),
-)
+]
 
 
 class Member(models.Model):

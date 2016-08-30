@@ -57,6 +57,10 @@ p {
   margin-bottom: 1.8em;
 }
 
+div[role=alert] {
+  font-size: 1.5em;
+}
+
 /* Lists */
 ul.list-no-style, ul.list, div.list {
   margin: 0px;
@@ -86,7 +90,7 @@ ul.list li.list-item, div.list-item {
 form {
   label {
     color: #555555;
-    font-size: 15px;
+    font-size: 1.1em !important;
     font-weight: bold;
   }
 
@@ -98,56 +102,57 @@ form {
       list-style: none;
     }
   }
+
+  input {
+    margin-bottom: 15px;
+  }
+  textarea {
+    width: 600px;
+    height: 350px;
+  }
+  input[type='text'], input[type='password'], input[type='file'] {
+
+  }
+  input[type='text'].regular {
+    font-size: 1.0em;
+    padding: 0px 5px 0px 5px;
+    height: 25px;
+  }
+  input[type='text'].micro {
+    font-size: 1.0em;
+    padding: 0px 5px 0px 5px;
+    height: 25px;
+  }
+  input[type='checkbox'] {
+    float: left;
+  }
+  .form-list-label {
+    font-size: .9em;
+    margin: 0px 0px 0px 10px;
+    float: left;
+  }
+  input.fluid {
+    width: 100% !important;
+  }
+
+  input.large {
+    width: 600px !important;
+  }
+  input.medium {
+    width: 400px !important;
+  }
+  input.small {
+    width: 200px !important;
+  }
+  input.micro {
+    width: 90px !important;
+  }
+
+  .form-group {
+    vertical-align: top !important;
+  }
 }
 
-label {
-  font-weight: normal;
-  font-size: 1.3em;
-}
-input {
-  margin-bottom: 15px;
-}
-textarea {
-  width: 600px;
-  height: 350px;
-}
-input[type='text'], input[type='password'], input[type='file'] {
-
-}
-input[type='text'].regular {
-  font-size: 1.0em;
-  padding: 0px 5px 0px 5px;
-  height: 25px;
-}
-input[type='text'].micro {
-  font-size: 1.0em;
-  padding: 0px 5px 0px 5px;
-  height: 25px;
-}
-input[type='checkbox'] {
-  float: left;
-}
-.form-list-label {
-  font-size: .9em;
-  margin: 0px 0px 0px 10px;
-  float: left;
-}
-input.fluid {
-  width: 100% !important;
-}
-
-input.large {
-  width: 600px !important;
-}
-input.medium {
-  width: 400px !important;
-}
-input.small {
-  width: 200px !important;
-}
-input.micro {
-  width: 90px !important;
-}
 
 /* Header Chrome */
 .chrome {
