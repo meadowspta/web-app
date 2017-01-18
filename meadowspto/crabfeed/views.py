@@ -17,8 +17,15 @@ from .models import Reservation, ReservationTransaction, ReservationTransactionI
 
 
 def home(request):
+    meta = Meta(
+        title='Meadows PTO Crabfeed',
+        image='http://www.meadowspto.org/static/images/crabfeed/home/logo_2017.png',
+        description='Come join us for the 4th annual Meadows Crab Feed and Auction.',
+    )
+
     payload = {
         'quantity_range': range(1, 101),
+        'meta': meta,
     }
 
     return render_to_response('crabfeed/home.html', payload, context_instance=RequestContext(request))
