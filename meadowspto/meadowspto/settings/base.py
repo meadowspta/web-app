@@ -26,7 +26,7 @@ INSTALLED_APPS = [
     # 'news',
     # 'event',
     # 'auction',
-    # 'crabfeed',
+    'crabfeed',
 ]
 
 MIDDLEWARE_CLASSES = [

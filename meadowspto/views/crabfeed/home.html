@@ -2,17 +2,17 @@
 
 {% block content %}
   <!-- Volunteer Sign-up Modal -->
-  <div class="modal fade" id="volunteer-sign-up-modal" tabindex="-1" role="dialog" ng-controller="VolunteerSignupController">
-    <form ng-submit="formSubmit();">
+  <div class="modal fade" id="volunteer-sign-up-modal" tabindex="-1" role="dialog" n-g-controller="VolunteerSignupController">
+    <form n-g-submit="formSubmit();">
       {% csrf_token %}
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" ng-click="showVolunteerSignupFormLoader = false;"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <button type="button" class="close" data-dismiss="modal" n-g-click="showVolunteerSignupFormLoader = false;"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
             <h4 class="modal-title" id="myModalLabel">Volunteer Sign-up</h4>
           </div>
           <div class="loader-region">
-            <div class="loader" ng-show="showVolunteerSignupFormLoader"></div>
+            <div class="loader" n-g-show="showVolunteerSignupFormLoader"></div>
             <div class="modal-body">
               <p>
                 There's no better way to get involved with the Meadows community than by volunteering.  Thank you for your interest!
@@ -45,11 +45,11 @@
             <div class="col-lg-12">
               <img class="img-responsive crabfeed-logo" src="/static/images/crabfeed/home/logo.png">
 
-              <h2>Come join us for the 3rd annual Meadows Crab Feed and Auction.</h2>
+              <h2>Come join us for the 4th annual Meadows Crab Feed and Auction.</h2>
 
               <p>
                 <strong>
-                  Saturday, Febrary 27th, 2016<br />
+                  Saturday, March 11th, 2017<br />
                   at the Caroline Shea Center at Taylor Middle School
                 </strong>
                 <br />
@@ -58,7 +58,7 @@
               <hr />
 
               <p>
-                <strong>4:00</strong> Pre-event Happy Hour at Bacchus Wines at 25 Hillcrest Blvd (inside Papes Meat Co)<br />
+                <strong>4:00</strong> Pre-event Happy Hour at Bacchus Wines at 25 Hillcrest Blvd<br />
                 <strong>5:00</strong> Doors open for Auction Viewing<br />
                 <strong>6:00 - 9:00 PM</strong> Crab Feed & Auction<br />
                 <br />
@@ -129,7 +129,7 @@
                 With over 40 volunteers in last year, the key to the success of the event came from the helping hands of the parents.
               </p>
               <p>
-                If you would like to volunteer, email us at <a href="mailto:info@meadowspta.org">info@meadowspta.org</a>
+                If you would like to volunteer, email us at <a href="mailto:info@meadowspto.org">info@meadowspto.org</a>
               </p>
 
               <!-- <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#volunteer-sign-up-modal">
@@ -154,7 +154,7 @@
               </p>
 
               <center>
-                <a href="https://squareup.com/store/meadowspta" type="button" class="btn btn-danger btn-lg">
+                <a href="https://squareup.com/store/meadowspto" type="button" class="btn btn-danger btn-lg">
                   Buy Tickets
                 </a>
               </center>

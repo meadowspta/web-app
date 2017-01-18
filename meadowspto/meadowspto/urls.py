@@ -37,7 +37,7 @@ urlpatterns = [
     # url(r'^api/crabfeed/transactions', crabfeed.views.api_transactions),
     # url(r'^api/crabfeed/reservations', crabfeed.views.api_reservation),
     # url(r'^api/crabfeed/check-in/details', crabfeed.views.api_check_in_details),
-    # url(r'^crabfeed/', include('crabfeed.urls')),
+    url(r'^crabfeed/', include('crabfeed.urls')),
     url(r'^register/$', member.views.register),
     url(r'^register/success/$', member.views.success),
     url(r'^login/$', member.views.login),
